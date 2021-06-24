@@ -1,0 +1,35 @@
+.title {
+    color: #fff;
+    font-size: 14px;
+
+    background-color: gray;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 68px;
+    padding-left: 20px;
+    margin: 0 auto;
+}
+
+.category {
+    width: 320px;
+    height: 340px;
+    background-image: url("../img/clothes.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: flex-end;
+}
+
+.clothes {
+    background-image: url("../img/clothes.png");
+}
+
+.shoes {
+    background-image: url("../img/shoes.png");
+}
+
+.accessories {
+    background-image: url("../img/accessories.png");
+}
