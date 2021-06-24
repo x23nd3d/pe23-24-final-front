@@ -5,8 +5,8 @@ import Categories from "./Categories/Categories";
 
 const MainPage = () => (
   <div className={classes.MainPage}>
-      <CardContainer/>
-  <Categories />
+    <CardContainer />
+    <Categories />
   </div>
 );
 
