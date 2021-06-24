@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
+import "./styles/_reset.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Layout from "./hoc/Layout/Layout";

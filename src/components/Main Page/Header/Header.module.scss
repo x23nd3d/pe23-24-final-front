@@ -1,0 +1,10 @@
+@import "../../../styles/mixins";
+
+.Header {
+	background-color: #000000;
+	color: #ffffff;
+
+	&Inner {
+		@include container;
+	}
+}
