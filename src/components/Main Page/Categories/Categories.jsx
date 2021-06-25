@@ -2,11 +2,10 @@ import React from "react";
 import Clothes from "./Clothes";
 import Shoes from "./Shoes";
 import Accessories from "./Accessories";
-
-import "./styles/categories.scss";
+import {categories} from "./styles/categories.module.scss";
 
 const Categories = () => (
-    <section className="categories">
+    <section className={categories}>
         <header className="title">
             <p>Shop by category</p>
         </header>
