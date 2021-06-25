@@ -4,6 +4,7 @@
 .idea/
 .vscode/
 /node_modules
+.stylelintcache;
 /.pnp
 .pnp.js
 
