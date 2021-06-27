@@ -3,9 +3,19 @@ import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import classNames from "classnames";
 
-const ListRoute = ({ content, route, activeClass, classes }) => (
+const ListRoute = ({
+  content,
+  route,
+  activeClass,
+  classes,
+  dropdownToggle,
+}) => (
   <li className={classNames(classes)}>
-    <NavLink to={route} activeClassName={activeClass}>
+    <NavLink
+      to={route}
+      activeClassName={activeClass}
+      onClick={() => dropdownToggle()}
+    >
       {content}
     </NavLink>
   </li>
@@ -14,6 +24,7 @@ const ListRoute = ({ content, route, activeClass, classes }) => (
 ListRoute.defaultProps = {
   activeClass: "",
   classes: "",
+  dropdownToggle: () => console.log("Dropdown toggler"),
 };
 
 ListRoute.propTypes = {
@@ -21,6 +32,7 @@ ListRoute.propTypes = {
   route: PropTypes.string.isRequired,
   activeClass: PropTypes.string,
   classes: PropTypes.string,
+  dropdownToggle: PropTypes.func,
 };
 
 export default ListRoute;
