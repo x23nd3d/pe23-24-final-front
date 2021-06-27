@@ -3,3 +3,15 @@
 	margin: 0 auto;
 	padding: 0 20px;
 }
+
+@mixin flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin bg-image-pos {
+	background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
