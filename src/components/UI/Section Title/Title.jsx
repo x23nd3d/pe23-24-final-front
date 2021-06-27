@@ -1,15 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {title} from "./Title.module.scss";
+import classNames from "classnames";
+import {title, pos} from "./Title.module.scss";
 
-const Title = ({text}) => (
-    <header className={title}>
+const Title = ({text, position}) => (
+    <header className={classNames(title, position && pos)}>
             <p>{text}</p>
     </header>
 );
 
+Title.defaultProps = { position: false }
+
 Title.propTypes = {
-    text: PropTypes.string.isRequired
+    text: PropTypes.string.isRequired,
+    position: PropTypes.bool
 }
 
 export default Title;

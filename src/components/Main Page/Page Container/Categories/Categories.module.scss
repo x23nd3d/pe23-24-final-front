@@ -1,14 +1,15 @@
+@import "../../../../styles/mixins";
+
 .categories {
-    border: 2px solid rgb(255, 0, 0);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    
-    @media (max-width: 1081px) {
-        flex-direction: row;
-        justify-content: center;
-        align-content: center;
+    width: 100%;
+    margin-top: 20px;
+
+    @media (max-width: 480px) {
+        flex-direction: column;
     }
 
     @media (min-width: 481px) and (max-width: 741px) {
@@ -16,8 +17,10 @@
         flex-direction: column;
     }
     
-    @media (max-width: 480px) {
-        flex-direction: column;
+    @media (max-width: 1081px) {
+        flex-direction: row;
+        justify-content: center;
+        align-content: center;
     }
 }
 
@@ -26,12 +29,16 @@
     align-items: flex-end;
     width: 320px;
     height: 340px;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    @include bg-image-pos;
 
     &:hover {
         cursor: pointer;
+    }
+
+    @media (max-width: 480px) {
+        &:not(:first-child) {
+        margin: 20px;
+        }
     }
 
     @media (min-width: 481px) and (max-width: 1080px) {
@@ -41,9 +48,10 @@
         }
     }
 
-    @media (max-width: 480px) {
+    @media (min-width: 481px) and (max-width: 1080px) {
+        
         &:not(:first-child) {
-        margin: 20px;
+            margin: 20px;
         }
     }
 }
