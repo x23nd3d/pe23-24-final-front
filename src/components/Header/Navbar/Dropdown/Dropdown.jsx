@@ -12,37 +12,45 @@ const Dropdown = (props) => (
           <ListRoute
             route="/"
             content="New arrivals"
-            classes={classes.listItem}
+            listClass={classes.listItem}
           />
         </li>
         <li>
           <ListRoute
             route="/"
             content="Jeans & Pants"
-            classes={classes.listItem}
+            listClass={classes.listItem}
           />
         </li>
         <li>
-          <ListRoute route="/" content="Outerwear" classes={classes.listItem} />
+          <ListRoute
+            route="/"
+            content="Outerwear"
+            listClass={classes.listItem}
+          />
         </li>
         <li>
           <ListRoute
             route="/"
             content="Polos & Tees"
-            classes={classes.listItem}
+            listClass={classes.listItem}
           />
         </li>
         <li>
-          <ListRoute route="/" content="Sweaters" classes={classes.listItem} />
+          <ListRoute
+            route="/"
+            content="Sweaters"
+            listClass={classes.listItem}
+          />
         </li>
         <li>
-          <ListRoute route="/" content="Jackets" classes={classes.listItem} />
+          <ListRoute route="/" content="Jackets" listClass={classes.listItem} />
         </li>
         <li>
-          <ListRoute route="/" content="Coats" classes={classes.listItem} />
+          <ListRoute route="/" content="Coats" listClass={classes.listItem} />
         </li>
         <li>
-          <ListRoute route="/" content="Shirts" classes={classes.listItem} />
+          <ListRoute route="/" content="Shirts" listClass={classes.listItem} />
         </li>
       </ul>
     </div>

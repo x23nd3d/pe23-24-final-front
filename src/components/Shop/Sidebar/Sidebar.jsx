@@ -10,7 +10,7 @@ const renderCategories = (array) =>
   array.map((category) => (
     <ListRoute
       key={category}
-      classes={classes.ListItem}
+      listClass={classes.ListItem}
       route={category.toLowerCase()}
       content={category}
     />
@@ -28,16 +28,16 @@ const Sidebar = ({ history }) => {
     <div className={classes.Sidebar}>
       <div className={classes.SidebarContent}>
         <ul className={classes.Routes}>
-          <ListRoute classes={classes.RoutesItem} route="/" content="Home" />
+          <ListRoute listClass={classes.RoutesItem} route="/" content="Home" />
           <span>&gt;</span>
           <ListRoute
-            classes={classes.RoutesItem}
+            listClass={classes.RoutesItem}
             route="/clothes"
             content="Clothes"
           />
           <span>&gt;</span>
           <ListRoute
-            classes={classes.RoutesItem}
+            listClass={classes.RoutesItem}
             route="/costumes"
             content="Costumes"
           />

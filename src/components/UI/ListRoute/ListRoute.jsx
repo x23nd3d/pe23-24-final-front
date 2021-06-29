@@ -7,13 +7,15 @@ const ListRoute = ({
   content,
   route,
   activeClass,
-  classes,
+  listClass,
+  linkClass,
   dropdownToggle,
 }) => (
-  <li className={classNames(classes)}>
+  <li className={classNames(listClass)}>
     <NavLink
       to={route}
       activeClassName={activeClass}
+      className={linkClass}
       onClick={() => dropdownToggle()}
     >
       {content}
@@ -23,7 +25,8 @@ const ListRoute = ({
 
 ListRoute.defaultProps = {
   activeClass: "",
-  classes: "",
+  listClass: "",
+  linkClass: "",
   dropdownToggle: () => console.log("Dropdown toggler"),
 };
 
@@ -31,7 +34,8 @@ ListRoute.propTypes = {
   content: PropTypes.string.isRequired,
   route: PropTypes.string.isRequired,
   activeClass: PropTypes.string,
-  classes: PropTypes.string,
+  listClass: PropTypes.string,
+  linkClass: PropTypes.string,
   dropdownToggle: PropTypes.func,
 };
 
