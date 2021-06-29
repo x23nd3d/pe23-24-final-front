@@ -1,8 +1,8 @@
-@import "../../../../styles/variables";
-@import "../../../../styles/fonts";
+@import "../../../styles/variables";
+@import "../../../styles/fonts";
 
 .Nav {
-	
+
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -17,7 +17,7 @@
 
 	&Item {
 		padding: 20px;
-		
+
 
 		&MyAccount:before {
 			background-position: -16px 0;
@@ -77,7 +77,7 @@
 
 .man:hover + .manItem {
 		display: block;
-	
+
 }
 
 @media screen and (max-width: 992px) {

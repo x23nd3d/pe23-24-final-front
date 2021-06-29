@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 import classes from "./Dropdown.module.scss";
-import ListRoute from "../../../../UI/ListRoute/ListRoute";
+import ListRoute from "../../../UI/ListRoute/ListRoute";
 
 const Dropdown = (props) => (
   <div className={classNames(classes.dropdown)}>

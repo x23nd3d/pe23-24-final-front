@@ -1,10 +1,68 @@
 import React from "react";
+import { NavLink, withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
 import classes from "./Sidebar.module.scss";
+import ListRoute from "../../UI/ListRoute/ListRoute";
 
-const Sidebar = (props) => (
-  <div className={classes.Sidebar}>
-    <h1 style={{ color: "white" }}>Hello from Sidebar! :D</h1>
-  </div>
-);
+const renderCategories = (array) =>
+  array.map((category) => (
+    <ListRoute
+      key={category}
+      classes={classes.ListItem}
+      route={category.toLowerCase()}
+      content={category}
+    />
+  ));
 
-export default Sidebar;
+const Sidebar = ({ history }) => {
+  const clothesCategories = {
+    title: "Clothes",
+    items: ["Costumes", "Outerwear", "Trousers"],
+  };
+
+  const { location } = history;
+
+  return (
+    <div className={classes.Sidebar}>
+      <div className={classes.SidebarContent}>
+        <ul className={classes.Routes}>
+          <ListRoute classes={classes.RoutesItem} route="/" content="Home" />
+          <span>&gt;</span>
+          <ListRoute
+            classes={classes.RoutesItem}
+            route="/clothes"
+            content="Clothes"
+          />
+          <span>&gt;</span>
+          <ListRoute
+            classes={classes.RoutesItem}
+            route="/costumes"
+            content="Costumes"
+          />
+        </ul>
+        <h2 className={classes.CategoryTitle}>{clothesCategories.title}</h2>
+        <NavLink
+          className={classes.CategoryAll}
+          to={`${location.pathname}/&all`}
+        >
+          View All
+        </NavLink>
+        <ul className={classes.ListCategory}>
+          {renderCategories(clothesCategories.items)}
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+Sidebar.defaultProps = {
+  location: {},
+  history: {},
+};
+
+Sidebar.propTypes = {
+  history: PropTypes.instanceOf(Object),
+  location: PropTypes.instanceOf(Object),
+};
+
+export default withRouter(Sidebar);

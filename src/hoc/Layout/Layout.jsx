@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Header from "../../components/Main Page/Header/Header";
+import Header from "../../components/Header/Header";
 import classes from "./Layout.module.scss";
 
 const Layout = ({ children }) => (

@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import classNames from "classnames";
-import { NavLink } from "react-router-dom";
-import ListRoute from "../../../UI/ListRoute/ListRoute";
+import ListRoute from "../../UI/ListRoute/ListRoute";
 import classes from "./Navbar.module.scss";
 import Dropdown from "./Dropdown/Dropdown";
-
 
 const Nav = (props) => {
   const [man, setMan] = useState(false);
@@ -61,6 +59,5 @@ const Nav = (props) => {
     </nav>
   );
 };
-
 
 export default Nav;
