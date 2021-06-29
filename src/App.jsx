@@ -7,8 +7,8 @@ import Shop from "./components/Shop/Shop";
 function App() {
   const routes = (
     <Switch>
-      <Route path="/" component={MainPage} />
       <Route path="/shop" component={Shop} />
+      <Route path="/" component={MainPage} />
     </Switch>
   );
 
