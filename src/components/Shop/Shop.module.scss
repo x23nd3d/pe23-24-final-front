@@ -1,3 +1,5 @@
-.Shop {
+@import "../../styles/mixins";
 
+.Shop {
+    @include container; 
 }

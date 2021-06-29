@@ -1,3 +1,32 @@
 .ColorFilter {
+  color: #fff;
+  font-family: "Open Sans", sans-serif;
+  padding: 20px;
+  margin-top: 40px;
+}
 
+.Title {
+  text-transform: uppercase;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 50px;
+}
+
+.Color {
+  position: relative;
+  padding-left: 50px;
+  margin-top: 33px;
+
+  &:before {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    border-radius: 50%;
+    background-color: #fff;
+    content: "";
+  }
 }
