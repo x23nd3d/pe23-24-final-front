@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 import classes from "./ColorFilter.module.scss";
-import "./_colors.scss";
+// import "./_colors.scss";
 
 const colors = ["black", "brown", "red", "white"];
 
@@ -10,7 +10,7 @@ const ColorFilter = (props) => (
     <h3 className={classes.Title}>Colors</h3>
     <ul className={classes.Colors}>
       {colors.map((color) => (
-        <li key={color} className={classNames(classes.Color, color)}>
+        <li key={color} className={classNames(classes.Color, classes[color])}>
           {color}
         </li>
       ))}
