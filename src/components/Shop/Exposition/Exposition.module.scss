@@ -1,0 +1,15 @@
+@import "../../../styles/mixins";
+
+.expo {
+    width: 500px;
+    height: 700px;
+    border: 2px solid red;
+}
+
+.card {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-image: url(../../../img/Items/outerwear/jackets/vince/black_vince1.png);
+    @include bg-image-pos;
+}
