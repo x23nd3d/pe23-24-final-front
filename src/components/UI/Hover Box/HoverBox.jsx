@@ -1,16 +1,16 @@
-import React from "react";
-import PropTypes from "prop-types";
-import {box} from "./HoverBox.module.scss";
+// import React from "react";
+// import PropTypes from "prop-types";
+// import {box} from "./HoverBox.module.scss";
 
-const HoverBox = ({title, price}) => (
-    <div className={box}>
+// const HoverBox = ({title, price}) => (
+//     <div className={box}>
         
-    </div>
-);
+//     </div>
+// );
 
-HoverBox.propTypes = {
-    title: PropTypes.string.isRequired,
-    price: PropTypes.string.isRequired
-}
+// HoverBox.propTypes = {
+//     title: PropTypes.string.isRequired,
+//     price: PropTypes.string.isRequired
+// }
 
-export default HoverBox;
+// export default HoverBox;

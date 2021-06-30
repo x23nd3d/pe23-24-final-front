@@ -6,10 +6,10 @@ const useHover = (ref) => {
     const setTrue = () => setHoverState(true);
     const setFalse = () => setHoverState(false);
 
-    // useEffect(() => {
-        // if (!ref.current) {
-            // return;
-        // }
+    useEffect(() => {
+        if (!ref.current) {
+            return;
+        }
         
         ref.current.addEventListener("mouseenter", setTrue);
         ref.current.addEventListener("mousemove", setTrue);
@@ -20,7 +20,7 @@ const useHover = (ref) => {
         //     ref.current.removeEventListener("mousemove", setTrue);
         //     ref.current.removeEventListener("mouseleave", setFalse);
         // }
-    // }, []);
+    }, []);
     console.log(hovered);
 
     return hovered;

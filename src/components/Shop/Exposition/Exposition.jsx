@@ -1,12 +1,22 @@
 import React from "react";
-// import classNames from "classnames";
+import PropTypes from "prop-types";
 import {expo} from "./Exposition.module.scss";
 import ProductCard from "./ProductCard";
 
-const Exposition = () => (
+const Exposition = ({ProductList}) => (
     <ul className={expo}>
-        <ProductCard />
+        {
+            ProductList.map(product => (
+                <li key={product.id}>
+                    <ProductCard product={product} />
+                </li>
+            ))
+        }
     </ul>
 );
+
+Exposition.propTypes = {
+    ProductList: PropTypes.arrayOf(PropTypes.string).isRequired
+}
 
 export default Exposition;
