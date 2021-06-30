@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import PropTypes, { instanceOf } from "prop-types";
 import classNames from "classnames";
 import { NavLink } from "react-router-dom";
 
@@ -10,6 +10,8 @@ const ListRoute = ({
   listClass,
   linkClass,
   dropdownToggle,
+  mouseEnter = null,
+  mouseLeave = null,
 }) => (
   <li className={classNames(listClass)}>
     <NavLink
@@ -17,6 +19,8 @@ const ListRoute = ({
       activeClassName={activeClass}
       className={linkClass}
       onClick={() => dropdownToggle()}
+      onMouseEnter={() => mouseEnter(true)}
+      onMouseLeave={() => mouseLeave(false)}
     >
       {content}
     </NavLink>
@@ -28,6 +32,8 @@ ListRoute.defaultProps = {
   listClass: "",
   linkClass: "",
   dropdownToggle: () => console.log("Dropdown toggler"),
+  mouseEnter: (f) => f,
+  mouseLeave: (f) => f,
 };
 
 ListRoute.propTypes = {
@@ -37,6 +43,8 @@ ListRoute.propTypes = {
   listClass: PropTypes.string,
   linkClass: PropTypes.string,
   dropdownToggle: PropTypes.func,
+  mouseEnter: PropTypes.func,
+  mouseLeave: PropTypes.func,
 };
 
 export default ListRoute;

@@ -8,50 +8,26 @@ const Dropdown = (props) => (
     <div className={classes.container}>
       <h3 className={classes.title}>Categories</h3>
       <ul className={classes.list}>
-        <li>
-          <ListRoute
-            route="/"
-            content="New arrivals"
-            listClass={classes.listItem}
-          />
-        </li>
-        <li>
-          <ListRoute
-            route="/"
-            content="Jeans & Pants"
-            listClass={classes.listItem}
-          />
-        </li>
-        <li>
-          <ListRoute
-            route="/"
-            content="Outerwear"
-            listClass={classes.listItem}
-          />
-        </li>
-        <li>
-          <ListRoute
-            route="/"
-            content="Polos & Tees"
-            listClass={classes.listItem}
-          />
-        </li>
-        <li>
-          <ListRoute
-            route="/"
-            content="Sweaters"
-            listClass={classes.listItem}
-          />
-        </li>
-        <li>
-          <ListRoute route="/" content="Jackets" listClass={classes.listItem} />
-        </li>
-        <li>
-          <ListRoute route="/" content="Coats" listClass={classes.listItem} />
-        </li>
-        <li>
-          <ListRoute route="/" content="Shirts" listClass={classes.listItem} />
-        </li>
+        <ListRoute
+          route="/"
+          content="New arrivals"
+          listClass={classes.listItem}
+        />
+        <ListRoute
+          route="/"
+          content="Jeans & Pants"
+          listClass={classes.listItem}
+        />
+        <ListRoute route="/" content="Outerwear" listClass={classes.listItem} />
+        <ListRoute
+          route="/"
+          content="Polos & Tees"
+          listClass={classes.listItem}
+        />
+        <ListRoute route="/" content="Sweaters" listClass={classes.listItem} />
+        <ListRoute route="/" content="Jackets" listClass={classes.listItem} />
+        <ListRoute route="/" content="Coats" listClass={classes.listItem} />
+        <ListRoute route="/" content="Shirts" listClass={classes.listItem} />
       </ul>
     </div>
   </div>

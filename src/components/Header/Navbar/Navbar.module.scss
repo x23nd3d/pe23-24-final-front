@@ -147,3 +147,19 @@
 		}
 	}
 }
+
+
+.dropHoverEnter {
+	opacity: 0;
+}
+.dropHoverEnterActive {
+	opacity: 1;
+	transition: opacity 0.2s;
+}
+.dropHoverExit {
+	opacity: 1;
+}
+.dropHoverExitActive {
+	opacity: 0;
+	transition: opacity 0.2s;
+}
