@@ -11,6 +11,19 @@ const Nav = (props) => {
 
   const toggleHover = (action) => setHovered(action);
 
+  const [dropdownMenu, setDropdownMenu] = useState({
+    clothes: ["suits & ties", "coats & jackets", "jeans & pants"],
+    shoes: ["boots", "sneakers", "shoes"],
+    accessories: ["glasses", "belts", "cufflinks", "watches"],
+  });
+
+  // [
+  //   {
+  //     title: "Clothes",
+  //     items: [{ itemTitle: "suits & ties", route: "/suits&ties" }],
+  //   },
+  // ];
+
   useEffect(() => {
     toggleHover(false);
   }, []);
@@ -29,7 +42,7 @@ const Nav = (props) => {
             exitDone: classes.dropHoverExitActive,
           }}
         >
-          <Dropdown />
+          <Dropdown dropdownList={dropdownMenu.clothes} />
         </CSSTransition>
       ) : null}
       <ul className={classNames(classes.NavItems, classes.NavShop)}>
