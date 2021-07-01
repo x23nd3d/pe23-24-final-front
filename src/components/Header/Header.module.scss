@@ -6,6 +6,7 @@
 	background-color: #000000;
 
 	&Inner {
-		@include container;
+		margin: 0 auto;
+		padding: 0 50px;
 	}
 }

@@ -35,21 +35,21 @@ const Nav = (props) => {
       <ul className={classNames(classes.NavItems, classes.NavShop)}>
         <ListRoute
           route="/"
-          content="Man"
+          content="Clothes"
           listClass={classNames(classes.NavItem, classes.man)}
           mouseEnter={toggleHover}
           mouseLeave={toggleHover}
         />
         <ListRoute
           route="/"
-          content="Woman"
+          content="Shoes"
           listClass={classes.NavItem}
           mouseEnter={toggleHover}
           mouseLeave={toggleHover}
         />
         <ListRoute
           route="/"
-          content="Accessory"
+          content="Accessories"
           listClass={classes.NavItem}
           mouseEnter={toggleHover}
           mouseLeave={toggleHover}

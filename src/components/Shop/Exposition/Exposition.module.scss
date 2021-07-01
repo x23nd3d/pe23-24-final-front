@@ -6,7 +6,13 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    padding: 10px 5px;
+    padding: 115px 120px;
+    justify-content: space-between;
+
+}
+
+.listItem {
+    margin-bottom: 100px;
 }
 
 .card {
@@ -30,9 +36,9 @@
         background-color: #000;
         color: #fff;
         font-size: 0;
-        
+
         }
-        
+
         &:hover {
             border: 1px solid #000;
             .boxBanner {
@@ -46,5 +52,5 @@
 .boxBanner span {
     margin: 0;
     padding: 0;
-    
+
 }

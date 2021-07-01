@@ -1,15 +1,13 @@
-
-
 .Sidebar {
   font-family: "Open Sans", sans-serif;
   position: sticky;
   bottom: 0;
   background-color: #000;
-  padding-top: 10px;
-  width: 20%;
+  width: 350px;
   height: calc(100vh - 96.86px);
   color: #fff;
-} 
+  padding: 50px;
+}
 
 .SidebarContent {
   padding-left: 20px;

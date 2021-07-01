@@ -4,6 +4,12 @@
 	padding: 0 20px;
 }
 
+@mixin regular-container {
+	display: flex;
+	margin: 0 auto;
+	padding: 0 50px;
+}
+
 @mixin flex-center {
 	display: flex;
 	justify-content: center;
