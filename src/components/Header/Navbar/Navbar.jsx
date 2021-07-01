@@ -18,6 +18,12 @@ const Nav = (props) => {
     { route: "/accessories", content: "Accessories" },
   ];
 
+  const [dropdownMenu, setDropdownMenu] = useState({
+    clothes: ["suits & ties", "coats & jackets", "jeans & pants"],
+    shoes: ["boots", "sneakers", "shoes"],
+    accessories: ["glasses", "belts", "cufflinks", "watches"],
+  });
+
   const renderNavItems = (items) =>
     items.map(({ route, content }) => (
       <DropdownRoute
@@ -33,7 +39,7 @@ const Nav = (props) => {
 
   return (
     <nav className={classes.Nav}>
-      <AnimatePresence>{man && <Dropdown />}</AnimatePresence>
+      <AnimatePresence>{man && <Dropdown dropdownList={dropdownMenu.clothes} />}</AnimatePresence>
       <ul className={classNames(classes.NavItems, classes.NavShop)}>
         {renderNavItems(navItems)}
       </ul>
