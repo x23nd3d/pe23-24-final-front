@@ -3,39 +3,39 @@ import classNames from "classnames";
 import { AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import ListRoute from "../../UI/ListRoute/ListRoute";
-import classes from "./Navbar.module.scss";
 import Dropdown from "./Dropdown/Dropdown";
+import DropdownRoute from "../../UI/DropdownRoute/DropdownRoute";
+import classes from "./Navbar.module.scss";
 
 const Nav = (props) => {
-  const [hovered, setHovered] = useState(false);
+  const [man, setMan] = useState(false);
 
-  const toggleHover = (action) => setHovered(action);
+  const toggleDropdown = () => setMan((prev) => !prev);
+
+  const navItems = [
+    { route: "/clothes", content: "Clothes" },
+    { route: "/shoes", content: "Shoes" },
+    { route: "/accessories", content: "Accessories" },
+  ];
+
+  const renderNavItems = (items) =>
+    items.map(({ route, content }) => (
+      <DropdownRoute
+        key={content}
+        route={route}
+        content={content}
+        activeClass={classes.NavItemActive}
+        listClass={classes.NavItem}
+        dropdownToggle={toggleDropdown}
+        active={man}
+      />
+    ));
 
   return (
     <nav className={classes.Nav}>
-      <AnimatePresence>{hovered && <Dropdown />}</AnimatePresence>
+      <AnimatePresence>{man && <Dropdown />}</AnimatePresence>
       <ul className={classNames(classes.NavItems, classes.NavShop)}>
-        <ListRoute
-          route="/"
-          content="Man"
-          listClass={classNames(classes.NavItem, classes.man)}
-          mouseEnter={toggleHover}
-          // mouseLeave={toggleHover}
-        />
-        <ListRoute
-          route="/"
-          content="Woman"
-          listClass={classes.NavItem}
-          mouseEnter={toggleHover}
-          // mouseLeave={toggleHover}
-        />
-        <ListRoute
-          route="/"
-          content="Accessory"
-          listClass={classes.NavItem}
-          mouseEnter={toggleHover}
-          // mouseLeave={toggleHover}
-        />
+        {renderNavItems(navItems)}
       </ul>
       <Link className={classes.Logo} to="/">
         Originalité

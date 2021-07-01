@@ -26,6 +26,10 @@
 		&ShoppingBag:before {
 			background-position: -33px 0;
 		}
+
+		&Active {
+			border-bottom: 1px solid #fff;
+		}
 	}
 
 	&Tools {
