@@ -1,63 +1,45 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import classNames from "classnames";
-import { CSSTransition } from "react-transition-group";
+import { AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import ListRoute from "../../UI/ListRoute/ListRoute";
-import classes from "./Navbar.module.scss";
 import Dropdown from "./Dropdown/Dropdown";
+import DropdownRoute from "../../UI/DropdownRoute/DropdownRoute";
+import classes from "./Navbar.module.scss";
 
 const Nav = (props) => {
-  const [hovered, setHovered] = useState(false);
-  const nodeRef = useRef(null);
+  const [man, setMan] = useState(false);
 
-  const toggleHover = (action) => setHovered(action);
+  const toggleDropdown = () => setMan((prev) => !prev);
 
-  useEffect(() => {
-    toggleHover(false);
-  }, []);
+  const navItems = [
+    { route: "/clothes", content: "Clothes" },
+    { route: "/shoes", content: "Shoes" },
+    { route: "/accessories", content: "Accessories" },
+  ];
+
+  const renderNavItems = (items) =>
+    items.map(({ route, content }) => (
+      <DropdownRoute
+        key={content}
+        route={route}
+        content={content}
+        activeClass={classes.NavItemActive}
+        listClass={classes.NavItem}
+        dropdownToggle={toggleDropdown}
+        active={man}
+      />
+    ));
 
   return (
     <nav className={classes.Nav}>
-      {hovered ? (
-        <CSSTransition
-          in={hovered}
-          nodeRef={nodeRef}
-          timeout={300}
-          classNames={{
-            enterActive: classes.dropHoverEnter,
-            enterDone: classes.dropHoverEnterActive,
-            exitActive: classes.dropHoverExit,
-            exitDone: classes.dropHoverExitActive,
-          }}
-        >
-          <Dropdown />
-        </CSSTransition>
-      ) : null}
+      <AnimatePresence>{man && <Dropdown />}</AnimatePresence>
       <ul className={classNames(classes.NavItems, classes.NavShop)}>
-        <ListRoute
-          route="/"
-          content="Clothes"
-          listClass={classNames(classes.NavItem, classes.man)}
-          mouseEnter={toggleHover}
-          mouseLeave={toggleHover}
-        />
-        <ListRoute
-          route="/"
-          content="Shoes"
-          listClass={classes.NavItem}
-          mouseEnter={toggleHover}
-          mouseLeave={toggleHover}
-        />
-        <ListRoute
-          route="/"
-          content="Accessories"
-          listClass={classes.NavItem}
-          mouseEnter={toggleHover}
-          mouseLeave={toggleHover}
-        />
+        {renderNavItems(navItems)}
       </ul>
-      <a className={classes.Logo} href="index.html">
+      <Link className={classes.Logo} to="/">
         Originalité
-      </a>
+      </Link>
       <ul className={classNames(classes.NavItems, classes.NavTools)}>
         <ListRoute
           route="/"
