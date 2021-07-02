@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes, { instanceOf } from "prop-types";
+import PropTypes from "prop-types";
 import classNames from "classnames";
 import { NavLink } from "react-router-dom";
 

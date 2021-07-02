@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Dropdown from "../../Header/Navbar/Dropdown/Dropdown";
 
-const DropdownRoute = ({
+const NavigationListRoutes = ({
   content,
   route,
   active,
@@ -14,43 +14,33 @@ const DropdownRoute = ({
   listClass,
   linkClass,
   dropdownToggle,
-  dropdownMenu,
-}) => {
-  const activeCls = [active ? activeClass : null];
-
-  const toggleDropdown = (idx) => {
-    console.log(idx);
-    dropdownToggle((prev) => !prev);
-  };
-  return (
-    <li className={classNames(listClass)}>
-      <AnimatePresence>
-        {active && <Dropdown dropdownList={dropdownMenu.clothes} />}
-      </AnimatePresence>
-      <NavLink
-        to={route}
-        activeClassName={activeCls.join(" ")}
-        className={linkClass}
-        onClick={() => toggleDropdown(id)}
-      >
-        {content}
-      </NavLink>
-    </li>
-  );
-};
-
-DropdownRoute.defaultProps = {
+  dropdownItems,
+}) => (
+  <li className={classNames(listClass)}>
+    <AnimatePresence>
+      {active && <Dropdown dropdownList={dropdownItems} />}
+    </AnimatePresence>
+    <NavLink
+      to={route}
+      activeClassName={activeClass}
+      className={linkClass}
+      onClick={(e) => dropdownToggle(e, id)}
+    >
+      {content}
+    </NavLink>
+  </li>
+);
+NavigationListRoutes.defaultProps = {
   activeClass: "",
   listClass: "",
   linkClass: "",
   id: instanceOf(Number),
   active: false,
-  clothes: [],
-  dropdownMenu: {},
-  dropdownToggle: () => console.log("Dropdown toggler"),
+  dropdownItems: {},
+  dropdownToggle: (f) => f,
 };
 
-DropdownRoute.propTypes = {
+NavigationListRoutes.propTypes = {
   content: PropTypes.string.isRequired,
   route: PropTypes.string.isRequired,
   activeClass: PropTypes.string,
@@ -59,8 +49,7 @@ DropdownRoute.propTypes = {
   active: PropTypes.bool,
   id: PropTypes.number,
   dropdownToggle: PropTypes.func,
-  clothes: PropTypes.instanceOf(Array),
-  dropdownMenu: PropTypes.instanceOf(Object),
+  dropdownItems: PropTypes.instanceOf(Object),
 };
 
-export default DropdownRoute;
+export default NavigationListRoutes;

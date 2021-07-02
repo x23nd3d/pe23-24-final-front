@@ -17,7 +17,7 @@
 
 	&Item {
 		padding: 20px;
-
+		z-index: 100;
 
 		&MyAccount:before {
 			background-position: -16px 0;

@@ -6,7 +6,6 @@ import classes from "./Layout.module.scss";
 const Layout = ({ children }) => (
   <div className={classes.Layout}>
     <Header />
-
     {children}
   </div>
 );
