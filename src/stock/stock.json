@@ -1,0 +1,492 @@
+[
+    {
+        "clothes": [
+            {
+                "id": "1701",
+                "name": "Canali",
+                "caption": "Siena Suit - Classic Fit",
+                "category": "Suit",
+                "type": "Classic",
+                "photo": {
+                    "Navy": [
+                        "./suits/1701/navy_color/canali_navy1.png",
+                        "./suits/1701/navy_color/canali_navy2.png",
+                        "./suits/1701/navy_color/canali_navy3.png"
+                    ],
+                    "Black": [
+                        "./suits/1701/black_color/canali_black1.png",
+                        "./suits/1701/black_color/canali_black2.png",
+                        "./suits/1701/black_color/canali_black3.png"
+                    ],
+                    "Charcoal": [
+                        "./suits/1701/charcoal_color/canali_charcoal1.png",
+                        "./suits/1701/charcoal_color/canali_charcoal2.png",
+                        "./suits/1701/charcoal_color/canali_charcoal3.png"
+                    ]
+                },
+                "color": ["Navy", "Black", "Charcoal"],
+                "material": "Wool",
+                "price": "2099",
+                "size": ["38", "40", "42", "44", "48"],
+                "producingCountry": "Italy",
+                "description": [
+                    "Jacket: notch lapel, two-button front, chest pocket, flap hand pockets, non-functional four-button cuffs, double back vents",
+                    "Trousers: slide and two-button closure with zip fly, hand pockets, back button pockets, flat front, creased",
+                    "Family-run since 1934, Canali’s tailored designs are handcrafted with premium fabrics and a meticulous attention to detail."
+                ],
+                "stock": true
+            },
+            {
+                "id": "1702",
+                "name": "John Varvatos Star USA",
+                "caption": "Basic Slim Fit Suit Separates",
+                "category": "Suit",
+                "type": "Basic Slim",
+                "photo": {
+                    "Pearl Gray": [
+                        "./suits/1702/johvarvatosstar_pearl-gray1.png",
+                        "./suits/1702/johvarvatosstar_pearl-gray2.png",
+                        "./suits/1702/johvarvatosstar_pearl-gray3.png",
+                        "./suits/1702/johvarvatosstar_pearl-gray4.png"
+                    ]
+                },
+                "color": ["Pearl Gray"],
+                "material": "Wool",
+                "price": "1189",
+                "size": ["44", "46", "48"],
+                "producingCountry": "",
+                "description": [
+                    "Cut for a slim fit, John Varvatos Star USA's crisp suit separates effortlessly segue from workweek to weekend."
+                ],
+                "stock": true
+
+            },
+            {
+                "id": "1703",
+                "name": "Theory",
+                "caption": "Tonal Plaid Slim Fit Suit Separates",
+                "category": "Suit",
+                "type": "Tonal Plaid Slim",
+                "photo": {
+                    "Charcoal": [
+                        "./suits/1703/charcoal_theory1.png",
+                        "./suits/1703/charcoal_theory2.png",
+                        "./suits/1703/charcoal_theory3.png"
+                    ]
+                },
+                "color": ["Charcoal"],
+                "material": "Wool",
+                "price": "569",
+                "size": ["36", "38", "44", "46", "48", "50"],
+                "producingCountry": "",
+                "description": [
+                    "Theory's tonal plaid suit brings a subtle hint of print to your work wardrobe, while the refined details and slim cut update the timeless motif."
+                ],
+                "stock": true
+            },
+            {
+                "id": "1704",
+                "name": "BOSS Hugo Boss",
+                "caption": "Halven/Gentry Slim Fit Tuxedo",
+                "category": "Suit",
+                "type": "Tuxedo",
+                "photo": {
+                    "Black": [
+                        "./suits/1704/black_color/boss_black1.png",
+                        "./suits/1704/black_color/boss_black2.png",
+                        "./suits/1704/black_color/boss_black3.png",
+                        "./suits/1704/black_color/boss_black4.png"
+                    ]
+                },
+                "color": ["Black"],
+                "material": "Silk",
+                "price": "1759",
+                "size": ["40", "42", "44", "48"],
+                "producingCountry": "Germany",
+                "description": [
+                    "Jacket: notch lapel, two-button closure, four non-functional sleeve buttons, double vent, two front flap pockets, left chest welt pocket, fully lined",
+                    "Pants: zip fly with tab closure, two back besom pockets, two side entry pockets, unhemmed, partially lined"
+                ],
+                "stock": true
+            },
+            {
+                "id": "1705",
+                "name": "ALLSAINTS",
+                "caption": "Cora Leather Jacket",
+                "category": "Outerwear",
+                "type": "Leather Jacket",
+                "photo": {
+                    "Jet Black": [
+                        "./outerwear/jackets/1705/jet-black_allsaints1.png",
+                        "./outerwear/jackets/1705/jet-black_allsaints2.png",
+                        "./outerwear/jackets/1705/jet-black_allsaints3.png",
+                        "./outerwear/jackets/1705/jet-black_allsaints4.png"
+                    ]
+                },
+                "color": ["Jet Black"],
+                "material": "Sheep lether",
+                "price": "728",
+                "size":["40", "42", "44"],
+                "producingCountry": "India",
+                "description": [
+                    "Banded collar with belted snap-tab closure, exposed zip front",
+                    "Long seams with geometric panels and zip cuffs, zip hand pockets",
+                    "Smooth leather, allover flat seamwork, lined"
+                ],
+                "stock": true
+            },
+            {
+                "id": "1706",
+                "name": "Vince",
+                "caption": "Classic Leather Jacket",
+                "category": "Outerwear",
+                "type": "Classic Leather Jacket",
+                "photo": {
+                    "Black": [
+                        "./outerwear/jackets/1706/black_vince1.png",
+                        "./outerwear/jackets/1706/black_vince2.png"
+                    ]
+                },
+                "color": ["Black"],
+                "material": "Lambskin leather",
+                "price": "1089",
+                "size":["40", "42", "44", "46", "48", "50"],
+                "producingCountry": "",
+                "description": [
+                    "Stand collar with snap-tab throat latch",
+                    "Two-way front zip closure",
+                    "Side zip pockets",
+                    "Long sleeves, zip cuffs",
+                    "Center seam and waist yoke at back",
+                    "Unlined"
+                ],
+                "stock": true
+            },
+            {
+                "id": "1707",
+                "name": "Robert Graham",
+                "caption": "Hoyle Velvet Textured Camouflage Jacquard Tailored Fit Sport Coat",
+                "category": "Outerwear",
+                "type": "Coat",
+                "photo": {
+                    "Black": [
+                        "./outerwear/coats/1707/black_robert-graham1.png",
+                        "./outerwear/coats/1707/black_robert-graham2.png",
+                        "./outerwear/coats/1707/black_robert-graham3.png"
+                    ]
+                },
+                "color": ["Black"],
+                "material": "Polyester",
+                "price": "429",
+                "size":["44", "46", "48", "50"],
+                "producingCountry": "",
+                "description": [
+                    "Notched lapel",
+                    "Two-button closure",
+                    "Two front flap pockets, left chest welt pocket, interior pocket",
+                    "Four sleeve buttons",
+                    "Double vent"
+                ],
+                "stock": true
+            },
+            {
+                "id": "1708",
+                "name": "7 For All Mankind",
+                "caption": "The Stacked Skinny Fit Jeans in Camelot Gray",
+                "category": "Pants",
+                "type": "Jeans",
+                "photo": {
+                    "Camelot Gray": [
+                        "./pants/jeans/1708/camelot-gray_7-for-all-mankind1.png",
+                        "./pants/jeans/1708/camelot-gray_7-for-all-mankind2.png",
+                        "./pants/jeans/1708/camelot-gray_7-for-all-mankind3.png"
+                    ]
+                },
+                "color": ["Camelot Gray"],
+                "material": "Cotton",
+                "price": "249",
+                "size":["29", "30", "31", "32", "33", "34", "35", "36", "37"],
+                "producingCountry": "",
+                "description": [
+                    "Zip fly with button closure",
+                    "Five-pocket silhouette",
+                    "Tonal stitching",
+                    "Silver-tone hardware",
+                    "Belt loops",
+                    "Whiskered",
+                    "Faded"
+                ],
+                "stock": true
+            },
+            {
+                "id": "1709",
+                "name": "Purple Brand",
+                "caption": "Super Light Indigo Skinny Jeans",
+                "category": "Pants",
+                "type": "Jeans",
+                "photo": {
+                    "Super Light Indigo": [
+                        "./pants/jeans/1709/super-light-indigo_purple-brand1.png",
+                        "./pants/jeans/1709/super-light-indigo_purple-brand2.png",
+                        "./pants/jeans/1709/super-light-indigo_purple-brand3.png"
+                    ]
+                },
+                "color": ["Super Light Indigo"],
+                "material": "Cotton",
+                "price": "279",
+                "size":["29", "30", "31", "32", "33", "34", "35", "36", "37"],
+                "producingCountry": "",
+                "description": [
+                    "Zip fly with button closure",
+                    "Five pocket silhouette",
+                    "Distressed"
+                ],
+                "stock": true
+            },
+            {
+                "id": "1710",
+                "name": "AG",
+                "caption": "Tellis Slim Fit Pants in Midnight Navy",
+                "category": "Pants",
+                "type": "Pants",
+                "photo": {
+                    "Midnight Navy": [
+                        "./pants/pants/1710/midnight-navy_ag1.png",
+                        "./pants/pants/1710/midnight-navy_ag2.png",
+                        "./pants/pants/1710/midnight-navy_ag3.png"
+                    ]
+                },
+                "color": ["Midnight Navy"],
+                "material": "Cotton/elastane",
+                "price": "210",
+                "size":["29", "30", "31", "32", "33", "34", "35", "36", "37"],
+                "producingCountry": "",
+                "description": [
+                    "Zip fly with button closure, five-pocket silhouette",
+                    "Tonal stitching, gunmetal hardware, belt loops",
+                    "AG strives for environmental responsibility by using Ozone Technology and recycling heat to cut water and energy consumption and incorporating more sustainable fibers such as Tencel® and Modal® in its products."
+                ],
+                "stock": true
+            }
+        ]
+    },
+    {
+        "shoes": [
+            {
+                "id": "1711",
+                "name": "The Kooples",
+                "caption": "Men's Lace Up Boots",
+                "category": "Shoes",
+                "type": "Boots",
+                "photo": {
+                    "Black": [
+                        "./shoes/boots/1711/black_the-kooples1.png",
+                        "./shoes/boots/1711/black_the-kooples2.png",
+                        "./shoes/boots/1711/black_the-kooples3.png",
+                        "./shoes/boots/1711/black_the-kooples4.png",
+                        "./shoes/boots/1711/black_the-kooples5.png"
+                    ]
+                },
+                "color": ["Black"],
+                "material": "Lether/rubber",
+                "price": "238",
+                "size":["39", "40", "41", "42", "43", "44", "45"],
+                "producingCountry": "Portugal",
+                "description": [
+                    "Round toe",
+                    "Lace up",
+                    "Side embossed logo",
+                    "Back tab with ring clip",
+                    "1.5\" heel",
+                    "Calfskin leather upper, pigskin leather lining, rubber sole"
+                ],
+                "stock": true
+            },
+            {
+                "id": "1712",
+                "name": "Bally",
+                "caption": "Men's Arnold Low Top Sneakers",
+                "category": "Shoes",
+                "type": "Sneakers",
+                "photo": {
+                    "Black": [
+                        "./shoes/sneakers/1712/black_bally1.png",
+                        "./shoes/sneakers/1712/black_bally2.png",
+                        "./shoes/sneakers/1712/black_bally3.png",
+                        "./shoes/sneakers/1712/black_bally4.png"
+                    ]
+                },
+                "color": ["Black"],
+                "material": "Leather/Fabric lining",
+                "price": "341",
+                "size":["39", "40", "41", "42", "43", "44", "45"],
+                "producingCountry": "Switzerland",
+                "description": [
+                    "Padded collar and tongue for optimal comfort",
+                    "Lace up",
+                    "Perforated detail at toe",
+                    "Croc-embossed detail at toe and heel",
+                    "Signature grosgrain stripe at sides",
+                    "Logo charm at side",
+                    "Leather upper, leather and fabric lining, rubber sole"
+                ],
+                "stock": true
+            },
+            {
+                "id": "1713",
+                "name": "Salvatore Ferragamo",
+                "caption": "Men's Belshaw Patent Leather Plain-Toe Oxfords",
+                "category": "Shoes",
+                "type": "Dress shoes",
+                "photo": {
+                    "Nero": [
+                        "./shoes/dress_shoes/1713/nero_salvatore-ferragamo1.png",
+                        "./shoes/dress_shoes/1713/nero_salvatore-ferragamo2.png",
+                        "./shoes/dress_shoes/1713/nero_salvatore-ferragamo3.png"
+                    ]
+                },
+                "color": ["Nero"],
+                "material": "Leather/rubber",
+                "price": "360",
+                "size":["39", "40", "41", "42", "43", "44", "45"],
+                "producingCountry": "Italy",
+                "description": [
+                    "Padded collar and tongue for optimal comfort",
+                    "Lace up",
+                    "Perforated detail at toe",
+                    "Croc-embossed detail at toe and heel",
+                    "Signature grosgrain stripe at sides",
+                    "Logo charm at side",
+                    "Leather upper, leather and fabric lining, rubber sole"
+                ],
+                "stock": true
+            },
+            {
+                "id": "1714",
+                "name": "Golden Goose Deluxe Brand",
+                "caption": "Men's Super-Star Low Top Sneakers",
+                "category": "Shoes",
+                "type": "Sneakers",
+                "photo": {
+                    "White Night": [
+                        "./shoes/sneakers/1714/white-night_color/white-night_golden-goose-deluxe-brand1.png",
+                        "./shoes/sneakers/1714/white-night_color/white-night_golden-goose-deluxe-brand2.png",
+                        "./shoes/sneakers/1714/white-night_color/white-night_golden-goose-deluxe-brand3.png",
+                        "./shoes/sneakers/1714/white-night_color/white-night_golden-goose-deluxe-brand4.png"
+
+                    ],
+                    "Night Blue": [
+                        "./shoes/sneakers/1714/night-blue_color/night-blue_golden-goose-deluxe-brand1.png",
+                        "./shoes/sneakers/1714/night-blue_color/night-blue_golden-goose-deluxe-brand2.png",
+                        "./shoes/sneakers/1714/night-blue_color/night-blue_golden-goose-deluxe-brand3.png",
+                        "./shoes/sneakers/1714/night-blue_color/night-blue_golden-goose-deluxe-brand4.png"
+                    ]
+                },
+                "color": ["White Night", "Night Blue"],
+                "material": "Leather/Fabric lining",
+                "price": "341",
+                "size":["39", "40", "41", "42", "43", "44", "45"],
+                "producingCountry": "Italy",
+                "description": [
+                    "Padded collar and tongue for optimal comfort",
+                    "Lace up",
+                    "Signature distressed upper and sole edge, for a lived-in look",
+                    "Signature star and perforation details at side",
+                    "Contrast leather or suede details",
+                    "Logo at tongue, side and heel",
+                    "Leather or suede upper",
+                    "Leather and fabric lining, rubber sole"
+                ],
+                "stock": true
+            }
+        ]
+    },
+    {
+        "accessories": [
+            {
+                "id": "1715",
+                "name": "Movado",
+                "caption": "Ario Diamond Watch, 28mm",
+                "category": "Watches",
+                "type": "Luxury",
+                "photo": [],
+                "color": ["Black Dial"],
+                "material": "Steel/Stones",
+                "price": "900",
+                "producingCountry": "Switzerland",
+                "description": [
+                    "Diamonds: 0.047 ct. t.w.",
+                    "Stone count: 12 diamonds",
+                    "Stainless steel; sapphire crystal",
+                    "Case size: 28mm",
+                    "Push button deployment closure",
+                    "Water resistant to 3 ATM",
+                    "Swiss quartz movement",
+                    "Black dial with diamond hour markers",
+                    "Stainless steel link bracelet",
+                    "Manufacturer's 2-year limited warranty"
+                ],
+                "stock": true
+            },
+            {
+                "id": "1716",
+                "name": "Maui Jim",
+                "caption": "Unisex Guardrails Polarized Brow Bar Aviator Sunglasses, 58mm",
+                "category": "Glasses",
+                "type": "Sunglasses",
+                "photo": [],
+                "color": ["Silver/gray"],
+                "material": "Steel",
+                "price": "790",
+                "producingCountry": "",
+                "description": [
+                    "100% UV protection",
+                    "Logo at lens corner and temples",
+                    "Lens width: 58 mm",
+                    "Bridge width: 15 mm",
+                    "Arm length: 140 mm",
+                    "Includes hard case and cleaning cloth"
+                ],
+                "stock": true
+            },
+            {
+                "id": "1717",
+                "name": "Lanvin",
+                "caption": "Engraved Loop Cufflinks",
+                "category": "Cufflinks",
+                "type": "Engraved",
+                "photo": [],
+                "color": ["Silver"],
+                "material": "Brass/rhodium",
+                "price": "169",
+                "producingCountry": "Germany",
+                "description": [
+                    "0.75\"W x 0.5\"H",
+                    "Toggle closure",
+                    "Engraved line detailing with logo at front",
+                    "Rhodium-plated brass"
+                ],
+                "stock": true
+            },
+            {
+                "id": "1718",
+                "name": "Salvatore Ferragamo",
+                "caption": "Men's Reversible Leather Belt",
+                "category": "Belt",
+                "type": "Reversible dress belt",
+                "photo": [],
+                "color": ["Nero"],
+                "material": "Lether",
+                "price": "400",
+                "size": ["80cm", "90cm", "100cm", "110cm"],
+                "producingCountry": "Italy",
+                "description": [
+                    "1.25\"W",
+                    "Silver-tone square buckle with engraved signature Gancini detail",
+                    "Belt fits small, order two waist sizes up"
+                ],
+                "stock": true
+            }
+        ]
+    }
+]
