@@ -16,7 +16,7 @@
         justify-content: space-between;
         flex-direction: column;
     }
-    
+
     @media (max-width: 1081px) {
         flex-direction: row;
         justify-content: center;
@@ -42,14 +42,14 @@
     }
 
     @media (min-width: 481px) and (max-width: 1080px) {
-        
+
         &:not(:first-child) {
             margin: 20px;
         }
     }
 
     @media (min-width: 481px) and (max-width: 1080px) {
-        
+
         &:not(:first-child) {
             margin: 20px;
         }
@@ -57,13 +57,13 @@
 }
 
 .clothes {
-    background-image: url("./img/clothes.png");
+    background-image: url("./img/clothes1.jpg");
 }
 
 .shoes {
-    background-image: url("./img/shoes.png");
+    background-image: url("./img/shoes1.jpg");
 }
 
 .accessories {
-    background-image: url("./img/accessories.png");
+    background-image: url("./img/accessories.jpg");
 }
