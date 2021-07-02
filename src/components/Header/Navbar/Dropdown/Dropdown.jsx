@@ -17,6 +17,7 @@ const Dropdown = ({ dropdownList }) => (
       <ul className={classes.list}>
         {dropdownList.map((item) => (
           <ListRoute
+            key={item}
             route={`${item}`}
             content={item}
             listClass={classes.listItem}
@@ -32,12 +33,8 @@ const Dropdown = ({ dropdownList }) => (
   </motion.div>
 );
 
-Dropdown.defaultProps = {
-  dropdownList: "",
-};
-
 Dropdown.propTypes = {
-  dropdownList: PropTypes.string,
+  dropdownList: PropTypes.instanceOf(Array).isRequired,
 };
 
 export default Dropdown;
