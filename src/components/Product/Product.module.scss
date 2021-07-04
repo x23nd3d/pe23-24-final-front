@@ -1,3 +1,72 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
 .product {
+    display: flex;
+    height: 100vh;
+    width: 100%;
     background-color: #fff;
+}
+
+.dataBlock {
+    display: flex;
+    justify-content: center;
+}
+
+.Details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 70%;
+    height: 100%;
+
+    .primaryBlock, .selectionBlock {
+        @include block-120
+    }
+
+    .Name {
+        font-size: 22px;
+    }
+    .Caption {
+        margin-top: 10px;
+        font-size: 14px;
+        font-style: italic;
+    }
+    .dataPointer {
+        @include point-info;
+    }
+}
+
+.Price {
+    margin-bottom: 20px;
+}
+
+.bottomBlock {
+    margin-top: 50px;
+
+    .moreDetails {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    & .dataPointer {
+        margin: 10px 0;
+        @include point-info;
+        & p {
+            margin-left: 20px;
+        }
+    }
+
+    .dsc {
+        @include block-120;
+        height: 160px;
+
+        & li {
+            font-size: 16px;
+        }
+    }
+}
+
+.Photo {
+    width: 70%;
 }
