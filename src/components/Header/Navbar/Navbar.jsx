@@ -5,6 +5,7 @@ import ListRoute from "../../UI/ListRoute/ListRoute";
 import NavigationListRoutes from "../../UI/NavigationListRoutes/NavigationListRoutes";
 import Backdrop from "../../UI/Backdrop/Backdrop";
 import classes from "./Navbar.module.scss";
+import Search from "./Search/Search";
 
 const Nav = (props) => {
   const [man, setMan] = useState(false);
@@ -66,6 +67,11 @@ const Nav = (props) => {
           Originalité
         </Link>
         <ul className={classNames(classes.NavItems, classes.NavTools)}>
+          <ListRoute
+            route="/"
+            content={<Search />}
+            listClass={classNames(classes.NavItem, classes.NavItemMySearch)}
+          />
           <ListRoute
             route="/"
             content="My account"

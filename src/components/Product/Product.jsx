@@ -1,44 +1,68 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import CartForm from "../Forms/CartForm";
-import {product} from "./Product.module.scss";
+import AddToCartForm from "../Forms/Add to Cart/AddToCartForm";
+import SlideShow from "./SlideShow";
+
+import {
+    product,
+    Details,
+    primaryBlock,
+    selectionBlock,
+    Title,
+    Name,
+    Caption,
+    dataPointer,
+    Price,
+    moreDetails,
+    bottomBlock,
+    dsc,
+    dataBlock
+} from "./Product.module.scss";
+
 
 const Product = ({data}) => {
     const {
-        id, name, caption, material, type, color, size, price, description, producingCountry
+        id,
+        name,
+        caption,
+        material,
+        type,
+        color,
+        size,
+        price,
+        description,
+        producingCountry
     } = data;
 
     return (
         <section className={product}>
-            <article>
-                <ul>
-                    <li>
-                        <p>{name}</p>
-                        <p>{caption}</p>
+            <SlideShow photos={["./canali_black1.png", "./canali_black2.png", "./canali_black3.png"]} />
+            <article className={dataBlock}>
+                <ul className={classNames(Details)}>
+                    <li className={primaryBlock}>
+                        <header className={classNames(Title)}>
+                            <h2 className={classNames(Name)}>{name}</h2>
+                            <p className={classNames(Caption)}>{caption}</p>
+                        </header>
+                        <span className={classNames(dataPointer, Price)}>Price<p>{`$${price}`}</p></span>
                     </li>
-                    <li>
-                        <span>Price</span>
-                        <p>{`$${price}`}</p>
+                    <li className={selectionBlock}>
+                        <AddToCartForm id={id} colors={color} sizes={size} />
+                        <hr />
                     </li>
-                    <li>
-                        <span>Type</span>
-                        <p>{type}</p>
-                    </li>
-                    <li>
-                        <span>Material</span>
-                        <p>{material}</p>
-                    </li>
-                    <li>
-                        <ul>
+                    <li className={bottomBlock}>
+                        <h3 className={moreDetails}>More details</h3>
+                        <span className={dataPointer}>Type<p>{type}</p></span>
+                        <span className={dataPointer}>Material<p>{material}</p></span>
+                        <ul className={dsc}>
                         {description.map((point) => (
                             <li key={`${point.slice(-3)}${Math.random() * 50}${point.slice(0, 5)}`}>{point}</li>
                         ))}
                         </ul>
+                    {producingCountry && <p>Made in {producingCountry}</p> }
                     </li>
-                    {producingCountry && <li>Made in {producingCountry}</li> }
                 </ul>
-                <CartForm id={id} colors={color} sizes={size} />
             </article>
         </section>
     )
