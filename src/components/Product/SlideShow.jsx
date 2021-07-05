@@ -25,8 +25,8 @@ const SlideShow = ({photos}) => {
   };
 
   return (
-    <div className="block">
-        <Carousel className="Caro" responsive={responsive}>
+    <div className="photo-block">
+        <Carousel className="carou" responsive={responsive}>
           {
             photos.map((path, index) => <div key={path} >
               <div className="photo" />
