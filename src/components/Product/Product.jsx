@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import AddToCartForm from "../Forms/Add to Cart/AddToCartForm";
-import PhotoSwitcher from "./PhotoSwitcher";
+import SlideShow from "./SlideShow";
 
 import {
     product,
@@ -37,7 +37,7 @@ const Product = ({data}) => {
 
     return (
         <section className={product}>
-            <PhotoSwitcher />
+            <SlideShow photos={["./canali_black1.png", "./canali_black2.png", "./canali_black3.png"]} />
             <article className={dataBlock}>
                 <ul className={classNames(Details)}>
                     <li className={primaryBlock}>
