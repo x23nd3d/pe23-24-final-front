@@ -21,3 +21,26 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+@mixin block-120 {
+	height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+@mixin point-info {
+	display: flex;
+        justify-content: space-between;
+        font-size: 18px;
+        color: $pointInfo;
+        width: 100px;
+
+        & p {
+            color: #000;
+        }
+}
+
+@mixin highlight {
+    border: 2px solid red;
+}
