@@ -36,17 +36,19 @@
 		font-size: 16px;
 
 		li {
-			position: relative;
+			display: flex;
+			//position: relative;
 
 			&:before {
-				position: absolute;
-				top: 50%;
-				left: 0px;
+				margin-right: 5px;
+				// position: absolute;
+				// top: 50%;
+				// left: 0px;
 				width: 14px;
 				height: 14px;
 				background-image: url($img-header-sprite);
 				background-size: cover;
-				transform: translateY(-60%);
+				//transform: translateY(-60%);
 				content: "";
 			}
 		}
