@@ -9,19 +9,19 @@
                 "type": "Classic",
                 "photo": {
                     "Navy": [
-                        "./suits/1701/navy_color/canali_navy1.png",
-                        "./suits/1701/navy_color/canali_navy2.png",
-                        "./suits/1701/navy_color/canali_navy3.png"
+                        "./suits/1701 - Canali/navy_color/1701_navy_canali1.png",
+                        "./suits/1701 - Canali/navy_color/1701_navy_canali2.png",
+                        "./suits/1701 - Canali/navy_color/1701_navy_canali3.png"
                     ],
                     "Black": [
-                        "./suits/1701/black_color/canali_black1.png",
-                        "./suits/1701/black_color/canali_black2.png",
-                        "./suits/1701/black_color/canali_black3.png"
+                        "./suits/1701 - Canali/black_color/1701_black_canali1.png",
+                        "./suits/1701 - Canali/black_color/1701_black_canali2.png",
+                        "./suits/1701 - Canali/black_color/1701_black_canali3.png"
                     ],
                     "Charcoal": [
-                        "./suits/1701/charcoal_color/canali_charcoal1.png",
-                        "./suits/1701/charcoal_color/canali_charcoal2.png",
-                        "./suits/1701/charcoal_color/canali_charcoal3.png"
+                        "./suits/1701 - Canali/charcoal_color/1701_charcoal_canali1.png",
+                        "./suits/1701 - Canali/charcoal_color/1701_charcoal_canali2.png",
+                        "./suits/1701 - Canali/charcoal_color/1701_charcoal_canali3.png"
                     ]
                 },
                 "color": ["Navy", "Black", "Charcoal"],
@@ -43,14 +43,14 @@
                 "category": "Suit",
                 "type": "Basic Slim",
                 "photo": {
-                    "pearlGrayColor": [
-                        "./suits/1702/johvarvatosstar_pearl-gray1.png",
-                        "./suits/1702/johvarvatosstar_pearl-gray2.png",
-                        "./suits/1702/johvarvatosstar_pearl-gray3.png",
-                        "./suits/1702/johvarvatosstar_pearl-gray4.png"
+                    "Pearl Gray": [
+                        "./suits/1702 - John Varvatos Star USA/1702_pearl-gray_john-varvatos-star1.png",
+                        "./suits/1702 - John Varvatos Star USA/1702_pearl-gray_john-varvatos-star2.png",
+                        "./suits/1702 - John Varvatos Star USA/1702_pearl-gray_john-varvatos-star3.png",
+                        "./suits/1702 - John Varvatos Star USA/1702_pearl-gray_john-varvatos-star4.png"
                     ]
                 },
-                "color": ["pearlGrayColor"],
+                "color": ["Pearl Gray"],
                 "material": "Wool",
                 "price": "1189",
                 "size": ["44", "46", "48"],
@@ -68,13 +68,13 @@
                 "category": "Suit",
                 "type": "Tonal Plaid Slim",
                 "photo": {
-                    "charcoalColor": [
-                        "./suits/1703/charcoal_theory1.png",
-                        "./suits/1703/charcoal_theory2.png",
-                        "./suits/1703/charcoal_theory3.png"
+                    "Charcoal": [
+                        "./suits/1703 - Theory/1703_charcoal_theory1.png",
+                        "./suits/1703 - Theory/1703_charcoal_theory2.png",
+                        "./suits/1703 - Theory/1703_charcoal_theory3.png"
                     ]
                 },
-                "color": ["charcoalColor"],
+                "color": ["Charcoal"],
                 "material": "Wool",
                 "price": "569",
                 "size": ["36", "38", "44", "46", "48", "50"],
@@ -91,14 +91,14 @@
                 "category": "Suit",
                 "type": "Tuxedo",
                 "photo": {
-                    "blackColor": [
-                        "./suits/1704/black_color/boss_black1.png",
-                        "./suits/1704/black_color/boss_black2.png",
-                        "./suits/1704/black_color/boss_black3.png",
-                        "./suits/1704/black_color/boss_black4.png"
+                    "Black": [
+                        "./suits/1704 - BOSS Hugo Boss/1704_black_boss-hugo-boss1.png",
+                        "./suits/1704 - BOSS Hugo Boss/1704_black_boss-hugo-boss2.png",
+                        "./suits/1704 - BOSS Hugo Boss/1704_black_boss-hugo-boss3.png",
+                        "./suits/1704 - BOSS Hugo Boss/1704_black_boss-hugo-boss4.png"
                     ]
                 },
-                "color": ["blackColor"],
+                "color": ["Black"],
                 "material": "Silk",
                 "price": "1759",
                 "size": ["40", "42", "44", "48"],
@@ -110,20 +110,47 @@
                 "stock": true
             },
             {
+                "id": "1788",
+                "name": "Ermenegildo Zegna",
+                "caption": "Milano Tailored Fit Tuxedo",
+                "category": "Suit",
+                "type": "Tuxedo",
+                "photo": {
+                    "Black Solid": [
+                        "./suits/1788 - Ermenegildo Zegna/1788_black-solid_ermenegildo-zegna1.png",
+                        "./suits/1788 - Ermenegildo Zegna/1788_black-solid_ermenegildo-zegna2.png",
+                        "./suits/1788 - Ermenegildo Zegna/1788_black-solid_ermenegildo-zegna3.png"
+                    ]
+                },
+                "color": ["Black Solid"],
+                "material": "Wool/Polyester",
+                "price": "32999",
+                "size": ["40", "42", "44", "48"],
+                "producingCountry": "Italy",
+                "description": [
+                    "Fits true to size, order your normal size",
+                    "Designed for a tailored fit",
+                    "Model measurements: 6'2 height, 38\" chest, 30\" waist, 34\" inseam, wearing a size medium",
+                    "Jacket: peak satin lapel, single-button front closure, welt chest pocket, two front besom pockets, four nonfunctional sleeve buttons, double vent, fully lined",
+                    "Pants: mid-rise, zip fly with button tab closure, flat front, satin tuxedo stripes two side pockets, one coin pocket, two back besom pockets with button closures, unfinished hem, unlined"
+                ],
+                "stock": true
+            },
+            {
                 "id": "1705",
                 "name": "ALLSAINTS",
                 "caption": "Cora Leather Jacket",
                 "category": "Outerwear",
                 "type": "Leather Jacket",
                 "photo": {
-                    "jetBlackColor": [
-                        "./outerwear/jackets/1705/jet-black_allsaints1.png",
-                        "./outerwear/jackets/1705/jet-black_allsaints2.png",
-                        "./outerwear/jackets/1705/jet-black_allsaints3.png",
-                        "./outerwear/jackets/1705/jet-black_allsaints4.png"
+                    "Jet Black": [
+                        "./outerwear/jackets/1705 - ALLSAINTS/1705_jet-black_allsaints1.png",
+                        "./outerwear/jackets/1705 - ALLSAINTS/1705_jet-black_allsaints2.png",
+                        "./outerwear/jackets/1705 - ALLSAINTS/1705_jet-black_allsaints3.png",
+                        "./outerwear/jackets/1705 - ALLSAINTS/1705_jet-black_allsaints4.png"
                     ]
                 },
-                "color": ["jetBlackColor"],
+                "color": ["Jet Black"],
                 "material": "Sheep lether",
                 "price": "728",
                 "size":["40", "42", "44"],
@@ -136,18 +163,91 @@
                 "stock": true
             },
             {
+                "id": "1794",
+                "name": "Alternative",
+                "caption": "Weekender Zip Hoodie",
+                "category": "Outerwear",
+                "type": "Hoodie",
+                "photo": {
+                    "Black": [
+                        "./outerwear/hoodies/1794 - Alternative/black_color/1794_black_alternative1.png",
+                        "./outerwear/hoodies/1794 - Alternative/black_color/1794_black_alternative2.png",
+                        "./outerwear/hoodies/1794 - Alternative/black_color/1794_black_alternative3.png"
+                    ],
+                    "Navy": [
+                        "./outerwear/hoodies/1794 - Alternative/navy_color/1794_navy_alternative1.png",
+                        "./outerwear/hoodies/1794 - Alternative/navy_color/1794_navy_alternative2.png",
+                        "./outerwear/hoodies/1794 - Alternative/navy_color/1794_navy_alternative3.png"
+                    ],
+                    "Smoke Gray": [
+                        "./outerwear/hoodies/1794 - Alternative/smoke-gray_color/1794_smoke-gray_alternative1.png",
+                        "./outerwear/hoodies/1794 - Alternative/smoke-gray_color/1794_smoke-gray_alternative2.png",
+                        "./outerwear/hoodies/1794 - Alternative/smoke-gray_color/1794_smoke-gray_alternative3.png"
+                    ]
+                },
+                "color": ["Black", "Navy", "Smoke Gray"],
+                "material": "Cotton",
+                "price": "49",
+                "size":["S", "M", "L", "XL"],
+                "producingCountry": "",
+                "description": [
+                    "Fits true to size, order your normal size",
+                    "Designed for a slim fit",
+                    "Model measurements: 6'2 height, 38\" chest, 30\" waist, 34\" inseam, wearing a size medium",
+                    "Drawstring-adjustable hood",
+                    "Long sleeves",
+                    "Zip front closure",
+                    "Split front kangaroo pocket",
+                    "Ribbed hems"
+                ],
+                "stock": true
+            },
+            {
+                "id": "1794",
+                "name": "Theory",
+                "caption": "Mini Waffle Organic Pima Cotton Zip Hoodie",
+                "category": "Outerwear",
+                "type": "Hoodie",
+                "photo": {
+                    "Black": [
+                        "./outerwear/hoodies/1795 - Theory/black_color/1795_black_theory1.png",
+                        "./outerwear/hoodies/1795 - Theory/black_color/1795_black_theory2.png",
+                        "./outerwear/hoodies/1795 - Theory/black_color/1795_black_theory3.png"
+                    ],
+                    "Air Force": [
+                        "./outerwear/hoodies/1795 - Theory/air-force_color/1795_air-force_color_theory1.png",
+                        "./outerwear/hoodies/1795 - Theory/air-force_color/1795_air-force_color_theory2.png",
+                        "./outerwear/hoodies/1795 - Theory/air-force_color/1795_air-force_color_theory3.png"
+                    ]
+                },
+                "color": ["Black", "Air Force"],
+                "material": "Pima cotton",
+                "price": "179",
+                "size":["S", "M", "L", "XL"],
+                "producingCountry": "",
+                "description": [
+                    "Fits true to size, order your normal size",
+                    "Model measurements: 6'2\" height, 38\" chest, 30\" waist, 34\" inseam, wearing a size medium",
+                    "Drawstring hood",
+                    "Full-zip closure",
+                    "Kangaroo pocket",
+                    "Mini waffle textured fabric"
+                ],
+                "stock": true
+            },
+            {
                 "id": "1706",
                 "name": "Vince",
                 "caption": "Classic Leather Jacket",
                 "category": "Outerwear",
                 "type": "Classic Leather Jacket",
                 "photo": {
-                    "blackColor": [
-                        "./outerwear/jackets/1706/black_vince1.png",
-                        "./outerwear/jackets/1706/black_vince2.png"
+                    "Black": [
+                        "./outerwear/jackets/1706 - Vince/1706_black_vince1.png",
+                        "./outerwear/jackets/1706 - Vince/1706_black_vince2.png"
                     ]
                 },
-                "color": ["blackColor"],
+                "color": ["Black"],
                 "material": "Lambskin leather",
                 "price": "1089",
                 "size":["40", "42", "44", "46", "48", "50"],
@@ -170,8 +270,8 @@
                 "type": "Coat",
                 "photo": {
                     "Navy": [
-                        "./outerwear/jackets/1799/",
-                        "./outerwear/jackets/1799/"
+                        "./outerwear/jackets/1799 - John Varvatos Star USA/1799_navy_john-varvatos-star-usa1.png",
+                        "./outerwear/jackets/1799 - John Varvatos Star USA/1799_navy_john-varvatos-star-usa2.png"
                     ]
                 },
                 "color": ["Navy"],
@@ -197,9 +297,9 @@
                 "type": "Jacket",
                 "photo": {
                     "Dusty Olive": [
-                        "./outerwear/",
-                        "./outerwear/",
-                        ""
+                        "./outerwear/jackets/1798 - Joe's Jeans/1798_joes-jeans1.png",
+                        "./outerwear/jackets/1798 - Joe's Jeans/1798_joes-jeans2.png",
+                        "./outerwear/jackets/1798 - Joe's Jeans/1798_joes-jeans3.png"
                     ]
                 },
                 "color": ["Dusty Olive"],
@@ -226,9 +326,9 @@
                 "type": "Parka",
                 "photo": {
                     "Black": [
-                        "./outerwear/",
-                        "./outerwear/",
-                        ""
+                        "./outerwear/parka/1797 - ALLSAINTS/1797_allsaints1.png",
+                        "./outerwear/parka/1797 - ALLSAINTS/1797_allsaints2.png",
+                        "./outerwear/parka/1797 - ALLSAINTS/1797_allsaints3.png"
                     ]
                 },
                 "color": ["Black"],
@@ -255,13 +355,13 @@
                 "category": "Outerwear",
                 "type": "Coat",
                 "photo": {
-                    "blackColor": [
-                        "./outerwear/coats/1707/black_robert-graham1.png",
-                        "./outerwear/coats/1707/black_robert-graham2.png",
-                        "./outerwear/coats/1707/black_robert-graham3.png"
+                    "Black": [
+                        "./outerwear/coats/1707 - Robert Graham/1707_black_robert-graham1.png",
+                        "./outerwear/coats/1707 - Robert Graham/1707_black_robert-graham2.png",
+                        "./outerwear/coats/1707 - Robert Graham/1707_black_robert-graham3.png"
                     ]
                 },
-                "color": ["blackColor"],
+                "color": ["Black"],
                 "material": "Polyester",
                 "price": "429",
                 "size":["44", "46", "48", "50"],
@@ -282,13 +382,13 @@
                 "category": "Pants",
                 "type": "Jeans",
                 "photo": {
-                    "camelotGrayColor": [
-                        "./pants/jeans/1708/camelot-gray_7-for-all-mankind1.png",
-                        "./pants/jeans/1708/camelot-gray_7-for-all-mankind2.png",
-                        "./pants/jeans/1708/camelot-gray_7-for-all-mankind3.png"
+                    "Camelot Gray": [
+                        "./pants/jeans/1708 - 7 For All Mankind/1708_camelot-gray_7-for-all-mankind1.png",
+                        "./pants/jeans/1708 - 7 For All Mankind/1708_camelot-gray_7-for-all-mankind2.png",
+                        "./pants/jeans/1708 - 7 For All Mankind/1708_camelot-gray_7-for-all-mankind3.png"
                     ]
                 },
-                "color": ["camelotGrayColor"],
+                "color": ["Camelot Gray"],
                 "material": "Cotton",
                 "price": "249",
                 "size":["29", "30", "31", "32", "33", "34", "35", "36", "37"],
@@ -311,13 +411,13 @@
                 "category": "Pants",
                 "type": "Jeans",
                 "photo": {
-                    "superLightIndigoColor": [
-                        "./pants/jeans/1709/super-light-indigo_purple-brand1.png",
-                        "./pants/jeans/1709/super-light-indigo_purple-brand2.png",
-                        "./pants/jeans/1709/super-light-indigo_purple-brand3.png"
+                    "Super Light Indigo": [
+                        "./pants/jeans/1709 - Purple Brand/1709_super-light-indigo_purple-brand1.png",
+                        "./pants/jeans/1709 - Purple Brand/1709_super-light-indigo_purple-brand2.png",
+                        "./pants/jeans/1709 - Purple Brand/1709_super-light-indigo_purple-brand3.png"
                     ]
                 },
-                "color": ["superLightIndigoColor"],
+                "color": ["Super Light Indigo"],
                 "material": "Cotton",
                 "price": "279",
                 "size":["29", "30", "31", "32", "33", "34", "35", "36", "37"],
@@ -337,9 +437,20 @@
                 "type": "Pants",
                 "photo": {
                     "Stone": [
-                        "./pants/jeans/1709/super-light-indigo_purple-brand1.png",
-                        "./pants/jeans/1709/super-light-indigo_purple-brand2.png",
-                        "./pants/jeans/1709/super-light-indigo_purple-brand3.png"
+                        "./pants/jeans/1796 - Vineyard Vines/stone_color/1796_stone_vineyard-vines1.png",
+                        "./pants/jeans/1796 - Vineyard Vines/stone_color/1796_stone_vineyard-vines2.png"
+                    ],
+                    "Khaki": [
+                        "./pants/jeans/1796 - Vineyard Vines/khaki_color/1796_khaki_vineyard-vines1.png",
+                        "./pants/jeans/1796 - Vineyard Vines/khaki_color/1796_khaki_vineyard-vines2.png"
+                    ],
+                    "Gray Harbor": [
+                        "./pants/jeans/1796 - Vineyard Vines/gray-harbor_color/1796_gray-harbor_vineyard-vines1.png",
+                        "./pants/jeans/1796 - Vineyard Vines/gray-harbor_color/1796_gray-harbor_vineyard-vines2.png"
+                    ],
+                    "Blue Blazer": [
+                        "./pants/jeans/1796 - Vineyard Vines/blue-blazer_color/1796_blue-blazer_vineyard-vines1.png",
+                        "./pants/jeans/1796 - Vineyard Vines/blue-blazer_color/1796_blue-blazer_vineyard-vines2.png"
                     ]
                 },
                 "color": ["Stone", "Khaki", "Gray Harbor", "Blue Blazer"],
@@ -361,19 +472,135 @@
                 "stock": true
             },
             {
+                "id": "1783",
+                "name": "BLANKNYC",
+                "caption": "Slim Fit Pants",
+                "category": "Pants",
+                "type": "Pants",
+                "photo": {
+                    "Duffle Bag": [
+                        "./pants/pants/1783 - BLANKNYC/duffle-bag_color/1783_duffle-bag_blanknyc1.png",
+                        "./pants/pants/1783 - BLANKNYC/duffle-bag_color/1783_duffle-bag_blanknyc2.png",
+                        "./pants/pants/1783 - BLANKNYC/duffle-bag_color/1783_duffle-bag_blanknyc3.png"
+                    ],
+                    "Kalamata": [
+                        "./pants/pants/1783 - BLANKNYC/kalamata_color/1783_kalamata_blanknyc1.png",
+                        "./pants/pants/1783 - BLANKNYC/kalamata_color/1783_kalamata_blanknyc2.png",
+                        "./pants/pants/1783 - BLANKNYC/kalamata_color/1783_kalamata_blanknyc3.png"
+                    ]
+                },
+                "color": ["Duffle Bag", "Kalamata"],
+                "material": "Cotton",
+                "price": "89",
+                "size":["29", "30", "31", "32", "33", "34", "35", "36", "37"],
+                "producingCountry": "",
+                "description": [
+                    "Slim: fits snugly from the thigh to knee, then tapers to the ankle for a narrow leg opening",
+                    "10\" rise, 32\" inseam, 14\" leg opening, based on a size 32",
+                    "Model measurements: 6'2 height, 38\" chest, 30\" waist, 34\" inseam, wearing a size 32",
+                    "Zip fly with button closure",
+                    "Five-pocket silhouette",
+                    "Belt loops"
+                ],
+                "stock": true
+            },
+            {
+                "id": "1785",
+                "name": "PRPS",
+                "caption": "Regina Warlock Ripped Skinny Jeans",
+                "category": "Pants",
+                "type": "Jeans",
+                "photo": {
+                    "Dark Blue": [
+                        "./pants/jeans/1785 - PRPS/1785_dark-blue_prps1.png",
+                        "./pants/jeans/1785 - PRPS/1785_dark-blue_prps2.png"
+                    ]
+                },
+                "color": ["Dark Blue"],
+                "material": "Cotton",
+                "price": "278",
+                "size":["29", "30", "31", "32", "33", "34", "35", "36", "37"],
+                "producingCountry": "",
+                "description": [
+                    "Designed for a skinny fit",
+                    "8.75\" rise, 34.5\" inseam, 10.5\" leg opening, based on a size 32",
+                    "Model measurements: 6'2 height, 38\" chest, 30\" waist, 34\" inseam, wearing a size 32",
+                    "Zip fly with button closure",
+                    "Five-pocket silhouette",
+                    "Rip and repair styling",
+                    "Belt loops"
+                ],
+                "stock": true
+            },
+            {
+                "id": "1784",
+                "name": "Diesel",
+                "caption": "D-Strukt Slim Fit Jeans in Denim",
+                "category": "Pants",
+                "type": "Jeans",
+                "photo": {
+                    "Denim": [
+                        "./pants/jeans/1784 - Diesel/1784_denim_diesel1.png",
+                        "./pants/jeans/1784 - Diesel/1784_denim_diesel2.png"
+                    ]
+                },
+                "color": ["Denim"],
+                "material": "Cotton",
+                "price": "278",
+                "size":["29", "30", "31", "32", "33", "34", "35", "36", "37"],
+                "producingCountry": "",
+                "description": [
+                    "Designed for a skinny fit",
+                    "8.75\" rise, 34.5\" inseam, 10.5\" leg opening, based on a size 32",
+                    "Model measurements: 6'2 height, 38\" chest, 30\" waist, 34\" inseam, wearing a size 32",
+                    "Zip fly with button closure",
+                    "Five-pocket silhouette",
+                    "Rip and repair styling",
+                    "Belt loops"
+                ],
+                "stock": true
+            },
+            {
+                "id": "1780",
+                "name": "J BRAND",
+                "caption": "Kane Straight Fit Jeans",
+                "category": "Pants",
+                "type": "Jeans",
+                "photo": {
+                    "Mauz": [
+                        "./pants/jeans/1780 - J BRAND/1780_mauz_j-brand1.png"
+                    ]
+                },
+                "color": ["Mauz"],
+                "material": "Cotton/Lyocell/Elastomultieste",
+                "price": "158",
+                "size":["29", "30", "31", "32", "33", "34", "35", "36", "37"],
+                "producingCountry": "",
+                "description": [
+                    "Designed for a skinny fit",
+                    "Straight: fits neatly over the thigh, then straight to the ankle",
+                    "10\" rise, 34\" inseam, 15.25\" leg opening, based on a size 32",
+                    "Model measurements: 6'2 height, 38\" chest, 30\" waist, 34\" inseam, wearing a size 32",
+                    "Zip fly with button closure",
+                    "Five-pocket silhouette",
+                    "Tonal stitching"
+                ],
+                "stock": true
+            },
+            {
                 "id": "1710",
                 "name": "AG",
                 "caption": "Tellis Slim Fit Pants in Midnight Navy",
                 "category": "Pants",
                 "type": "Pants",
                 "photo": {
-                    "midnightNavyColor": [
-                        "./pants/pants/1710/midnight-navy_ag1.png",
-                        "./pants/pants/1710/midnight-navy_ag2.png",
-                        "./pants/pants/1710/midnight-navy_ag3.png"
+                    "Midnight Navy": [
+                        "./pants/pants/1710 - AG/1710_midnight-navy_ag1.png",
+                        "./pants/pants/1710 - AG/1710_midnight-navy_ag2.png",
+                        "./pants/pants/1710 - AG/1710_midnight-navy_ag3.png"
                     ]
                 },
-                "color": ["midnightNavyColor"],
+                "color": ["Midnight Navy"],
                 "material": "Cotton/elastane",
                 "price": "210",
                 "size":["29", "30", "31", "32", "33", "34", "35", "36", "37"],
@@ -396,15 +623,15 @@
                 "category": "Shoes",
                 "type": "Boots",
                 "photo": {
-                    "blackColor": [
-                        "./shoes/boots/1711/black_the-kooples1.png",
-                        "./shoes/boots/1711/black_the-kooples2.png",
-                        "./shoes/boots/1711/black_the-kooples3.png",
-                        "./shoes/boots/1711/black_the-kooples4.png",
-                        "./shoes/boots/1711/black_the-kooples5.png"
+                    "Black": [
+                        "./shoes/boots/1711 - The Kooples/1711_black_the-kooples1.png",
+                        "./shoes/boots/1711 - The Kooples/1711_black_the-kooples2.png",
+                        "./shoes/boots/1711 - The Kooples/1711_black_the-kooples3.png",
+                        "./shoes/boots/1711 - The Kooples/1711_black_the-kooples4.png",
+                        "./shoes/boots/1711 - The Kooples/1711_black_the-kooples5.png"
                     ]
                 },
-                "color": ["blackColor"],
+                "color": ["Black"],
                 "material": "Lether/rubber",
                 "price": "238",
                 "size":["39", "40", "41", "42", "43", "44", "45"],
@@ -426,14 +653,14 @@
                 "category": "Shoes",
                 "type": "Sneakers",
                 "photo": {
-                    "blackColor": [
-                        "./shoes/sneakers/1712/black_bally1.png",
-                        "./shoes/sneakers/1712/black_bally2.png",
-                        "./shoes/sneakers/1712/black_bally3.png",
-                        "./shoes/sneakers/1712/black_bally4.png"
+                    "Black": [
+                        "./shoes/sneakers/1712 - Bally/1712_black_bally1.png",
+                        "./shoes/sneakers/1712 - Bally/1712_black_bally2.png",
+                        "./shoes/sneakers/1712 - Bally/1712_black_bally3.png",
+                        "./shoes/sneakers/1712 - Bally/1712_black_bally4.png"
                     ]
                 },
-                "color": ["blackColor"],
+                "color": ["Black"],
                 "material": "Leather/Fabric lining",
                 "price": "341",
                 "size":["39", "40", "41", "42", "43", "44", "45"],
@@ -450,19 +677,48 @@
                 "stock": true
             },
             {
+                "id": "1776",
+                "name": "PS Paul Smith",
+                "caption": "Men's Prince Low Top Sneakers",
+                "category": "Shoes",
+                "type": "Sneakers",
+                "photo": {
+                    "White": [
+                        "./shoes/sneakers/1776 - PS Paul Smith/1776_white_ps-paul-smith1.png",
+                        "./shoes/sneakers/1776 - PS Paul Smith/1776_white_ps-paul-smith2.png",
+                        "./shoes/sneakers/1776 - PS Paul Smith/1776_white_ps-paul-smith3.png"
+                    ]
+                },
+                "color": ["White"],
+                "material": "Nylon/Leather",
+                "price": "178",
+                "size":["39", "40", "41", "42", "43", "44", "45"],
+                "producingCountry": "",
+                "description": [
+                    "Fits true to size. If between sizes, order the next size up",
+                    "Lace up",
+                    "Padded collar for optimal comfort",
+                    "Suede overlay details",
+                    "Leather stripe detail at side",
+                    "Logo at tongue and heel",
+                    "Nylon and leather upper, fabric lining, rubber sole"
+                ],
+                "stock": true
+            },
+            {
                 "id": "1713",
                 "name": "Salvatore Ferragamo",
                 "caption": "Men's Belshaw Patent Leather Plain-Toe Oxfords",
                 "category": "Shoes",
                 "type": "Dress shoes",
                 "photo": {
-                    "neroColor": [
-                        "./shoes/dress_shoes/1713/nero_salvatore-ferragamo1.png",
-                        "./shoes/dress_shoes/1713/nero_salvatore-ferragamo2.png",
-                        "./shoes/dress_shoes/1713/nero_salvatore-ferragamo3.png"
+                    "Nero": [
+                        "./shoes/dress_shoes/1713 - Salvatore Ferragamo/1713_nero_salvatore-ferragamo1.png",
+                        "./shoes/dress_shoes/1713 - Salvatore Ferragamo/1713_nero_salvatore-ferragamo2.png",
+                        "./shoes/dress_shoes/1713 - Salvatore Ferragamo/1713_nero_salvatore-ferragamo3.png"
                     ]
                 },
-                "color": ["neroColor"],
+                "color": ["Nero"],
                 "material": "Leather/rubber",
                 "price": "360",
                 "size":["39", "40", "41", "42", "43", "44", "45"],
@@ -485,21 +741,21 @@
                 "category": "Shoes",
                 "type": "Sneakers",
                 "photo": {
-                    "whiteNightColor": [
-                        "./shoes/sneakers/1714/white-night_color/white-night_golden-goose-deluxe-brand1.png",
-                        "./shoes/sneakers/1714/white-night_color/white-night_golden-goose-deluxe-brand2.png",
-                        "./shoes/sneakers/1714/white-night_color/white-night_golden-goose-deluxe-brand3.png",
-                        "./shoes/sneakers/1714/white-night_color/white-night_golden-goose-deluxe-brand4.png"
+                    "White Night": [
+                        "./shoes/sneakers/1714 - Golden Goose Deluxe Brand/white-night_color/white-night_golden-goose-deluxe-brand1.png",
+                        "./shoes/sneakers/1714 - Golden Goose Deluxe Brand/white-night_color/white-night_golden-goose-deluxe-brand2.png",
+                        "./shoes/sneakers/1714 - Golden Goose Deluxe Brand/white-night_color/white-night_golden-goose-deluxe-brand3.png",
+                        "./shoes/sneakers/1714 - Golden Goose Deluxe Brand/white-night_color/white-night_golden-goose-deluxe-brand4.png"
 
                     ],
-                    "nightBlueColor": [
-                        "./shoes/sneakers/1714/night-blue_color/night-blue_golden-goose-deluxe-brand1.png",
-                        "./shoes/sneakers/1714/night-blue_color/night-blue_golden-goose-deluxe-brand2.png",
-                        "./shoes/sneakers/1714/night-blue_color/night-blue_golden-goose-deluxe-brand3.png",
-                        "./shoes/sneakers/1714/night-blue_color/night-blue_golden-goose-deluxe-brand4.png"
+                    "Night Blue": [
+                        "./shoes/sneakers/1714 - Golden Goose Deluxe Brand/night-blue_color/night-blue_golden-goose-deluxe-brand1.png",
+                        "./shoes/sneakers/1714 - Golden Goose Deluxe Brand/night-blue_color/night-blue_golden-goose-deluxe-brand2.png",
+                        "./shoes/sneakers/1714 - Golden Goose Deluxe Brand/night-blue_color/night-blue_golden-goose-deluxe-brand3.png",
+                        "./shoes/sneakers/1714 - Golden Goose Deluxe Brand/night-blue_color/night-blue_golden-goose-deluxe-brand4.png"
                     ]
                 },
-                "color": ["whiteNightColor", "nightBlueColor"],
+                "color": ["White Night", "Night Blue"],
                 "material": "Leather/Fabric lining",
                 "price": "341",
                 "size":["39", "40", "41", "42", "43", "44", "45"],
@@ -515,6 +771,66 @@
                     "Leather and fabric lining, rubber sole"
                 ],
                 "stock": true
+            },
+            {
+                "id": "1787",
+                "name": "To Boot New York",
+                "caption": "Men's Francis Penny Loafers - 100% Exclusive",
+                "category": "Shoes",
+                "type": "Dress shoes",
+                "photo": {
+                    "Marrone Brown": [
+                        "./shoes/dress_shoes/1787 - To Boot New York/marrone-brown_color/1787_marrone-brown_to-boot-new-york1.png",
+                        "./shoes/dress_shoes/1787 - To Boot New York/marrone-brown_color/1787_marrone-brown_to-boot-new-york2.png"
+                    ],
+                    "Black": [
+                        "./shoes/dress_shoes/1787 - To Boot New York/black_color/1787_black_to-boot-new-york1.png",
+                        "./shoes/dress_shoes/1787 - To Boot New York/black_color/1787_black_to-boot-new-york2.png"
+                    ]
+                },
+                "color": ["Marrone Brown", "Black"],
+                "material": "Leather",
+                "price": "489",
+                "size":["39", "40", "41", "42", "43", "44"],
+                "producingCountry": "Italy",
+                "description": [
+                    "Fits large, order the next size down",
+                    "Almond moc toe; slip on",
+                    "Traditional penny loafer slot tab across tongue",
+                    "This item is part of our 100% Bloomingdale's collection, featuring exclusive pieces you won't find anywhere else.",
+                    "Leather upper, leather lining, leather and rubber sole"
+                ],
+                "stock": true
+            },
+            {
+                "id": "1786",
+                "name": "Vince",
+                "caption": "Men's Floyd Slip On Sneakers - 100% Exclusive",
+                "category": "Shoes",
+                "type": "Sneakers",
+                "photo": {
+                    "Black": [
+                        "./shoes/sneakers/1786 - Vince/black_color/1786_black_vince1.png",
+                        "./shoes/sneakers/1786 - Vince/black_color/1786_black_vince2.png"
+                    ],
+                    "Coastal": [
+                        "./shoes/sneakers/1786 - Vince/coastal_color/1786_coastal_vince1.png",
+                        "./shoes/sneakers/1786 - Vince/coastal_color/1786_coastal_vince2.png"
+                    ]
+
+                },
+                "color": ["Black", "Coastal"],
+                "material": "Leather/Fabric lining/Rubber",
+                "price": "205",
+                "size":["39", "40", "41", "42", "43", "44"],
+                "producingCountry": "",
+                "description": [
+                    "Elastic goring at sides for a flexible fit",
+                    "Slip on",
+                    "Logo at heel",
+                    "Leather upper, leather and fabric lining, rubber sole"
+                ],
+                "stock": true
             }
         ]
     },
@@ -527,7 +843,11 @@
                 "category": "Watches",
                 "type": "Luxury",
                 "photo": {
-                    "blackColor": []
+                    "Black Dial": [
+                        "./accessories/watches/1715 - Movado/1715_black-dial_movado1.png",
+                        "./accessories/watches/1715 - Movado/1715_black-dial_movado2.png",
+                        "./accessories/watches/1715 - Movado/1715_black-dial_movado3.png"
+                    ]
                 },
                 "color": ["Black Dial"],
                 "material": "Steel/Stones",
@@ -548,15 +868,201 @@
                 "stock": true
             },
             {
-                "id": "1715",
+                "id": "1793",
+                "name": "Fendi",
+                "caption": "Fendimania Watch, 40mm x 40mm",
+                "category": "Watches",
+                "type": "Luxury Smart",
+                "photo": {
+                    "Black": [
+                        "./accessories/watches/1793 - Fendi/1793_black_fendi1.png",
+                        "./accessories/watches/1793 - Fendi/1793_black_fendi2.png",
+                        "./accessories/watches/1793 - Fendi/1793_black_fendi3.png"
+                    ]
+                },
+                "color": ["Black"],
+                "material": "Steel",
+                "price": "1750",
+                "producingCountry": "Switzerland",
+                "description": [
+                    "Black IP stainless steel; black opalin",
+                    "Case size: 40mm x 40mm",
+                    "Deployant clasp closure",
+                    "Water resistant to 5 ATM",
+                    "Swiss quartz movement",
+                    "Black opalin dial",
+                    "Signature bezel",
+                    "Black IP stainless steel bracelet",
+                    "Manufacturer's 2-year international warranty"
+                ],
+                "stock": true
+            },
+            {
+                "id": "1792",
+                "name": "Garmin",
+                "caption": "MARQ Adventurer Performance Edition Smart Watch, 46mm",
+                "category": "Watches",
+                "type": "Smart",
+                "photo": {
+                    "Black": [
+                        "./accessories/watches/1792 - Garmin/1792_black_garmin1.png",
+                        "./accessories/watches/1792 - Garmin/1792_black_garmin2.png",
+                        "./accessories/watches/1792 - Garmin/1792_black_garmin3.png",
+                        "./accessories/watches/1792 - Garmin/1792_black_garmin4.png"
+                    ]
+                },
+                "color": ["Black"],
+                "material": "Steel",
+                "price": "1999",
+                "producingCountry": "",
+                "description": [
+                    "A modern luxury tool watch that compels you to push higher",
+                    "Track your altitude gain and weather changes",
+                    "Monitor air temperatures on your route with the included tempe™ sensor",
+                    "Set a course with the 360-degree compass bezel",
+                    "Climb high while monitoring your blood oxygen levels along the way",
+                    "Stainless steel; leather; Corning® Gorilla® glass",
+                    "Case size: 46mm",
+                    "Digital movement provides up to 12 days of power on a single charge",
+                    "Water-resistant to 10 ATM",
+                    "Compatible with iPhone® iOS 12 or higher, iPad, iPod Touch, Android™ 6.0 operating system or laterTK Compatible with XXXX",
+                    "Black dial",
+                    "Brown vacchetta leather strap",
+                    "Buckle closure",
+                    "Manufacturer's 1-year limited warranty"
+                ],
+                "stock": true
+            },
+            {
+                "id": "1791",
+                "name": "Versus Versace",
+                "caption": "Runyon Watch, 44mm",
+                "category": "Watches",
+                "type": "Luxury",
+                "photo": {
+                    "Black/Gold": [
+                        "./accessories/watches/1791- Versus Versace/1791_black-gold_versus-versace1.png",
+                        "./accessories/watches/1791- Versus Versace/1791_black-gold_versus-versace2.png",
+                        "./accessories/watches/1791- Versus Versace/1791_black-gold_versus-versace3.png"
+                    ]
+                },
+                "color": ["Black/Gold"],
+                "material": "Stainless steel",
+                "price": "2300",
+                "producingCountry": "",
+                "description": [
+                    "Case size: 44mm",
+                    "Deployant closure",
+                    "Water resistant to 3 ATM",
+                    "Swiss quartz movement",
+                    "Black multifunction dial",
+                    "3 sub-dials",
+                    "Two-tone stainless steel bracelet",
+                    "Manufacturer's 2-year limited"
+                ],
+                "stock": true
+            },
+            {
+                "id": "1790",
+                "name": "Movado",
+                "caption": "Stiri Stainless Steel Watch, 40mm",
+                "category": "Watches",
+                "type": "Luxury",
+                "photo": {
+                    "Black": [
+                        "./accessories/watches/1790 - Movado/1790_black_movado1.png"
+                    ]
+                },
+                "color": ["Black"],
+                "material": "Stainless steel/Sapphire crystal",
+                "price": "999",
+                "producingCountry": "Switzerland",
+                "description": [
+                    "Case size: 40mm",
+                    "Deployant buckle closure",
+                    "Water resistant to 3 ATM",
+                    "Swiss quartz movement",
+                    "Black dial",
+                    "Stainless steel round bezel",
+                    "Stainless steel link bracelet",
+                    "Manufacturer's 2-year limited"
+                ],
+                "stock": true
+            },
+            {
+                "id": "1789",
+                "name": "Movado",
+                "caption": "Movado BOLD Large Black TR90 and Stainless Steel Watch, 42mm",
+                "category": "Watches",
+                "type": "Styled",
+                "photo": {
+                    "Black": [
+                        "./accessories/watches/1789 - Movado/1789_black_movado1.png",
+                        "./accessories/watches/1789 - Movado/1789_black_movado2.png"
+                    ]
+                },
+                "color": ["Black"],
+                "material": "Stainless steel",
+                "price": "410",
+                "producingCountry": "",
+                "description": [
+                    "The Movado BOLD watch features a black TR90 composite and stainless steel case, and a black dial with black sunray dot and hands on a leather strap.",
+                    "Case size: 40mm",
+                    "Deployant buckle closure",
+                    "Case diameter: 42mm",
+                    "Water resistant to 3 ATM",
+                    "Swiss quartz movement",
+                    "Buckle",
+                    "Stainless steel/black TR90 composite/K1 crystal/leather strap",
+                    "Manufacturer's 2-year limited"
+                ],
+                "stock": true
+            },
+            {
+                "id": "1781",
+                "name": "Frederique Constant",
+                "caption": "Horological Gents Classic Smartwatch, 42mm",
+                "category": "Watches",
+                "type": "Smart",
+                "photo": {
+                    "Gray": [
+                        "./accessories/watches/1781- Frederique Constant/1781_gray_frederique-constant1.png"
+                    ]
+                },
+                "color": ["Gray"],
+                "material": "Stainless steel/Leather/Sapphire crystal",
+                "price": "850",
+                "producingCountry": "Switzerland",
+                "description": [
+                    "Elegant quartz design updated with exciting connected features such as dynamic coaching, sleep monitoring, Worldtimer function, activity tracking, get-active alerts, always-on time & date function",
+                    "Case size: 42mm",
+                    "Deployant closure",
+                    "Water resistant to 5 ATM",
+                    "Swiss quartz movement",
+                    "Powered by MMT-285 smart caliber",
+                    "Compatible with iOS & Android",
+                    "Activity tracker",
+                    "Sleep monitoring and sleep cycle alarm",
+                    "Dynamic coaching",
+                    "Cloud back up",
+                    "Worldtime function",
+                    "Two-plus years of average battery life",
+                    "Blue or black embossed leather strap",
+                    "One sub-dial",
+                    "Manufacturer's 3-year international warranty"
+                ],
+                "stock": true
+            },
+            {
+                "id": "1716",
                 "name": "Bulova",
                 "caption": "Marine Star Watch, 45mm",
                 "category": "Watches",
                 "type": "Luxury",
                 "photo": {
                     "Blue/Silver": [
-                        "",
-                        ""
+                        "./accessories/watches/1716 - Bulova/1716_blue-silver_bulova1.png",
+                        "./accessories/watches/1716 - Bulova/1716_blue-silver_bulova2.png"
                     ]
                 },
                 "color": ["Blue/Silver"],
@@ -575,14 +1081,14 @@
                 "stock": true
             },
             {
-                "id": "1715",
+                "id": "1717",
                 "name": "Salvatore Ferragamo",
                 "caption": "Feroni Watch, 40mm",
                 "category": "Watches",
                 "type": "Luxury",
                 "photo": {
                     "Two Tone": [
-                        ""
+                        "./accessories/watches/1717 - Salvatore Ferragamo/1717_two-tone_salvatore-ferragamo1.png"
                     ]
                 },
                 "color": ["Two Tone"],
@@ -603,15 +1109,19 @@
                 "stock": true
             },
             {
-                "id": "1716",
+                "id": "1718",
                 "name": "Maui Jim",
                 "caption": "Unisex Guardrails Polarized Brow Bar Aviator Sunglasses, 58mm",
                 "category": "Glasses",
                 "type": "Sunglasses",
                 "photo": {
-                    "silverColor": []
+                    "Silver": [
+                        "./accessories/glasses/1718 - Maui Jim/1718_silver-gray_maui-jim1.png",
+                        "./accessories/glasses/1718 - Maui Jim/1718_silver-gray_maui-jim2.png",
+                        "./accessories/glasses/1718 - Maui Jim/1718_silver-gray_maui-jim3.png"
+                    ]
                 },
-                "color": ["Silver/gray"],
+                "color": ["Silver"],
                 "material": "Steel",
                 "price": "790",
                 "producingCountry": "",
@@ -626,16 +1136,116 @@
                 "stock": true
             },
             {
-                "id": "1716",
+                "id": "1782",
+                "name": "Carrera",
+                "caption": "Men's Brow Bar Aviator Sunglasses, 63mm",
+                "category": "Glasses",
+                "type": "Sunglasses",
+                "photo": {
+                    "Gray": [
+                        "./accessories/glasses/1782 - Carrera/1782_gray_carrera1.png",
+                        "./accessories/glasses/1782 - Carrera/1782_gray_carrera2.png",
+                        "./accessories/glasses/1782 - Carrera/1782_gray_carrera3.png"
+                    ]
+                },
+                "color": ["Gray"],
+                "material": "Steel",
+                "price": "120",
+                "producingCountry": "",
+                "description": [
+                    "100% UV protection",
+                    "Logo at lens corner and temples",
+                    "Lens width: 58 mm",
+                    "Bridge width: 15 mm",
+                    "Arm length: 135 mm",
+                    "Includes hard case and cleaning cloth"
+                ],
+                "stock": true
+            },
+            {
+                "id": "1779",
+                "name": "CELINE",
+                "caption": "Men's Brow Bar Aviator Sunglasses, 59mm",
+                "category": "Glasses",
+                "type": "Sunglasses",
+                "photo": {
+                    "Shiny Endura": [
+                        "./accessories/glasses/1779 - Celine/1779_shiny-endura-gold_celine1.png",
+                        "./accessories/glasses/1779 - Celine/1779_shiny-endura-gold_celine2.png"
+                    ]
+                },
+                "color": ["Shiny Endura"],
+                "material": "Steel",
+                "price": "320",
+                "producingCountry": "Italy",
+                "description": [
+                    "100% UV protection",
+                    "Logo at brow bar",
+                    "Lens width: 59 mm",
+                    "Bridge width: 16 mm",
+                    "Arm length: 140 mm",
+                    "Includes soft case and cleaning cloth"
+                ],
+                "stock": true
+            },
+            {
+                "id": "1778",
+                "name": "Ray-Ban",
+                "caption": "Unisex Icons Round Sunglasses",
+                "category": "Glasses",
+                "type": "Sunglasses",
+                "photo": {
+                    "Silver": [
+                        "./accessories/glasses/1778 - Ray-Ban/1778_silver-flash-mirror_ray-ban1.png"
+                    ]
+                },
+                "color": ["Silver"],
+                "material": "Steel",
+                "price": "196",
+                "producingCountry": "Italy",
+                "description": [
+                    "100% UV protection",
+                    "Lens widths: 47mm, 50mm, 53mm",
+                    "Logo at lens corner",
+                    "Includes soft case and cleaning cloth"
+                ],
+                "stock": true
+            },
+            {
+                "id": "1777",
+                "name": "Ray-Ban Junior",
+                "caption": "Junior Unisex Pilot Sunglasses, 50mm",
+                "category": "Glasses",
+                "type": "Sunglasses",
+                "photo": {
+                    "Silver": [
+                        "./accessories/glasses/1777 - Ray-Ban Junior/1777_silver-on-top-black_ray-ban-junior1.png",
+                        "./accessories/glasses/1777 - Ray-Ban Junior/1777_silver-on-top-black_ray-ban-junior2.png"
+                    ]
+                },
+                "color": ["Silver"],
+                "material": "Steel",
+                "price": "70",
+                "producingCountry": "",
+                "description": [
+                    "100% UV protection",
+                    "Lens widths: 47mm, 50mm, 53mm",
+                    "Logo at lens corner",
+                    "Includes soft case and cleaning cloth"
+                ],
+                "stock": true
+            },
+            {
+                "id": "1719",
                 "name": "Carrera",
                 "caption": "Men's Rimless Aviator Sunglasses, 73mm",
                 "category": "Glasses",
                 "type": "Sunglasses",
                 "photo": {
                     "Gold/Brown Gradient": [
-                        "",
-                        "",
-                        ""
+                        "./accessories/glasses/1719 - Carrera/1719_gold-brown_carrera1.png",
+                        "./accessories/glasses/1719 - Carrera/1719_gold-brown_carrera2.png",
+                        "./accessories/glasses/1719 - Carrera/1719_gold-brown_carrera3.png"
                     ]
                 },
                 "color": ["Gold/Brown Gradient"],
@@ -653,13 +1263,15 @@
                 "stock": true
             },
             {
-                "id": "1717",
+                "id": "1720",
                 "name": "Lanvin",
                 "caption": "Engraved Loop Cufflinks",
                 "category": "Cufflinks",
                 "type": "Engraved",
                 "photo": {
-                    "silverColor": [""]
+                    "Silver": [
+                        "./accessories/cufflinks/1720 - Lanvin/1720_silver_lanvin1.png"
+                    ]
                 },
                 "color": ["Silver"],
                 "material": "Brass/rhodium",
@@ -674,13 +1286,15 @@
                 "stock": true
             },
             {
-                "id": "1717",
+                "id": "1721",
                 "name": "BOSS Hugo Boss",
                 "caption": "Adel Engraved Check Cufflinks",
                 "category": "Cufflinks",
                 "type": "Engraved",
                 "photo": {
-                    "Silver": [""]
+                    "Silver": [
+                        "./accessories/cufflinks/1721 - BOSS Hugo Boss/1721_silver_boss-hugo-boss1.png"
+                    ]
                 },
                 "color": ["Silver"],
                 "material": "Brass/rhodium",
@@ -696,13 +1310,15 @@
                 "stock": true
             },
             {
-                "id": "1718",
+                "id": "1722",
                 "name": "Salvatore Ferragamo",
                 "caption": "Men's Reversible Leather Belt",
                 "category": "Belt",
                 "type": "Reversible dress belt",
                 "photo": {
-                    "neroColor": [""]
+                    "Nero": [
+                        "./accessories/belts/1722 - Salvatore Ferragamo/1722_nero_salvatore-ferragamo1.png"
+                    ]
                 },
                 "color": ["Nero"],
                 "material": "Lether",
@@ -717,14 +1333,18 @@
                 "stock": true
             },
             {
-                "id": "17",
+                "id": "1723",
                 "name": "Salvatore Ferragamo",
                 "caption": "Men's Double Gancini Buckle Leather Belt",
                 "category": "Belt",
                 "type": "Leather Belt",
                 "photo": {
-                    "neroColor": [""],
-                    "brownColor": [""]
+                    "Nero": [
+                        "./accessories/belts/1723 - Salvatore Ferragamo/nero_color/1723_nero_salvatore-ferragamo1.png"
+                    ],
+                    "BrownColor": [
+                        "./accessories/belts/1723 - Salvatore Ferragamo/brown_color/1723_brown-salvatore-ferragamo1.png"
+                    ]
                 },
                 "color": ["Nero"],
                 "material": "Lether",
@@ -740,13 +1360,16 @@
                 "stock": true
             },
             {
-                "id": "17",
+                "id": "1724",
                 "name": "Bally",
                 "caption": "Men's Tally Reversible Belt",
                 "category": "Belt",
                 "type": "Reversible Belt",
                 "photo": {
-                    "Flow/Bone/Red": [""]
+                    "Flow/Bone/Red": [
+                        "./accessories/belts/1724 - Bally/brown_color/1724_flow-bone-red_bally1.png",
+                        "./accessories/belts/1724 - Bally/brown_color/1724_flow-bone-red_bally2.png"
+                    ]
                 },
                 "color": ["Flow/Bone/Red"],
                 "material": "Nylon/polyester and leather",
