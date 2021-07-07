@@ -14,11 +14,18 @@ const NavigationListRoutes = ({
   listClass,
   linkClass,
   dropdownToggle,
+  dropdownOff,
   dropdownItems,
 }) => (
   <li className={classNames(listClass)}>
     <AnimatePresence>
-      {active && <Dropdown dropdownList={dropdownItems} />}
+      {active && (
+        <Dropdown
+          mainRoute={content.toLowerCase()}
+          dropdownList={dropdownItems}
+          dropdownOff={dropdownOff}
+        />
+      )}
     </AnimatePresence>
     <NavLink
       to={route}
@@ -38,6 +45,7 @@ NavigationListRoutes.defaultProps = {
   active: false,
   dropdownItems: {},
   dropdownToggle: (f) => f,
+  dropdownOff: (f) => f,
 };
 
 NavigationListRoutes.propTypes = {
@@ -49,6 +57,7 @@ NavigationListRoutes.propTypes = {
   active: PropTypes.bool,
   id: PropTypes.number,
   dropdownToggle: PropTypes.func,
+  dropdownOff: PropTypes.func,
   dropdownItems: PropTypes.instanceOf(Object),
 };
 

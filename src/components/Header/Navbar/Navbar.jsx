@@ -49,6 +49,7 @@ const Nav = (props) => {
           activeClass={activeCls.join(" ")}
           listClass={classes.NavItem}
           dropdownToggle={toggleDropdown}
+          dropdownOff={setMan}
           active={activeDropdown}
           dropdownItems={dropdownItems[Object.keys(activeNav)[0]]}
         />

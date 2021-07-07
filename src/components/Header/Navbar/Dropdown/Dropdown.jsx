@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import classes from "./Dropdown.module.scss";
 import ListRoute from "../../../UI/ListRoute/ListRoute";
 
-const Dropdown = ({ dropdownList }) => (
+const Dropdown = ({ mainRoute, dropdownList, dropdownOff }) => (
   <motion.div
     className={classNames(classes.dropdown)}
     initial={{ opacity: 0 }}
@@ -15,16 +15,19 @@ const Dropdown = ({ dropdownList }) => (
     <div className={classes.container}>
       <h3 className={classes.title}>Categories</h3>
       <ul className={classes.list}>
-        {dropdownList.map((item) => (
+        {dropdownList.map((route) => (
           <ListRoute
-            route={`${item}`}
-            content={item}
+            key={route}
+            route={`/shop/${mainRoute}/${route.toLowerCase()}`}
+            content={route}
+            onClick={dropdownOff}
             listClass={classes.listItem}
           />
         ))}
         <ListRoute
-          route="/"
+          route={`/shop/${mainRoute}/&all`}
           content="View all"
+          onClick={dropdownOff}
           listClass={classNames(classes.listItem, classes.viewAll)}
         />
       </ul>
@@ -33,11 +36,15 @@ const Dropdown = ({ dropdownList }) => (
 );
 
 Dropdown.defaultProps = {
-  dropdownList: "",
+  dropdownList: [],
+  mainRoute: "",
+  dropdownOff: (f) => f,
 };
 
 Dropdown.propTypes = {
-  dropdownList: PropTypes.string,
+  dropdownList: PropTypes.instanceOf(Array),
+  mainRoute: PropTypes.string,
+  dropdownOff: PropTypes.func,
 };
 
 export default Dropdown;
