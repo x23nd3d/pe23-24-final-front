@@ -1,0 +1,11 @@
+<svg width="10" height="8" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="12" width="12" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <polyline stroke="null" fill="#fff" points="0.1996660828590393,2.634852170944214 0.8947843740886015,1.8304380178451538 4.96122465481443,6.576486587524414 9.027663684747438,1.8304380178451538 9.722783289309461,2.634852170944214 4.96122465481443,8.145090103149414 0.1996660828590393,2.634852170944214 " id="Fill-35" class="st0"/>
+ </g>
+</svg>
