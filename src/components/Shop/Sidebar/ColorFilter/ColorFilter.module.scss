@@ -13,9 +13,11 @@
 }
 
 .Color {
+  display: block;
   position: relative;
   padding-left: 50px;
   margin-top: 33px;
+  cursor: pointer;
 
   &:before {
     position: absolute;
