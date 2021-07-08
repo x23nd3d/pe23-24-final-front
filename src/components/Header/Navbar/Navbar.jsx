@@ -74,7 +74,7 @@ const Nav = (props) => {
             listClass={classNames(classes.NavItem, classes.NavItemMySearch)}
           />
           <ListRoute
-            route="/"
+            route="/login"
             content="My account"
             listClass={classNames(classes.NavItem, classes.NavItemMyAccount)}
           />

@@ -2,7 +2,6 @@ import React from "react";
 import classes from "./Shop.module.scss";
 import Sidebar from "./Sidebar/Sidebar";
 import Exposition from "./Exposition/Exposition";
-import LoginRegistration from "../LoginRegistration/LoginRegistration";
 
 const Shop = (props) => {
   const list = [
@@ -21,11 +20,10 @@ const Shop = (props) => {
   ];
 
   return (
-    // <div className={classes.Shop}>
-    //   <Sidebar />
-    //   <Exposition ProductList={list} />
-    // </div>
-    <LoginRegistration />
+    <div className={classes.Shop}>
+      <Sidebar />
+      <Exposition ProductList={list} />
+    </div>
   );
 };
 
