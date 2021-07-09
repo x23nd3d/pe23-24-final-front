@@ -3,7 +3,6 @@ import InputRange from "react-input-range";
 import "./_price-filter.scss";
 import classes from "./PriceFilter.module.scss";
 
-
 const PriceFilter = (props) => {
   const [rangeValue, setRangeValue] = useState({
     min: 0,
