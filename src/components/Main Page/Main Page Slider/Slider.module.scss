@@ -1,0 +1,101 @@
+.Slider {
+    position: relative;
+    
+    .Slid {
+        padding-top: 0rem;
+        position: relative;
+
+        .TextNew {
+            position: absolute;
+            z-index: 1;
+            font-size: 50px;
+            font-weight: bold;
+            color: #e5e5e5;
+            bottom: 70%;
+            right: 3%;
+            max-width: 35rem;
+            @media(max-width: 576px){
+                font-size: 23px; 
+            } 
+        }
+        .TextSale{
+            position: absolute;
+            z-index: 1;
+            font-size: 50px;
+            font-weight: bold;
+            color: #E01515;
+            bottom: 70%;
+            right: 3%;
+            max-width: 35rem;
+            @media(max-width: 576px){
+                font-size: 23px; 
+            } 
+        }
+        .TextEngoy{
+            position: absolute;
+            z-index: 1;
+            font-size: 50px;
+            font-weight: bold;
+            color: #E01515;
+            bottom: 50%;
+            left: 3%;
+            max-width: 35rem;
+            @media(max-width: 576px){
+               font-size: 36px;
+            }
+            .Off {
+                
+                
+            }
+        }
+        .ShopBtn{
+            display: flex;
+            justify-content: flex-end;
+            .ShopNewBtn{
+                color: #fff;
+                background: transparent;
+                font-size: 35px;
+                border: none;
+                border-bottom: 1px solid #fff;
+                cursor: pointer;
+                width: 44%;
+                @media(max-width: 576px){
+                    font-size: 14px;
+                 } 
+            }
+            .ShopNowBtn{
+                background: transparent;
+                font-size: 35px;
+                color: #000;
+                border: none;
+                border-bottom: 1px solid #000;
+                cursor: pointer;
+                width: 38%;
+                @media(max-width: 576px){
+                    font-size: 14px;
+                 } 
+            }
+        }
+        .ShopEnjoyBtn{
+            background: transparent;
+            font-size: 35px;
+            color: #000;
+            border: none;
+            border-bottom: 1px solid #000;
+            cursor: pointer;
+            width: 37%;
+            @media(max-width: 576px){
+                display:none;
+             } 
+        }
+        
+        img {
+            width: 100%;
+            height: 82vh; 
+            object-fit: fill; 
+            @media(max-width: 576px){
+                height: 40vh; 
+             } 
+        }
+    }
+}
