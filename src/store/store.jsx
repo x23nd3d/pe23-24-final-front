@@ -13,11 +13,11 @@ const composeEnhancers =
 
 const middlewares = [logger, thunk];
 
-export const store = createStore(
+const store = createStore(
   rootReducer,
   composeEnhancers(applyMiddleware(...middlewares))
 );
 
-export const persistor = persistStore(store);
+const persistor = persistStore(store);
 
-export default { store, persistor };
+export { store, persistor };

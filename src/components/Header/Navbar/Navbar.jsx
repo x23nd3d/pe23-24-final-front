@@ -28,7 +28,7 @@ const Nav = (props) => {
   ];
 
   const [dropdownItems] = useState({
-    clothes: ["Costumes", "Outerwear", "Trousers"],
+    clothes: ["Suits", "Outerwear", "Trousers"],
     shoes: ["Boots", "Sneakers", "Shoes"],
     accessories: ["Glasses", "Belts", "Cufflinks", "Watches"],
   });

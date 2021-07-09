@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./Footer.module.scss";
-import ListRoute from "../../UI/ListRoute/ListRoute";
-import {ReactComponent as ArrowDown} from "./Footer img/arrow-down.svg";
+import ListRoute from "../UI/ListRoute/ListRoute";
+import { ReactComponent as ArrowDown } from "./Footer img/arrow-down.svg";
 
 const Footer = () => {
   const footerListItems = {
@@ -48,26 +48,26 @@ const Footer = () => {
       <div className={classes.FooterColumn}>
         <div className={classes.ArrowDownColumnContainer}>
           <h3>Help</h3>
-            <ArrowDown className={classes.ArrowDown}/>
+          <ArrowDown className={classes.ArrowDown} />
         </div>
-       
+
         <ul className={classes.FooterColumnList}>
           {renderListItems(footerListItems.helpSection)}
         </ul>
       </div>
       <div className={classes.FooterColumn}>
-      <div className={classes.ArrowDownColumnContainer}>
+        <div className={classes.ArrowDownColumnContainer}>
           <h3>Follow Us</h3>
-            <ArrowDown className={classes.ArrowDown}/>
+          <ArrowDown className={classes.ArrowDown} />
         </div>
         <ul className={classes.FooterColumnList}>
           {renderListItems(footerListItems.followUsSection)}
         </ul>
       </div>
       <div className={classes.FooterColumn}>
-      <div className={classes.ArrowDownColumnContainer}>
+        <div className={classes.ArrowDownColumnContainer}>
           <h3>Company</h3>
-            <ArrowDown className={classes.ArrowDown}/>
+          <ArrowDown className={classes.ArrowDown} />
         </div>
         <ul className={classes.FooterColumnList}>
           {renderListItems(footerListItems.companySection)}
