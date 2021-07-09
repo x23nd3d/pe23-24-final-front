@@ -30,7 +30,11 @@ const testData = {
       "./suits/1701/charcoal_color/canali_charcoal3.png",
     ],
   },
-  color: ["Navy", "Black", "Charcoal"],
+  color: [
+    "Navy",
+    "Black",
+    "Charcoal"
+  ],
   material: "Wool",
   price: "2099",
   size: ["38", "40", "42", "44", "48"],

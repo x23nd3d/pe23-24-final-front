@@ -3,9 +3,13 @@
 
 .product {
     display: flex;
-    height: 100vh;
     width: 100%;
     background-color: #fff;
+    @media (max-width: 980px) {
+        flex-direction: column;
+        align-items: center;
+    }
+    // padding: 0 0 20px ;
 }
 
 .dataBlock {
@@ -18,8 +22,9 @@
     flex-direction: column;
     justify-content: space-evenly;
     width: 70%;
-    height: 100%;
 
+    height: 100%;
+    background-color: #fff;
     .primaryBlock, .selectionBlock {
         @include block-120
     }
@@ -59,7 +64,7 @@
 
     .dsc {
         @include block-120;
-        height: 160px;
+        height: 200px;
 
         & li {
             font-size: 16px;

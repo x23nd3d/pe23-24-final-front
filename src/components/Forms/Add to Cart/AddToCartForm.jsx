@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Formik, Form, Field } from "formik";
+import colorize from "../../../utils/colorize";
 import "./AddToCartForm.scss";
 
 const AddToCartForm = ({id, colors, sizes}) => (
@@ -12,8 +13,10 @@ const AddToCartForm = ({id, colors, sizes}) => (
             handleSubmit
         }) => <Form className="form" onSubmit={handleSubmit}>
             <div className="formBlock">
-                <span className="dataPointer">Select a color</span>
-                {colors.map((color, index) => <label key={color} htmlFor={`${color}${index}`}>
+                <span className="dataPointer">
+                {colors.length > 1 ? "Select a color" : <>Color<span style={{paddingLeft: "20px"}} >{colors[0]}</span></> }
+                </span>
+                {colors.length > 1 && colors.map((color, index) => <label key={color} htmlFor={`${color}${index}`}>
                     <Field
                         type="radio"
                         name="color"
@@ -21,7 +24,7 @@ const AddToCartForm = ({id, colors, sizes}) => (
                         value={color}
                         className="defaultRadio"
                     />
-                    <span className={`${color} customRadio`}>{color}</span>
+                    <span className={`${colorize(color)} customRadio`}>{color}</span>
                 </label>)}
             </div>
             <div className="formBlock select-block">
