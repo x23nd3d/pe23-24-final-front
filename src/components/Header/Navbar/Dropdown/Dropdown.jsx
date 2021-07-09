@@ -18,14 +18,14 @@ const Dropdown = ({ mainRoute, dropdownList, dropdownOff }) => (
         {dropdownList.map((route) => (
           <ListRoute
             key={route}
-            route={`/shop/${mainRoute}/${route.toLowerCase()}`}
+            route={`/shop/?category=${mainRoute}&type=${route.toLowerCase()}`}
             content={route}
             onClick={dropdownOff}
             listClass={classes.listItem}
           />
         ))}
         <ListRoute
-          route={`/shop/${mainRoute}/&all`}
+          route={`/shop/?category=${mainRoute}&all`}
           content="View all"
           onClick={dropdownOff}
           listClass={classNames(classes.listItem, classes.viewAll)}
