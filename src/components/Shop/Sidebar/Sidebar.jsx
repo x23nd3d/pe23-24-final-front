@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { NavLink, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import ColorFilter from "./ColorFilter/ColorFilter";
@@ -17,12 +18,17 @@ const renderCategories = (array) =>
   ));
 
 const Sidebar = ({ history }) => {
-  const clothesCategories = {
-    title: "Clothes",
-    items: ["Costumes", "Outerwear", "Trousers"],
-  };
+  const navbarReducer = useSelector((state) => state.navbarReducer);
+  let clothesCategories;
+
+  navbarReducer.categories.forEach((category) => {
+    if (category.title === navbarReducer.chosenCategory) {
+      clothesCategories = category.items;
+    }
+  });
 
   const { location } = history;
+  console.log(location);
 
   return (
     <div className={classes.Sidebar}>
@@ -32,17 +38,21 @@ const Sidebar = ({ history }) => {
           <span>&gt;</span>
           <ListRoute
             listClass={classes.RoutesItem}
-            route="/clothes"
-            content="Clothes"
+            route={`/shop/${navbarReducer.chosenCategory}`}
+            content={`${navbarReducer.chosenCategory[0].toUpperCase()}${navbarReducer.chosenCategory.slice(
+              1
+            )}`}
           />
           <span>&gt;</span>
-          <ListRoute
+          {/* <ListRoute
             listClass={classes.RoutesItem}
             route="/costumes"
             content="Costumes"
-          />
+          /> */}
         </ul>
-        <h2 className={classes.CategoryTitle}>{clothesCategories.title}</h2>
+        <h2 className={classes.CategoryTitle}>
+          {navbarReducer.chosenCategory}
+        </h2>
         <NavLink
           className={classes.CategoryAll}
           to={`${location.pathname}/&all`}
@@ -50,7 +60,7 @@ const Sidebar = ({ history }) => {
           View All
         </NavLink>
         <ul className={classes.ListCategory}>
-          {renderCategories(clothesCategories.items)}
+          {renderCategories(clothesCategories)}
         </ul>
         <ColorFilter />
         <PriceFilter />

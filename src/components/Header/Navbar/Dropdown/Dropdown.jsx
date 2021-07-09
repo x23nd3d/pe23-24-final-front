@@ -1,40 +1,53 @@
 import React from "react";
+// ---
+import { useSelector, useDispatch } from "react-redux";
+//---
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { motion } from "framer-motion";
 import classes from "./Dropdown.module.scss";
 import ListRoute from "../../../UI/ListRoute/ListRoute";
+// ---
+import { chooseCategory } from "../../../../redux/actions/navbar.actions";
+// ---
 
-const Dropdown = ({ mainRoute, dropdownList, dropdownOff }) => (
-  <motion.div
-    className={classNames(classes.dropdown)}
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-  >
-    <div className={classes.container}>
-      <h3 className={classes.title}>Categories</h3>
-      <ul className={classes.list}>
-        {dropdownList.map((route) => (
+const Dropdown = ({ mainRoute, dropdownList, dropdownOff }) => {
+  // const category = useSelector(state => state.navbarReducer);
+  const dispatch = useDispatch();
+
+  return (
+    <motion.div
+      className={classNames(classes.dropdown)}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <div className={classes.container}>
+        <h3 className={classes.title}>Categories</h3>
+        <ul className={classes.list}>
+          {dropdownList.map((route) => (
+            <ListRoute
+              key={route}
+              route={`/shop/${mainRoute}/${route.toLowerCase()}`}
+              content={route}
+              onClick={dropdownOff}
+              listClass={classes.listItem}
+            />
+          ))}
           <ListRoute
-            key={route}
-            route={`/shop/${mainRoute}/${route.toLowerCase()}`}
-            content={route}
-            onClick={dropdownOff}
-            listClass={classes.listItem}
+            route={`/shop/${mainRoute}/&all`}
+            content="View all"
+            onClick={() => {
+              dropdownOff();
+              dispatch(chooseCategory(mainRoute));
+            }}
+            listClass={classNames(classes.listItem, classes.viewAll)}
           />
-        ))}
-        <ListRoute
-          route={`/shop/${mainRoute}/&all`}
-          content="View all"
-          onClick={dropdownOff}
-          listClass={classNames(classes.listItem, classes.viewAll)}
-        />
-      </ul>
-    </div>
-  </motion.div>
-);
-
+        </ul>
+      </div>
+    </motion.div>
+  );
+};
 Dropdown.defaultProps = {
   dropdownList: [],
   mainRoute: "",
