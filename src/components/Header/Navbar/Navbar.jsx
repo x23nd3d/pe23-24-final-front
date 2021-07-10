@@ -22,9 +22,9 @@ const Nav = (props) => {
   };
 
   const navItems = [
-    { id: 0, route: "/", content: "Clothes" },
-    { id: 1, route: "/", content: "Shoes" },
-    { id: 2, route: "/", content: "Accessories" },
+    { id: 0, route: "#", content: "Clothes" },
+    { id: 1, route: "#", content: "Shoes" },
+    { id: 2, route: "#", content: "Accessories" },
   ];
 
   const [dropdownItems] = useState({

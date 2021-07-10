@@ -4,7 +4,8 @@ import { BrowserRouter } from "react-router-dom";
 import "./styles/_reset.scss";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-import { store, persistor } from "./store/store";
+import { autoLogin } from "./store/actions/auth";
+import { persistor, store } from "./store/store";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Layout from "./hoc/Layout/Layout";
@@ -21,13 +22,13 @@ const app = (
   </Provider>
 );
 
-// persistor.subscribe(() => {
-//   const token = store.getState().auth.token;
-//   if (token) {
-//     store.dispatch(autoLogin());
-//   }
-// });
-
+persistor.subscribe(() => {
+  const { token } = store.getState().auth;
+  console.log(store.getState(), "store.getState().auth");
+  if (token) {
+    store.dispatch(autoLogin());
+  }
+});
 ReactDOM.render(
   <React.StrictMode>{app}</React.StrictMode>,
   document.getElementById("root")
