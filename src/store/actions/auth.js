@@ -17,6 +17,7 @@ export function auth(email, password, keepSigned) {
     const authData = {
       email,
       password,
+      keepSigned,
     };
 
     try {
@@ -82,6 +83,7 @@ export function auth(email, password, keepSigned) {
             toastClass: "toastr-c-success",
           }
         );
+        console.log(data.userId, "ata.userId");
         dispatch(authSuccess(data.token, data.userId, expirationDate));
         sessionStorage.setItem("token", data.token);
         console.log("data.expiresIn", data.expiresIn);
@@ -150,7 +152,7 @@ export function signUp(name, surname, email, password) {
         );
       }, 3000);
       dispatch(signUpSuccess());
-      return false;
+      return true;
     } catch (e) {
       dispatch(authError(e));
       return false;
@@ -202,6 +204,7 @@ export function signUpStart() {
 export function autoLogin() {
   return (dispatch, getState) => {
     const user = getState().user.userId;
+    console.log("USERRRR", user);
     const { token } = getState().auth;
     const expirationDate = new Date(getState().auth.expiresIn);
     console.log(

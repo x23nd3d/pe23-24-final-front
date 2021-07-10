@@ -15,7 +15,7 @@ const LoginRegistration = (props) => {
     email: "",
     password: "",
     confirmedPassword: "",
-    keepSigned: true,
+    keepSigned: false,
   });
 
   const loginSwitcher = () => {
@@ -55,7 +55,17 @@ const LoginRegistration = (props) => {
         email,
         password
       );
-      if (registered) props.history.push("/login");
+      if (registered) {
+        setLogin(true);
+        setUserInfo({
+          firstName: "",
+          secondName: "",
+          email: "",
+          password: "",
+          confirmedPassword: "",
+          keepSigned: false,
+        });
+      }
     }
   };
 
@@ -151,13 +161,23 @@ const LoginRegistration = (props) => {
               <span className={classes.CheckboxLabel}>Keep me signed in</span>
             </div>
           )}
-          <button
-            className={classes.Button}
-            onClick={handleSubmit}
-            type="submit"
-          >
-            Log in
-          </button>
+          {login ? (
+            <button
+              className={classes.Button}
+              onClick={handleSubmit}
+              type="submit"
+            >
+              Log in
+            </button>
+          ) : (
+            <button
+              className={classes.Button}
+              onClick={handleSubmit}
+              type="submit"
+            >
+              Register
+            </button>
+          )}
         </form>
       </div>
     </div>
