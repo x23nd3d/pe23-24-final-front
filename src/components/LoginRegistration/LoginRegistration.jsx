@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import classNames from "classnames";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 import { auth, signUp } from "../../store/actions/auth";
 import classes from "./LoginRegistration.module.scss";
@@ -70,7 +71,12 @@ const LoginRegistration = (props) => {
   };
 
   return (
-    <div className={classes.LoginRegistration}>
+    <motion.div
+      className={classes.LoginRegistration}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <div className={classes.Inner}>
         <div className={classes.Tabs}>
           <button
@@ -180,7 +186,7 @@ const LoginRegistration = (props) => {
           )}
         </form>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

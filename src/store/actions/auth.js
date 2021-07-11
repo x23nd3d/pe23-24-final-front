@@ -23,13 +23,11 @@ export function auth(email, password, keepSigned) {
     try {
       const response = await axios.post("/login", authData);
       const { data } = response;
-      console.log("RESPONSE DATA FROM USER", data);
 
       if (data.status === "failure") {
         const { text } = data;
 
         if (text === "notfound") {
-          console.log("Not found");
           dispatch(authError(text));
           pushNotification(
             "error",
@@ -83,10 +81,8 @@ export function auth(email, password, keepSigned) {
             toastClass: "toastr-c-success",
           }
         );
-        console.log(data.userId, "ata.userId");
         dispatch(authSuccess(data.token, data.userId, expirationDate));
         sessionStorage.setItem("token", data.token);
-        console.log("data.expiresIn", data.expiresIn);
         dispatch(autoLogout(data.expiresIn));
       }, 500);
       return true;
@@ -111,7 +107,6 @@ export function signUp(name, surname, email, password) {
       dispatch(signUpStart());
       const response = await axios.post("/signup", authData);
       const { data } = response;
-      console.log("RESPONSE DATA FROM USER", data);
 
       if (data.status === "failure") {
         const { text } = data;
@@ -204,7 +199,6 @@ export function signUpStart() {
 export function autoLogin() {
   return (dispatch, getState) => {
     const user = getState().user.userId;
-    console.log("USERRRR", user);
     const { token } = getState().auth;
     const expirationDate = new Date(getState().auth.expiresIn);
     console.log(
@@ -278,7 +272,7 @@ export function logout() {
         sessionStorage.removeItem("token");
         pushNotification(
           "success",
-          `Hope you will return soon, ${toUpperCase(name)}`,
+          `See you soon, ${toUpperCase(name)}`,
           "Good bye",
           {
             toastClass: "toastr-c-success",

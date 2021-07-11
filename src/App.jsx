@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import "./App.module.scss";
+import { AnimatePresence } from "framer-motion";
 import MainPage from "./components/Main Page/MainPage";
 import Shop from "./components/Shop/Shop";
 import ShopLayout from "./hoc/ShopLayout/ShopLayout";
@@ -55,7 +56,9 @@ function App({ isAuthenticated }) {
         </ShopLayout>
       </Route>
       <Route exact path="/login">
-        <LoginRegistration />
+        <AnimatePresence>
+          <LoginRegistration />
+        </AnimatePresence>
       </Route>
       <Route path="/product">
         <Product data={testData} />

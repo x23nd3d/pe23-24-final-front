@@ -8,14 +8,17 @@ import NavigationListRoutes from "../../UI/NavigationListRoutes/NavigationListRo
 import Backdrop from "../../UI/Backdrop/Backdrop";
 import classes from "./Navbar.module.scss";
 import Search from "./Search/Search";
+import AccountRoutes from "../../Account/AccountRoutes/AccountRoutes";
 
 const Nav = ({ isAuthenticated, user }) => {
   const [man, setMan] = useState(false);
-  const [account, setAccount] = useState(false);
+  const [accountMenu, setAccountMenu] = useState(false);
   const [activeNav, setActiveNav] = useState({});
-  const [activeAccount, setActiveAccount] = useState({});
 
   const toggleDropdown = (e, id) => {
+    if (accountMenu) {
+      setAccountMenu(false);
+    }
     const activeBtn = e.target.textContent.toLowerCase().trim();
     setActiveNav({ [activeBtn]: id });
     setMan((prev) => !prev);
@@ -25,14 +28,16 @@ const Nav = ({ isAuthenticated, user }) => {
     }
   };
 
-  const toggleFastAccess = (e, id) => {
-    const activeBtn = e.target.textContent.toLowerCase().trim();
-    setActiveNav({ [activeBtn]: id });
-    setMan((prev) => !prev);
-    if (Object.values(activeNav)[0] !== id) {
-      setActiveNav({ [activeBtn]: id });
-      setMan(true);
+  const toggleFastAccess = () => {
+    if (man) {
+      setMan(false);
     }
+    setAccountMenu((prev) => !prev);
+  };
+
+  const setBackdrop = () => {
+    setAccountMenu(false);
+    setMan(false);
   };
 
   const navItems = [
@@ -41,9 +46,9 @@ const Nav = ({ isAuthenticated, user }) => {
     { id: 2, route: "#", content: "Accessories" },
   ];
 
-  const userAccountItems = [
-    { id: 0, route: "#", content: "Account" },
-    { id: 1, route: "#", content: "Logout" },
+  const accountItems = [
+    { id: 0, route: "/account/", content: "Account" },
+    { id: 1, route: "/logout", content: "Logout" },
   ];
 
   const [dropdownItems] = useState({
@@ -76,35 +81,12 @@ const Nav = ({ isAuthenticated, user }) => {
       );
     });
 
-  const renderFastAccessItem = (items) =>
-    items.map(({ id, route, content }) => {
-      const activeCls = [
-        Object.values(activeAccount)[0] === id && account
-          ? classes.NavItemActive
-          : null,
-      ];
-      const activeDropdown =
-        Object.values(activeAccount)[0] === id ? man : null;
-      return (
-        <NavigationListRoutes
-          key={content}
-          id={id}
-          route={route}
-          content={content}
-          activeClass={activeCls.join(" ")}
-          listClass={classes.NavItem}
-          dropdownToggle={toggleDropdown}
-          dropdownOff={setMan}
-          active={activeDropdown}
-          dropdownItems={dropdownItems[Object.keys(activeNav)[0]]}
-        />
-      );
-    });
+  console.log("ACCOUNT", accountMenu);
 
   return (
     <>
       <nav className={classes.Nav}>
-        {man && <Backdrop toggle={setMan} />}
+        {man || accountMenu ? <Backdrop toggle={setBackdrop} /> : null}
         <ul className={classNames(classes.NavItems, classes.NavShop)}>
           {renderNavItems(navItems)}
         </ul>
@@ -118,10 +100,13 @@ const Nav = ({ isAuthenticated, user }) => {
             listClass={classNames(classes.NavItem, classes.NavItemMySearch)}
           />
           {isAuthenticated ? (
-            <ListRoute
-              route="#"
+            <AccountRoutes
+              active={accountMenu}
               content={user.name}
               listClass={classNames(classes.NavItem, classes.NavItemMyAccount)}
+              fastAccessList={accountItems}
+              fastAccessOff={setAccountMenu}
+              toggleAccountItems={toggleFastAccess}
             />
           ) : (
             <ListRoute

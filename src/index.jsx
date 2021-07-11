@@ -24,8 +24,6 @@ const app = (
 
 persistor.subscribe(() => {
   const { token } = store.getState().auth;
-
-  console.log("token", store.getState());
   if (token) {
     store.dispatch(autoLogin());
   }
