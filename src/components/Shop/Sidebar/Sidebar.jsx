@@ -17,7 +17,7 @@ const renderCategories = (array) =>
     />
   ));
 
-const Sidebar = ({ history, sidebar }) => {
+const Sidebar = ({ history, sidebar, shop }) => {
   let clothesCategories;
   console.log("SIDEBAR", sidebar);
 
@@ -28,7 +28,12 @@ const Sidebar = ({ history, sidebar }) => {
   });
 
   const { location } = history;
-  console.log(location);
+  const { currentRoute } = shop;
+  const allProductsRoute = (generalRoute) => {
+    const allProductsRouteCurrent = generalRoute.split("=");
+    allProductsRouteCurrent[2] = "all";
+    return allProductsRouteCurrent.join("=");
+  };
 
   return (
     <div className={classes.Sidebar}>
@@ -38,17 +43,17 @@ const Sidebar = ({ history, sidebar }) => {
           <span>&gt;</span>
           <ListRoute
             listClass={classes.RoutesItem}
-            route={`/shop/${sidebar.chosenCategory}`}
+            route={`/shop/${allProductsRoute(currentRoute)}`}
             content={`${sidebar.chosenCategory[0].toUpperCase()}${sidebar.chosenCategory.slice(
               1
             )}`}
           />
           <span>&gt;</span>
-          {/* <ListRoute
+          <ListRoute
             listClass={classes.RoutesItem}
-            route="/costumes"
+            route={`/shop/${currentRoute}`}
             content="Costumes"
-          /> */}
+          />
         </ul>
         <h2 className={classes.CategoryTitle}>{sidebar.chosenCategory}</h2>
         <NavLink
@@ -71,17 +76,20 @@ Sidebar.defaultProps = {
   location: {},
   history: {},
   sidebar: {},
+  shop: {},
 };
 
 Sidebar.propTypes = {
   history: PropTypes.instanceOf(Object),
   location: PropTypes.instanceOf(Object),
   sidebar: PropTypes.instanceOf(Object),
+  shop: PropTypes.instanceOf(Object),
 };
 
 function mapStateToProps(state) {
   return {
     sidebar: state.sidebar,
+    shop: state.shop,
   };
 }
 
