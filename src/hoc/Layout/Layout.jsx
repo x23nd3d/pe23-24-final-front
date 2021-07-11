@@ -2,9 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { motion, AnimatePresence } from "framer-motion";
+import { withRouter } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Spinner from "../../components/UI/Spinner/Spinner";
+
 import classes from "./Layout.module.scss";
 
 const Layout = ({ children, auth }) => (
@@ -42,4 +44,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Layout);
+export default connect(mapStateToProps)(withRouter(Layout));
