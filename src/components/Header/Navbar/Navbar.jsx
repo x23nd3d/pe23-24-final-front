@@ -81,8 +81,6 @@ const Nav = ({ isAuthenticated, user }) => {
       );
     });
 
-  console.log("ACCOUNT", accountMenu);
-
   return (
     <>
       <nav className={classes.Nav}>
