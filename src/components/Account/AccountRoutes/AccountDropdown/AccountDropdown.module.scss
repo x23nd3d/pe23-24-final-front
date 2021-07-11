@@ -1,0 +1,50 @@
+@import "../../../../styles/mixins";
+
+.AccountDropdown {
+  position: absolute;
+  top: 75%;
+  z-index: 100;
+  border-radius: 10px;
+  width: 215px;
+  padding: 10px 0;
+  background-color: #000;
+}
+
+.container {
+  @include container;
+}
+
+.AccountTitle {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-family: "Open Sans", sans-serif;
+  text-transform: uppercase;
+}
+
+.AccountList {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.AccountListItem {
+  padding: 20px;
+}
+
+
+@media screen and (max-width: 992px) {
+  .AccountDropdown {
+    top: 120px;
+  }
+  .AccountList {
+    width: 100%;
+  }
+}
+
+
+@media screen and (max-width: 480px) {
+  .AccountList {
+    width: 100%;
+    height: auto;
+  }
+}

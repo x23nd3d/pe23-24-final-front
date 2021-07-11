@@ -1,0 +1,49 @@
+@import "../../../styles/mixins";
+
+.FastAccess {
+  position: absolute;
+  top: 90px;
+  //left: 50px;
+  z-index: 100;
+  width: 350px;
+  padding: 50px 0;
+  background-color: #000;
+}
+
+.container {
+  @include container;
+}
+
+.FastAccessTitle {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-family: "Open Sans", sans-serif;
+  text-transform: uppercase;
+}
+
+.FastAccessList {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.FastAccessListItem {
+  margin-top: 40px;
+}
+
+@media screen and (max-width: 992px) {
+  .FastAccess {
+    top: 120px;
+  }
+  .FastAccessList {
+    width: 100%;
+  }
+}
+
+
+@media screen and (max-width: 480px) {
+  .FastAccessList {
+    width: 100%;
+    height: auto;
+  }
+}
