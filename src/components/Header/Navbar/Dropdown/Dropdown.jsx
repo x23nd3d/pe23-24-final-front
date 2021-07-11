@@ -6,6 +6,7 @@ import classNames from "classnames";
 import { motion } from "framer-motion";
 import classes from "./Dropdown.module.scss";
 import ListRoute from "../../../UI/ListRoute/ListRoute";
+import { receiveCurrentRoute } from "../../../../store/actions/shop";
 import chooseCategory from "../../../../store/actions/sidebar";
 
 const Dropdown = ({
@@ -13,10 +14,11 @@ const Dropdown = ({
   dropdownList,
   dropdownOff,
   categoryChooser,
+  receiveRoute,
 }) => {
-  const sidebarsRoutesHandler = () => {
+  const registerRoutesHandler = (route) => {
     dropdownOff();
-    console.log(mainRoute, "MAIN ROUTE");
+    receiveRoute(route);
     categoryChooser(mainRoute);
   };
 
@@ -35,14 +37,14 @@ const Dropdown = ({
               key={route}
               route={`/shop/?category=${mainRoute}&type=${route.toLowerCase()}`}
               content={route}
-              onClick={dropdownOff}
+              onClick={() => registerRoutesHandler(`shop/?category=${mainRoute}&type=${route.toLowerCase()}`)}
               listClass={classes.listItem}
             />
           ))}
           <ListRoute
             route={`/shop/?category=${mainRoute}&all`}
             content="View all"
-            onClick={sidebarsRoutesHandler}
+            onClick={() => registerRoutesHandler(`/shop/?category=${mainRoute}&all`)}
             listClass={classNames(classes.listItem, classes.viewAll)}
           />
         </ul>
@@ -55,6 +57,7 @@ Dropdown.defaultProps = {
   dropdownList: [],
   mainRoute: "",
   dropdownOff: (f) => f,
+  receiveRoute: (f) => f,
   categoryChooser: (f) => f,
 };
 
@@ -62,18 +65,23 @@ Dropdown.propTypes = {
   dropdownList: PropTypes.instanceOf(Array),
   mainRoute: PropTypes.string,
   dropdownOff: PropTypes.func,
+  receiveRoute: PropTypes.func,
   categoryChooser: PropTypes.func,
 };
 
 function mapStateToProps(state) {
   return {
+    shop: state.shop,
     sidebar: state.sidebar,
   };
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  categoryChooser: (route) => dispatch(chooseCategory(route)),
-});
+function mapDispatchToProps(dispatch) {
+  return {
+    receiveRoute: (route) => dispatch(receiveCurrentRoute(route)),
+    categoryChooser: (route) => dispatch(chooseCategory(route)),
+  };
+}
 
 export default connect(
   mapStateToProps,

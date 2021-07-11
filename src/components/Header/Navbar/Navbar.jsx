@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classNames from "classnames";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import ListRoute from "../../UI/ListRoute/ListRoute";
@@ -9,11 +9,16 @@ import Backdrop from "../../UI/Backdrop/Backdrop";
 import classes from "./Navbar.module.scss";
 import Search from "./Search/Search";
 import AccountRoutes from "../../Account/AccountRoutes/AccountRoutes";
+import { receiveCurrentRoute } from "../../../store/actions/shop";
 
-const Nav = ({ isAuthenticated, user }) => {
+const Nav = ({ isAuthenticated, user, history, receiveRoute }) => {
   const [man, setMan] = useState(false);
   const [accountMenu, setAccountMenu] = useState(false);
   const [activeNav, setActiveNav] = useState({});
+
+  useEffect(() => {
+    receiveRoute(history.location.search);
+  }, []);
 
   const toggleDropdown = (e, id) => {
     if (accountMenu) {
@@ -127,18 +132,29 @@ const Nav = ({ isAuthenticated, user }) => {
 Nav.defaultProps = {
   isAuthenticated: null,
   user: {},
+  receiveRoute: (f) => f,
+  history: {},
 };
 
 Nav.propTypes = {
   isAuthenticated: PropTypes.bool,
   user: PropTypes.instanceOf(Object),
+  receiveRoute: PropTypes.func,
+  history: PropTypes.instanceOf(Object),
 };
 
 function mapStateToProps(state) {
   return {
     isAuthenticated: !!state.auth.token,
     user: state.user.userId,
+    shop: state.shop,
   };
 }
 
-export default connect(mapStateToProps)(Nav);
+function mapDispatchToProps(dispatch) {
+  return {
+    receiveRoute: (route) => dispatch(receiveCurrentRoute(route)),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Nav));

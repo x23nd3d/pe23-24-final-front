@@ -19,10 +19,10 @@ const Shop = (props) => {
     { name: "name6", price: "pr6", id: "226" },
   ];
 
+  // <Exposition ProductList={list} />
   return (
     <div className={classes.Shop}>
       <Sidebar />
-      <Exposition ProductList={list} />
     </div>
   );
 };
