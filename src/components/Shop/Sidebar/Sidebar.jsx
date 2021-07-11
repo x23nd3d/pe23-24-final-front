@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, connect } from "react-redux";
 import { NavLink, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import ColorFilter from "./ColorFilter/ColorFilter";
@@ -17,12 +17,12 @@ const renderCategories = (array) =>
     />
   ));
 
-const Sidebar = ({ history }) => {
-  const navbarReducer = useSelector((state) => state.navbarReducer);
+const Sidebar = ({ history, sidebar }) => {
   let clothesCategories;
+  console.log("SIDEBAR", sidebar);
 
-  navbarReducer.categories.forEach((category) => {
-    if (category.title === navbarReducer.chosenCategory) {
+  sidebar.categories.forEach((category) => {
+    if (category.title === sidebar.chosenCategory) {
       clothesCategories = category.items;
     }
   });
@@ -38,8 +38,8 @@ const Sidebar = ({ history }) => {
           <span>&gt;</span>
           <ListRoute
             listClass={classes.RoutesItem}
-            route={`/shop/${navbarReducer.chosenCategory}`}
-            content={`${navbarReducer.chosenCategory[0].toUpperCase()}${navbarReducer.chosenCategory.slice(
+            route={`/shop/${sidebar.chosenCategory}`}
+            content={`${sidebar.chosenCategory[0].toUpperCase()}${sidebar.chosenCategory.slice(
               1
             )}`}
           />
@@ -50,9 +50,7 @@ const Sidebar = ({ history }) => {
             content="Costumes"
           /> */}
         </ul>
-        <h2 className={classes.CategoryTitle}>
-          {navbarReducer.chosenCategory}
-        </h2>
+        <h2 className={classes.CategoryTitle}>{sidebar.chosenCategory}</h2>
         <NavLink
           className={classes.CategoryAll}
           to={`${location.pathname}/&all`}
@@ -72,11 +70,19 @@ const Sidebar = ({ history }) => {
 Sidebar.defaultProps = {
   location: {},
   history: {},
+  sidebar: {},
 };
 
 Sidebar.propTypes = {
   history: PropTypes.instanceOf(Object),
   location: PropTypes.instanceOf(Object),
+  sidebar: PropTypes.instanceOf(Object),
 };
 
-export default withRouter(Sidebar);
+function mapStateToProps(state) {
+  return {
+    sidebar: state.sidebar,
+  };
+}
+
+export default connect(mapStateToProps)(withRouter(Sidebar));

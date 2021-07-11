@@ -4,30 +4,22 @@ import { BrowserRouter } from "react-router-dom";
 import "./styles/_reset.scss";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-// import { store, persistor } from "./store/store";
-import store from "./redux/store";
+import { store, persistor } from "./store/store";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Layout from "./hoc/Layout/Layout";
 
 const app = (
   <Provider store={store}>
-    {/* <PersistGate persistor={persistor}> */}
-    <BrowserRouter>
-      <Layout>
-        <App />
-      </Layout>
-    </BrowserRouter>
-    {/* </PersistGate> */}
+    <PersistGate persistor={persistor}>
+      <BrowserRouter>
+        <Layout>
+          <App />
+        </Layout>
+      </BrowserRouter>
+    </PersistGate>
   </Provider>
 );
-
-// persistor.subscribe(() => {
-//   const token = store.getState().auth.token;
-//   if (token) {
-//     store.dispatch(autoLogin());
-//   }
-// });
 
 ReactDOM.render(
   <React.StrictMode>{app}</React.StrictMode>,

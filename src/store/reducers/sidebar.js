@@ -1,9 +1,11 @@
+import { CHOSEN_CATEGORY } from "../actions/actionTypes";
+
 const INITIAL_STATE = {
   chosenCategory: "clothes",
   categories: [
     {
       title: "clothes",
-      items: ["Suits", "Outerwear", "Trousers"],
+      items: ["Suits", "Outerwear", "Pants"],
     },
     {
       title: "shoes",
@@ -16,9 +18,10 @@ const INITIAL_STATE = {
   ],
 };
 
-const navbarReducer = (state = INITIAL_STATE, action) => {
+const sidebarReducer = (state = INITIAL_STATE, action) => {
+  console.log(state, "state!!");
   switch (action.type) {
-    case "CHOSEN_CATEGORY":
+    case CHOSEN_CATEGORY:
       return {
         ...state,
         chosenCategory: action.payload,
@@ -29,4 +32,4 @@ const navbarReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-export default navbarReducer;
+export default sidebarReducer;

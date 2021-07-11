@@ -1,19 +1,28 @@
 import React from "react";
 // ---
-import { useSelector, useDispatch } from "react-redux";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+
 //---
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { motion } from "framer-motion";
 import classes from "./Dropdown.module.scss";
 import ListRoute from "../../../UI/ListRoute/ListRoute";
-// ---
-import { chooseCategory } from "../../../../redux/actions/navbar.actions";
-// ---
+import chooseCategory from "../../../../store/actions/sidebar";
 
-const Dropdown = ({ mainRoute, dropdownList, dropdownOff }) => {
+const Dropdown = ({
+  mainRoute,
+  dropdownList,
+  dropdownOff,
+  categoryChooser,
+}) => {
   // const category = useSelector(state => state.navbarReducer);
-  const dispatch = useDispatch();
+
+  const sidebarsRoutesHandler = () => {
+    dropdownOff();
+    categoryChooser(mainRoute);
+  };
 
   return (
     <motion.div
@@ -37,10 +46,7 @@ const Dropdown = ({ mainRoute, dropdownList, dropdownOff }) => {
           <ListRoute
             route={`/shop/${mainRoute}/&all`}
             content="View all"
-            onClick={() => {
-              dropdownOff();
-              dispatch(chooseCategory(mainRoute));
-            }}
+            onClick={sidebarsRoutesHandler}
             listClass={classNames(classes.listItem, classes.viewAll)}
           />
         </ul>
@@ -52,12 +58,27 @@ Dropdown.defaultProps = {
   dropdownList: [],
   mainRoute: "",
   dropdownOff: (f) => f,
+  categoryChooser: (f) => f,
 };
 
 Dropdown.propTypes = {
   dropdownList: PropTypes.instanceOf(Array),
   mainRoute: PropTypes.string,
   dropdownOff: PropTypes.func,
+  categoryChooser: PropTypes.func,
 };
 
-export default Dropdown;
+function mapStateToProps(state) {
+  return {
+    sidebar: state.sidebar,
+  };
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  categoryChooser: (route) => dispatch(chooseCategory(route)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(Dropdown));
