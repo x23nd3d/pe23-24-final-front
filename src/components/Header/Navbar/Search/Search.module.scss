@@ -1,3 +1,21 @@
+.SearchItem {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+
+    @media screen and (max-width: 576px){
+        font-size: 0;
+    }
+
+    svg {
+        width: 16px;
+        height: 16px;
+        margin-right: 5px;
+        fill: #7b7b7b;
+    }
+}
 .Search {
     width: 100%;
     height: 500px;
@@ -9,6 +27,7 @@
     position: absolute;
     top: 80px;
     left: 0;
+    z-index: 1;
        
         .InputFieldPosition{
             position: relative;
