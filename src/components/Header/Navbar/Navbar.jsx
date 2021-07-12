@@ -11,14 +11,15 @@ import Search from "./Search/Search";
 import AccountRoutes from "../../Account/AccountRoutes/AccountRoutes";
 import { receiveCurrentRoute } from "../../../store/actions/shop";
 
-const Nav = ({ isAuthenticated, user, history, receiveRoute }) => {
+const Nav = ({ isAuthenticated, user, history, receiveRoute, shop }) => {
   const [man, setMan] = useState(false);
   const [accountMenu, setAccountMenu] = useState(false);
   const [activeNav, setActiveNav] = useState({});
 
-  useEffect(() => {
-    receiveRoute(history.location.search);
-  }, []);
+  // useEffect(() => {
+  //   console.log("history.location.search", history.location.search);
+  //   receiveRoute(`shop/${history.location.search}`);
+  // }, []);
 
   const toggleDropdown = (e, id) => {
     if (accountMenu) {
@@ -134,6 +135,7 @@ Nav.defaultProps = {
   user: {},
   receiveRoute: (f) => f,
   history: {},
+  shop: {},
 };
 
 Nav.propTypes = {
@@ -141,6 +143,7 @@ Nav.propTypes = {
   user: PropTypes.instanceOf(Object),
   receiveRoute: PropTypes.func,
   history: PropTypes.instanceOf(Object),
+  shop: PropTypes.instanceOf(Object),
 };
 
 function mapStateToProps(state) {
