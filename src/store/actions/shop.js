@@ -1,21 +1,60 @@
 import {
   RECEIVE_CURRENT_ROUTE_START,
   RECEIVE_CURRENT_ROUTE_SUCCESS,
+  SEND_PRODUCTS_REQUEST_ERROR,
+  SEND_PRODUCTS_REQUEST_START,
+  SEND_PRODUCTS_REQUEST_SUCCESS,
 } from "./actionTypes";
+import axios from "../../axios/axios-shop";
 
 export function receiveCurrentRoute(route) {
   return (dispatch, getState) => {
     try {
-      dispatch(receiveRouteStart());
       const current = getState().shop.currentRoute;
-
-      console.log("RECEIVED", route);
-      console.log("Current", current);
+      if (route === current) {
+        return;
+      }
+      dispatch(receiveRouteStart());
       dispatch(receiveRouteSuccess(route));
+      dispatch(sendProductsRequest(route));
     } catch (e) {
       console.error(e);
       dispatch(receiveRouteError(e));
     }
+  };
+}
+
+export function sendProductsRequest(route) {
+  return async (dispatch) => {
+    try {
+      dispatch(sendProductsRequestStart());
+      const result = await axios.get(route);
+      const { data } = result;
+      dispatch(sendProductsRequestSuccess(data));
+    } catch (e) {
+      console.error(e);
+      dispatch(sendProductsRequestError(e));
+    }
+  };
+}
+
+export function sendProductsRequestStart() {
+  return {
+    type: SEND_PRODUCTS_REQUEST_START,
+  };
+}
+
+export function sendProductsRequestSuccess(data) {
+  return {
+    type: SEND_PRODUCTS_REQUEST_SUCCESS,
+    data,
+  };
+}
+
+export function sendProductsRequestError(e) {
+  return {
+    type: SEND_PRODUCTS_REQUEST_ERROR,
+    e,
   };
 }
 

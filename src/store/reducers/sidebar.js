@@ -19,7 +19,6 @@ const INITIAL_STATE = {
 };
 
 const sidebarReducer = (state = INITIAL_STATE, action) => {
-  console.log(state, "state!!");
   switch (action.type) {
     case CHOSEN_CATEGORY:
       return {

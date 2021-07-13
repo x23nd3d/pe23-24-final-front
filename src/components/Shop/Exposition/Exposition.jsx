@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import { expo, listItem } from "./Exposition.module.scss";
 import ProductCard from "./ProductCard";
 
-const Exposition = ({ ProductList }) => (
+const Exposition = ({ productList }) => (
   <ul className={expo}>
-    {ProductList.map((product) => (
+    {productList.map((product) => (
       <li className={listItem} key={product.id}>
         <ProductCard product={product} />
       </li>
@@ -14,7 +14,7 @@ const Exposition = ({ ProductList }) => (
 );
 
 Exposition.propTypes = {
-  ProductList: PropTypes.arrayOf(PropTypes.string).isRequired,
+  productList: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default Exposition;

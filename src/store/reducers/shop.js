@@ -1,6 +1,10 @@
 import {
+  RECEIVE_CURRENT_ROUTE_ERROR,
   RECEIVE_CURRENT_ROUTE_START,
   RECEIVE_CURRENT_ROUTE_SUCCESS,
+  SEND_PRODUCTS_REQUEST_ERROR,
+  SEND_PRODUCTS_REQUEST_START,
+  SEND_PRODUCTS_REQUEST_SUCCESS,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -16,6 +20,23 @@ const handlers = {
     ...state,
     loading: false,
     currentRoute: route,
+  }),
+  [RECEIVE_CURRENT_ROUTE_ERROR]: (state, { e }) => ({
+    ...state,
+    error: e,
+  }),
+  [SEND_PRODUCTS_REQUEST_START]: (state) => ({
+    ...state,
+    loading: true,
+  }),
+  [SEND_PRODUCTS_REQUEST_SUCCESS]: (state, { data }) => ({
+    ...state,
+    loading: false,
+    currentItems: data,
+  }),
+  [SEND_PRODUCTS_REQUEST_ERROR]: (state, { e }) => ({
+    ...state,
+    error: e,
   }),
   DEFAULT: (state) => state,
 };

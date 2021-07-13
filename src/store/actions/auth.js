@@ -201,12 +201,6 @@ export function autoLogin() {
     const user = getState().user.userId;
     const { token } = getState().auth;
     const expirationDate = new Date(getState().auth.expiresIn);
-    console.log(
-      "Expiration date:",
-      expirationDate,
-      "CHECK STATE",
-      getState().auth.expiresIn
-    );
     if (!token) {
       dispatch(logout());
     } else if (expirationDate <= new Date()) {

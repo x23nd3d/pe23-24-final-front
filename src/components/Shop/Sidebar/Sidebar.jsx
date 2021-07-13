@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector, connect } from "react-redux";
+import { connect } from "react-redux";
 import { NavLink, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import ColorFilter from "./ColorFilter/ColorFilter";
@@ -17,9 +17,8 @@ const renderCategories = (array) =>
     />
   ));
 
-const Sidebar = ({ history, sidebar, shop }) => {
+const Sidebar = ({ sidebar, shop }) => {
   let clothesCategories;
-  console.log("SIDEBAR", sidebar);
 
   sidebar.categories.forEach((category) => {
     if (category.title === sidebar.chosenCategory) {
@@ -27,7 +26,6 @@ const Sidebar = ({ history, sidebar, shop }) => {
     }
   });
 
-  const { location } = history;
   const { currentRoute } = shop;
   const allProductsRoute = (generalRoute) => {
     const allProductsRouteCurrent = generalRoute.split("=");
@@ -56,10 +54,7 @@ const Sidebar = ({ history, sidebar, shop }) => {
           />
         </ul>
         <h2 className={classes.CategoryTitle}>{sidebar.chosenCategory}</h2>
-        <NavLink
-          className={classes.CategoryAll}
-          to={`${location.pathname}/&all`}
-        >
+        <NavLink className={classes.CategoryAll} to={`/shop/${currentRoute}`}>
           View All
         </NavLink>
         <ul className={classes.ListCategory}>
@@ -73,15 +68,11 @@ const Sidebar = ({ history, sidebar, shop }) => {
 };
 
 Sidebar.defaultProps = {
-  location: {},
-  history: {},
   sidebar: {},
   shop: {},
 };
 
 Sidebar.propTypes = {
-  history: PropTypes.instanceOf(Object),
-  location: PropTypes.instanceOf(Object),
   sidebar: PropTypes.instanceOf(Object),
   shop: PropTypes.instanceOf(Object),
 };
