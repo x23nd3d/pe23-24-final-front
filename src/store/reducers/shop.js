@@ -9,7 +9,7 @@ import {
 
 const initialState = {
   currentItems: [],
-  currentRoute: null,
+  currentRoute: "/shop/?category=all&type=all",
   loading: false,
   error: false,
 };

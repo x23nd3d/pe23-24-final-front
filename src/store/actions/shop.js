@@ -11,7 +11,8 @@ export function receiveCurrentRoute(route) {
   return (dispatch, getState) => {
     try {
       const current = getState().shop.currentRoute;
-      if (route === current) {
+      const { currentItems } = getState().shop;
+      if (route === current && currentItems.length > 0) {
         return;
       }
       dispatch(receiveRouteStart());

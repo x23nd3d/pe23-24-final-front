@@ -95,6 +95,7 @@ const Nav = ({ isAuthenticated, user, history }) => {
           <Search />
           {isAuthenticated ? (
             <AccountRoutes
+              to={history.location.search}
               active={accountMenu}
               content={user.name}
               listClass={classNames(classes.NavItem, classes.NavItemMyAccount)}

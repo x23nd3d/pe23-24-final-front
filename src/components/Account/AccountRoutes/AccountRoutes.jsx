@@ -7,6 +7,7 @@ import AccountDropdown from "./AccountDropdown/AccountDropdown";
 
 const AccountRoutes = ({
   id,
+  to,
   active,
   content,
   activeClass,
@@ -26,7 +27,7 @@ const AccountRoutes = ({
       )}
     </AnimatePresence>
     <NavLink
-      to="#"
+      to={to}
       activeClassName={activeClass}
       className={linkClass}
       onClick={(e) => toggleAccountItems(e, id)}
@@ -38,6 +39,7 @@ const AccountRoutes = ({
 
 AccountRoutes.defaultProps = {
   id: "",
+  to: "",
   active: null,
   content: "",
   activeClass: "",
@@ -50,6 +52,7 @@ AccountRoutes.defaultProps = {
 
 AccountRoutes.propTypes = {
   id: PropTypes.string,
+  to: PropTypes.string,
   active: PropTypes.bool,
   content: PropTypes.string,
   listClass: PropTypes.string,

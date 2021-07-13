@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 import classes from "./Shop.module.scss";
 import Sidebar from "./Sidebar/Sidebar";
 import Exposition from "./Exposition/Exposition";
-import Spinner from "../UI/Spinner/Spinner";
+import ShopSpinner from "../UI/Spinner/ShopSpinner/ShopSpinner";
 
 const Shop = ({ shop, history }) => {
   if (!history.location.search.length) {
@@ -15,7 +15,7 @@ const Shop = ({ shop, history }) => {
     <div className={classes.Shop}>
       <Sidebar />
       {shop.loading ? (
-        <Spinner />
+        <ShopSpinner />
       ) : (
         <Exposition productList={shop.currentItems} />
       )}
