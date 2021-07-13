@@ -10,21 +10,18 @@ const ListRoute = ({
   listClass,
   linkClass,
   onClick = null,
-}) => {
-  console.log("onClick", onClick);
-  return (
-    <li className={classNames(listClass)}>
-      <NavLink
-        to={route}
-        activeClassName={activeClass}
-        className={linkClass}
-        onClick={() => onClick(false)}
-      >
-        {content}
-      </NavLink>
-    </li>
-  );
-};
+}) => (
+  <li className={classNames(listClass)}>
+    <NavLink
+      to={route}
+      activeClassName={activeClass}
+      className={linkClass}
+      onClick={() => onClick(false)}
+    >
+      {content}
+    </NavLink>
+  </li>
+);
 
 ListRoute.defaultProps = {
   activeClass: "",

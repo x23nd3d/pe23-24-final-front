@@ -16,30 +16,27 @@ const NavigationListRoutes = ({
   dropdownToggle,
   dropdownOff,
   dropdownItems,
-}) => {
-  console.log("ROUTE", route);
-  return (
-    <li className={classNames(listClass)}>
-      <AnimatePresence>
-        {active && (
-          <Dropdown
-            mainRoute={content.toLowerCase()}
-            dropdownList={dropdownItems}
-            dropdownOff={dropdownOff}
-          />
-        )}
-      </AnimatePresence>
-      <NavLink
-        to={route}
-        activeClassName={activeClass}
-        className={linkClass}
-        onClick={(e) => dropdownToggle(e, id)}
-      >
-        {content}
-      </NavLink>
-    </li>
-  );
-};
+}) => (
+  <li className={classNames(listClass)}>
+    <AnimatePresence>
+      {active && (
+        <Dropdown
+          mainRoute={content.toLowerCase()}
+          dropdownList={dropdownItems}
+          dropdownOff={dropdownOff}
+        />
+      )}
+    </AnimatePresence>
+    <NavLink
+      to={route}
+      activeClassName={activeClass}
+      className={linkClass}
+      onClick={(e) => dropdownToggle(e, id)}
+    >
+      {content}
+    </NavLink>
+  </li>
+);
 NavigationListRoutes.defaultProps = {
   activeClass: "",
   listClass: "",

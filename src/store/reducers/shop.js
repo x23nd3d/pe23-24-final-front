@@ -29,17 +29,11 @@ const handlers = {
     ...state,
     loading: true,
   }),
-  [SEND_PRODUCTS_REQUEST_SUCCESS]: (state, { data }) => {
-    console.log(
-      "DAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAAAAAAAAAAAAAAa",
-      data
-    );
-    return {
-      ...state,
-      loading: false,
-      currentItems: data,
-    };
-  },
+  [SEND_PRODUCTS_REQUEST_SUCCESS]: (state, { data }) => ({
+    ...state,
+    loading: false,
+    currentItems: data,
+  }),
   [SEND_PRODUCTS_REQUEST_ERROR]: (state, { e }) => ({
     ...state,
     error: e,

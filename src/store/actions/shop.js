@@ -11,12 +11,7 @@ export function receiveCurrentRoute(route) {
   return (dispatch, getState) => {
     try {
       const current = getState().shop.currentRoute;
-      const items = getState().shop.currentItems;
       if (route === current) {
-        console.log(
-          "ITEMSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
-          items
-        );
         return;
       }
       dispatch(receiveRouteStart());
@@ -35,9 +30,7 @@ export function sendProductsRequest(route) {
       dispatch(sendProductsRequestStart());
       const result = await axios.get(route);
       const { data } = result;
-      console.log("DATA FROM SERVER", data);
       dispatch(sendProductsRequestSuccess(data));
-      console.log("SUCCESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS");
     } catch (e) {
       console.error(e);
       dispatch(sendProductsRequestError(e));

@@ -7,9 +7,8 @@ import { receiveCurrentRoute } from "../../store/actions/shop";
 
 const ShopLayout = ({ children, history, receiveRoute }) => {
   useEffect(() => {
-    console.log("history.location.search", history.location.search);
     receiveRoute(`shop/${history.location.search}`);
-  }, []);
+  });
 
   return <div className={classes.ShopLayout}>{children}</div>;
 };

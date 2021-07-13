@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import classNames from "classnames";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
@@ -9,17 +9,11 @@ import Backdrop from "../../UI/Backdrop/Backdrop";
 import classes from "./Navbar.module.scss";
 import Search from "./Search/Search";
 import AccountRoutes from "../../Account/AccountRoutes/AccountRoutes";
-import { receiveCurrentRoute } from "../../../store/actions/shop";
 
-const Nav = ({ isAuthenticated, user, history, receiveRoute, shop }) => {
+const Nav = ({ isAuthenticated, user, history }) => {
   const [man, setMan] = useState(false);
   const [accountMenu, setAccountMenu] = useState(false);
   const [activeNav, setActiveNav] = useState({});
-
-  // useEffect(() => {
-  //   console.log("history.location.search", history.location.search);
-  //   receiveRoute(`shop/${history.location.search}`);
-  // }, []);
 
   const toggleDropdown = (e, id) => {
     if (accountMenu) {
@@ -46,10 +40,12 @@ const Nav = ({ isAuthenticated, user, history, receiveRoute, shop }) => {
     setMan(false);
   };
 
+  console.log(history);
+
   const navItems = [
-    { id: 0, route: "#", content: "Clothes" },
-    { id: 1, route: "#", content: "Shoes" },
-    { id: 2, route: "#", content: "Accessories" },
+    { id: 0, route: history.location.search, content: "Clothes" },
+    { id: 1, route: history.location.search, content: "Shoes" },
+    { id: 2, route: history.location.search, content: "Accessories" },
   ];
 
   const accountItems = [
@@ -133,31 +129,20 @@ const Nav = ({ isAuthenticated, user, history, receiveRoute, shop }) => {
 Nav.defaultProps = {
   isAuthenticated: null,
   user: {},
-  receiveRoute: (f) => f,
   history: {},
-  shop: {},
 };
 
 Nav.propTypes = {
   isAuthenticated: PropTypes.bool,
   user: PropTypes.instanceOf(Object),
-  receiveRoute: PropTypes.func,
   history: PropTypes.instanceOf(Object),
-  shop: PropTypes.instanceOf(Object),
 };
 
 function mapStateToProps(state) {
   return {
     isAuthenticated: !!state.auth.token,
     user: state.user.userId,
-    shop: state.shop,
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    receiveRoute: (route) => dispatch(receiveCurrentRoute(route)),
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Nav));
+export default connect(mapStateToProps)(withRouter(Nav));

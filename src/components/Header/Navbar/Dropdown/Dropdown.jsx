@@ -19,7 +19,6 @@ const Dropdown = ({
   const registerRoutesHandler = (route) => {
     dropdownOff();
     receiveRoute(route);
-    console.log(mainRoute, "**************************");
     categoryChooser(mainRoute);
   };
 
@@ -47,10 +46,10 @@ const Dropdown = ({
             />
           ))}
           <ListRoute
-            route={`/shop/?category=${mainRoute}&all`}
+            route={`/shop/?category=${mainRoute}&type=all`}
             content="View all"
             onClick={() =>
-              registerRoutesHandler(`/shop/?category=${mainRoute}&all`)
+              registerRoutesHandler(`/shop/?category=${mainRoute}&type=all`)
             }
             listClass={classNames(classes.listItem, classes.viewAll)}
           />
