@@ -40,8 +40,6 @@ const Nav = ({ isAuthenticated, user, history }) => {
     setMan(false);
   };
 
-  console.log(history);
-
   const navItems = [
     { id: 0, route: history.location.search, content: "Clothes" },
     { id: 1, route: history.location.search, content: "Shoes" },

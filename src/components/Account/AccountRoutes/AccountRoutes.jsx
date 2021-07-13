@@ -2,9 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import classNames from "classnames";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import AccountDropdown from "./AccountDropdown/AccountDropdown";
-import classes from "./AccountRoutes.module.scss";
 
 const AccountRoutes = ({
   id,
