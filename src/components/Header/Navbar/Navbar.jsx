@@ -97,11 +97,7 @@ const Nav = ({ isAuthenticated, user, history, receiveRoute }) => {
           Originalité
         </Link>
         <ul className={classNames(classes.NavItems, classes.NavTools)}>
-          <ListRoute
-            route="/"
-            content={<Search />}
-            listClass={classNames(classes.NavItem, classes.NavItemMySearch)}
-          />
+          <Search />
           {isAuthenticated ? (
             <AccountRoutes
               active={accountMenu}
