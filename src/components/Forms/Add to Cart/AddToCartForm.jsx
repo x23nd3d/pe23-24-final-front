@@ -1,27 +1,35 @@
 import React, { useRef, useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, useFormikContext } from "formik";
 import colorize from "../../../utils/colorize";
 import "./AddToCartForm.scss";
+
 /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
 {/* eslint-disable jsx-a11y/no-static-element-interactions */}
 {/* eslint-disable react/jsx-props-no-spreading */}
 
+
+
 const AddToCartForm = ({id, colors, sizes}) => {
 
     const [currentColor, setCurrentColor] = useState(colors[0]);
+    // const [view, setView] = useState(colors[0]);
+
+    const handleColor = (values) => setCurrentColor(values.color);
+
+    useEffect(() => {
+
+    }, [currentColor]);
 
     return (
     <Formik
         initialValues={{ color: colors[0], size: sizes[0] }}
         onSubmit={(values) => console.log(values)}
-        onChange={(values) => console.log(values)}
         >
         {({
             values,
             handleSubmit,
-            handleChange,
-        }) => <Form className="form" onChange={handleChange}>
+        }) => <Form className="form" onSubmit={handleSubmit}>
                 <div className="formBlock">
                 <span className="dataPointer">
                 {colors.length > 1 ? "Select a color" : <>Color<span style={{paddingLeft: "20px"}} >{colors[0]}</span></> }
@@ -33,6 +41,7 @@ const AddToCartForm = ({id, colors, sizes}) => {
                         id={`${color}${index}`}
                         value={color}
                         className="defaultRadio"
+                        onClickCapture={handleColor(values)}
                     />
                     <label className="customRadio" htmlFor={`${color}${index}`}>
                         <span className={`${colorize(color)} customRadio`}>{color}</span>
