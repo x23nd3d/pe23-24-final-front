@@ -13,17 +13,18 @@ import "./AddToCartForm.scss";
 const AddToCartForm = ({id, colors, sizes}) => {
 
     const [currentColor, setCurrentColor] = useState(colors[0]);
-    // const [view, setView] = useState(colors[0]);
+    const [view, setView] = useState(colors[0]);
+
 
     const handleColor = (values) => setCurrentColor(values.color);
 
     useEffect(() => {
-
+        setView(currentColor);
     }, [currentColor]);
 
     return (
     <Formik
-        initialValues={{ color: colors[0], size: sizes[0] }}
+        initialValues={{ color: colors[0], size: sizes[0], id}}
         onSubmit={(values) => console.log(values)}
         >
         {({

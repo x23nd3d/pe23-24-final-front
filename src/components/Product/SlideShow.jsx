@@ -1,16 +1,15 @@
 import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import Carousel from "react-multi-carousel";
-import { ProductViewContext } from "../Forms/Add to Cart/AddToCartForm";
 import "react-multi-carousel/lib/styles.css";
 import "./SlideShow.scss";
 
 const SlideShow = ({photos}) => {
   const [...photo] = Object.entries(photos);
 
-  console.log(photos);
+  // console.log(photos);
 
-  const view = useContext(ProductViewContext);
+  // const view = useContext(ProductViewContext);
 
   // const [currentPhotos, setCurrentPhotos] = useState(view);
   // const [currentColor, setCurrentColor] = useState(view);
@@ -39,7 +38,7 @@ const SlideShow = ({photos}) => {
     <div className="photo-block">
         <Carousel className="carou" responsive={responsive}>
           {photo[0].map((path, index) => <div key={path} >
-              <div className={`${view} photo`} />
+              <div className="photo" />
             </div>)}
         </Carousel>
     </div>

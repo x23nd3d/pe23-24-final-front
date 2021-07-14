@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import AddToCartForm from "../Forms/Add to Cart/AddToCartForm";
 import SlideShow from "./SlideShow";
-import prodReducer from "../Forms/Add to Cart/product_reducer";
+// import prodReducer from "../Forms/Add to Cart/product_reducer";
 
 import {
     product,
@@ -21,7 +21,7 @@ import {
     dataBlock
 } from "./Product.module.scss";
 
-export const ProductViewContext = React.createContext();
+// export const ProductViewContext = React.createContext();
 
 const Product = ({data}) => {
     const {
@@ -40,12 +40,12 @@ const Product = ({data}) => {
 
     // const [view, setView] = useState()
 
-    export const [state, dispatch] = useReducer(prodReducer, {color: color[0]});
+    // export const [state, dispatch] = useReducer(prodReducer, {color: color[0]});
 
     return (
-        <ProductViewContext.Provider value={state} >
+        // <ProductViewContext.Provider value={state} >
         <section className={product}>
-            <SlideShow photos={photo} color={dispatch("color")} />
+            <SlideShow photos={photo} />
             <article className={dataBlock}>
                 <ul className={classNames(Details)}>
                     <li className={primaryBlock}>
@@ -56,7 +56,7 @@ const Product = ({data}) => {
                         <span className={classNames(dataPointer, Price)}>Price<p>{`$${price}`}</p></span>
                     </li>
                     <li className={selectionBlock}>
-                        <AddToCartForm id={id} colors={color} sizes={size} getCurrentColor={() => dispatch("color")} />
+                        <AddToCartForm id={id} colors={color} sizes={size} />
                         <hr />
                     </li>
                     <li className={bottomBlock}>
@@ -74,7 +74,7 @@ const Product = ({data}) => {
                 </ul>
             </article>
         </section>
-        </ProductViewContext.Provider>
+        // </ProductViewContext.Provider>
     )
 }
 
