@@ -9,7 +9,7 @@ const ProductCard = ({ product }) => (
     <img className={image} src={product.viewImage} alt="Product Item" />
     <div className={boxBanner}>
       <span>{product.name}</span>
-      <span>{product.price}</span>
+      <span>{product.price} $</span>
     </div>
   </div>
 );
