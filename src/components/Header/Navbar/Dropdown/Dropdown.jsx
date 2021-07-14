@@ -7,7 +7,10 @@ import { motion } from "framer-motion";
 import classes from "./Dropdown.module.scss";
 import ListRoute from "../../../UI/ListRoute/ListRoute";
 import { receiveCurrentRoute } from "../../../../store/actions/shop";
-import chooseCategory from "../../../../store/actions/sidebar";
+import {
+  chooseCategory,
+  chooseSubcategory,
+} from "../../../../store/actions/sidebar";
 
 const Dropdown = ({
   mainRoute,
@@ -15,11 +18,13 @@ const Dropdown = ({
   dropdownOff,
   categoryChooser,
   receiveRoute,
+  subcategoryChooser,
 }) => {
-  const registerRoutesHandler = (route) => {
+  const registerRoutesHandler = (route, subcategory) => {
     dropdownOff();
     receiveRoute(route);
     categoryChooser(mainRoute);
+    subcategoryChooser(subcategory);
   };
 
   return (
@@ -35,11 +40,12 @@ const Dropdown = ({
           {dropdownList.map((route) => (
             <ListRoute
               key={route}
-              route={`/shop/?category=${mainRoute}&type=${route.toLowerCase()}`}
               content={route}
+              route={`/shop/?category=${mainRoute}&type=${route.toLowerCase()}`}
               onClick={() =>
                 registerRoutesHandler(
-                  `shop/?category=${mainRoute}&type=${route.toLowerCase()}`
+                  `shop/?category=${mainRoute}&type=${route.toLowerCase()}`,
+                  route
                 )
               }
               listClass={classes.listItem}
@@ -49,7 +55,10 @@ const Dropdown = ({
             route={`/shop/?category=${mainRoute}&type=all`}
             content="View all"
             onClick={() =>
-              registerRoutesHandler(`/shop/?category=${mainRoute}&type=all`)
+              registerRoutesHandler(
+                `/shop/?category=${mainRoute}&type=all`,
+                "viewAll"
+              )
             }
             listClass={classNames(classes.listItem, classes.viewAll)}
           />
@@ -65,6 +74,7 @@ Dropdown.defaultProps = {
   dropdownOff: (f) => f,
   receiveRoute: (f) => f,
   categoryChooser: (f) => f,
+  subcategoryChooser: (f) => f,
 };
 
 Dropdown.propTypes = {
@@ -73,6 +83,7 @@ Dropdown.propTypes = {
   dropdownOff: PropTypes.func,
   receiveRoute: PropTypes.func,
   categoryChooser: PropTypes.func,
+  subcategoryChooser: PropTypes.func,
 };
 
 function mapStateToProps(state) {
@@ -86,6 +97,7 @@ function mapDispatchToProps(dispatch) {
   return {
     receiveRoute: (route) => dispatch(receiveCurrentRoute(route)),
     categoryChooser: (route) => dispatch(chooseCategory(route)),
+    subcategoryChooser: (route) => dispatch(chooseSubcategory(route)),
   };
 }
 

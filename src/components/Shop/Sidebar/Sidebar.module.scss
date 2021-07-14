@@ -16,12 +16,12 @@
 .Routes {
   display: flex;
   font-family: "Josefin Sans", sans-serif;
-  color: #C4C4C4;
+  color: #c4c4c4;
   font-weight: 300;
   margin-bottom: 45px;
 }
 
-.Routes > span  {
+.Routes > span {
   margin: 0 7px;
 }
 
@@ -31,6 +31,22 @@
 
 .ListItem {
   margin-bottom: 20px;
+  list-style: none;
+  width: fit-content;
+
+  &Active {
+    position: relative;
+
+    &:before {
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background-color: #fff;
+      bottom: -5px;
+      left: 0;
+      content: "";
+    }
+  }
 }
 
 .CategoryTitle {
@@ -43,6 +59,20 @@
 
 .CategoryAll {
   display: inline-block;
-  margin-bottom: 23px;
+  margin-top: 15px;
   font-size: 16px;
+
+  &Active {
+    position: relative;
+
+    &:before {
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background-color: #fff;
+      bottom: -5px;
+      left: 0;
+      content: "";
+    }
+  }
 }

@@ -1,7 +1,8 @@
-import { CHOSEN_CATEGORY } from "../actions/actionTypes";
+import { CHOSEN_CATEGORY, CHOSEN_SUBCATEGORY } from "../actions/actionTypes";
 
 const INITIAL_STATE = {
   chosenCategory: "clothes",
+  chosenSubcategory: "viewAll",
   categories: [
     {
       title: "clothes",
@@ -24,6 +25,11 @@ const sidebarReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         chosenCategory: action.payload,
+      };
+    case CHOSEN_SUBCATEGORY:
+      return {
+        ...state,
+        chosenSubcategory: action.payload,
       };
 
     default:
