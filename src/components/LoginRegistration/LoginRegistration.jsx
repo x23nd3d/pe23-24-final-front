@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import classNames from "classnames";
-
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { motion } from "framer-motion";
+import PropTypes from "prop-types";
+import { auth, signUp } from "../../store/actions/auth";
 import classes from "./LoginRegistration.module.scss";
 
-const LoginRegistration = () => {
+const LoginRegistration = (props) => {
   const [login, setLogin] = useState(true);
 
   const [userInfo, setUserInfo] = useState({
@@ -12,7 +16,7 @@ const LoginRegistration = () => {
     email: "",
     password: "",
     confirmedPassword: "",
-    keepSigned: true,
+    keepSigned: false,
   });
 
   const loginSwitcher = () => {
@@ -38,32 +42,41 @@ const LoginRegistration = () => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-
-    let info = {};
+    const { firstName, secondName, email, password, keepSigned } = userInfo;
 
     if (login) {
-      info.email = userInfo.email;
-      info.password = userInfo.password;
-      info.keepSigned = userInfo.keepSigned;
+      const authenticated = await props.auth(email, password, keepSigned);
+      if (authenticated) props.history.push("/shop?category=all&type=all");
     } else {
-      if (userInfo.password !== userInfo.confirmedPassword)
-        alert("Passwords do not match");
-      info = { ...userInfo };
+      const registered = await props.signUp(
+        firstName,
+        secondName,
+        email,
+        password
+      );
+      if (registered) {
+        setLogin(true);
+        setUserInfo({
+          firstName: "",
+          secondName: "",
+          email: "",
+          password: "",
+          confirmedPassword: "",
+          keepSigned: false,
+        });
+      }
     }
-
-    setUserInfo({
-      firstName: "",
-      secondName: "",
-      email: "",
-      password: "",
-      confirmedPassword: "",
-    });
   };
 
   return (
-    <div className={classes.LoginRegistration}>
+    <motion.div
+      className={classes.LoginRegistration}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <div className={classes.Inner}>
         <div className={classes.Tabs}>
           <button
@@ -154,17 +167,48 @@ const LoginRegistration = () => {
               <span className={classes.CheckboxLabel}>Keep me signed in</span>
             </div>
           )}
-          <button
-            className={classes.Button}
-            onClick={handleSubmit}
-            type="submit"
-          >
-            Log in
-          </button>
+          {login ? (
+            <button
+              className={classes.Button}
+              onClick={handleSubmit}
+              type="submit"
+            >
+              Log in
+            </button>
+          ) : (
+            <button
+              className={classes.Button}
+              onClick={handleSubmit}
+              type="submit"
+            >
+              Register
+            </button>
+          )}
         </form>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
-export default LoginRegistration;
+LoginRegistration.defaultProps = {
+  auth: (f) => f,
+  signUp: (f) => f,
+  history: {},
+};
+
+LoginRegistration.propTypes = {
+  auth: PropTypes.func,
+  signUp: PropTypes.func,
+  history: PropTypes.instanceOf(Object),
+};
+
+function mapDispatchToProps(dispatch) {
+  return {
+    auth: (email, password, isLogin, keepSigned) =>
+      dispatch(auth(email, password, isLogin, keepSigned)),
+    signUp: (name, surname, email, password) =>
+      dispatch(signUp(name, surname, email, password)),
+  };
+}
+
+export default connect(null, mapDispatchToProps)(withRouter(LoginRegistration));

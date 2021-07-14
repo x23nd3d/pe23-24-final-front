@@ -1,56 +1,87 @@
 @import "../../../styles/mixins";
 
 .expo {
-    width: 100%;
-    background-color: #fff;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    padding: 115px 120px;
-    justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 50px 25px;
+  width: 100%;
+  background-color: #fff;
+  padding: 7% 5%;
 
-}
-
-.listItem {
-    margin-bottom: 100px;
+  @media screen and (max-width: 1368px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  @media screen and (max-width: 998px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .card {
-    position: relative;
-    width: 300px;
-    height: 340px;
-    background-image: url"../../../stock/outerwear/jackets/1706_vince/1706_black_vince1.png";
-    @include bg-image-pos;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  // transition: all 0.5s ease;
+  position: relative;
 
+  &:hover:before {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  &:before {
+    transition: all 0.5s ease;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    content: "";
+  }
+
+  &:hover {
     .boxBanner {
-        position: absolute;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        // padding: 0 30px;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 0;
-        transition: height, .4s;
-        background-color: #000;
-        color: #fff;
-        font-size: 0;
+      // transition: all 0.25s ease;
+      // color: #fff;
+      // background-color: rgba(0, 0, 0, 0.85);
 
-        }
-
-        &:hover {
-            border: 1px solid #000;
-            .boxBanner {
-                height: 68px;
-                color: #fff;
-                font-size: 16px;
-        }
+      span:last-of-type {
+        // color: #fff;
+      }
     }
+  }
+
+  .boxBanner {
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fff;
+    text-transform: uppercase;
+    font-family: "Open Sans", sans-serif;
+    padding-left: 10px;
+
+    span:first-of-type {
+      line-height: 1.5;
+    }
+
+    span:last-of-type {
+      line-height: 1.5;
+      color: #847a7a;
+    }
+
+    span + span {
+      margin-top: 6px;
+    }
+  }
 }
 
 .boxBanner span {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+}
 
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

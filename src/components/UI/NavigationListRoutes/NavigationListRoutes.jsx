@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes, { instanceOf } from "prop-types";
 import classNames from "classnames";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Dropdown from "../../Header/Navbar/Dropdown/Dropdown";
 
@@ -61,4 +61,4 @@ NavigationListRoutes.propTypes = {
   dropdownItems: PropTypes.instanceOf(Object),
 };
 
-export default NavigationListRoutes;
+export default withRouter(NavigationListRoutes);
