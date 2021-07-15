@@ -1,4 +1,4 @@
-export const dataSample = {
+const dataSample = {
   "id": "1701",
   "name": "Canali",
   "caption": "Siena Suit - Classic Fit",
@@ -33,3 +33,5 @@ export const dataSample = {
   ],
   "stock": true
 }
+
+export default dataSample;
