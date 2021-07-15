@@ -8,13 +8,9 @@ import Shop from "./components/Shop/Shop";
 import ShopLayout from "./hoc/ShopLayout/ShopLayout";
 import Product from "./components/Product/Product";
 import LoginRegistration from "./components/LoginRegistration/LoginRegistration";
-<<<<<<< HEAD
-import dataSample from "./utils/dataSample";
-=======
-import {dataSample} from "./utils/dataSample";
 import { logout } from "./store/actions/auth";
 import Logout from "./components/Logout/Logout";
->>>>>>> 04ef52eca56a89ebe5197452a97285d686cc2779
+import dataSample from "./utils/dataSample";
 
 function App({ isAuthenticated }) {
   let routes = (
