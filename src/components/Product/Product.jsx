@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useReducer } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import AddToCartForm from "../Forms/Add to Cart/AddToCartForm";
 import SlideShow from "./SlideShow";
+// import prodReducer from "../Forms/Add to Cart/product_reducer";
 
 import {
     product,
@@ -20,6 +21,7 @@ import {
     dataBlock
 } from "./Product.module.scss";
 
+// export const ProductViewContext = React.createContext();
 
 const Product = ({data}) => {
     const {
@@ -30,14 +32,20 @@ const Product = ({data}) => {
         type,
         color,
         size,
+        photo,
         price,
         description,
         producingCountry
     } = data;
 
+    // const [view, setView] = useState()
+
+    // export const [state, dispatch] = useReducer(prodReducer, {color: color[0]});
+
     return (
+        // <ProductViewContext.Provider value={state} >
         <section className={product}>
-            <SlideShow photos={["./canali_black1.png", "./canali_black2.png", "./canali_black3.png"]} />
+            <SlideShow photos={photo} />
             <article className={dataBlock}>
                 <ul className={classNames(Details)}>
                     <li className={primaryBlock}>
@@ -56,15 +64,17 @@ const Product = ({data}) => {
                         <span className={dataPointer}>Type<p>{type}</p></span>
                         <span className={dataPointer}>Material<p>{material}</p></span>
                         <ul className={dsc}>
-                        {description.map((point) => (
-                            <li key={`${point.slice(-3)}${Math.random() * 50}${point.slice(0, 5)}`}>{point}</li>
-                        ))}
+                        {description.map((point) => <li
+                            key={`${point.slice(-3)}${Math.random() * 50}${point.slice(0, 5)}`}>
+                                {point}
+                            </li>)}
                         </ul>
                     {producingCountry && <p>Made in {producingCountry}</p> }
                     </li>
                 </ul>
             </article>
         </section>
+        // </ProductViewContext.Provider>
     )
 }
 
@@ -76,10 +86,11 @@ Product.propTypes = {
         type: PropTypes.string,
         material: PropTypes.string,
         price: PropTypes.string,
+        photo: PropTypes.instanceOf(Object),
         producingCountry: PropTypes.string,
         color: PropTypes.arrayOf(PropTypes.string),
         size: PropTypes.arrayOf(PropTypes.string),
-        description: PropTypes.arrayOf(PropTypes.string)
+        description: PropTypes.instanceOf(Array)
     }).isRequired
 }
 export default Product;

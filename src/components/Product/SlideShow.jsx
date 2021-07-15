@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "./SlideShow.scss";
 
 const SlideShow = ({photos}) => {
+  const [...photo] = Object.entries(photos);
+
+  // console.log(photos);
+
+  // const view = useContext(ProductViewContext);
+
+  // const [currentPhotos, setCurrentPhotos] = useState(view);
+  // const [currentColor, setCurrentColor] = useState(view);
+
+
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
@@ -27,11 +37,9 @@ const SlideShow = ({photos}) => {
   return (
     <div className="photo-block">
         <Carousel className="carou" responsive={responsive}>
-          {
-            photos.map((path, index) => <div key={path} >
+          {photo[0].map((path, index) => <div key={path} >
               <div className="photo" />
-            </div>)
-          }
+            </div>)}
         </Carousel>
     </div>
   )
@@ -39,7 +47,7 @@ const SlideShow = ({photos}) => {
 
 
 SlideShow.propTypes = {
-  photos: PropTypes.arrayOf(PropTypes.string).isRequired
+  photos: PropTypes.instanceOf(Object).isRequired
 }
 
 export default SlideShow;

@@ -1,5 +1,6 @@
 @import "../../../styles/mixins";
 @import "../../../styles/variables";
+
 .form {
   @include block-120;
   height: 400px;
@@ -64,39 +65,43 @@
   }
 }
 
-.Navy::after {
-  content: "";
-  position: absolute;
-  bottom: -100%;
-  width: 100%;
-  height: 6px;
-  background-color: $navy;
-  border: 1px solid black;
-}
-
-.Charcoal {
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: -100%;
-    width: 100%;
-    height: 6px;
-    background-color: $charcoal;
-    border: 1px solid black;
-    }
-}
-
-.Black {
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: -100%;
-    width: 100%;
-    height: 6px;
-    background-color: $black;
-    border: 1px solid black;
-    }
-}
+.Navy::after { @include radioColorStyle; background-color: $navy; }
+.Black::after { @include radioColorStyle; background-color: $black; }
+.Charcoal::after { @include radioColorStyle; background-color: $charcoal; }
+.White::after { @include radioColorStyle; background-color: #fff; }
+.Gray::after { @include radioColorStyle; background-color: rgb(163, 163, 163); }
+.Silver::after { @include radioColorStyle; background-color: rgb(209, 207, 207); }
+.PearlGray::after { @include radioColorStyle; background-color: $pearl-gray; }
+.SmokeGray::after { @include radioColorStyle; background-color: $smoke-gray; }
+.JetBlack::after { @include radioColorStyle; background-color: $jet-black; }
+.AirForce::after { @include radioColorStyle; background-color: $air-force; }
+.SuperLightIndigo::after { @include radioColorStyle; background-color: $super-light-indigo; }
+.CamelotGray::after { @include radioColorStyle; background-color: $camelot-gray; }
+.MidnightNavy::after { @include radioColorStyle; background-color: $midnight-navy; }
+.Nero::after { @include radioColorStyle; background-color: $nero; }
+.WhiteNight::after { @include radioColorStyle; background-color: $white-night; }
+.NightBlue::after { @include radioColorStyle; background-color: $night-blue; }
+.MarroneBrown::after { @include radioColorStyle; background-color: $marrone-brown; }
+.DustyOlive::after { @include radioColorStyle; background-color: $dusty-olive; }
+.Stone::after { @include radioColorStyle; background-color: $stone; }
+.Khaki::after { @include radioColorStyle; background-color: $khaki; }
+.Kalamata::after { @include radioColorStyle; background-color: $kalamata; }
+.GrayHarbor::after { @include radioColorStyle; background-color: $gray-harbor; }
+.BlackDial::after { @include radioColorStyle; background-color: $black; }
+.BlackGold::after { @include radioColorStyle; background-color: $black; }
+.BlackGold::after { @include radioColorStyle; background-color: $black; }
+.TwoTone::after { @include radioColorStyle; background-color: $black; }
+.GoldBrownGradient::after { @include radioColorStyle; background-color: $black; }
+.FlowBoneRed::after { @include radioColorStyle; background-color: $black; }
+.BlueBlazer::after { @include radioColorStyle; background-color: $blue-blazer; }
+.DuffleBag::after { @include radioColorStyle; background-color: $duffle-bag; }
+.DarkBlue::after { @include radioColorStyle; background-color: $dark-blue; }
+.Denim::after { @include radioColorStyle; background-color: $denim; }
+.Mauz::after { @include radioColorStyle; background-color: $mauz; }
+.Coastal::after { @include radioColorStyle; background-color: $coastal; }
+.BlueSilver::after { @include radioColorStyle; background-color: $blue-silver; }
+.ShinyEndura::after { @include radioColorStyle; background-color: $shiny-endura; }
+.Brown::after { @include radioColorStyle; background-color: $brown; }
 
 .select-block{
   position: relative;

@@ -17,7 +17,8 @@
     "camelcase": "error",
     "object-curly-spacing": 0,
     "comma-dangle": 0,
-    "quotes": ["error", "double"]
+    "quotes": ["error", "double"],
+    "consistent-return": 0
   },
   "settings": {
     "react": {
