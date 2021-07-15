@@ -1,17 +1,24 @@
 import React, { useState } from "react";
 import classNames from "classnames";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import ListRoute from "../../UI/ListRoute/ListRoute";
 import NavigationListRoutes from "../../UI/NavigationListRoutes/NavigationListRoutes";
 import Backdrop from "../../UI/Backdrop/Backdrop";
 import classes from "./Navbar.module.scss";
 import Search from "./Search/Search";
+import AccountRoutes from "../../Account/AccountRoutes/AccountRoutes";
 
-const Nav = (props) => {
+const Nav = ({ isAuthenticated, user, history }) => {
   const [man, setMan] = useState(false);
+  const [accountMenu, setAccountMenu] = useState(false);
   const [activeNav, setActiveNav] = useState({});
 
   const toggleDropdown = (e, id) => {
+    if (accountMenu) {
+      setAccountMenu(false);
+    }
     const activeBtn = e.target.textContent.toLowerCase().trim();
     setActiveNav({ [activeBtn]: id });
     setMan((prev) => !prev);
@@ -21,14 +28,31 @@ const Nav = (props) => {
     }
   };
 
+  const toggleFastAccess = () => {
+    if (man) {
+      setMan(false);
+    }
+    setAccountMenu((prev) => !prev);
+  };
+
+  const setBackdrop = () => {
+    setAccountMenu(false);
+    setMan(false);
+  };
+
   const navItems = [
-    { id: 0, route: "/", content: "Clothes" },
-    { id: 1, route: "/", content: "Shoes" },
-    { id: 2, route: "/", content: "Accessories" },
+    { id: 0, route: history.location.search, content: "Clothes" },
+    { id: 1, route: history.location.search, content: "Shoes" },
+    { id: 2, route: history.location.search, content: "Accessories" },
+  ];
+
+  const accountItems = [
+    { id: 0, route: "/account/", content: "Account" },
+    { id: 1, route: "/logout", content: "Logout" },
   ];
 
   const [dropdownItems] = useState({
-    clothes: ["Costumes", "Outerwear", "Trousers"],
+    clothes: ["Suits", "Outerwear", "Pants"],
     shoes: ["Boots", "Sneakers", "Shoes"],
     accessories: ["Glasses", "Belts", "Cufflinks", "Watches"],
   });
@@ -60,7 +84,7 @@ const Nav = (props) => {
   return (
     <>
       <nav className={classes.Nav}>
-        {man && <Backdrop toggle={setMan} />}
+        {man || accountMenu ? <Backdrop toggle={setBackdrop} /> : null}
         <ul className={classNames(classes.NavItems, classes.NavShop)}>
           {renderNavItems(navItems)}
         </ul>
@@ -68,16 +92,24 @@ const Nav = (props) => {
           Originalité
         </Link>
         <ul className={classNames(classes.NavItems, classes.NavTools)}>
-          <ListRoute
-            route="/"
-            content={<Search />}
-            listClass={classNames(classes.NavItem, classes.NavItemMySearch)}
-          />
-          <ListRoute
-            route="/login"
-            content="My account"
-            listClass={classNames(classes.NavItem, classes.NavItemMyAccount)}
-          />
+          <Search />
+          {isAuthenticated ? (
+            <AccountRoutes
+              to={history.location.search}
+              active={accountMenu}
+              content={user.name}
+              listClass={classNames(classes.NavItem, classes.NavItemMyAccount)}
+              fastAccessList={accountItems}
+              fastAccessOff={setAccountMenu}
+              toggleAccountItems={toggleFastAccess}
+            />
+          ) : (
+            <ListRoute
+              route="/login"
+              content="My Account"
+              listClass={classNames(classes.NavItem, classes.NavItemMyAccount)}
+            />
+          )}
           <ListRoute
             route="/"
             content="Shopping bag"
@@ -89,4 +121,23 @@ const Nav = (props) => {
   );
 };
 
-export default Nav;
+Nav.defaultProps = {
+  isAuthenticated: null,
+  user: {},
+  history: {},
+};
+
+Nav.propTypes = {
+  isAuthenticated: PropTypes.bool,
+  user: PropTypes.instanceOf(Object),
+  history: PropTypes.instanceOf(Object),
+};
+
+function mapStateToProps(state) {
+  return {
+    isAuthenticated: !!state.auth.token,
+    user: state.user.userId,
+  };
+}
+
+export default connect(mapStateToProps)(withRouter(Nav));

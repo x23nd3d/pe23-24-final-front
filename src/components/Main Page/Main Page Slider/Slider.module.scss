@@ -1,6 +1,6 @@
 .Slider {
     position: relative;
-    
+
     .Slid {
         padding-top: 0rem;
         position: relative;
@@ -15,8 +15,9 @@
             right: 3%;
             max-width: 35rem;
             @media(max-width: 576px){
-                font-size: 23px; 
-            } 
+                font-size: 35px;
+                text-shadow: 0px 4px 5px #000000;
+            }
         }
         .TextSale{
             position: absolute;
@@ -28,8 +29,12 @@
             right: 3%;
             max-width: 35rem;
             @media(max-width: 576px){
-                font-size: 23px; 
-            } 
+                font-size: 33px;
+                color: #fff;
+                bottom: 47%;
+                right: 12%;
+                text-shadow: 0px 4px 5px #000000;;
+            }
         }
         .TextEngoy{
             position: absolute;
@@ -41,11 +46,14 @@
             left: 3%;
             max-width: 35rem;
             @media(max-width: 576px){
-               font-size: 36px;
+               font-size: 50px;
+               bottom: 35%;
             }
             .Off {
-                
-                
+                @media(max-width: 576px){
+                   display: flex;
+                 }
+
             }
         }
         .ShopBtn{
@@ -61,7 +69,8 @@
                 width: 44%;
                 @media(max-width: 576px){
                     font-size: 14px;
-                 } 
+                    width: 28%;
+                 }
             }
             .ShopNowBtn{
                 background: transparent;
@@ -73,7 +82,8 @@
                 width: 38%;
                 @media(max-width: 576px){
                     font-size: 14px;
-                 } 
+                    width: 25%;
+                 }
             }
         }
         .ShopEnjoyBtn{
@@ -86,16 +96,16 @@
             width: 37%;
             @media(max-width: 576px){
                 display:none;
-             } 
+             }
         }
-        
+
         img {
             width: 100%;
-            height: 82vh; 
-            object-fit: fill; 
+            height: 900px;
+            object-fit: fill;
             @media(max-width: 576px){
-                height: 40vh; 
-             } 
+                height: 40vh;
+             }
         }
     }
 }
