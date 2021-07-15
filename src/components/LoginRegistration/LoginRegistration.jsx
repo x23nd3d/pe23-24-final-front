@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom";
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 import { auth, signUp } from "../../store/actions/auth";
+import { resetSidebar } from "../../store/actions/sidebar";
 import classes from "./LoginRegistration.module.scss";
 
 const LoginRegistration = (props) => {
@@ -48,7 +49,10 @@ const LoginRegistration = (props) => {
 
     if (login) {
       const authenticated = await props.auth(email, password, keepSigned);
-      if (authenticated) props.history.push("/shop?category=all&type=all");
+      if (authenticated) {
+        props.resetSidebarHandler();
+        props.history.push("/shop?category=all&type=all");
+      }
     } else {
       const registered = await props.signUp(
         firstName,
@@ -193,12 +197,14 @@ const LoginRegistration = (props) => {
 LoginRegistration.defaultProps = {
   auth: (f) => f,
   signUp: (f) => f,
+  resetSidebarHandler: (f) => f,
   history: {},
 };
 
 LoginRegistration.propTypes = {
   auth: PropTypes.func,
   signUp: PropTypes.func,
+  resetSidebarHandler: PropTypes.func,
   history: PropTypes.instanceOf(Object),
 };
 
@@ -208,6 +214,7 @@ function mapDispatchToProps(dispatch) {
       dispatch(auth(email, password, isLogin, keepSigned)),
     signUp: (name, surname, email, password) =>
       dispatch(signUp(name, surname, email, password)),
+    resetSidebarHandler: () => dispatch(resetSidebar()),
   };
 }
 

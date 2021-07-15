@@ -65,6 +65,11 @@ const Nav = ({ isAuthenticated, user, history }) => {
           : null,
       ];
       const activeDropdown = Object.values(activeNav)[0] === id ? man : null;
+
+      console.log(
+        dropdownItems[Object.keys(activeNav)[0]],
+        "dropdownItems[Object.keys(activeNav)[0]]"
+      );
       return (
         <NavigationListRoutes
           key={content}
@@ -88,7 +93,7 @@ const Nav = ({ isAuthenticated, user, history }) => {
         <ul className={classNames(classes.NavItems, classes.NavShop)}>
           {renderNavItems(navItems)}
         </ul>
-        <Link className={classes.Logo} to="/">
+        <Link className={classes.Logo} to="/shop/?category=all&type=all">
           Originalité
         </Link>
         <ul className={classNames(classes.NavItems, classes.NavTools)}>
