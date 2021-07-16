@@ -8,7 +8,7 @@ const dataSample = {
     "Navy": [
         "./stock/suits/suits/1701 - Canali/navy_color/1701_navy_canali1.png",
         "./stock/suits/suits/1701 - Canali/navy_color/1701_navy_canali2.png",
-        "./stock/suits/suits/1701 - Canali/navy_color/1701_navy_canali3.png"
+        "./stock/suits/suits/1701 - Canali/navy_color/1701_navy_canali3.png"],
   id: "1701",
   name: "Canali",
   caption: "Siena Suit - Classic Fit",
@@ -42,6 +42,7 @@ const dataSample = {
     "Family-run since 1934, Canali’s tailored designs are handcrafted with premium fabrics and a meticulous attention to detail.",
   ],
   "stock": true
+  }
 }
 
 export default dataSample;
