@@ -23,6 +23,7 @@ const Sidebar = ({
   subcategoryChooser,
   allCategoriesChooser,
 }) => {
+  console.log("SIDEBAAAAAAAAAAAAAAAAAAAAARRR", sidebar);
   const { chosenCategory, chosenSubcategory, categories, chosenItems } =
     sidebar;
 
@@ -86,7 +87,6 @@ const Sidebar = ({
             }
           />
           {chosenSubcategory !== "viewAll" ? <span>&gt;</span> : ""}
-
           {chosenSubcategory !== "viewAll" ? (
             <ListRoute
               listClass={classes.RoutesItem}
