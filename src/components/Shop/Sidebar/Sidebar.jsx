@@ -5,6 +5,7 @@ import { NavLink, withRouter } from "react-router-dom";
 import classNames from "classnames";
 import { receiveCurrentRoute } from "../../../store/actions/shop";
 import {
+  checkCategories,
   chooseCategory,
   chooseSubcategory,
 } from "../../../store/actions/sidebar";
@@ -20,27 +21,47 @@ const Sidebar = ({
   categoryChooser,
   receiveRoute,
   subcategoryChooser,
+  allCategoriesChooser,
 }) => {
-  const array = [sidebar, shop, categoryChooser, receiveRoute];
-  console.log("ALL PROPS:", array);
-  console.log("SIDEBAR:", sidebar);
+  const { chosenCategory, chosenSubcategory, categories, chosenItems } =
+    sidebar;
 
-  const { chosenCategory, chosenSubcategory, categories } = sidebar;
-  console.log("CHOSEN CATEGORY:", chosenCategory);
-  console.log("CHOSEN SUBCATEGORY:", chosenSubcategory);
-  console.log("CATEGORIES:", categories);
+  const subCategories = chosenCategory === "all" ? categories : chosenItems;
 
-  let subCategories;
-  categories.forEach((category) => {
-    if (chosenCategory === category.title) {
-      subCategories = category.items;
-    }
-  });
-
-  const registerRoutesHandler = (route, subCategory) => {
+  const registerRoutesHandler = (route, subCategory, selectedCategory) => {
     receiveRoute(route);
+    categoryChooser(selectedCategory);
     subcategoryChooser(subCategory);
+    allCategoriesChooser(selectedCategory);
   };
+
+  const renderAllSidebarItems = (arr) =>
+    arr.map(({ title, items }) => {
+      console.log("TITLEEE:", title.toLowerCase());
+      console.log("ITEMMSSS", ...items);
+      console.log("chosenSubcategory", chosenSubcategory);
+
+      return items.map((item) => (
+        <ListRoute
+          key={title + item}
+          listClass={classNames(
+            classes.ListItem,
+            item.toLowerCase().trim() === chosenSubcategory.toLowerCase().trim()
+              ? classes.ListItemActive
+              : ""
+          )}
+          content={item}
+          route={`/shop/?category=${title}&type=${item.toLowerCase()}`}
+          onClick={() => {
+            registerRoutesHandler(
+              `shop/?category=${title}&type=${item.toLowerCase()}`,
+              item,
+              title
+            );
+          }}
+        />
+      ));
+    });
 
   console.log("SUBCATEGORIES:", subCategories);
 
@@ -59,7 +80,8 @@ const Sidebar = ({
             onClick={() =>
               registerRoutesHandler(
                 `/shop/?category=${chosenCategory}&type=all`,
-                "viewAll"
+                "viewAll",
+                chosenCategory
               )
             }
           />
@@ -69,56 +91,33 @@ const Sidebar = ({
             <ListRoute
               listClass={classes.RoutesItem}
               route={`/shop/?category=${chosenCategory}&type=${chosenSubcategory}`}
-              content={chosenSubcategory}
+              content={`${chosenCategory[0].toUpperCase()}${chosenCategory.slice(
+                1
+              )}`}
             />
           ) : null}
         </ul>
         <h2 className={classes.CategoryTitle}>{sidebar.chosenCategory}</h2>
+        {renderAllSidebarItems(subCategories)}
 
-        {subCategories.map((subCategory) => {
-          {
-            console.log("SUBCATEGORYYY:", subCategory.toLowerCase());
-            console.log(
-              "CHOSEN SUBCATEGORYYY:",
-              chosenSubcategory !== undefined
-                ? chosenSubcategory.toLowerCase()
-                : chosenSubcategory
-            );
-          }
-          return (
-            <ListRoute
-              key={subCategory}
-              listClass={classNames(
-                classes.ListItem,
-                subCategory === chosenSubcategory ? classes.ListItemActive : ""
-              )}
-              content={subCategory}
-              // route="/"
-              route={`/shop/?category=${chosenCategory}&type=${subCategory.toLowerCase()}`}
-              onClick={() => {
-                registerRoutesHandler(
-                  `shop/?category=${chosenCategory}&type=${subCategory.toLowerCase()}`,
-                  subCategory
-                );
-              }}
-            />
-          );
-        })}
-        <NavLink
-          className={classNames(
-            classes.CategoryAll,
-            chosenSubcategory === "viewAll" ? classes.CategoryAllActive : ""
-          )}
-          to={`/shop/?category=${chosenCategory}&type=all`}
-          onClick={() =>
-            registerRoutesHandler(
-              `/shop/?category=${chosenCategory}&type=all`,
-              "viewAll"
-            )
-          }
-        >
-          View All
-        </NavLink>
+        {(chosenCategory && chosenSubcategory) !== "all" && (
+          <NavLink
+            className={classNames(
+              classes.CategoryAll,
+              chosenSubcategory === "viewAll" ? classes.CategoryAllActive : ""
+            )}
+            to={`/shop/?category=${chosenCategory}&type=all`}
+            onClick={() =>
+              registerRoutesHandler(
+                `/shop/?category=${chosenCategory}&type=all`,
+                "viewAll",
+                chosenCategory
+              )
+            }
+          >
+            View All
+          </NavLink>
+        )}
         <ColorFilter />
         <PriceFilter />
       </div>
@@ -132,6 +131,7 @@ Sidebar.defaultProps = {
   receiveRoute: (f) => f,
   categoryChooser: (f) => f,
   subcategoryChooser: (f) => f,
+  allCategoriesChooser: (f) => f,
 };
 
 Sidebar.propTypes = {
@@ -140,6 +140,7 @@ Sidebar.propTypes = {
   receiveRoute: PropTypes.func,
   categoryChooser: PropTypes.func,
   subcategoryChooser: PropTypes.func,
+  allCategoriesChooser: PropTypes.func,
 };
 
 function mapStateToProps(state) {
@@ -154,6 +155,7 @@ function mapDispatchToProps(dispatch) {
     receiveRoute: (route) => dispatch(receiveCurrentRoute(route)),
     categoryChooser: (route) => dispatch(chooseCategory(route)),
     subcategoryChooser: (route) => dispatch(chooseSubcategory(route)),
+    allCategoriesChooser: (route) => dispatch(checkCategories(route)),
   };
 }
 

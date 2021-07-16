@@ -1,4 +1,9 @@
-import { CHOSEN_CATEGORY, CHOSEN_SUBCATEGORY } from "../actions/actionTypes";
+import {
+  CHOSEN_CATEGORY,
+  CHOSEN_SUBCATEGORY,
+  SIDEBAR_DEFAULT,
+  UPDATE_CHOSEN_ITEMS,
+} from "../actions/actionTypes";
 
 const INITIAL_STATE = {
   chosenCategory: "clothes",
@@ -17,6 +22,7 @@ const INITIAL_STATE = {
       items: ["Glasses", "Belts", "Cufflinks", "Watches"],
     },
   ],
+  chosenItems: [],
 };
 
 const sidebarReducer = (state = INITIAL_STATE, action) => {
@@ -30,6 +36,18 @@ const sidebarReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         chosenSubcategory: action.payload,
+      };
+    case SIDEBAR_DEFAULT:
+      return {
+        ...state,
+        chosenCategory: "all",
+        chosenSubcategory: "all",
+        chosenItems: [],
+      };
+    case UPDATE_CHOSEN_ITEMS:
+      return {
+        ...state,
+        chosenItems: action.payload,
       };
 
     default:
