@@ -2,164 +2,174 @@
 @import "../../../styles/fonts";
 
 .Nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 10vh;
+  font-size: 20px;
+  font-family: "Josefin Sans", sans-serif;
 
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	min-height: 10vh;
-	font-size: 20px;
-	font-family: "Josefin Sans", sans-serif;
+  &Items {
+    display: flex;
+  }
 
-	&Items {
-		display: flex;
-	}
+  &Item {
+    padding: 20px;
+    z-index: 100;
 
-	&Item {
-		padding: 20px;
-		z-index: 100;
+    &MyAccount:before {
+      background-position: -16px 0;
+    }
 
-		&MyAccount:before {
-			background-position: -16px 0;
-		}
+    &ShoppingBag:before {
+      background-position: -35px 0;
+    }
 
-		&ShoppingBag:before {
-			background-position: -33px 0;
-		}
+    &Active {
+      border-bottom: 1px solid #fff;
+    }
+  }
 
-		&Active {
-			border-bottom: 1px solid #fff;
-		}
-	}
+  &Tools {
+    font-size: 16px;
 
-	&Tools {
-		font-size: 16px;
+    li {
+      display: flex;
 
-		li {
-			display: flex;
-			
-
-			&:before {
-				margin-right: 5px;
-				width: 14px;
-				height: 15px;
-				background-image: url($img-header-sprite);
-				background-size: cover;
-				content: "";
-			}
-		}
-	}
+      &:before {
+        margin-right: 5px;
+        width: 14px;
+        height: 15px;
+        background-image: url($img-header-sprite);
+        background-size: cover;
+        content: "";
+      }
+    }
+  }
 }
 
 .Burger {
-	display: block;
-	width: 20px;
-	height: 20px;
-	margin-top: 1px;
-	background-color: #fff;
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  background-color: #fff;
 
-	&Box {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 20px;
+  &Box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 
-		&:before,
-		&:after {
-			display: none;
-		}
-	}
+    &:before,
+    &:after {
+      display: none;
+    }
+  }
 }
 
 .Logo {
-	font-size: 56px;
-	font-family: "Sofia", cursive;
+  font-size: 56px;
+  font-family: "Sofia", cursive;
 }
 
 .man:hover + .manItem {
-		display: block;
+  display: block;
+}
 
+@media screen and (max-width: 1130px) {
+  .NavItem {
+    padding: 20px 10px;
+  }
 }
 
 @media screen and (max-width: 992px) {
-	.Nav {
-		display: grid;
-		grid-template-rows: auto auto;
-		grid-template-columns: auto auto;
+  .Nav {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: auto auto;
 
-		&Shop {
-			position: relative;
-			grid-area: 2 / 1 / 3 / 3;
-			justify-content: space-between;
-			font-size: 16px;
+    &Shop {
+      position: relative;
+      grid-area: 2 / 1 / 3 / 3;
+      justify-content: space-between;
+      font-size: 16px;
+      border-top: 1px solid #585757;
 
+      //   &:before {
+      //     position: absolute;
+      //     top: 0;
+      //     left: -20px;
+      //     width: calc(100% + 40px);
+      //     height: 1px;
+      //     background-color: #585757;
+      //     content: "";
+      //   }
+    }
 
-			&:before {
-				position: absolute;
-				top: 0;
-				left: -20px;
-				width: calc(100% + 40px);
-				height: 1px;
-				background-color: #585757;
-				content: "";
-			}
-		}
+    .Logo {
+      grid-area: 1 / 1 / 2 / 2;
+      line-height: 70px;
+      vertical-align: middle;
+    }
+    &Tools {
+      grid-area: 1 / 2 / 2 / 3;
+      font-size: 14px;
+    }
+  }
 
-		.Logo {
-			grid-area: 1 / 1 / 2 / 2;
-			line-height: 70px;
-			vertical-align: middle;
-		}
-		&Tools {
-			grid-area: 1 / 2 / 2 / 3;
-			font-size: 14px;
-		}
-	}
-
-	.Logo {
-		font-size: 30px;
-	}
+  .Logo {
+    font-size: 30px;
+  }
 }
 
 @media screen and (max-width: 576px) {
-	.Nav {
-		&Shop {
-			font-size: 12px;
-		}
+  .Nav {
+    &Shop {
+      font-size: 12px;
+    }
 
-		&Tools {
-			font-size: 0;
-		}
-	}
+    &Item {
+      padding-left: 0;
+      padding-right: 0;
+      & + & {
+        margin-left: 10px;
+      }
+    }
 
-	.Burger {
-		display: block;
-		margin-top: 1px;
+    &Tools {
+      font-size: 0;
+    }
+  }
 
-		&Box {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			padding: 20px;
-			&:before,
-			&:after {
-				display: none;
-			}
-		}
-	}
+  .Burger {
+    display: block;
+    margin-top: 1px;
+
+    &Box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      &:before,
+      &:after {
+        display: none;
+      }
+    }
+  }
 }
-
 
 .dropHoverEnter {
-	opacity: 0;
+  opacity: 0;
 }
 .dropHoverEnterActive {
-	opacity: 1;
-	transition: opacity 0.2s;
+  opacity: 1;
+  transition: opacity 0.2s;
 }
 .dropHoverExit {
-	opacity: 1;
+  opacity: 1;
 }
 .dropHoverExitActive {
-	opacity: 0;
-	transition: opacity 0.2s;
+  opacity: 0;
+  transition: opacity 0.2s;
 }
