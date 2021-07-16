@@ -42,6 +42,6 @@ const dataSample = {
     "Family-run since 1934, Canali’s tailored designs are handcrafted with premium fabrics and a meticulous attention to detail.",
   ],
   "stock": true
-};
+}
 
 export default dataSample;
