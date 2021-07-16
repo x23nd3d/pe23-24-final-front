@@ -11,7 +11,6 @@ import LoginRegistration from "./components/LoginRegistration/LoginRegistration"
 import dataSample from "./utils/dataSample";
 import { logout } from "./store/actions/auth";
 import Logout from "./components/Logout/Logout";
-import dataSample from "./utils/dataSample";
 
 function App({ isAuthenticated }) {
   let routes = (
