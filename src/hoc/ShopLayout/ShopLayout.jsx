@@ -24,7 +24,12 @@ const ShopLayout = ({
     if (history.location.search === "?category=all&type=all") {
       setSidebarDefaultHandler();
     }
-  }, [history.location.search, setSidebarDefaultHandler]);
+  }, [
+    history.location.search,
+    receiveRoute,
+    setSidebarDefaultHandler,
+    shop.currentItems.length,
+  ]);
 
   return <div className={classes.ShopLayout}>{children}</div>;
 };

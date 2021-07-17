@@ -15,6 +15,9 @@ import Logout from "./components/Logout/Logout";
 function App({ isAuthenticated }) {
   let routes = (
     <Switch>
+      <Route path="/shop/product/:id">
+        <Product data={dataSample} />
+      </Route>
       <Route path="/shop">
         <ShopLayout>
           <Shop />
@@ -25,9 +28,7 @@ function App({ isAuthenticated }) {
           <LoginRegistration />
         </AnimatePresence>
       </Route>
-      <Route path="/product">
-        <Product data={dataSample} />
-      </Route>
+
       <Route path="/" component={MainPage} />
     </Switch>
   );
@@ -35,15 +36,16 @@ function App({ isAuthenticated }) {
   if (isAuthenticated) {
     routes = (
       <Switch>
+        <Route path="/shop/product/:id">
+          <Product data={dataSample} />
+        </Route>
         <Route path="/shop">
           <ShopLayout>
             <Shop />
           </ShopLayout>
         </Route>
         <Route exact path="/logout" component={Logout} />
-        <Route path="/product">
-          <Product data={dataSample} />
-        </Route>
+
         <Route path="/" component={MainPage} />
       </Switch>
     );

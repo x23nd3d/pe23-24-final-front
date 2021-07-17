@@ -9,7 +9,7 @@ import ProductCard from "./ProductCard";
 const Exposition = ({ productList }) => (
   <ul className={expo}>
     {productList.map((product) => (
-      <li className={listItem} key={product.id}>
+      <li className={listItem} key={product.id + product.name}>
         <ProductCard product={product} />
       </li>
     ))}
@@ -17,7 +17,7 @@ const Exposition = ({ productList }) => (
 );
 
 Exposition.propTypes = {
-  productList: PropTypes.arrayOf(PropTypes.string).isRequired,
+  productList: PropTypes.instanceOf(Object).isRequired,
 };
 
 function mapStateToProps(state) {
