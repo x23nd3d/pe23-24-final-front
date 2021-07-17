@@ -1,10 +1,7 @@
-import React, { useRef } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-// import classNames from "classnames";
 import { NavLink } from "react-router-dom";
 import { card, boxBanner, image } from "./Exposition.module.scss";
-
-// import useHover from "../../../hooks/useHover";
 
 const ProductCard = ({ product }) => (
   <NavLink to={`/shop/product/${product.id}`} className={card}>

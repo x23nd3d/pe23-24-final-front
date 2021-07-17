@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
@@ -14,22 +14,11 @@ const ShopLayout = ({
   setSidebarDefaultHandler,
 }) => {
   useEffect(() => {
-    if (
-      !shop.currentItems.length ||
-      history.location.search === "?category=all&type=all"
-    ) {
-      receiveRoute(`/shop/${history.location.search}`);
-    }
-
     if (history.location.search === "?category=all&type=all") {
+      receiveRoute(`/shop/${history.location.search}`);
       setSidebarDefaultHandler();
     }
-  }, [
-    history.location.search,
-    receiveRoute,
-    setSidebarDefaultHandler,
-    shop.currentItems.length,
-  ]);
+  }, [history.location.search, receiveRoute, setSidebarDefaultHandler]);
 
   return <div className={classes.ShopLayout}>{children}</div>;
 };
