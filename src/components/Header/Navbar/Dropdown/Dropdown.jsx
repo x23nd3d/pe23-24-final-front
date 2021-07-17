@@ -8,6 +8,7 @@ import classes from "./Dropdown.module.scss";
 import ListRoute from "../../../UI/ListRoute/ListRoute";
 import { receiveCurrentRoute } from "../../../../store/actions/shop";
 import {
+  checkCategories,
   chooseCategory,
   chooseSubcategory,
 } from "../../../../store/actions/sidebar";
@@ -19,10 +20,12 @@ const Dropdown = ({
   categoryChooser,
   receiveRoute,
   subcategoryChooser,
+  checkCategoriesHandler,
 }) => {
   const registerRoutesHandler = (route, subcategory) => {
     dropdownOff();
     receiveRoute(route);
+    checkCategoriesHandler(mainRoute);
     categoryChooser(mainRoute);
     subcategoryChooser(subcategory);
   };
@@ -75,6 +78,7 @@ Dropdown.defaultProps = {
   receiveRoute: (f) => f,
   categoryChooser: (f) => f,
   subcategoryChooser: (f) => f,
+  checkCategoriesHandler: (f) => f,
 };
 
 Dropdown.propTypes = {
@@ -84,6 +88,7 @@ Dropdown.propTypes = {
   receiveRoute: PropTypes.func,
   categoryChooser: PropTypes.func,
   subcategoryChooser: PropTypes.func,
+  checkCategoriesHandler: PropTypes.func,
 };
 
 function mapStateToProps(state) {
@@ -98,6 +103,8 @@ function mapDispatchToProps(dispatch) {
     receiveRoute: (route) => dispatch(receiveCurrentRoute(route)),
     categoryChooser: (route) => dispatch(chooseCategory(route)),
     subcategoryChooser: (route) => dispatch(chooseSubcategory(route)),
+    checkCategoriesHandler: (category, sub) =>
+      dispatch(checkCategories(category, sub)),
   };
 }
 

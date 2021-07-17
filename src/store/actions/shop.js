@@ -4,6 +4,7 @@ import {
   SEND_PRODUCTS_REQUEST_ERROR,
   SEND_PRODUCTS_REQUEST_START,
   SEND_PRODUCTS_REQUEST_SUCCESS,
+  SHOP_SET_DEFAULT,
 } from "./actionTypes";
 import axios from "../../axios/axios-shop";
 
@@ -76,5 +77,11 @@ export function receiveRouteError(e) {
   return {
     type: RECEIVE_CURRENT_ROUTE_START,
     e,
+  };
+}
+
+export function setShopDefault() {
+  return {
+    type: SHOP_SET_DEFAULT,
   };
 }
