@@ -41,6 +41,9 @@ function App({ isAuthenticated }) {
           </ShopLayout>
         </Route>
         <Route exact path="/logout" component={Logout} />
+        <Route path="/product">
+          <Product data={dataSample} />
+        </Route>
         <Route path="/" component={MainPage} />
       </Switch>
     );

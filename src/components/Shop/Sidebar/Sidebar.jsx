@@ -23,7 +23,6 @@ const Sidebar = ({
   subcategoryChooser,
   allCategoriesChooser,
 }) => {
-  console.log("SIDEBAAAAAAAAAAAAAAAAAAAAARRR", sidebar);
   const { chosenCategory, chosenSubcategory, categories, chosenItems } =
     sidebar;
 
@@ -37,12 +36,8 @@ const Sidebar = ({
   };
 
   const renderAllSidebarItems = (arr) =>
-    arr.map(({ title, items }) => {
-      console.log("TITLEEE:", title.toLowerCase());
-      console.log("ITEMMSSS", ...items);
-      console.log("chosenSubcategory", chosenSubcategory);
-
-      return items.map((item) => (
+    arr.map(({ title, items }) =>
+      items.map((item) => (
         <ListRoute
           key={title + item}
           listClass={classNames(
@@ -61,10 +56,8 @@ const Sidebar = ({
             );
           }}
         />
-      ));
-    });
-
-  console.log("SUBCATEGORIES:", subCategories);
+      ))
+    );
 
   return (
     <div className={classes.Sidebar}>
@@ -91,7 +84,7 @@ const Sidebar = ({
             <ListRoute
               listClass={classes.RoutesItem}
               route={`/shop/?category=${chosenCategory}&type=${chosenSubcategory}`}
-              content={`${chosenCategory[0].toUpperCase()}${chosenCategory.slice(
+              content={`${chosenSubcategory[0].toUpperCase()}${chosenSubcategory.slice(
                 1
               )}`}
             />

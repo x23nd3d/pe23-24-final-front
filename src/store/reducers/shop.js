@@ -5,6 +5,7 @@ import {
   SEND_PRODUCTS_REQUEST_ERROR,
   SEND_PRODUCTS_REQUEST_START,
   SEND_PRODUCTS_REQUEST_SUCCESS,
+  SHOP_SET_DEFAULT,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -37,6 +38,11 @@ const handlers = {
   [SEND_PRODUCTS_REQUEST_ERROR]: (state, { e }) => ({
     ...state,
     error: e,
+  }),
+  [SHOP_SET_DEFAULT]: (state) => ({
+    ...state,
+    currentItems: [],
+    currentRoute: null,
   }),
   DEFAULT: (state) => state,
 };

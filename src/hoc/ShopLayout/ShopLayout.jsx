@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import classes from "./ShopLayout.module.scss";
 import { receiveCurrentRoute } from "../../store/actions/shop";
-import { setSidebarDefault } from "../../store/actions/sidebar";
+import { sidebarDefaultHandler } from "../../store/actions/sidebar";
 
 const ShopLayout = ({
   children,
@@ -13,29 +13,18 @@ const ShopLayout = ({
   shop,
   setSidebarDefaultHandler,
 }) => {
-  const getRouteOnce = useCallback(() => {
+  useEffect(() => {
     if (
       !shop.currentItems.length ||
       history.location.search === "?category=all&type=all"
     ) {
       receiveRoute(`/shop/${history.location.search}`);
     }
-  }, [history.location.search, receiveRoute, shop.currentItems.length]);
 
-  const checkAllRoute = useCallback(() => {
     if (history.location.search === "?category=all&type=all") {
-      console.log(
-        "DEFAULLLLLLTTTTTTTTTTTTTTTTTTTTTTTT",
-        history.location.search
-      );
       setSidebarDefaultHandler();
     }
   }, [history.location.search, setSidebarDefaultHandler]);
-
-  useEffect(() => {
-    getRouteOnce();
-    checkAllRoute();
-  }, [checkAllRoute, getRouteOnce]);
 
   return <div className={classes.ShopLayout}>{children}</div>;
 };
@@ -64,7 +53,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     receiveRoute: (route) => dispatch(receiveCurrentRoute(route)),
-    setSidebarDefaultHandler: () => dispatch(setSidebarDefault()),
+    setSidebarDefaultHandler: () => dispatch(sidebarDefaultHandler()),
   };
 }
 
