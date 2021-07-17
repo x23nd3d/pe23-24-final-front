@@ -1,11 +1,11 @@
-import { ADD_TO_CART } from "../actions/actionTypes";
+import { COLOR } from "../actions/actionTypes";
 
-const initialState = { product: { } };
+const initialState = { color: "" };
 
 const productReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_TO_CART:
-      return { ...state, product: action.payload };
+    case COLOR:
+      return { ...state, color: action.payload };
     default:
       return state;
   }

@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Formik, Form, Field, useFormikContext } from "formik";
-import { handleProduct } from "../../../store/actions/product";
+import { colorAction } from "../../../store/actions/product";
 import colorize from "../../../utils/colorize";
 import "./AddToCartForm.scss";
 
@@ -10,13 +10,10 @@ import "./AddToCartForm.scss";
 {/* eslint-disable jsx-a11y/no-static-element-interactions */}
 {/* eslint-disable react/jsx-props-no-spreading */}
 
-const AddToCartForm = ({id, colors, sizes, product, exactProduct }) => {
-
-
-    useEffect(() => {
-        exactProduct({...id, ...colors, ...sizes})
-        console.log(product);
-    }, [product]);
+const AddToCartForm = ({ id, colors, sizes, productState, dispatchColor }) => {
+    function handleColorState ({color}) {
+        dispatchColor(color);
+    }
 
     return (
     <Formik
@@ -38,7 +35,7 @@ const AddToCartForm = ({id, colors, sizes, product, exactProduct }) => {
                         id={`${color}${index}`}
                         value={color}
                         className="defaultRadio"
-                        onClick={() => exactProduct(values)}
+                        onClick={handleColorState(values)}
                     />
                     <label className="customRadio" htmlFor={`${color}${index}`}>
                         <span className={`${colorize(color)} customRadio`}>{color}</span>
@@ -63,26 +60,26 @@ const AddToCartForm = ({id, colors, sizes, product, exactProduct }) => {
     )
 }
 
-// AddToCartForm.defaultProps = { exactProduct: (f) => f };
+AddToCartForm.defaultProps = { dispatchColor: (f) => f };
 
 AddToCartForm.propTypes = {
     id: PropTypes.string.isRequired,
     colors: PropTypes.arrayOf(PropTypes.string).isRequired,
     sizes: PropTypes.arrayOf(PropTypes.string).isRequired,
-    product: PropTypes.oneOfType([
+    productState: PropTypes.oneOfType([
         PropTypes.instanceOf(Array),
         PropTypes.instanceOf(Object)
     ]).isRequired,
-    exactProduct: PropTypes.func.isRequired
+    dispatchColor: PropTypes.func
 }
 
 function mapStateToProps(state) {
-    return { product: state.product }
+    return { productState: state.product }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        exactProduct: (values) => dispatch(handleProduct(values))
+        dispatchColor: (value) => dispatch(colorAction(value))
     }
 }
 

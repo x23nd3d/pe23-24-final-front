@@ -1,15 +1,14 @@
-import { ADD_TO_CART } from "./actionTypes";
+import { COLOR } from "./actionTypes";
 
-export const handleProduct = (values) => (dispatch, getState) => {
+export const colorAction = (value) => (dispatch, getState) => {
   const { color } = getState().product;
-  if (color === values.color) {
-    return values;
+  if (color === value) {
+    return value;
   }
-    dispatch(setProduct(values));
-
+  dispatch(setColor(value));
 };
 
-export const setProduct = (values) => ({
-  type: ADD_TO_CART,
-  payload: values,
+export const setColor = (color) => ({
+  type: COLOR,
+  payload: color,
 });
