@@ -1,9 +1,8 @@
-import React, { useState, useReducer } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import AddToCartForm from "../Forms/Add to Cart/AddToCartForm";
 import SlideShow from "./SlideShow";
-// import prodReducer from "../Forms/Add to Cart/product_reducer";
 
 import {
     product,
@@ -21,8 +20,6 @@ import {
     dataBlock
 } from "./Product.module.scss";
 
-// export const ProductViewContext = React.createContext();
-
 const Product = ({data}) => {
     const {
         id,
@@ -38,12 +35,7 @@ const Product = ({data}) => {
         producingCountry
     } = data;
 
-    // const [view, setView] = useState()
-
-    // export const [state, dispatch] = useReducer(prodReducer, {color: color[0]});
-
     return (
-        // <ProductViewContext.Provider value={state} >
         <section className={product}>
             <SlideShow photos={photo} />
             <article className={dataBlock}>
@@ -74,7 +66,6 @@ const Product = ({data}) => {
                 </ul>
             </article>
         </section>
-        // </ProductViewContext.Provider>
     )
 }
 
