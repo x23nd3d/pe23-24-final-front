@@ -41,9 +41,27 @@ const Nav = ({ isAuthenticated, user, history }) => {
   };
 
   const navItems = [
-    { id: 0, route: history.location.search, content: "Clothes" },
-    { id: 1, route: history.location.search, content: "Shoes" },
-    { id: 2, route: history.location.search, content: "Accessories" },
+    {
+      id: 0,
+      route: history.location.search
+        ? history.location.search
+        : history.location.pathname,
+      content: "Clothes",
+    },
+    {
+      id: 1,
+      route: history.location.search
+        ? history.location.search
+        : history.location.pathname,
+      content: "Shoes",
+    },
+    {
+      id: 2,
+      route: history.location.search
+        ? history.location.search
+        : history.location.pathname,
+      content: "Accessories",
+    },
   ];
 
   const accountItems = [
