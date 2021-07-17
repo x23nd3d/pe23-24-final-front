@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { NavLink, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 import PropTypes from "prop-types";
 import { expo, listItem } from "./Exposition.module.scss";
@@ -9,7 +9,7 @@ import ProductCard from "./ProductCard";
 const Exposition = ({ productList }) => (
   <ul className={expo}>
     {productList.map((product) => (
-      <li className={listItem} key={product.id}>
+      <li className={listItem} key={product.id + product.name}>
         <ProductCard product={product} />
       </li>
     ))}
@@ -17,7 +17,7 @@ const Exposition = ({ productList }) => (
 );
 
 Exposition.propTypes = {
-  productList: PropTypes.arrayOf(PropTypes.string).isRequired,
+  productList: PropTypes.instanceOf(Object).isRequired,
 };
 
 function mapStateToProps(state) {

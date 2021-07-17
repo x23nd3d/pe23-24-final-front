@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import classNames from "classnames";
+import { NavLink } from "react-router-dom";
 import classes from "./ColorFilter.module.scss";
 
 const colors = ["black", "brown", "red", "white"];
@@ -18,15 +19,14 @@ const ColorFilter = (props) => {
       <h3 className={classes.Title}>Colors</h3>
       <ul className={classes.Colors}>
         {colors.map((color) => (
-          <li>
-            <a
-              href="#"
-              key={color}
+          <li key={color}>
+            <NavLink
+              to="#"
               onClick={() => pickAColor(color)}
               className={classNames(classes.Color, classes[color])}
             >
               {color}
-            </a>
+            </NavLink>
           </li>
         ))}
       </ul>
