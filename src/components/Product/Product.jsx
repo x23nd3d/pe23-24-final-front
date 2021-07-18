@@ -61,7 +61,7 @@ const Product = ({data}) => {
                                 {point}
                             </li>)}
                         </ul>
-                    {producingCountry && <p>Made in {producingCountry}</p> }
+                    {producingCountry && <p style={{margin: "10px 0"}}>Made in {producingCountry}</p> }
                     </li>
                 </ul>
             </article>

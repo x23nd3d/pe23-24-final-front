@@ -17,7 +17,7 @@ const AddToCartForm = ({ id, colors, sizes, productState, dispatchColor }) => {
 
     return (
     <Formik
-        initialValues={{ color: colors[0], size: sizes[0], id}}
+        initialValues={{ color: colors[0], size: `${sizes ? sizes[0] : ""}`, id}}
         onSubmit={(values) => console.log(values)}
         >
         {({
@@ -43,6 +43,7 @@ const AddToCartForm = ({ id, colors, sizes, productState, dispatchColor }) => {
                     </div>
                 )}
             </div>
+            {sizes &&
             <div className="formBlock select-block">
                 <span className="dataPointer">Select a size</span>
                 <Field className="size-select" name="size" as="select">
@@ -52,7 +53,7 @@ const AddToCartForm = ({ id, colors, sizes, productState, dispatchColor }) => {
                         className="size-option"
                     >{size}</option>)}
                 </Field>
-            </div>
+            </div>}
             <button className="submit" type="submit">Add to Cart</button>
         </Form>
     }
@@ -60,12 +61,15 @@ const AddToCartForm = ({ id, colors, sizes, productState, dispatchColor }) => {
     )
 }
 
-AddToCartForm.defaultProps = { dispatchColor: (f) => f };
+AddToCartForm.defaultProps = {
+    dispatchColor: (f) => f,
+    sizes: "",
+};
 
 AddToCartForm.propTypes = {
     id: PropTypes.string.isRequired,
     colors: PropTypes.arrayOf(PropTypes.string).isRequired,
-    sizes: PropTypes.arrayOf(PropTypes.string).isRequired,
+    sizes: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.string]),
     productState: PropTypes.oneOfType([
         PropTypes.instanceOf(Array),
         PropTypes.instanceOf(Object)

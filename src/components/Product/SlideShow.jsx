@@ -1,19 +1,17 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
 import Carousel from "react-multi-carousel";
+import { colorAction } from "../../store/actions/product";
 import "react-multi-carousel/lib/styles.css";
 import "./SlideShow.scss";
+import pic from "./canali_black1.png";
 
-const SlideShow = ({photos}) => {
+const SlideShow = ({photos, productState, dispatchPhoto}) => {
+
   const [...photo] = Object.entries(photos);
-
-  // console.log(photos);
-
-  // const view = useContext(ProductViewContext);
-
-  // const [currentPhotos, setCurrentPhotos] = useState(view);
-  // const [currentColor, setCurrentColor] = useState(view);
-
+  // console.log(photo);
+  photo.forEach(p => console.log(p[1][0]))
 
   const responsive = {
     superLargeDesktop: {
@@ -37,8 +35,8 @@ const SlideShow = ({photos}) => {
   return (
     <div className="photo-block">
         <Carousel className="carou" responsive={responsive}>
-          {photo[0].map((path, index) => <div key={path} >
-              <div className="photo" />
+          {photo.map((path, index) => <div className="photo_wrapper" key={path} >
+              <img src={path} className="photo" />
             </div>)}
         </Carousel>
     </div>
@@ -46,8 +44,25 @@ const SlideShow = ({photos}) => {
 }
 
 
+SlideShow.defaultProps = {
+  dispatchPhoto: (f) => f,
+};
+
 SlideShow.propTypes = {
-  photos: PropTypes.instanceOf(Object).isRequired
+  photos: PropTypes.instanceOf(Object).isRequired,
+  productState: PropTypes.oneOfType([
+    PropTypes.instanceOf(Array),
+    PropTypes.instanceOf(Object)
+]).isRequired,
+dispatchPhoto: PropTypes.func
 }
 
-export default SlideShow;
+function mapStateToProps (state) {
+  return { productState: state.product  }
+}
+
+function mapDispatchToProps (dispatch) {
+  return { dispatchPhoto: (value) => dispatch(colorAction(value)) }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SlideShow);

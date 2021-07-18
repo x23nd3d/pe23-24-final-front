@@ -21,7 +21,7 @@ const dataSample = {
       "./stock/suits/suits/1701 - Canali/charcoal_color/1701_charcoal_canali3.png",
     ],
   },
-  color: ["Navy"],
+  color: ["Navy", "Black", "Charcoal"],
   material: "Wool",
   price: "2099",
   size: ["38", "40", "42", "44", "48"],
