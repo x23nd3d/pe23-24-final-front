@@ -64,21 +64,25 @@ const Sidebar = ({
       <div className={classes.SidebarContent}>
         <ul className={classes.Routes}>
           <ListRoute listClass={classes.RoutesItem} route="/" content="Home" />
-          <span>&gt;</span>
-          <ListRoute
-            listClass={classes.RoutesItem}
-            route={`/shop/?category=${chosenCategory}&type=all`}
-            content={`${sidebar.chosenCategory[0].toUpperCase()}${sidebar.chosenCategory.slice(
-              1
-            )}`}
-            onClick={() =>
-              registerRoutesHandler(
-                `/shop/?category=${chosenCategory}&type=all`,
-                "viewAll",
-                chosenCategory
-              )
-            }
-          />
+          {!chosenItems.length ? null : (
+            <>
+              <span>&gt;</span>
+              <ListRoute
+                listClass={classes.RoutesItem}
+                route={`/shop/?category=${chosenCategory}&type=all`}
+                content={`${sidebar.chosenCategory[0].toUpperCase()}${sidebar.chosenCategory.slice(
+                  1
+                )}`}
+                onClick={() =>
+                  registerRoutesHandler(
+                    `/shop/?category=${chosenCategory}&type=all`,
+                    "viewAll",
+                    chosenCategory
+                  )
+                }
+              />
+            </>
+          )}
           {chosenSubcategory !== "viewAll" ? <span>&gt;</span> : ""}
           {chosenSubcategory !== "viewAll" ? (
             <ListRoute

@@ -28,6 +28,7 @@
 
   &:hover:before {
     background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px 3px #00000061;
   }
   &:before {
     transition: all 0.5s ease;

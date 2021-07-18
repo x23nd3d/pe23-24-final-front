@@ -124,13 +124,13 @@ const Nav = ({ isAuthenticated, user, history }) => {
           ) : (
             <ListRoute
               route="/login"
-              content="My Account"
+              content="Sign In"
               listClass={classNames(classes.NavItem, classes.NavItemMyAccount)}
             />
           )}
           <ListRoute
             route="/"
-            content="Shopping bag"
+            content="Cart"
             listClass={classNames(classes.NavItem, classes.NavItemShoppingBag)}
           />
         </ul>

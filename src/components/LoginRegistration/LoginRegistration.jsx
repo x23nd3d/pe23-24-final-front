@@ -84,19 +84,26 @@ const LoginRegistration = (props) => {
             onClick={() => loginSwitcher()}
             type="button"
           >
-            Log in
+            Sign in
           </button>
           <button
             className={classNames(classes.Tab, !login && classes.TabActive)}
             onClick={() => registrationSwitcher()}
             type="button"
           >
-            Registration
+            Sign up
           </button>
         </div>
-        <h3 className={classes.Title}>
-          Please enter your account details to log in
-        </h3>
+        {login ? (
+          <h3 className={classes.Title}>
+            Please enter your account details to log in
+          </h3>
+        ) : (
+          <h3 className={classes.Title}>
+            To sign up, please type the required information
+          </h3>
+        )}
+
         <form>
           {!login && (
             <>
@@ -106,7 +113,7 @@ const LoginRegistration = (props) => {
                   type="text"
                   name="firstName"
                   value={userInfo.firstName}
-                  placeholder="Your first name"
+                  placeholder="First name"
                   onChange={handleChange}
                 />
               </div>
@@ -117,7 +124,7 @@ const LoginRegistration = (props) => {
                   type="text"
                   name="secondName"
                   value={userInfo.secondName}
-                  placeholder="Your second name"
+                  placeholder="Last name"
                   onChange={handleChange}
                 />
               </div>
@@ -173,7 +180,7 @@ const LoginRegistration = (props) => {
               onClick={handleSubmit}
               type="submit"
             >
-              Log in
+              Sign in
             </button>
           ) : (
             <button
@@ -181,7 +188,7 @@ const LoginRegistration = (props) => {
               onClick={handleSubmit}
               type="submit"
             >
-              Register
+              Sign up
             </button>
           )}
         </form>

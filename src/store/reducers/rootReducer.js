@@ -5,12 +5,13 @@ import authReducer from "./auth";
 import userReducer from "./user";
 import shopReducer from "./shop";
 import sidebarReducer from "./sidebar";
-import productReducer from "./productReducer";
+import productReducer from "./product";
+import cartReducer from "./cart";
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["auth", "user", "shop", "sidebar", "product"],
+  whitelist: ["auth", "user", "shop", "sidebar", "product", "cart"],
 };
 
 const rootReducer = combineReducers({
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   user: userReducer,
   shop: shopReducer,
   sidebar: sidebarReducer,
-  product: productReducer
+  product: productReducer,
+  cart: cartReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);
