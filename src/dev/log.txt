@@ -1,3 +1,4 @@
-1. Initialized GIT Repo (Main \ Dev).
-2. Filled in content.
-3. Team work start.
+1. Add on hover cart button + sizes + colors and click on particular size will open the cart item or smth like that.
+2. Do Cart icon as separate part of the cart item.
+3. Add wishlist item
+4. Change small icon on cart add to another icon +

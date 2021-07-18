@@ -15,7 +15,7 @@
 
   &Item {
     padding: 20px;
-    z-index: 100;
+    z-index: 99;
 
     &MyAccount:before {
       background-position: -16px 0;
@@ -127,6 +127,7 @@
   .Nav {
     &Shop {
       font-size: 12px;
+
     }
 
     &Item {

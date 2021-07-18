@@ -34,8 +34,8 @@ const Layout = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <Header />
             {cartPreviewActive ? <CartPreview items={cart.items} /> : null}
+            <Header />
             {children}
             <Footer />
           </motion.div>
