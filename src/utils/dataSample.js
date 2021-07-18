@@ -30,8 +30,7 @@ const dataSample = {
     "Jacket: notch lapel, two-button front, chest pocket, flap hand pockets, non-functional four-button cuffs, double back vents",
     "Trousers: slide and two-button closure with zip fly, hand pockets, back button pockets, flat front, creased",
     "Family-run since 1934, Canali’s tailored designs are handcrafted with premium fabrics and a meticulous attention to detail.",
-  ],
-  stock: true,
-};
+  ]
+}
 
 export default dataSample;

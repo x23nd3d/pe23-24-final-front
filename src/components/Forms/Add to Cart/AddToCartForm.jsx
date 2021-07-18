@@ -1,6 +1,8 @@
-import React, { useRef, useState, useEffect } from "react";
+import React from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Formik, Form, Field, useFormikContext } from "formik";
+import { colorAction } from "../../../store/actions/product";
 import colorize from "../../../utils/colorize";
 import "./AddToCartForm.scss";
 
@@ -8,19 +10,10 @@ import "./AddToCartForm.scss";
 {/* eslint-disable jsx-a11y/no-static-element-interactions */}
 {/* eslint-disable react/jsx-props-no-spreading */}
 
-
-
-const AddToCartForm = ({id, colors, sizes}) => {
-
-    const [currentColor, setCurrentColor] = useState(colors[0]);
-    const [view, setView] = useState(colors[0]);
-
-
-    const handleColor = (values) => setCurrentColor(values.color);
-
-    useEffect(() => {
-        setView(currentColor);
-    }, [currentColor]);
+const AddToCartForm = ({ id, colors, sizes, productState, dispatchColor }) => {
+    function handleColorState ({color}) {
+        dispatchColor(color);
+    }
 
     return (
     <Formik
@@ -42,7 +35,7 @@ const AddToCartForm = ({id, colors, sizes}) => {
                         id={`${color}${index}`}
                         value={color}
                         className="defaultRadio"
-                        onClickCapture={handleColor(values)}
+                        onClick={handleColorState(values)}
                     />
                     <label className="customRadio" htmlFor={`${color}${index}`}>
                         <span className={`${colorize(color)} customRadio`}>{color}</span>
@@ -67,10 +60,27 @@ const AddToCartForm = ({id, colors, sizes}) => {
     )
 }
 
+AddToCartForm.defaultProps = { dispatchColor: (f) => f };
+
 AddToCartForm.propTypes = {
     id: PropTypes.string.isRequired,
     colors: PropTypes.arrayOf(PropTypes.string).isRequired,
-    sizes: PropTypes.arrayOf(PropTypes.string).isRequired
+    sizes: PropTypes.arrayOf(PropTypes.string).isRequired,
+    productState: PropTypes.oneOfType([
+        PropTypes.instanceOf(Array),
+        PropTypes.instanceOf(Object)
+    ]).isRequired,
+    dispatchColor: PropTypes.func
 }
 
-export default AddToCartForm;
+function mapStateToProps(state) {
+    return { productState: state.product }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        dispatchColor: (value) => dispatch(colorAction(value))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddToCartForm);
