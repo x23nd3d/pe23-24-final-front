@@ -6,19 +6,19 @@ const dataSample = {
   type: "Classic",
   photo: {
     Navy: [
-      "./stock/suits/suits/1701 - Canali/navy_color/1701_navy_canali1.png",
-      "./stock/suits/suits/1701 - Canali/navy_color/1701_navy_canali2.png",
-      "./stock/suits/suits/1701 - Canali/navy_color/1701_navy_canali3.png",
+      "https://cdn.discordapp.com/attachments/658409407230640143/866799292298297364/1701_navy_canali1.png",
+      "https://cdn.discordapp.com/attachments/658409407230640143/866799375908995092/1701_navy_canali2.png",
+      "https://cdn.discordapp.com/attachments/658409407230640143/866799403309858857/1701_navy_canali3.png"
     ],
     Black: [
-      "./stock/suits/suits/1701 - Canali/black_color/1701_black_canali1.png",
-      "./stock/suits/suits/1701 - Canali/black_color/1701_black_canali2.png",
-      "./stock/suits/suits/1701 - Canali/black_color/1701_black_canali3.png",
+      "https://cdn.discordapp.com/attachments/658409407230640143/866799768612372520/1701_black_canali1.png",
+      "https://cdn.discordapp.com/attachments/658409407230640143/866799795133481001/1701_black_canali2.png",
+      "https://cdn.discordapp.com/attachments/658409407230640143/866799826041700352/1701_black_canali3.png"
     ],
     Charcoal: [
-      "./stock/suits/suits/1701 - Canali/charcoal_color/1701_charcoal_canali1.png",
-      "./stock/suits/suits/1701 - Canali/charcoal_color/1701_charcoal_canali2.png",
-      "./stock/suits/suits/1701 - Canali/charcoal_color/1701_charcoal_canali3.png",
+      "https://cdn.discordapp.com/attachments/658409407230640143/866800142588706886/1701_charcoal_canali1.png",
+      "https://cdn.discordapp.com/attachments/658409407230640143/866800167164182548/1701_charcoal_canali2.png",
+      "https://cdn.discordapp.com/attachments/658409407230640143/866800188726312990/1701_charcoal_canali3.png"
     ],
   },
   color: ["Navy", "Black", "Charcoal"],

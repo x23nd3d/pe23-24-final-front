@@ -10,14 +10,16 @@ import "./AddToCartForm.scss";
 {/* eslint-disable jsx-a11y/no-static-element-interactions */}
 {/* eslint-disable react/jsx-props-no-spreading */}
 
-const AddToCartForm = ({ id, colors, sizes, productState, dispatchColor }) => {
+const AddToCartForm = ({ data, store}) => {
+    const {product, dispatchColor} = store;
+
     function handleColorState ({color}) {
         dispatchColor(color);
     }
 
     return (
     <Formik
-        initialValues={{ color: productState.color, size: `${sizes ? sizes[0] : ""}`, id}}
+        initialValues={{ ...data, color: product.color, size: `${data.size ? data.size[0] : ""}`}}
         onSubmit={(values) => console.log(values)}
         >
         {({
@@ -26,9 +28,9 @@ const AddToCartForm = ({ id, colors, sizes, productState, dispatchColor }) => {
         }) => <Form className="form" onSubmit={handleSubmit}>
                 <div className="formBlock">
                 <span className="dataPointer">
-                {colors.length > 1 ? "Select a color" : <>Color<span style={{paddingLeft: "20px"}} >{colors[0]}</span></> }
+                {data.color.length > 1 ? "Select a color" : <>Color<span style={{paddingLeft: "20px"}} >{product.color}</span></> }
                 </span>
-                {colors.length > 1 && colors.map((color, index) => <div key={color}>
+                {data.color.length > 1 && data.color.map((color, index) => <div key={color}>
                     <Field
                         type="radio"
                         name="color"
@@ -43,11 +45,11 @@ const AddToCartForm = ({ id, colors, sizes, productState, dispatchColor }) => {
                     </div>
                 )}
             </div>
-            {sizes &&
+            {data.size &&
             <div className="formBlock select-block">
                 <span className="dataPointer">Select a size</span>
                 <Field className="size-select" name="size" as="select">
-                    {sizes.map(size => <option
+                    {data.size.map(size => <option
                         key={size}
                         value={size}
                         className="size-option"
@@ -61,30 +63,35 @@ const AddToCartForm = ({ id, colors, sizes, productState, dispatchColor }) => {
     )
 }
 
-AddToCartForm.defaultProps = {
-    dispatchColor: (f) => f,
-    sizes: "",
-};
 
 AddToCartForm.propTypes = {
-    id: PropTypes.string.isRequired,
-    colors: PropTypes.arrayOf(PropTypes.string).isRequired,
-    sizes: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.string]),
-    productState: PropTypes.oneOfType([
-        PropTypes.instanceOf(Array),
-        PropTypes.instanceOf(Object)
-    ]).isRequired,
-    dispatchColor: PropTypes.func
+    data: PropTypes.instanceOf(Object).isRequired,
+    store: PropTypes.instanceOf(Object).isRequired
 }
+// AddToCartForm.defaultProps = {
+//     dispatchColor: (f) => f,
+//     sizes: "",
+// };
 
-function mapStateToProps(state) {
-    return { productState: state.product }
-}
+// AddToCartForm.propTypes = {
+//     id: PropTypes.string.isRequired,
+//     colors: PropTypes.arrayOf(PropTypes.string).isRequired,
+//     sizes: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.string]),
+//     productState: PropTypes.oneOfType([
+//         PropTypes.instanceOf(Array),
+//         PropTypes.instanceOf(Object)
+//     ]).isRequired,
+//     dispatchColor: PropTypes.func
+// }
 
-function mapDispatchToProps(dispatch) {
-    return {
-        dispatchColor: (value) => dispatch(colorAction(value))
-    }
-}
+// function mapStateToProps(state) {
+//     return { productState: state.product }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddToCartForm);
+// function mapDispatchToProps(dispatch) {
+//     return {
+//         dispatchColor: (value) => dispatch(colorAction(value))
+//     }
+// }
+export default AddToCartForm;
+// export default connect(mapStateToProps, mapDispatchToProps)(AddToCartForm);

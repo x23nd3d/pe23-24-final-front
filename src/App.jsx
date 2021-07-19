@@ -6,7 +6,7 @@ import { AnimatePresence } from "framer-motion";
 import MainPage from "./components/Main Page/MainPage";
 import Shop from "./components/Shop/Shop";
 import ShopLayout from "./hoc/ShopLayout/ShopLayout";
-import Product from "./components/Product/Product";
+import ProductContainer from "./components/Product/ProductContainer";
 import LoginRegistration from "./components/LoginRegistration/LoginRegistration";
 import dataSample from "./utils/dataSample";
 import { logout } from "./store/actions/auth";
@@ -26,7 +26,7 @@ function App({ isAuthenticated }) {
         </AnimatePresence>
       </Route>
       <Route path="/product">
-        <Product data={dataSample} />
+        <ProductContainer data={dataSample} />
       </Route>
       <Route path="/" component={MainPage} />
     </Switch>

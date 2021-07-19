@@ -1,4 +1,4 @@
-import { COLOR } from "./actionTypes";
+import { COLOR, PHOTO } from "./actionTypes";
 
 export const colorAction = (value) => (dispatch, getState) => {
   const { color } = getState().product;
@@ -7,6 +7,11 @@ export const colorAction = (value) => (dispatch, getState) => {
   }
   dispatch(setColor(value));
 };
+
+export const photoAction = (value) => ({
+  type: PHOTO,
+  payload: value,
+});
 
 export const setColor = (color) => ({
   type: COLOR,

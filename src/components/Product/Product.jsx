@@ -1,10 +1,9 @@
 import React, {useEffect} from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 import classNames from "classnames";
 import AddToCartForm from "../Forms/Add to Cart/AddToCartForm";
-import photoAction from "../../store/actions/slideshow";
-import {colorAction} from "../../store/actions/product";
+// import {colorAction} from "../../store/actions/product";
 import SlideShow from "./SlideShow";
 
 import {
@@ -23,8 +22,7 @@ import {
     dataBlock
 } from "./Product.module.scss";
 
-
-const Product = ({data, productState, dispatchColor, dispatchPhoto}) => {
+const Product = ({data, store}) => {
     const {
         id,
         name,
@@ -39,17 +37,9 @@ const Product = ({data, productState, dispatchColor, dispatchPhoto}) => {
         producingCountry
     } = data;
 
-    const photoEntriesArray = Object.entries(photo);
-    // productState.color !== photoEntriesArray[0][0] && dispatchColor(photoEntriesArray[0][0]);
-
-    useEffect(() => {
-        dispatchColor(photoEntriesArray[0][0])
-        dispatchPhoto(photo[productState.color]);
-    }, []);
-
     return (
         <section className={product}>
-            <SlideShow />
+            <SlideShow photo={store.product.photo} />
             <article className={dataBlock}>
                 <ul className={classNames(Details)}>
                     <li className={primaryBlock}>
@@ -60,7 +50,7 @@ const Product = ({data, productState, dispatchColor, dispatchPhoto}) => {
                         <span className={classNames(dataPointer, Price)}>Price<p>{`$${price}`}</p></span>
                     </li>
                     <li className={selectionBlock}>
-                        <AddToCartForm id={id} colors={color} sizes={size} />
+                        <AddToCartForm data={data} store={store} />
                         <hr />
                     </li>
                     <li className={bottomBlock}>
@@ -101,23 +91,11 @@ Product.propTypes = {
         size: PropTypes.arrayOf(PropTypes.string),
         description: PropTypes.instanceOf(Array)
     }).isRequired,
-    productState: PropTypes.oneOfType([
-        PropTypes.instanceOf(Array),
-        PropTypes.instanceOf(Object)
-    ]).isRequired,
-    dispatchPhoto: PropTypes.func.isRequired,
-    dispatchColor: PropTypes.func.isRequired
+    store: PropTypes.shape({
+        product: PropTypes.instanceOf(Object),
+        dispatchColor: PropTypes.func,
+        dispatchPhoto: PropTypes.func
+    }).isRequired
 }
 
-function mapStateToProps (state) {
-    return { productState: state.product }
-}
-
-function mapDispatchToProps (dispatch) {
-    return {
-        dispatchPhoto: (value) => dispatch(photoAction(value)),
-        dispatchColor: (value) => dispatch(colorAction(value))
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Product);
+export default Product;
