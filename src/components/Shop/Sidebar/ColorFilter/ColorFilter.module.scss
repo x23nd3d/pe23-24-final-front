@@ -1,3 +1,5 @@
+@import "../../../../styles/variables";
+
 .ColorFilter {
   color: #fff;
   font-family: "Open Sans", sans-serif;
@@ -15,9 +17,16 @@
 .Color {
   display: block;
   position: relative;
-  padding-left: 50px;
-  margin-top: 33px;
+  padding: 10px 10px 10px 50px;
+  margin-top: 30px;
   cursor: pointer;
+
+  &Selected {
+    // background: linear-gradient(45deg, rgb(0, 0, 0), rgb(10, 10, 10));
+    background: linear-gradient(45deg, rgb(0, 0, 0) 0%, rgb(20, 20, 20));
+
+    border-right: 1px solid gold;
+  }
 
   &:before {
     position: absolute;
@@ -35,6 +44,7 @@
 .black:before {
   border: 1px solid #fff;
   background-color: #000;
+  background-color: coastal;
 }
 
 .red:before {
@@ -47,4 +57,14 @@
 
 .white:before {
   background-color: white;
+}
+
+.ShowMore {
+  background-color: unset;
+  color: #fff;
+  border: none;
+  border-bottom: 1px solid #fff;
+  margin-top: 50px;
+  padding: 0.5rem 0;
+  cursor: pointer;
 }

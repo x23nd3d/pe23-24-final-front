@@ -1,4 +1,5 @@
 import {
+  SET_FILTERED_ITEMS,
   RECEIVE_CURRENT_ROUTE_ERROR,
   RECEIVE_CURRENT_ROUTE_START,
   RECEIVE_CURRENT_ROUTE_SUCCESS,
@@ -10,6 +11,7 @@ import {
 
 const initialState = {
   currentItems: [],
+  filteredItems: [],
   currentRoute: "/shop/?category=all&type=all",
   loading: false,
   error: false,
@@ -43,6 +45,12 @@ const handlers = {
     ...state,
     currentItems: [],
     currentRoute: null,
+  }),
+  // DON'T BLAME ME IF I DID IT WRONG. SO CONFUSING
+  [SET_FILTERED_ITEMS]: (state, { data }) => ({
+    ...state,
+    loading: false,
+    filteredItems: data,
   }),
   DEFAULT: (state) => state,
 };

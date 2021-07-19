@@ -7,6 +7,7 @@ import { receiveCurrentRoute } from "../../../store/actions/shop";
 import {
   checkCategories,
   chooseCategory,
+  chooseColor,
   chooseSubcategory,
 } from "../../../store/actions/sidebar";
 import classes from "./Sidebar.module.scss";
@@ -22,6 +23,7 @@ const Sidebar = ({
   receiveRoute,
   subcategoryChooser,
   allCategoriesChooser,
+  colorChooser,
 }) => {
   const { chosenCategory, chosenSubcategory, categories, chosenItems } =
     sidebar;
@@ -49,6 +51,8 @@ const Sidebar = ({
           content={item}
           route={`/shop/?category=${title}&type=${item.toLowerCase()}`}
           onClick={() => {
+            // ! HERE GOES RESET ON CHOSEN COLOR
+            colorChooser(null);
             registerRoutesHandler(
               `shop/?category=${title}&type=${item.toLowerCase()}`,
               item,
@@ -125,6 +129,7 @@ Sidebar.defaultProps = {
   categoryChooser: (f) => f,
   subcategoryChooser: (f) => f,
   allCategoriesChooser: (f) => f,
+  colorChooser: (f) => f,
 };
 
 Sidebar.propTypes = {
@@ -134,6 +139,7 @@ Sidebar.propTypes = {
   categoryChooser: PropTypes.func,
   subcategoryChooser: PropTypes.func,
   allCategoriesChooser: PropTypes.func,
+  colorChooser: PropTypes.func,
 };
 
 function mapStateToProps(state) {
@@ -149,6 +155,7 @@ function mapDispatchToProps(dispatch) {
     categoryChooser: (route) => dispatch(chooseCategory(route)),
     subcategoryChooser: (route) => dispatch(chooseSubcategory(route)),
     allCategoriesChooser: (route) => dispatch(checkCategories(route)),
+    colorChooser: (route) => dispatch(chooseColor(route)),
   };
 }
 

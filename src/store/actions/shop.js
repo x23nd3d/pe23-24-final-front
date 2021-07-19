@@ -1,4 +1,5 @@
 import {
+  SET_FILTERED_ITEMS,
   RECEIVE_CURRENT_ROUTE_START,
   RECEIVE_CURRENT_ROUTE_SUCCESS,
   SEND_PRODUCTS_REQUEST_ERROR,
@@ -56,6 +57,13 @@ export function sendProductsRequestSuccess(data) {
 export function sendProductsRequestError(e) {
   return {
     type: SEND_PRODUCTS_REQUEST_ERROR,
+    e,
+  };
+}
+// TRYING HERE AS WELL
+export function setFilteredItems(e) {
+  return {
+    type: SET_FILTERED_ITEMS,
     e,
   };
 }

@@ -15,3 +15,42 @@
 .RangeBlock {
   margin-top: 25px;
 }
+
+.ShowRange {
+  background-color: unset;
+  color: #fff;
+  border: none;
+  border-bottom: 1px solid #fff;
+  margin-top: 25px;
+  padding: 0.5rem 0;
+  cursor: pointer;
+}
+
+.Buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.Button {
+  flex: 1 1 auto;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid transparent;
+  padding: 0.5rem;
+  cursor: pointer;
+
+  &:hover {
+    background: #000;
+    border: 1px solid #fff;
+    color: #fff;
+  }
+
+  &:active {
+    border: 1px solid gold;
+  }
+
+  & + & {
+    margin-left: 1rem;
+  }
+}

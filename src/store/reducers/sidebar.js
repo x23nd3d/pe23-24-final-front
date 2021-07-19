@@ -1,4 +1,7 @@
 import {
+  ERASE_COLOR,
+  CHOSEN_PRICE_RANGE,
+  CHOSEN_COLOR,
   CHOSEN_CATEGORY,
   CHOSEN_SUBCATEGORY,
   SIDEBAR_DEFAULT,
@@ -23,6 +26,11 @@ const INITIAL_STATE = {
     },
   ],
   chosenItems: [],
+  chosenColor: [],
+  chosenPriceRange: {
+    min: "",
+    max: "",
+  },
 };
 
 const sidebarReducer = (state = INITIAL_STATE, action) => {
@@ -48,6 +56,23 @@ const sidebarReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         chosenItems: action.payload,
+      };
+    case CHOSEN_COLOR:
+      return {
+        ...state,
+        chosenColor: [...state.chosenColor, action.payload],
+      };
+    case ERASE_COLOR:
+      return {
+        ...state,
+        chosenColor: state.chosenColor.filter(
+          (item) => item !== action.payload
+        ),
+      };
+    case CHOSEN_PRICE_RANGE:
+      return {
+        ...state,
+        chosenPriceRange: action.payload,
       };
 
     default:

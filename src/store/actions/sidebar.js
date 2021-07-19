@@ -1,4 +1,7 @@
 import {
+  ERASE_COLOR,
+  CHOSEN_PRICE_RANGE,
+  CHOSEN_COLOR,
   CHOSEN_CATEGORY,
   CHOSEN_SUBCATEGORY,
   SIDEBAR_DEFAULT,
@@ -49,4 +52,19 @@ export const chooseCategory = (category) => ({
 export const chooseSubcategory = (subcategory) => ({
   type: CHOSEN_SUBCATEGORY,
   payload: subcategory,
+});
+
+export const chooseColor = (color) => ({
+  type: CHOSEN_COLOR,
+  payload: color,
+});
+
+export const eraseColor = (color) => ({
+  type: ERASE_COLOR,
+  payload: color,
+});
+
+export const choosePriceRange = (priceRange) => ({
+  type: CHOSEN_PRICE_RANGE,
+  payload: priceRange,
 });
