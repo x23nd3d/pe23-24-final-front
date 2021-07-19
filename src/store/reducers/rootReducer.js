@@ -6,11 +6,12 @@ import userReducer from "./user";
 import shopReducer from "./shop";
 import sidebarReducer from "./sidebar";
 import productReducer from "./productReducer";
+import photoReducer from "./photoReducer";
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["auth", "user", "shop", "sidebar", "product"],
+  whitelist: ["auth", "user", "shop", "sidebar", "product", "photo"],
 };
 
 const rootReducer = combineReducers({
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   user: userReducer,
   shop: shopReducer,
   sidebar: sidebarReducer,
-  product: productReducer
+  product: productReducer,
+  photo: photoReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);

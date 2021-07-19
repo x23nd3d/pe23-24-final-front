@@ -63,8 +63,31 @@
     & .dataPointer {
         margin: 10px 0;
         @include point-info;
+        width: 320px;
         & p {
             margin-left: 20px;
+        }
+
+        height: 50px;
+        align-items: center;
+        align-self: flex-start;
+        justify-content: flex-start;
+
+
+        @media (max-width: 400px) {
+            align-items: flex-start;
+            flex-wrap: wrap;
+            width: 260px;
+            align-content: center;
+            & h5 {
+                margin-right: 20px;
+            }
+        }
+        & h5, & p {
+            @media (max-width: 400px) {
+                margin-left: 0;
+                align-self: flex-start;
+            }
         }
     }
 

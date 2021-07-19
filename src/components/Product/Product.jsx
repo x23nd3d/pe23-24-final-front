@@ -1,7 +1,10 @@
-import React from "react";
+import React, {useEffect} from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import classNames from "classnames";
 import AddToCartForm from "../Forms/Add to Cart/AddToCartForm";
+import photoAction from "../../store/actions/slideshow";
+import {colorAction} from "../../store/actions/product";
 import SlideShow from "./SlideShow";
 
 import {
@@ -20,7 +23,8 @@ import {
     dataBlock
 } from "./Product.module.scss";
 
-const Product = ({data}) => {
+
+const Product = ({data, productState, dispatchColor, dispatchPhoto}) => {
     const {
         id,
         name,
@@ -35,9 +39,17 @@ const Product = ({data}) => {
         producingCountry
     } = data;
 
+    const photoEntriesArray = Object.entries(photo);
+    // productState.color !== photoEntriesArray[0][0] && dispatchColor(photoEntriesArray[0][0]);
+
+    useEffect(() => {
+        dispatchColor(photoEntriesArray[0][0])
+        dispatchPhoto(photo[productState.color]);
+    }, []);
+
     return (
         <section className={product}>
-            <SlideShow photos={photo} />
+            <SlideShow />
             <article className={dataBlock}>
                 <ul className={classNames(Details)}>
                     <li className={primaryBlock}>
@@ -53,8 +65,14 @@ const Product = ({data}) => {
                     </li>
                     <li className={bottomBlock}>
                         <h3 className={moreDetails}>More details</h3>
-                        <span className={dataPointer}>Type<p>{type}</p></span>
-                        <span className={dataPointer}>Material<p>{material}</p></span>
+                        <span className={dataPointer}>
+                            <h5>Type</h5>
+                            <p>{type}</p>
+                        </span>
+                        <span className={dataPointer}>
+                            <h5>Material</h5>
+                            <p>{material}</p>
+                            </span>
                         <ul className={dsc}>
                         {description.map((point) => <li
                             key={`${point.slice(-3)}${Math.random() * 50}${point.slice(0, 5)}`}>
@@ -82,6 +100,24 @@ Product.propTypes = {
         color: PropTypes.arrayOf(PropTypes.string),
         size: PropTypes.arrayOf(PropTypes.string),
         description: PropTypes.instanceOf(Array)
-    }).isRequired
+    }).isRequired,
+    productState: PropTypes.oneOfType([
+        PropTypes.instanceOf(Array),
+        PropTypes.instanceOf(Object)
+    ]).isRequired,
+    dispatchPhoto: PropTypes.func.isRequired,
+    dispatchColor: PropTypes.func.isRequired
 }
-export default Product;
+
+function mapStateToProps (state) {
+    return { productState: state.product }
+}
+
+function mapDispatchToProps (dispatch) {
+    return {
+        dispatchPhoto: (value) => dispatch(photoAction(value)),
+        dispatchColor: (value) => dispatch(colorAction(value))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Product);

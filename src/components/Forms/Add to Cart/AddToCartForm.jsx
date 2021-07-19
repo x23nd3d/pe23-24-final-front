@@ -17,7 +17,7 @@ const AddToCartForm = ({ id, colors, sizes, productState, dispatchColor }) => {
 
     return (
     <Formik
-        initialValues={{ color: colors[0], size: `${sizes ? sizes[0] : ""}`, id}}
+        initialValues={{ color: productState.color, size: `${sizes ? sizes[0] : ""}`, id}}
         onSubmit={(values) => console.log(values)}
         >
         {({

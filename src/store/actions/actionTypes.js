@@ -22,3 +22,4 @@ export const CHOSEN_SUBCATEGORY = "CHOSEN_SUBATEGORY";
 
 export const ADD_TO_CART = "PRODUCT/ADD_TO_CART";
 export const COLOR = "PRODUCT/COLOR";
+export const PHOTOS = "PRODUCT/PHOTOS"
