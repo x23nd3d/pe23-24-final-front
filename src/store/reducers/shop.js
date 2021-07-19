@@ -1,4 +1,5 @@
 import {
+  SAVE_FILTERED_ITEMS,
   RECEIVE_CURRENT_ROUTE_ERROR,
   RECEIVE_CURRENT_ROUTE_START,
   RECEIVE_CURRENT_ROUTE_SUCCESS,
@@ -10,6 +11,11 @@ import {
 
 const initialState = {
   currentItems: [],
+  filteredItems: [
+    {
+      key: 1,
+    },
+  ],
   currentRoute: "/shop/?category=all&type=all",
   loading: false,
   error: false,
@@ -43,6 +49,10 @@ const handlers = {
     ...state,
     currentItems: [],
     currentRoute: null,
+  }),
+  [SAVE_FILTERED_ITEMS]: (state, { filteredItems }) => ({
+    ...state,
+    filteredItems,
   }),
   DEFAULT: (state) => state,
 };

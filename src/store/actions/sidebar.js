@@ -1,4 +1,5 @@
 import {
+  ADD_REMOVE_COLOR,
   CHOSEN_CATEGORY,
   CHOSEN_SUBCATEGORY,
   SIDEBAR_DEFAULT,
@@ -49,4 +50,9 @@ export const chooseCategory = (category) => ({
 export const chooseSubcategory = (subcategory) => ({
   type: CHOSEN_SUBCATEGORY,
   payload: subcategory,
+});
+
+export const addRemoveColor = (color) => ({
+  type: ADD_REMOVE_COLOR,
+  payload: color,
 });

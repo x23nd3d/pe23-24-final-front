@@ -1,6 +1,7 @@
 import {
   RECEIVE_CURRENT_ROUTE_START,
   RECEIVE_CURRENT_ROUTE_SUCCESS,
+  SAVE_FILTERED_ITEMS,
   SEND_PRODUCTS_REQUEST_ERROR,
   SEND_PRODUCTS_REQUEST_START,
   SEND_PRODUCTS_REQUEST_SUCCESS,
@@ -83,5 +84,33 @@ export function receiveRouteError(e) {
 export function setShopDefault() {
   return {
     type: SHOP_SET_DEFAULT,
+  };
+}
+
+export function colorFilter() {
+  // logic for filter colors
+}
+
+export function priceFilter() {
+  // logic for filter prices
+}
+
+export function saveFilteredItemsHandler(item) {
+  return (dispatch, getState) => {
+    const { filteredItems } = getState().shop;
+
+    if (JSON.stringify(filteredItems) === JSON.stringify(item)) {
+      console.log("ALREADY EXIST");
+      return;
+    }
+
+    dispatch(saveFilteredItems(item));
+  };
+}
+
+export function saveFilteredItems(filteredItems) {
+  return {
+    type: SAVE_FILTERED_ITEMS,
+    filteredItems,
   };
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
@@ -6,11 +6,19 @@ import classes from "./Shop.module.scss";
 import Sidebar from "./Sidebar/Sidebar";
 import Exposition from "./Exposition/Exposition";
 import ShopSpinner from "../UI/Spinner/ShopSpinner/ShopSpinner";
+import { saveFilteredItemsHandler } from "../../store/actions/shop";
 
-const Shop = ({ shop, history }) => {
+const Shop = ({ shop, history, saveFilteredItemsDispatcher }) => {
   if (!history.location.search.length) {
     history.push("/shop/?category=all&type=all");
   }
+
+  useEffect(() => {
+    saveFilteredItemsDispatcher({ key: 2 });
+  }, []);
+
+  // const visibleItems = shop.filteredItems ? shop.filteredItems : shop.currentItems
+
   return (
     <div className={classes.Shop}>
       <Sidebar />
@@ -26,11 +34,13 @@ const Shop = ({ shop, history }) => {
 Shop.defaultProps = {
   shop: {},
   history: {},
+  saveFilteredItemsDispatcher: (f) => f,
 };
 
 Shop.propTypes = {
   shop: PropTypes.instanceOf(Object),
   history: PropTypes.instanceOf(Object),
+  saveFilteredItemsDispatcher: PropTypes.func,
 };
 
 function mapStateToProps(state) {
@@ -39,4 +49,11 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(withRouter(Shop));
+function mapDispatchToProps(dispatch) {
+  return {
+    saveFilteredItemsDispatcher: (items) =>
+      dispatch(saveFilteredItemsHandler(items)),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Shop));

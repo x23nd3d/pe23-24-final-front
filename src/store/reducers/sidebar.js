@@ -1,4 +1,6 @@
 import {
+  SAVE_FILTERED_ITEMS,
+  ADD_REMOVE_COLOR,
   CHOSEN_CATEGORY,
   CHOSEN_SUBCATEGORY,
   SIDEBAR_DEFAULT,
@@ -45,6 +47,11 @@ const sidebarReducer = (state = INITIAL_STATE, action) => {
         chosenItems: [],
       };
     case UPDATE_CHOSEN_ITEMS:
+      return {
+        ...state,
+        chosenItems: action.payload,
+      };
+    case ADD_REMOVE_COLOR:
       return {
         ...state,
         chosenItems: action.payload,
