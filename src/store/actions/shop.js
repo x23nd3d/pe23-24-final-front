@@ -49,15 +49,17 @@ export const handleItemPreviewParams =
       (current) => current.id === item.id
     );
 
-    console.log("currentPreviewItemsList", currentPreviewItemsList);
-    // updatedItems = currentPreviewItemsList.map(
-    //   // eslint-disable-next-line no-param-reassign
-    //   (currentItem) => (currentItem[idx][param] = value)
-    // );
+    const newObj = currentPreviewItems.find(
+      (searchItem) => searchItem.id === item.id
+    );
+    newObj[param] = value;
+    const newItems = [
+      ...currentPreviewItems.slice(0, idx),
+      newObj,
+      ...currentPreviewItems.slice(idx + 1),
+    ];
 
-    currentPreviewItemsList[idx][param] = value;
-
-    dispatch(setItemPreview(currentPreviewItemsList));
+    dispatch(setItemPreview(newItems));
   };
 
 export const setItemPreview = (items) => ({
