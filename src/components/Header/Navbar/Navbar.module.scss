@@ -32,6 +32,7 @@
 
   &Tools {
     font-size: 16px;
+    position: relative;
 
     li {
       display: flex;
@@ -173,4 +174,18 @@
 .dropHoverExitActive {
   opacity: 0;
   transition: opacity 0.2s;
+}
+
+.NavCartActive {
+  background: #00a046;
+  position: absolute;
+  right: 0;
+  top: 9px;
+  border-radius: 30px;
+  text-align: center;
+  font-size: 11px;
+  padding: 5px;
+  color: white;
+  box-shadow: 0 0 4px 4px #00ffad73;
+  width: 10px;
 }

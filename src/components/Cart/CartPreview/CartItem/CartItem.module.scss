@@ -7,6 +7,11 @@
   border: 1px solid #00000024;
   margin: 25px;
   position: relative;
+  transition: .3s;
+}
+
+.CartItem:hover {
+  box-shadow: 0 0 9px 10px #0000001f;
 }
 
 .CartItemImage {
@@ -16,8 +21,6 @@
   max-height: 125px;
   min-width: 125px;
   min-height: 125px;
-  border: 1px solid #00000012;
-  border-radius: 30px;
   margin-right: 15px;
 }
 
@@ -26,19 +29,23 @@
   height: 100%;
 }
 
-.CartCount {
+.CartManage {
   display: flex;
   margin: 15px 0;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
 }
 
 button {
   background: none;
   outline: none;
   border: none;
+  border-radius: 3px;
   cursor: pointer;
 }
 
-.CartCount > button > i {
+.CartCountContainer > button > i {
   font-size: 18px;
   color: #00000061;
 }
@@ -59,9 +66,33 @@ button {
 
 .CartItemGeneral > p {
   font-size: 18px;
+  margin-left: 5px;
 }
 
 .CartItemRemove {
+  //position: absolute;
+  //right: 15px;
+}
+
+.CartItemRemove > i {
+  font-size: 18px;
+}
+
+.CartCountDecreaseOff {
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.CartItemMoreDetails {
+  margin-right: 50px;
   position: absolute;
-  right: 15px;
+  left: 25%;
+}
+
+.CartItemDetails {
+  display: flex;
+}
+
+.CartItemDetails > p {
+  margin-right: 15px;
 }

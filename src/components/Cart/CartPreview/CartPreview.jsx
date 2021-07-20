@@ -6,7 +6,7 @@ import { withRouter } from "react-router-dom";
 import CartItem from "./CartItem/CartItem";
 import classes from "./CartPreview.module.scss";
 import Backdrop from "../../UI/Backdrop/Backdrop";
-import { removeCartPreviewHandler } from "../../../store/actions/cart";
+import { toggleCartPreviewHandler } from "../../../store/actions/cart";
 
 const CartPreview = ({ items, removeCartPreview, cart }) => {
   const { isPreviewActive } = cart;
@@ -14,7 +14,9 @@ const CartPreview = ({ items, removeCartPreview, cart }) => {
   const renderCartItems = (cartItems) => {
     console.log(cartItems, "CARTTTT");
 
-    return cartItems.map((item) => <CartItem item={item} />);
+    return cartItems.map((item) => (
+      <CartItem key={`item_${Math.random() * 20}${item.title}`} item={item} />
+    ));
   };
 
   return (
@@ -32,7 +34,7 @@ const CartPreview = ({ items, removeCartPreview, cart }) => {
           <div className={classes.CartPreviewHeader}>
             <div className={classes.CartPreviewDetails}>
               <h4>Cart</h4>
-              <button type="button">
+              <button type="button" onClick={() => removeCartPreview()}>
                 <i className="far fa-times" />
               </button>
             </div>
@@ -40,7 +42,11 @@ const CartPreview = ({ items, removeCartPreview, cart }) => {
           </div>
           <div className={classes.CartPreviewContent}>
             <div className={classes.CartContainer}>
-              {renderCartItems(items)}
+              {cart.items.length ? (
+                renderCartItems(items)
+              ) : (
+                <p className={classes.CartEmpty}>No items added</p>
+              )}
             </div>
           </div>
           <div className={classes.CartShopping}>
@@ -49,7 +55,8 @@ const CartPreview = ({ items, removeCartPreview, cart }) => {
             </div>
             <div className={classes.CartTotalSum}>
               <div className={classes.CartTotal}>
-                Total: <span>&#36;</span> 1450
+                Total: <span>&#36;</span>
+                {cart.total}
               </div>
               <button type="button" className={classes.CartAddItems}>
                 Checkout
@@ -76,7 +83,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    removeCartPreview: () => dispatch(removeCartPreviewHandler()),
+    removeCartPreview: () => dispatch(toggleCartPreviewHandler()),
   };
 }
 

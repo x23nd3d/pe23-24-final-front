@@ -6,8 +6,8 @@ import {
 } from "../actions/actionTypes";
 
 const INITIAL_STATE = {
-  chosenCategory: "clothes",
-  chosenSubcategory: "viewAll",
+  chosenCategory: "all",
+  chosenSubcategory: "all",
   categories: [
     {
       title: "clothes",

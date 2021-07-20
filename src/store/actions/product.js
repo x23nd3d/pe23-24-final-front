@@ -1,4 +1,8 @@
-import { COLOR, SELECT_CURRENT_ITEM } from "./actionTypes";
+import {
+  COLOR,
+  SELECT_CURRENT_ITEM,
+  SELECT_PRODUCT_PREVIEW_PARAMS,
+} from "./actionTypes";
 
 export const colorAction = (value) => (dispatch, getState) => {
   const { color } = getState().product;

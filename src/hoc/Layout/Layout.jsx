@@ -9,7 +9,7 @@ import Spinner from "../../components/UI/Spinner/Spinner";
 
 import classes from "./Layout.module.scss";
 import CartPreview from "../../components/Cart/CartPreview/CartPreview";
-import { removeCartPreviewHandler } from "../../store/actions/cart";
+import { toggleCartPreviewHandler } from "../../store/actions/cart";
 
 const Layout = ({
   children,
@@ -70,7 +70,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    disableCartPreview: () => dispatch(removeCartPreviewHandler()),
+    disableCartPreview: () => dispatch(toggleCartPreviewHandler()),
   };
 }
 

@@ -2,3 +2,9 @@
 2. Do Cart icon as separate part of the cart item.
 3. Add wishlist item
 4. Change small icon on cart add to another icon +
+5. Add animation on close cart preview
+6. Add NavLink to follow the item which is in cart to open
+7. PRODUCT Size undefined check
+8. Add color pallete instead of fontawesome
+9. Add cart on hover only
+10. Continue shopping ==> forward to previous shop page

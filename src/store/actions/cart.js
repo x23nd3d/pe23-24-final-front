@@ -3,52 +3,106 @@ import {
   ADD_TO_CART_ERROR,
   ADD_TO_CART_START,
   ADD_TO_CART_SUCCESS,
-  REMOVE_CART_PREVIEW,
+  DECREASE_ITEM_COUNT,
+  INCREASE_ITEM_COUNT,
+  REMOVE_FROM_CART,
+  SET_ITEM_COUNT,
+  SHOW_CART_PREVIEW,
+  TOGGLE_CART_PREVIEW,
 } from "./actionTypes";
 import {
   allowBodyScrolling,
   preventBodyScrolling,
 } from "../../utils/bodyStyling";
 
+function calculateTotal(array) {
+  return array.reduce((result, item) => {
+    let final = result;
+    final += item.count * item.price;
+    console.log(final, "final");
+    return final;
+  }, 0);
+}
+
 export const addToCart = (item) => (dispatch, getState) => {
-  const { items } = getState().cart;
-  const idx = items.findIndex((goods) => goods.id === item.id);
-  const currentItem = items[idx];
+  const initialItems = getState().cart.items;
 
-  console.log("CURRENT ITEMS: ", items);
-  console.log("ITEM TO BE ADDED: ", item);
-
+  const itemFound = initialItems.find((goods) => {
+    const itemToCheck = { ...goods };
+    delete itemToCheck.count;
+    if (JSON.stringify(itemToCheck) === JSON.stringify(item)) return goods;
+    return null;
+  });
   try {
     dispatch(addToCartStart());
-    if (idx >= 0) {
-      // we have item in card, we should add count
-      console.log("WE have item, so add count");
-      currentItem.count += 1;
-      preventBodyScrolling();
-      return dispatch(updateCount(currentItem));
-    }
-    // we do not have item, should add it first with count: 1
-    console.log("WE do not have item, so add item to cart");
+
     const itemToAdd = {
       ...item,
       count: 1,
     };
-    const updatedItems = [...items, itemToAdd];
 
-    console.log("itemToAdditemToAdditemToAdditemToAdd", itemToAdd);
+    if (itemFound) {
+      // we have item in card, we should add count
+      const idx = initialItems.indexOf(itemFound);
+      initialItems[idx].count += 1;
+      preventBodyScrolling();
+      const total = calculateTotal(initialItems);
+      return dispatch(updateCount(initialItems, total));
+    }
 
-    console.log("updatedItemsupdatedItemsupdatedItems", updatedItems);
-
+    // we do not have item, should add it first with count: 1
+    const newItems = [...initialItems, itemToAdd];
     preventBodyScrolling();
-    return dispatch(addToCartSuccess(updatedItems));
+    const total = calculateTotal(newItems);
+    return dispatch(addToCartSuccess(newItems, total));
   } catch (e) {
     dispatch(addToCartError(e));
   }
 };
 
-export const addToCartSuccess = (items) => ({
+export const setItemCountHandler = (item, count) => (dispatch, getState) => {
+  console.log("ITEEEMM", item);
+  console.log("count", count);
+
+  const initialItems = getState().cart.items;
+  const currentItem = initialItems.find((current) => current === item);
+  const idx = initialItems.indexOf(currentItem);
+
+  if (count === 0) {
+    console.log("WORK");
+    return dispatch(setItemCount(initialItems));
+  }
+
+  if (count === item.count) return;
+
+  initialItems[idx].count = count;
+  return dispatch(setItemCount(initialItems));
+};
+
+export const setItemCount = (items) => ({
+  type: SET_ITEM_COUNT,
+  items,
+});
+
+export const increaseItemCount = (item) => ({
+  type: INCREASE_ITEM_COUNT,
+  item,
+});
+
+export const decreaseItemCount = (item) => ({
+  type: DECREASE_ITEM_COUNT,
+  item,
+});
+
+export const removeFromCart = (item) => ({
+  type: REMOVE_FROM_CART,
+  item,
+});
+
+export const addToCartSuccess = (items, total) => ({
   type: ADD_TO_CART_SUCCESS,
   items,
+  total,
 });
 
 export const addToCartStart = () => ({
@@ -60,20 +114,29 @@ export const addToCartError = (e) => ({
   e,
 });
 
-export const updateCount = (item) => ({
+export const updateCount = (items, total) => ({
   type: ADD_TO_CARD_INCREASE_COUNT,
-  item,
+  items,
+  total,
 });
 
-export const removeCartPreviewHandler = () => (dispatch, getState) => {
+// export const updateTotal = (value) => ({
+//
+// })
+
+export const toggleCartPreviewHandler = () => (dispatch, getState) => {
   const { isPreviewActive } = getState().cart;
   if (!isPreviewActive) {
     return;
   }
   allowBodyScrolling();
-  return dispatch(removeCartPreview());
+  return dispatch(toggleCartPreview());
 };
 
-export const removeCartPreview = () => ({
-  type: REMOVE_CART_PREVIEW,
+export const openCart = () => ({
+  type: SHOW_CART_PREVIEW,
+});
+
+export const toggleCartPreview = () => ({
+  type: TOGGLE_CART_PREVIEW,
 });

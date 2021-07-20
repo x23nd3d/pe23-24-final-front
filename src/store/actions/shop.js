@@ -1,6 +1,7 @@
 import {
   RECEIVE_CURRENT_ROUTE_START,
   RECEIVE_CURRENT_ROUTE_SUCCESS,
+  SELECT_PRODUCT_PREVIEW_PARAMS,
   SEND_PRODUCTS_REQUEST_ERROR,
   SEND_PRODUCTS_REQUEST_START,
   SEND_PRODUCTS_REQUEST_SUCCESS,
@@ -39,6 +40,30 @@ export function sendProductsRequest(route) {
     }
   };
 }
+
+export const handleItemPreviewParams =
+  (item, param, value) => (dispatch, getState) => {
+    const { currentPreviewItems } = getState().shop;
+    const currentPreviewItemsList = [...currentPreviewItems];
+    const idx = currentPreviewItemsList.findIndex(
+      (current) => current.id === item.id
+    );
+
+    console.log("currentPreviewItemsList", currentPreviewItemsList);
+    // updatedItems = currentPreviewItemsList.map(
+    //   // eslint-disable-next-line no-param-reassign
+    //   (currentItem) => (currentItem[idx][param] = value)
+    // );
+
+    currentPreviewItemsList[idx][param] = value;
+
+    dispatch(setItemPreview(currentPreviewItemsList));
+  };
+
+export const setItemPreview = (items) => ({
+  type: SELECT_PRODUCT_PREVIEW_PARAMS,
+  items,
+});
 
 export function sendProductsRequestStart() {
   return {
