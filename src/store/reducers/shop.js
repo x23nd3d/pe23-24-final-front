@@ -11,11 +11,7 @@ import {
 
 const initialState = {
   currentItems: [],
-  filteredItems: [
-    {
-      key: 1,
-    },
-  ],
+  filteredItems: [],
   currentRoute: "/shop/?category=all&type=all",
   loading: false,
   error: false,

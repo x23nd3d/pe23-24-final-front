@@ -4,14 +4,11 @@ import { connect } from "react-redux";
 import classNames from "classnames";
 import { NavLink, withRouter } from "react-router-dom";
 import classes from "./ColorFilter.module.scss";
+import { addRemoveColorAction } from "../../../../store/actions/sidebar";
+import { getArrayWithUniqueFlatSortedItems } from "../../../../utils/sidebar";
 
-const ColorFilter = ({ sidebar, shop }) => {
+const ColorFilter = ({ sidebar, shop, addRemoveColorHandler }) => {
   const [showMoreColors, setShowMoreColors] = useState(false);
-
-  const getColors = (items) => {
-    let colors = items.map((item) => item.color).flat();
-    return (colors = [...new Set(colors)].sort((a, b) => a.localeCompare(b)));
-  };
 
   const renderColor = (colors) =>
     colors
@@ -20,10 +17,11 @@ const ColorFilter = ({ sidebar, shop }) => {
         <li key={color}>
           <NavLink
             to="#"
-            onClick={() => console.log(color)}
+            onClick={() => addRemoveColorHandler(color)}
             className={classNames(
               classes.Color,
-              classes[color.replace(/\//g, "").split(" ").join("")]
+              classes[color.replaceAll("/", "").split(" ").join("")],
+              sidebar.chosenColors.includes(color) && classes.ColorActive
             )}
           >
             {color}
@@ -35,16 +33,20 @@ const ColorFilter = ({ sidebar, shop }) => {
     <div className={classes.ColorFilter}>
       <h3 className={classes.Title}>Colors</h3>
       <ul className={classes.Colors}>
-        {renderColor(getColors(shop.currentItems))}
+        {renderColor(
+          getArrayWithUniqueFlatSortedItems(shop.currentItems, "color")
+        )}
       </ul>
       <div className={classes.Buttons}>
-        <button
-          className={classes.Button}
-          type="button"
-          onClick={() => setShowMoreColors(!showMoreColors)}
-        >
-          SHOW {showMoreColors ? "LESS" : "MORE"} COLORS
-        </button>
+        {getArrayWithUniqueFlatSortedItems(shop.currentItems).length > 5 && (
+          <button
+            className={classes.Button}
+            type="button"
+            onClick={() => setShowMoreColors(!showMoreColors)}
+          >
+            SHOW {showMoreColors ? "LESS" : "MORE"} COLORS
+          </button>
+        )}
       </div>
     </div>
   );
@@ -53,13 +55,13 @@ const ColorFilter = ({ sidebar, shop }) => {
 ColorFilter.defaultProps = {
   sidebar: {},
   shop: {},
-  // receiveRoute: (f) => f,
+  addRemoveColorHandler: (f) => f,
 };
 
 ColorFilter.propTypes = {
   sidebar: PropTypes.instanceOf(Object),
   shop: PropTypes.instanceOf(Object),
-  // receiveRoute: PropTypes.func,
+  addRemoveColorHandler: PropTypes.func,
 };
 
 function mapStateToProps(state) {
@@ -71,7 +73,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    // receiveRoute: (route) => dispatch(receiveCurrentRoute(route)),
+    addRemoveColorHandler: (route) => dispatch(addRemoveColorAction(route)),
   };
 }
 

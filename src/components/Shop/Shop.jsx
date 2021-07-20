@@ -13,9 +13,9 @@ const Shop = ({ shop, history, saveFilteredItemsDispatcher }) => {
     history.push("/shop/?category=all&type=all");
   }
 
-  useEffect(() => {
-    saveFilteredItemsDispatcher({ key: 2 });
-  }, []);
+  // useEffect(() => {
+  //   saveFilteredItemsDispatcher({ key: 2 });
+  // }, []);
 
   // const visibleItems = shop.filteredItems ? shop.filteredItems : shop.currentItems
 

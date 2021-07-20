@@ -95,16 +95,12 @@ export function priceFilter() {
   // logic for filter prices
 }
 
-export function saveFilteredItemsHandler(item) {
+export function saveFilteredItemsHandler(items) {
   return (dispatch, getState) => {
     const { filteredItems } = getState().shop;
+    console.log(filteredItems, "Filtered Items");
 
-    if (JSON.stringify(filteredItems) === JSON.stringify(item)) {
-      console.log("ALREADY EXIST");
-      return;
-    }
-
-    dispatch(saveFilteredItems(item));
+    dispatch(saveFilteredItems(items));
   };
 }
 

@@ -17,9 +17,14 @@
 .Color {
   display: block;
   position: relative;
-  padding-left: 50px;
-  margin-top: 33px;
+  padding: 10px 10px 10px 50px;
+  margin-top: 10px;
   cursor: pointer;
+
+  &Active {
+    background: linear-gradient(90deg, #000 50px, rgb(20, 20, 02));
+    border-right: 1px solid gold;
+  }
 
   &:before {
     position: absolute;
