@@ -64,7 +64,7 @@ const Sidebar = ({
       <div className={classes.SidebarContent}>
         <ul className={classes.Routes}>
           <ListRoute listClass={classes.RoutesItem} route="/" content="Home" />
-          {!chosenItems ? null : (
+          {!chosenItems.length ? null : (
             <>
               <span>&gt;</span>
               <ListRoute

@@ -42,9 +42,9 @@ const handlers = {
     ...state,
     error: e,
   }),
-  [SELECT_PRODUCT_PREVIEW_PARAMS]: (state, { items }) => ({
+  [SELECT_PRODUCT_PREVIEW_PARAMS]: (state, { data }) => ({
     ...state,
-    currentPreviewItems: items,
+    currentPreviewItems: data,
   }),
   [SHOP_SET_DEFAULT]: (state) => ({
     ...state,

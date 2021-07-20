@@ -49,22 +49,22 @@ export const handleItemPreviewParams =
       (current) => current.id === item.id
     );
 
-    const newObj = currentPreviewItems.find(
+    const oldObj = currentPreviewItemsList.find(
       (searchItem) => searchItem.id === item.id
     );
-    newObj[param] = value;
+    const newObj = { ...oldObj, [param]: value };
     const newItems = [
-      ...currentPreviewItems.slice(0, idx),
+      ...currentPreviewItemsList.slice(0, idx),
       newObj,
-      ...currentPreviewItems.slice(idx + 1),
+      ...currentPreviewItemsList.slice(idx + 1),
     ];
 
     dispatch(setItemPreview(newItems));
   };
 
-export const setItemPreview = (items) => ({
+export const setItemPreview = (data) => ({
   type: SELECT_PRODUCT_PREVIEW_PARAMS,
-  items,
+  data,
 });
 
 export function sendProductsRequestStart() {
