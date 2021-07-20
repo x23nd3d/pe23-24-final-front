@@ -8,7 +8,6 @@ import Shop from "./components/Shop/Shop";
 import ShopLayout from "./hoc/ShopLayout/ShopLayout";
 import ProductContainer from "./components/Product/ProductContainer";
 import LoginRegistration from "./components/LoginRegistration/LoginRegistration";
-import dataSample from "./utils/dataSample";
 import { logout } from "./store/actions/auth";
 import Logout from "./components/Logout/Logout";
 
@@ -26,7 +25,7 @@ function App({ isAuthenticated }) {
         </AnimatePresence>
       </Route>
       <Route path="/product">
-        <ProductContainer data={dataSample} />
+        <ProductContainer />
       </Route>
       <Route path="/" component={MainPage} />
     </Switch>

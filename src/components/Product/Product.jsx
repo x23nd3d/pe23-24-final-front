@@ -1,9 +1,7 @@
-import React, {useEffect} from "react";
+import React from "react";
 import PropTypes from "prop-types";
-// import { connect } from "react-redux";
 import classNames from "classnames";
 import AddToCartForm from "../Forms/Add to Cart/AddToCartForm";
-// import {colorAction} from "../../store/actions/product";
 import SlideShow from "./SlideShow";
 
 import {
@@ -27,6 +25,7 @@ const Product = ({data, store}) => {
         id,
         name,
         caption,
+        category,
         material,
         type,
         color,
@@ -39,7 +38,7 @@ const Product = ({data, store}) => {
 
     return (
         <section className={product}>
-            <SlideShow photo={store.product.photo} />
+            <SlideShow photo={store.product.photo} alt={`${material}${category}`} />
             <article className={dataBlock}>
                 <ul className={classNames(Details)}>
                     <li className={primaryBlock}>
@@ -83,6 +82,7 @@ Product.propTypes = {
         name: PropTypes.string,
         caption: PropTypes.string,
         type: PropTypes.string,
+        category: PropTypes.string,
         material: PropTypes.string,
         price: PropTypes.string,
         photo: PropTypes.instanceOf(Object),

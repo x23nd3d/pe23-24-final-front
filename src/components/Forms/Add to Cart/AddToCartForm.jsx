@@ -1,16 +1,14 @@
 import React from "react";
-import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { Formik, Form, Field, useFormikContext } from "formik";
-import { colorAction } from "../../../store/actions/product";
+import { Formik, Form, Field } from "formik";
 import colorize from "../../../utils/colorize";
 import "./AddToCartForm.scss";
 
 /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
-{/* eslint-disable jsx-a11y/no-static-element-interactions */}
-{/* eslint-disable react/jsx-props-no-spreading */}
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable react/jsx-props-no-spreading */
 
-const AddToCartForm = ({ data, store}) => {
+const AddToCartForm = ({ data, store }) => {
     const {product, dispatchColor} = store;
 
     function handleColorState ({color}) {
@@ -68,30 +66,5 @@ AddToCartForm.propTypes = {
     data: PropTypes.instanceOf(Object).isRequired,
     store: PropTypes.instanceOf(Object).isRequired
 }
-// AddToCartForm.defaultProps = {
-//     dispatchColor: (f) => f,
-//     sizes: "",
-// };
 
-// AddToCartForm.propTypes = {
-//     id: PropTypes.string.isRequired,
-//     colors: PropTypes.arrayOf(PropTypes.string).isRequired,
-//     sizes: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.string]),
-//     productState: PropTypes.oneOfType([
-//         PropTypes.instanceOf(Array),
-//         PropTypes.instanceOf(Object)
-//     ]).isRequired,
-//     dispatchColor: PropTypes.func
-// }
-
-// function mapStateToProps(state) {
-//     return { productState: state.product }
-// }
-
-// function mapDispatchToProps(dispatch) {
-//     return {
-//         dispatchColor: (value) => dispatch(colorAction(value))
-//     }
-// }
 export default AddToCartForm;
-// export default connect(mapStateToProps, mapDispatchToProps)(AddToCartForm);

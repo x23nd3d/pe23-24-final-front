@@ -1,14 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-// import {connect} from "react-redux";
 import Carousel from "react-multi-carousel";
-// import { colorAction } from "../../store/actions/product";
 import "react-multi-carousel/lib/styles.css";
 import "./SlideShow.scss";
 
 /* eslint-disable react/jsx-boolean-value */
 
-const SlideShow = ({photo}) => {
+const SlideShow = ({photo, alt}) => {
 
   const responsive = {
     superLargeDesktop: {
@@ -39,34 +37,16 @@ const SlideShow = ({photo}) => {
           swipeable={true}
         >
           {photo.map((path) => <div className="photo_wrapper" key={path} >
-              <img src={path} className="photo" />
+              <img src={path} alt={alt} className="photo" />
             </div>)}
         </Carousel>
     </div>
   )
 }
 
-// SlideShow.defaultProps = {
-//   dispatchPhoto: (f) => f,
-// };
-
 SlideShow.propTypes = {
   photo: PropTypes.instanceOf(Array).isRequired,
-  // productState: PropTypes.instanceOf(Array).isRequired
-    // PropTypes.instanceOf(Object)
-// ]).isRequired,
-// photoState: PropTypes.instanceOf(Array).isRequired,
+  alt: PropTypes.string.isRequired
 }
 
-// function mapStateToProps (state) {
-//   return {
-//     photoState: state.photo,
-//     // productState: state.product
-//   }
-// }
-
-// function mapDispatchToProps (dispatch) {
-//   return { dispatchPhoto: (value) => dispatch(colorAction(value)) }
-// }
 export default SlideShow;
-// export default connect(mapStateToProps)();

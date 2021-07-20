@@ -1,4 +1,4 @@
-import { COLOR, PHOTO } from "./actionTypes";
+import { COLOR, PHOTO, VISITED_PRODUCTS } from "./actionTypes";
 
 export const colorAction = (value) => (dispatch, getState) => {
   const { color } = getState().product;
@@ -17,3 +17,18 @@ export const setColor = (color) => ({
   type: COLOR,
   payload: color,
 });
+
+export const visitedProductsAction = (data) => (dispatch, getState) => {
+  const {visited} = getState().product;
+  visited.add(data);
+
+  dispatch({
+    type: VISITED_PRODUCTS,
+    payload: visited
+  })
+}
+
+// export const visitedProductsAction = (value) => ({
+//   type: VISITED_PRODUCTS,
+//   payload: value
+// })
