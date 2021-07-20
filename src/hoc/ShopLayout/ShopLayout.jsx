@@ -1,29 +1,31 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import classes from "./ShopLayout.module.scss";
 import { receiveCurrentRoute } from "../../store/actions/shop";
+import { sidebarDefaultHandler } from "../../store/actions/sidebar";
 
-const ShopLayout = ({ children, history, receiveRoute, shop }) => {
-  const getRouteOnce = useCallback(() => {
-    if (
-      !shop.currentItems.length ||
-      history.location.search === "?category=all&type=all"
-    ) {
-      receiveRoute(`/shop/${history.location.search}`);
-    }
-  }, [history.location.search, receiveRoute, shop.currentItems.length]);
-
+const ShopLayout = ({
+  children,
+  history,
+  receiveRoute,
+  shop,
+  setSidebarDefaultHandler,
+}) => {
   useEffect(() => {
-    getRouteOnce();
-  }, [getRouteOnce]);
+    if (history.location.search === "?category=all&type=all") {
+      receiveRoute(`/shop/${history.location.search}`);
+      setSidebarDefaultHandler();
+    }
+  }, [history.location.search, receiveRoute, setSidebarDefaultHandler]);
 
   return <div className={classes.ShopLayout}>{children}</div>;
 };
 
 ShopLayout.defaultProps = {
   receiveRoute: (f) => f,
+  setSidebarDefaultHandler: (f) => f,
   history: {},
   shop: {},
 };
@@ -31,6 +33,7 @@ ShopLayout.defaultProps = {
 ShopLayout.propTypes = {
   children: PropTypes.instanceOf(Object).isRequired,
   receiveRoute: PropTypes.func,
+  setSidebarDefaultHandler: PropTypes.func,
   history: PropTypes.instanceOf(Object),
   shop: PropTypes.instanceOf(Object),
 };
@@ -44,6 +47,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     receiveRoute: (route) => dispatch(receiveCurrentRoute(route)),
+    setSidebarDefaultHandler: () => dispatch(sidebarDefaultHandler()),
   };
 }
 
