@@ -22,20 +22,18 @@
 .listItem {
   position: relative;
   cursor: pointer;
-  transition: .2s;
+  // transition: 0.2s;
 }
 
 .listItem:hover {
   box-shadow: 0 0 20px 3px #00000061;
 }
 
-
 .card {
   display: flex;
   flex-direction: column;
   cursor: pointer;
   // transition: all 0.5s ease;
-
 
   &:hover {
     .boxBanner {
@@ -57,6 +55,8 @@
     background-color: #fff;
     text-transform: uppercase;
     font-family: "Open Sans", sans-serif;
+    padding: 0 20px;
+    width: 100%;
 
     span:first-of-type {
       line-height: 1.5;
@@ -82,7 +82,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+
+  position: relative;
+  z-index: 3;
+  width: 100%;
 }
 
 .image {
@@ -95,32 +98,39 @@
   display: none;
   justify-content: space-around;
   cursor: pointer;
-  z-index: 1000;
+  // z-index: 1000;
   border-top: 1px solid transparent;
   padding: 10px 20px 10px;
-  border-radius: 5px;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-top: 1px solid #00000024;
+  justify-content: space-between;
+  // transition: 0.2s;
+  opacity: 0;
 }
 
 .cartItem {
   font-size: 24px;
   color: #00000099;
   //transition: .2s;
-
 }
 
 .cartItem:hover {
   text-shadow: 0 0 8px #44bf2e85;
 }
 
-
 .listItem:hover .CartHoverDetails {
-  border-top: 1px solid #00000024;
+  // border-top: 1px solid #00000024;
   display: flex;
-  justify-content: space-between;
-  position: relative;
+  opacity: 1;
+  box-shadow: 0 0 20px 3px #00000061;
+  z-index: 2;
+  // justify-content: space-between;
+  // position: relative;
 }
-
-
 
 .sizeItem {
   border: 1px solid #00000021;
@@ -160,7 +170,6 @@
 }
 
 .sizes {
-
 }
 
 .colors {
