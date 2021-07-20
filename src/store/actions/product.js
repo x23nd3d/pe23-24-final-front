@@ -20,11 +20,14 @@ export const setColor = (color) => ({
 
 export const visitedProductsAction = (data) => (dispatch, getState) => {
   const {visited} = getState().product;
-  visited.add(data);
+
+  const set = new Set();
+  visited.forEach(o => set.add(o));
+  set.add(data);
 
   dispatch({
     type: VISITED_PRODUCTS,
-    payload: visited
+    payload: set
   })
 }
 

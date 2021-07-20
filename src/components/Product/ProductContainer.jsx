@@ -15,16 +15,12 @@ const ProductContainer = ({
   const {color, photo} = data;
   const store = {product, dispatchColor, dispatchPhoto};
 
-  const [...ent] = Object.entries(photo);
-  product.photo === null && dispatchPhoto(photo[ent[0][0]]);
-  dispatchColor(color[0]);
-
-  console.log(product.photo);
   useEffect(() => {
+    product.color === initialState.color && dispatchColor(color[0]);
     dispatchPhoto(photo[product.color]);
-  }, [product.color]);
+  }, [product.photo, product.color]);
 
-  // dispatchVisitedProducts(data);
+  dispatchVisitedProducts(data);
 
   return <Product data={data} store={store} />
 }
