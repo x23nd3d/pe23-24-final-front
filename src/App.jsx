@@ -15,7 +15,7 @@ function App({ isAuthenticated }) {
   let routes = (
     <Switch>
       <Route path="/shop/product/:id">
-        <Product data={dataSample} />
+        <ProductContainer />
       </Route>
       <Route path="/shop">
         <ShopLayout>
