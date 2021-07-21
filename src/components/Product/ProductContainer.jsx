@@ -15,12 +15,14 @@ const ProductContainer = ({
   const {color, photo} = data;
   const store = {product, dispatchColor, dispatchPhoto};
 
-  useEffect(() => {
-    product.color === initialState.color && dispatchColor(color[0]);
-    dispatchPhoto(photo[product.color]);
-  }, [product.photo, product.color]);
+  console.log(initialState.color);
 
+  product.color === initialState.color && dispatchColor(color[0]);
+  product.color === initialState.photo && dispatchPhoto(photo[product.color]);
   dispatchVisitedProducts(data);
+  // useEffect(() => {
+  // }, [product.photo, product.color]);
+
 
   return <Product data={data} store={store} />
 }

@@ -22,7 +22,7 @@ export const visitedProductsAction = (data) => (dispatch, getState) => {
   const {visited} = getState().product;
 
   const set = new Set();
-  visited.forEach(o => set.add(o));
+  visited.forEach(o => o && set.add(o));
   set.add(data);
 
   dispatch({
