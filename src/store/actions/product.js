@@ -1,5 +1,5 @@
 import { COLOR, PHOTO, VISITED_PRODUCTS } from "./actionTypes";
-
+/* eslint-disable guard-for-in */
 export const colorAction = (value) => (dispatch, getState) => {
   const { color } = getState().product;
   if (color === value) {
@@ -22,16 +22,16 @@ export const visitedProductsAction = (data) => (dispatch, getState) => {
   const {visited} = getState().product;
 
   const set = new Set();
-  visited.forEach(o => o && set.add(o));
-  set.add(data);
+  if (visited.size === 0) {
+    for(const o in visited) {
+      o && set.add(o);
+    }
+  }
+
+  visited.size < 4 && set.add(data);
 
   dispatch({
     type: VISITED_PRODUCTS,
     payload: set
   })
 }
-
-// export const visitedProductsAction = (value) => ({
-//   type: VISITED_PRODUCTS,
-//   payload: value
-// })

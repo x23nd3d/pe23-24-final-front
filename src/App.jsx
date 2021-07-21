@@ -6,7 +6,7 @@ import { AnimatePresence } from "framer-motion";
 import MainPage from "./components/Main Page/MainPage";
 import Shop from "./components/Shop/Shop";
 import ShopLayout from "./hoc/ShopLayout/ShopLayout";
-import ProductContainer from "./components/Product/ProductContainer";
+import Product from "./components/Product/Product";
 import LoginRegistration from "./components/LoginRegistration/LoginRegistration";
 import { logout } from "./store/actions/auth";
 import Logout from "./components/Logout/Logout";
@@ -15,7 +15,7 @@ function App({ isAuthenticated }) {
   let routes = (
     <Switch>
       <Route path="/shop/product/:id">
-        <ProductContainer />
+        <Product />
       </Route>
       <Route path="/shop">
         <ShopLayout>
@@ -35,7 +35,7 @@ function App({ isAuthenticated }) {
     routes = (
       <Switch>
         <Route path="/shop/product/:id">
-          <ProductContainer />
+          <Product />
         </Route>
         <Route path="/shop">
           <ShopLayout>

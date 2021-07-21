@@ -9,7 +9,7 @@ import "./AddToCartForm.scss";
 /* eslint-disable react/jsx-props-no-spreading */
 
 const AddToCartForm = ({ data, store }) => {
-    const {product, dispatchColor} = store;
+    const {productStore, dispatchColor} = store;
 
     function handleColorState ({color}) {
         dispatchColor(color);
@@ -17,7 +17,7 @@ const AddToCartForm = ({ data, store }) => {
 
     return (
     <Formik
-        initialValues={{ ...data, color: product.color, size: `${data.size ? data.size[0] : ""}`}}
+        initialValues={{ ...data, color: productStore.color, size: `${data.size ? data.size[0] : ""}`}}
         onSubmit={(values) => console.log(values)}
         >
         {({
@@ -26,7 +26,7 @@ const AddToCartForm = ({ data, store }) => {
         }) => <Form className="form" onSubmit={handleSubmit}>
                 <div className="formBlock">
                 <span className="dataPointer">
-                {data.color.length > 1 ? "Select a color" : <>Color<span style={{paddingLeft: "20px"}} >{product.color}</span></> }
+                {data.color.length > 1 ? "Select a color" : <>Color<span style={{paddingLeft: "20px"}} >{productStore.color}</span></> }
                 </span>
                 {data.color.length > 1 && data.color.map((color, index) => <div key={color}>
                     <Field
