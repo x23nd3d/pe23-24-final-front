@@ -20,7 +20,12 @@ const ShopLayout = ({
     }
   }, [history.location.search, receiveRoute, setSidebarDefaultHandler]);
 
-  return <div className={classes.ShopLayout}>{children}</div>;
+  const mapped = shop.test.map((item) => item);
+  console.log("MAPPED: ", mapped);
+
+  return mapped.length ? (
+    <div className={classes.ShopLayout}>{children}</div>
+  ) : null;
 };
 
 ShopLayout.defaultProps = {
