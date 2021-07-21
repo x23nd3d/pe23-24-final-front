@@ -7,6 +7,7 @@ import {
   RESET_FILTERS,
   SET_PRICE_RANGE,
   SET_CURRENT_ITEMS_PRICE_RANGE,
+  SET_CHOSEN_PRICE_RANGE,
 } from "../actions/actionTypes";
 
 const INITIAL_STATE = {
@@ -100,6 +101,10 @@ const handlers = {
   [SET_PRICE_RANGE]: (state, action) => ({
     ...state,
     chosenPriceRange: action.payload,
+  }),
+  [SET_CHOSEN_PRICE_RANGE]: (state, { chosenPriceRange }) => ({
+    ...state,
+    chosenPriceRange,
   }),
   [RESET_FILTERS]: (state) => ({
     ...state,

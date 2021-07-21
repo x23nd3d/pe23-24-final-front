@@ -6,6 +6,7 @@ import {
   SIDEBAR_DEFAULT,
   UPDATE_CHOSEN_ITEMS,
   SET_CURRENT_ITEMS_PRICE_RANGE,
+  SET_CHOSEN_PRICE_RANGE,
 } from "./actionTypes";
 
 export const checkCategories = (title) => (dispatch, getState) => {
@@ -88,6 +89,11 @@ export const setCurrentItemsPriceRangeFunction =
 export const setCurrentItemsPriceRangeAction = (priceRange) => ({
   type: SET_CURRENT_ITEMS_PRICE_RANGE,
   payload: priceRange,
+});
+
+export const setChosenPriceRangeAction = (chosenPriceRange) => ({
+  type: SET_CHOSEN_PRICE_RANGE,
+  chosenPriceRange,
 });
 
 export const resetFiltersAction = () => ({
