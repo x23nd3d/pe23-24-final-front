@@ -12,7 +12,6 @@ import {
 const initialState = {
   currentItems: [],
   currentPreviewItems: [],
-  test: ["123", 222],
   currentRoute: "/shop/?category=all&type=all",
   loading: false,
   error: false,
