@@ -10,6 +10,7 @@ import productReducer from "./productReducer";
 const persistConfig = {
   key: "root",
   storage,
+  // whitelist: ["auth", "user", "shop", "sidebar", "product"],
   whitelist: ["auth", "user", "shop", "product"],
 };
 

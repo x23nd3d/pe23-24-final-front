@@ -13,11 +13,8 @@ const Shop = ({ shop, history, saveFilteredItemsDispatcher }) => {
     history.push("/shop/?category=all&type=all");
   }
 
-  // useEffect(() => {
-  //   saveFilteredItemsDispatcher({ key: 2 });
-  // }, []);
-
-  // const visibleItems = shop.filteredItems ? shop.filteredItems : shop.currentItems
+  const itemsToDisplay =
+    shop.filteredItems.length > 0 ? shop.filteredItems : shop.currentItems;
 
   return (
     <div className={classes.Shop}>
@@ -25,7 +22,7 @@ const Shop = ({ shop, history, saveFilteredItemsDispatcher }) => {
       {shop.loading ? (
         <ShopSpinner />
       ) : (
-        <Exposition productList={shop.currentItems} />
+        <Exposition productList={itemsToDisplay} />
       )}
     </div>
   );

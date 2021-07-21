@@ -7,6 +7,9 @@ import {
   SEND_PRODUCTS_REQUEST_START,
   SEND_PRODUCTS_REQUEST_SUCCESS,
   SHOP_SET_DEFAULT,
+  FILTER_ITEMS_BY_PRICE,
+  FILTER_ITEMS_BY_COLOR,
+  RESET_FILTERED_ITEMS,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -47,6 +50,18 @@ const handlers = {
     currentRoute: null,
   }),
   [SAVE_FILTERED_ITEMS]: (state, { filteredItems }) => ({
+    ...state,
+    filteredItems,
+  }),
+  [RESET_FILTERED_ITEMS]: (state) => ({
+    ...state,
+    filteredItems: initialState.filteredItems,
+  }),
+  [FILTER_ITEMS_BY_PRICE]: (state, { filteredItems }) => ({
+    ...state,
+    filteredItems,
+  }),
+  [FILTER_ITEMS_BY_COLOR]: (state, { filteredItems }) => ({
     ...state,
     filteredItems,
   }),

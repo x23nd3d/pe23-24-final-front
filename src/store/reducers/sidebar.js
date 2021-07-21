@@ -6,6 +6,7 @@ import {
   CHOSEN_SUBCATEGORY,
   SIDEBAR_DEFAULT,
   UPDATE_CHOSEN_ITEMS,
+  RESET_FILTERS,
 } from "../actions/actionTypes";
 
 const INITIAL_STATE = {
@@ -59,6 +60,14 @@ const handlers = {
   [ADJUST_PRICE_RANGE]: (state, { priceRange }) => ({
     ...state,
     priceRange,
+  }),
+  [RESET_FILTERS]: (state) => ({
+    ...state,
+    chosenColors: [],
+    priceRange: {
+      min: 0,
+      max: 0,
+    },
   }),
 
   DEFAULT: (state) => state,

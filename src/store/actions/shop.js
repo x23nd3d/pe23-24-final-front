@@ -1,6 +1,7 @@
 import {
   RECEIVE_CURRENT_ROUTE_START,
   RECEIVE_CURRENT_ROUTE_SUCCESS,
+  RESET_FILTERED_ITEMS,
   SAVE_FILTERED_ITEMS,
   SEND_PRODUCTS_REQUEST_ERROR,
   SEND_PRODUCTS_REQUEST_START,
@@ -107,6 +108,12 @@ export function saveFilteredItemsHandler(items) {
 export function saveFilteredItems(filteredItems) {
   return {
     type: SAVE_FILTERED_ITEMS,
+    filteredItems,
+  };
+}
+export function resetFilteredItems(filteredItems) {
+  return {
+    type: RESET_FILTERED_ITEMS,
     filteredItems,
   };
 }

@@ -3,11 +3,15 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { NavLink, withRouter } from "react-router-dom";
 import classNames from "classnames";
-import { receiveCurrentRoute } from "../../../store/actions/shop";
+import {
+  receiveCurrentRoute,
+  resetFilteredItems,
+} from "../../../store/actions/shop";
 import {
   checkCategories,
   chooseCategory,
   chooseSubcategory,
+  resetFilters,
 } from "../../../store/actions/sidebar";
 import classes from "./Sidebar.module.scss";
 
@@ -22,6 +26,8 @@ const Sidebar = ({
   receiveRoute,
   subcategoryChooser,
   allCategoriesChooser,
+  resetFiltersHandler,
+  resetFilteredItemsHandler,
 }) => {
   const { chosenCategory, chosenSubcategory, categories, chosenItems } =
     sidebar;
@@ -113,6 +119,19 @@ const Sidebar = ({
         )}
         <ColorFilter />
         <PriceFilter />
+
+        <div className={classes.Buttons}>
+          <button
+            className={classes.Button}
+            type="button"
+            onClick={() => {
+              resetFiltersHandler();
+              resetFilteredItemsHandler();
+            }}
+          >
+            RESET FILTERS
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -125,6 +144,8 @@ Sidebar.defaultProps = {
   categoryChooser: (f) => f,
   subcategoryChooser: (f) => f,
   allCategoriesChooser: (f) => f,
+  resetFiltersHandler: (f) => f,
+  resetFilteredItemsHandler: (f) => f,
 };
 
 Sidebar.propTypes = {
@@ -134,6 +155,8 @@ Sidebar.propTypes = {
   categoryChooser: PropTypes.func,
   subcategoryChooser: PropTypes.func,
   allCategoriesChooser: PropTypes.func,
+  resetFiltersHandler: PropTypes.func,
+  resetFilteredItemsHandler: PropTypes.func,
 };
 
 function mapStateToProps(state) {
@@ -149,6 +172,8 @@ function mapDispatchToProps(dispatch) {
     categoryChooser: (route) => dispatch(chooseCategory(route)),
     subcategoryChooser: (route) => dispatch(chooseSubcategory(route)),
     allCategoriesChooser: (route) => dispatch(checkCategories(route)),
+    resetFiltersHandler: (route) => dispatch(resetFilters(route)),
+    resetFilteredItemsHandler: (route) => dispatch(resetFilteredItems(route)),
   };
 }
 

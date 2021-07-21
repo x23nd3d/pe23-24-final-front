@@ -5,6 +5,9 @@ import {
   CHOSEN_SUBCATEGORY,
   SIDEBAR_DEFAULT,
   UPDATE_CHOSEN_ITEMS,
+  FILTER_ITEMS_BY_PRICE,
+  FILTER_ITEMS_BY_COLOR,
+  RESET_FILTERS,
 } from "./actionTypes";
 
 export const checkCategories = (title) => (dispatch, getState) => {
@@ -88,14 +91,32 @@ export const adjustPriceRange = (priceRange) => ({
 //
 
 // * filter by color
-export const filterByColor = (items, colors) => {
-  const filteredItems = items.filter((item) =>
-    item.color.some((a) => colors.includes(a))
-  );
+export const filterByColorAction = (items) => (dispatch, getState) => {
+  const currentChosenColors = getState().sidebar.chosenColors;
 
-  console.log("FILTERED ITEMS BY COLOR:", filteredItems);
-  return filteredItems;
+  currentChosenColors.length === 0 && dispatch(filterByColor(items));
+
+  return dispatch(
+    filterByColor(
+      items.filter((item) =>
+        item.color.some((a) => currentChosenColors.includes(a))
+      )
+    )
+  );
 };
+
+export const filterByColor = (filteredItems) => ({
+  type: FILTER_ITEMS_BY_COLOR,
+  filteredItems,
+});
+
+export const resetFiltersAction = () => (dispatch) => {
+  dispatch(filterByColor([]));
+};
+
+export const resetFilters = () => ({
+  type: RESET_FILTERS,
+});
 
 //
 //
@@ -114,12 +135,26 @@ export const filterByColor = (items, colors) => {
 //
 
 // ! WORK ON THIS ONE
-export const filterByPriceRangeAction = (items, rangeValue) => {
+// export const filterByPriceRangeAction = (items, rangeValue) => {
+// return (dispatch) => {
+// console.log(items, rangeValue);
+// };
+
+// console.log("PRICE RANGE FROM SIDEBAR: >>>", priceRange);
+// const filteredItems = items.filter(
+//   (item) => item.price > priceRange.min && item.price < priceRange.max
+// );
+// console.log(items);
+// return filteredItems;
+// };
+
+export const filterByPriceRangeAction = (items, rangeValue) => (dispatch) => {
   console.log(items, rangeValue);
-  // console.log("PRICE RANGE FROM SIDEBAR: >>>", priceRange);
-  // const filteredItems = items.filter(
-  //   (item) => item.price > priceRange.min && item.price < priceRange.max
-  // );
-  // console.log(items);
-  // return filteredItems;
+
+  dispatch(filterByPriceRange(["dsda", "adsadsa"]));
 };
+
+export const filterByPriceRange = (filteredItems) => ({
+  type: FILTER_ITEMS_BY_PRICE,
+  filteredItems,
+});

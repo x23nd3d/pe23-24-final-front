@@ -61,10 +61,7 @@ const PriceFilter = ({
           type="button"
           onClick={() => {
             adjustPriceRangeHandler(rangeValue);
-            filterByPriceRangeHandler(shop.currentItems, {
-              min: 100,
-              max: 500,
-            });
+            filterByPriceRangeHandler(shop.currentItems, rangeValue);
           }}
         >
           FILTER RANGE
@@ -98,8 +95,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     adjustPriceRangeHandler: (route) => dispatch(adjustPriceRange(route)),
-    filterByPriceRangeHandler: (route) =>
-      dispatch(filterByPriceRangeAction(route)),
+    filterByPriceRangeHandler: (items, rangeValue) =>
+      dispatch(filterByPriceRangeAction(items, rangeValue)),
   };
 }
 

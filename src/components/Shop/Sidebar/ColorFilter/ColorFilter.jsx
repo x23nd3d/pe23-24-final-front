@@ -4,10 +4,19 @@ import { connect } from "react-redux";
 import classNames from "classnames";
 import { NavLink, withRouter } from "react-router-dom";
 import classes from "./ColorFilter.module.scss";
-import { addRemoveColorAction } from "../../../../store/actions/sidebar";
+import {
+  addRemoveColorAction,
+  filterByColorAction,
+} from "../../../../store/actions/sidebar";
 import { getArrayWithUniqueFlatSortedItems } from "../../../../utils/sidebar";
 
-const ColorFilter = ({ sidebar, shop, addRemoveColorHandler }) => {
+const ColorFilter = ({
+  history,
+  sidebar,
+  shop,
+  addRemoveColorHandler,
+  filterByColorHandler,
+}) => {
   const [showMoreColors, setShowMoreColors] = useState(false);
 
   const renderColor = (colors) =>
@@ -16,8 +25,16 @@ const ColorFilter = ({ sidebar, shop, addRemoveColorHandler }) => {
       .map((color) => (
         <li key={color}>
           <NavLink
-            to="#"
-            onClick={() => addRemoveColorHandler(color)}
+            to={history.location.search || history.location.pathname}
+            onClick={() => {
+              addRemoveColorHandler(color);
+              console.log({
+                color,
+                shopCurrentItems: shop.currentItems,
+                sidebarChosenColor: sidebar.chosenColors,
+              });
+              filterByColorHandler(shop.currentItems, sidebar.chosenColors);
+            }}
             className={classNames(
               classes.Color,
               classes[color.replaceAll("/", "").split(" ").join("")],
@@ -28,7 +45,6 @@ const ColorFilter = ({ sidebar, shop, addRemoveColorHandler }) => {
           </NavLink>
         </li>
       ));
-
   return (
     <div className={classes.ColorFilter}>
       <h3 className={classes.Title}>Colors</h3>
@@ -37,8 +53,10 @@ const ColorFilter = ({ sidebar, shop, addRemoveColorHandler }) => {
           getArrayWithUniqueFlatSortedItems(shop.currentItems, "color")
         )}
       </ul>
+
       <div className={classes.Buttons}>
-        {getArrayWithUniqueFlatSortedItems(shop.currentItems).length > 5 && (
+        {getArrayWithUniqueFlatSortedItems(shop.currentItems, "color").length >
+          5 && (
           <button
             className={classes.Button}
             type="button"
@@ -53,15 +71,19 @@ const ColorFilter = ({ sidebar, shop, addRemoveColorHandler }) => {
 };
 
 ColorFilter.defaultProps = {
+  history: {},
   sidebar: {},
   shop: {},
   addRemoveColorHandler: (f) => f,
+  filterByColorHandler: (f) => f,
 };
 
 ColorFilter.propTypes = {
+  history: PropTypes.instanceOf(Object),
   sidebar: PropTypes.instanceOf(Object),
   shop: PropTypes.instanceOf(Object),
   addRemoveColorHandler: PropTypes.func,
+  filterByColorHandler: PropTypes.func,
 };
 
 function mapStateToProps(state) {
@@ -74,6 +96,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     addRemoveColorHandler: (route) => dispatch(addRemoveColorAction(route)),
+    filterByColorHandler: (items) => dispatch(filterByColorAction(items)),
   };
 }
 
