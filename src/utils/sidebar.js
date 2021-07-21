@@ -1,5 +1,3 @@
-const logger = (text) => text;
-
 export const getArrayWithUniqueFlatSortedItems = (
   items,
   category,
@@ -16,4 +14,11 @@ export const getArrayWithUniqueFlatSortedItems = (
   return colors;
 };
 
-export default logger;
+export const minMaxPrice = (range) => {
+  console.log("RANGE:", range);
+  const prices = range.map((item) => +item.price);
+  return {
+    min: Math.min(...prices),
+    max: Math.max(...prices),
+  };
+};

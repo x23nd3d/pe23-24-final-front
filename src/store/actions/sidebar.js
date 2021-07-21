@@ -8,6 +8,7 @@ import {
   FILTER_ITEMS_BY_PRICE,
   FILTER_ITEMS_BY_COLOR,
   RESET_FILTERS,
+  SAVE_FILTERED_ITEMS,
 } from "./actionTypes";
 
 export const checkCategories = (title) => (dispatch, getState) => {
@@ -118,43 +119,61 @@ export const resetFilters = () => ({
   type: RESET_FILTERS,
 });
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+// ****** ****** ****** ****** ******
 
-// ! WORK ON THIS ONE
-// export const filterByPriceRangeAction = (items, rangeValue) => {
-// return (dispatch) => {
-// console.log(items, rangeValue);
-// };
+export const filterByPriceRangeAction = (items) => (dispatch, getState) => {
+  const currentPriceRange = getState().sidebar.priceRange;
 
-// console.log("PRICE RANGE FROM SIDEBAR: >>>", priceRange);
-// const filteredItems = items.filter(
-//   (item) => item.price > priceRange.min && item.price < priceRange.max
-// );
-// console.log(items);
-// return filteredItems;
-// };
+  const filteredItems = items.filter(
+    (item) =>
+      item.price >= currentPriceRange.min &&
+      item.price <= currentPriceRange.max &&
+      item
+  );
 
-export const filterByPriceRangeAction = (items, rangeValue) => (dispatch) => {
-  console.log(items, rangeValue);
-
-  dispatch(filterByPriceRange(["dsda", "adsadsa"]));
+  return dispatch(filterByPriceRange(filteredItems));
 };
 
 export const filterByPriceRange = (filteredItems) => ({
   type: FILTER_ITEMS_BY_PRICE,
+  filteredItems,
+});
+
+export const filterAction = (items) => (dispatch, getState) => {
+  const { currentItems } = getState().shop;
+  const currentPriceRange = getState().sidebar.priceRange;
+  const currentChosenColors = getState().sidebar.chosenColors;
+
+  function $filterByPrice(array, min = 0, max = 33000) {
+    return array.filter(
+      (item) => item.price >= min && item.price <= max && item
+    );
+  }
+
+  function $filterByColor(array, colors) {
+    if (colors.length === 0) return array;
+
+    return array.filter((item) =>
+      item.color.some((color) => colors.includes(color))
+    );
+  }
+
+  function $filteredItems() {
+    return $filterByPrice(
+      $filterByColor(currentItems, currentChosenColors),
+      currentPriceRange.min,
+      currentPriceRange.max
+    );
+  }
+
+  const filtered = $filteredItems();
+
+  console.log("FILTERED:", $filteredItems());
+
+  dispatch(filter(filtered));
+};
+
+export const filter = (filteredItems) => ({
+  type: SAVE_FILTERED_ITEMS,
   filteredItems,
 });

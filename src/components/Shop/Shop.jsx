@@ -22,7 +22,7 @@ const Shop = ({ shop, history, saveFilteredItemsDispatcher }) => {
       {shop.loading ? (
         <ShopSpinner />
       ) : (
-        <Exposition productList={itemsToDisplay} />
+        <Exposition productList={shop.filteredItems} />
       )}
     </div>
   );

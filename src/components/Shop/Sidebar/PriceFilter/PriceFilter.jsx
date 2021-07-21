@@ -7,39 +7,33 @@ import "./_price-filter.scss";
 import classes from "./PriceFilter.module.scss";
 import {
   adjustPriceRange,
-  adjustPriceRangeAction,
+  filterAction,
   filterByPriceRangeAction,
 } from "../../../../store/actions/sidebar";
-import { getArrayWithUniqueFlatSortedItems } from "../../../../utils/sidebar";
+import { minMaxPrice } from "../../../../utils/sidebar";
 
 const PriceFilter = ({
   shop,
   sidebar,
+  filterActionHandler,
   adjustPriceRangeHandler,
-  filterByPriceRangeHandler,
 }) => {
+  const prices = minMaxPrice(shop.currentItems);
+
   const [rangeValue, setRangeValue] = useState({
-    min: 0,
-    max: 1500,
+    min: prices.min,
+    max: prices.max,
   });
 
-  const minMaxPrice = () => {
-    const prices = shop.currentItems.map((item) => Number(item.price));
+  // useEffect(() => adjustPriceRangeHandler(prices), [shop.currentItems]);
 
-    return {
-      min: Math.min(...prices),
-      max: Math.max(...prices),
-    };
-  };
+  console.log("MIN MAX PRICES:", prices);
 
-  useEffect(
-    () =>
-      setRangeValue({
-        min: minMaxPrice().min,
-        max: minMaxPrice().max,
-      }),
-    []
-  );
+  useEffect(() => {
+    setRangeValue(prices);
+    adjustPriceRangeHandler(prices);
+    filterActionHandler();
+  }, []);
 
   return (
     <div className={classes.PriceFilter}>
@@ -49,8 +43,8 @@ const PriceFilter = ({
       </p>
       <div className={classes.RangeBlock}>
         <InputRange
-          maxValue={minMaxPrice().max}
-          minValue={minMaxPrice().min}
+          maxValue={prices.max}
+          minValue={prices.min}
           value={rangeValue}
           onChange={(value) => setRangeValue(value)}
         />
@@ -61,7 +55,8 @@ const PriceFilter = ({
           type="button"
           onClick={() => {
             adjustPriceRangeHandler(rangeValue);
-            filterByPriceRangeHandler(shop.currentItems, rangeValue);
+            filterActionHandler();
+            // filterActionHandler(shop.currentItems);
           }}
         >
           FILTER RANGE
@@ -75,14 +70,16 @@ PriceFilter.defaultProps = {
   sidebar: {},
   shop: {},
   adjustPriceRangeHandler: (f) => f,
-  filterByPriceRangeHandler: (f) => f,
+  filterActionHandler: (f) => f,
+  adjustPriceRangeHandler: (f) => f,
 };
 
 PriceFilter.propTypes = {
   sidebar: PropTypes.instanceOf(Object),
   shop: PropTypes.instanceOf(Object),
   adjustPriceRangeHandler: PropTypes.func,
-  filterByPriceRangeHandler: PropTypes.func,
+  filterActionHandler: PropTypes.func,
+  adjustPriceRangeHandler: PropTypes.func,
 };
 
 function mapStateToProps(state) {
@@ -95,8 +92,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     adjustPriceRangeHandler: (route) => dispatch(adjustPriceRange(route)),
-    filterByPriceRangeHandler: (items, rangeValue) =>
-      dispatch(filterByPriceRangeAction(items, rangeValue)),
+    filterActionHandler: (items) => dispatch(filterAction(items)),
   };
 }
 

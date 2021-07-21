@@ -6,6 +6,7 @@ import { NavLink, withRouter } from "react-router-dom";
 import classes from "./ColorFilter.module.scss";
 import {
   addRemoveColorAction,
+  filterAction,
   filterByColorAction,
 } from "../../../../store/actions/sidebar";
 import { getArrayWithUniqueFlatSortedItems } from "../../../../utils/sidebar";
@@ -16,6 +17,7 @@ const ColorFilter = ({
   shop,
   addRemoveColorHandler,
   filterByColorHandler,
+  filterActionHandler,
 }) => {
   const [showMoreColors, setShowMoreColors] = useState(false);
 
@@ -33,7 +35,9 @@ const ColorFilter = ({
                 shopCurrentItems: shop.currentItems,
                 sidebarChosenColor: sidebar.chosenColors,
               });
-              filterByColorHandler(shop.currentItems, sidebar.chosenColors);
+              // filterByColorHandler(shop.currentItems, sidebar.chosenColors);
+              filterActionHandler();
+              // filterActionHandler(shop.currentItems);
             }}
             className={classNames(
               classes.Color,
@@ -76,6 +80,7 @@ ColorFilter.defaultProps = {
   shop: {},
   addRemoveColorHandler: (f) => f,
   filterByColorHandler: (f) => f,
+  filterActionHandler: (f) => f,
 };
 
 ColorFilter.propTypes = {
@@ -84,6 +89,7 @@ ColorFilter.propTypes = {
   shop: PropTypes.instanceOf(Object),
   addRemoveColorHandler: PropTypes.func,
   filterByColorHandler: PropTypes.func,
+  filterActionHandler: PropTypes.func,
 };
 
 function mapStateToProps(state) {
@@ -97,6 +103,7 @@ function mapDispatchToProps(dispatch) {
   return {
     addRemoveColorHandler: (route) => dispatch(addRemoveColorAction(route)),
     filterByColorHandler: (items) => dispatch(filterByColorAction(items)),
+    filterActionHandler: (items) => dispatch(filterAction(items)),
   };
 }
 
