@@ -19,7 +19,6 @@ function calculateTotal(array) {
   return array.reduce((result, item) => {
     let final = result;
     final += item.count * item.price;
-    console.log(final, "final");
     return final;
   }, 0);
 }
@@ -61,15 +60,11 @@ export const addToCart = (item) => (dispatch, getState) => {
 };
 
 export const setItemCountHandler = (item, count) => (dispatch, getState) => {
-  console.log("ITEEEMM", item);
-  console.log("count", count);
-
   const initialItems = getState().cart.items;
   const currentItem = initialItems.find((current) => current === item);
   const idx = initialItems.indexOf(currentItem);
 
   if (count === 0) {
-    console.log("WORK");
     return dispatch(setItemCount(initialItems));
   }
 

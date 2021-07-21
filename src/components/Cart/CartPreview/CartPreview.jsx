@@ -11,13 +11,10 @@ import { toggleCartPreviewHandler } from "../../../store/actions/cart";
 const CartPreview = ({ items, removeCartPreview, cart }) => {
   const { isPreviewActive } = cart;
 
-  const renderCartItems = (cartItems) => {
-    console.log(cartItems, "CARTTTT");
-
-    return cartItems.map((item) => (
+  const renderCartItems = (cartItems) =>
+    cartItems.map((item) => (
       <CartItem key={`item_${Math.random() * 20}${item.title}`} item={item} />
     ));
-  };
 
   return (
     <>

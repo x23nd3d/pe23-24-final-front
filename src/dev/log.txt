@@ -7,6 +7,6 @@
 + 7. PRODUCT Size undefined check
 + 8. Add color pallete instead of fontawesome
 + 9. Add cart on hover only
-10. Continue shopping ==> forward to previous shop page
-11. Add color to Cart Preview and remove SIze of no size from Cart Preview
++ 10. Continue shopping ==> forward to previous shop page
++ 11. Add color to Cart Preview and remove SIze of no size from Cart Preview
 12. 2 items with 1794 ID

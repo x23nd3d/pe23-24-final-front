@@ -30,8 +30,6 @@ const AddToCartForm = ({
   }
 
   const addToCartHandler = (data, changedDetails) => {
-    console.log("DATA: ", data);
-    console.log("DETAILS TO BE CHANGED: ", changedDetails);
     const color = changedDetails?.color ? changedDetails.color : data.color[0];
     const size = changedDetails?.size ? changedDetails.size : data.size[0];
 

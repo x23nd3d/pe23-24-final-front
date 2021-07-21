@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import PropTypes, { instanceOf } from "prop-types";
+import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { NavLink, withRouter } from "react-router-dom";
 import { selectCurrentItem } from "../../../store/actions/product";

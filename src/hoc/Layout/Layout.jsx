@@ -19,7 +19,6 @@ const Layout = ({
   disableCartPreview,
 }) => {
   useEffect(() => {
-    console.log("DISABLE CART PREVIEW");
     disableCartPreview();
   }, [disableCartPreview]);
 

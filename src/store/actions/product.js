@@ -2,7 +2,6 @@ import {
   COLOR,
   SELECT_CURRENT_ITEM,
   SELECT_CURRENT_ITEM_START,
-  SELECT_PRODUCT_PREVIEW_PARAMS,
 } from "./actionTypes";
 
 export const colorAction = (value) => (dispatch, getState) => {
