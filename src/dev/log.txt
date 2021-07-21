@@ -10,3 +10,9 @@
 + 10. Continue shopping ==> forward to previous shop page
 + 11. Add color to Cart Preview and remove SIze of no size from Cart Preview
 12. 2 items with 1794 ID
+13. On page reload show which colors and sizes are in cart (Product cart show)
+14. Add settings information about your favorite sizes, colors and show them by default on the product card
+
+// BUGS SCROLL ON ITEMS OPEN CHECK
+
+// UPDATE STATE ON LOAD CURRENT PREVIEW ITEMS
