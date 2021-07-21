@@ -1,0 +1,21 @@
+.FilterButton {
+  color: #ffffff;
+  background-color: #000000;
+  border: 1px solid #ffffff;
+  padding: 10px 25px;
+  transition: all 0.25s;
+  cursor: pointer;
+
+  &Reset {
+    border-color: #ff0000;
+  }
+
+  &:hover {
+    color: #ffd700;
+    border-color: #ffd700;
+  }
+
+  &s {
+    margin-top: 50px;
+  }
+}

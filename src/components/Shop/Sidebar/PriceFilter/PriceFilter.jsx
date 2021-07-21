@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import InputRange from "react-input-range";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { instanceOf } from "prop-types";
 import "./_price-filter.scss";
 import classes from "./PriceFilter.module.scss";
 
-const PriceFilter = (props) => {
+const PriceFilter = ({ shop, sidebar }) => {
   const [rangeValue, setRangeValue] = useState({
-    min: 0,
-    max: 1500,
+    min: sidebar.currentItemsPriceRange.min,
+    max: sidebar.currentItemsPriceRange.max,
   });
 
   return (
@@ -17,13 +20,32 @@ const PriceFilter = (props) => {
       </p>
       <div className={classes.RangeBlock}>
         <InputRange
-          maxValue={1500}
-          minValue={0}
+          // maxValue={1500}
+          // minValue={0}
+          maxValue={sidebar.currentItemsPriceRange.max}
+          minValue={sidebar.currentItemsPriceRange.min}
           value={rangeValue}
           onChange={(value) => setRangeValue(value)}
+          onMouseUp={() => console.log(rangeValue)}
         />
       </div>
     </div>
   );
 };
-export default PriceFilter;
+
+PriceFilter.defaultProps = {
+  shop: {},
+  sidebar: {},
+};
+
+PriceFilter.propTypes = {
+  shop: instanceOf(Object),
+  sidebar: instanceOf(Object),
+};
+
+const mapStateToProps = ({ shop, sidebar }) => ({
+  shop,
+  sidebar,
+});
+
+export default connect(mapStateToProps, null)(withRouter(PriceFilter));
