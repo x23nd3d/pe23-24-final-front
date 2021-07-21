@@ -36,7 +36,7 @@ const SlideShow = ({photo, alt}) => {
           transitionDuration={2}
           swipeable={true}
         >
-          {photo.map((path) => <div className="photo_wrapper" key={path} >
+          {photo.map(path => <div className="photo_wrapper" key={path} >
               <img src={path} alt={alt} className="photo" />
             </div>)}
         </Carousel>
