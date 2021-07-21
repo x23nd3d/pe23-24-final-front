@@ -1,4 +1,6 @@
 @import "../../../styles/mixins";
+@import "../../../styles/variables";
+@import "../../../styles/productColors";
 
 .expo {
   display: grid;
@@ -6,7 +8,7 @@
   grid-gap: 50px 25px;
   width: 100%;
   background-color: #fff;
-  padding: 9% 5%;
+  padding: 5%;
 
   @media screen and (max-width: 1368px) {
     grid-template-columns: 1fr 1fr 1fr;
@@ -22,7 +24,9 @@
 .listItem {
   position: relative;
   cursor: pointer;
-  // transition: 0.2s;
+  max-height: 495px;
+  height: fit-content;
+   //transition: 0.2s;
 }
 
 .listItem:hover {
@@ -95,7 +99,7 @@
 }
 
 .CartHoverDetails {
-  display: none;
+  opacity: 0;
   justify-content: space-around;
   cursor: pointer;
   // z-index: 1000;
@@ -108,13 +112,18 @@
   background-color: #fff;
   border-top: 1px solid #00000024;
   justify-content: space-between;
-  // transition: 0.2s;
-  opacity: 0;
+   //transition: 0.2s;
+}
+
+.CartHoverDetailsFreeze {
+  background-color: #e2e2e2;
 }
 
 .cartItem {
   font-size: 24px;
   color: #00000099;
+  position: absolute;
+  right: 20px;
   //transition: .2s;
 }
 
@@ -132,46 +141,35 @@
   // position: relative;
 }
 
-.sizeItem {
-  border: 1px solid #00000021;
-  margin: 2px;
-  z-index: 999;
-}
-
-.sizeItemActive {
-  border: 1px solid #000;
-}
-
-.sizeItem:hover {
-  border: 1px solid #000;
-}
-
-.colorItem {
-  width: 25px;
-  height: 25px;
-  margin: 2px;
-  //border: 1px solid #fff;
-  background-color: #000;
-  border-radius: 50%;
-  z-index: 999;
-  border: 1px solid transparent;
-}
-
-.colorItemActive {
-  border: 1px solid red;
-}
-
-.colorItem:hover {
-  border: 1px solid #fff;
-}
-
-.colorItem > span {
-  display: none;
-}
-
 .sizes {
 }
 
+.AddToWishlist {
+  font-size: 24px;
+  margin-right: 10px;
+  position: absolute;
+  right: 50px;
+}
+
+.AddToWishlist > i {
+  color: #ffe000;
+  transition: .3s;
+}
+
+.AddToWishlist > i:hover {
+  color: red;
+}
+
+
 .colors {
   padding-bottom: 10px;
+}
+
+.cartItemActive {
+  text-shadow: 0 0 8px #44bf2e85;
+  pointer-events: none;
+}
+
+.freezeItem {
+  pointer-events: none!important;
 }

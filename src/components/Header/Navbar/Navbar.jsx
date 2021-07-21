@@ -114,7 +114,7 @@ const Nav = ({ isAuthenticated, user, history, showCart, cart }) => {
           <Search />
           {isAuthenticated ? (
             <AccountRoutes
-              to={history.location.search}
+              to={history.location.search || history.location.pathname}
               active={accountMenu}
               content={user.name}
               listClass={classNames(classes.NavItem, classes.NavItemMyAccount)}

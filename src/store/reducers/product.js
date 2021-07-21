@@ -1,8 +1,13 @@
-import { COLOR, SELECT_CURRENT_ITEM } from "../actions/actionTypes";
+import {
+  COLOR,
+  SELECT_CURRENT_ITEM,
+  SELECT_CURRENT_ITEM_START,
+} from "../actions/actionTypes";
 
 const initialState = {
   color: "",
   currentItem: {},
+  loading: false,
 };
 
 const productReducer = (state = initialState, action) => {
@@ -13,6 +18,12 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
         currentItem: action.payload,
+        loading: false,
+      };
+    case SELECT_CURRENT_ITEM_START:
+      return {
+        ...state,
+        loading: true,
       };
     default:
       return state;

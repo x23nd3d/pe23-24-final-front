@@ -1,3 +1,5 @@
+@import "../../../../styles/productColors";
+
 .CartItem {
   display: flex;
   justify-content: flex-start;
@@ -13,6 +15,12 @@
 .CartItem:hover {
   box-shadow: 0 0 9px 10px #0000001f;
 }
+
+.CartColor {
+  display: flex;
+  align-items: center;
+}
+
 
 .CartItemImage {
   width: 125px;
@@ -61,7 +69,7 @@ button {
 }
 
 .CartItemGeneral {
-
+  width: 75%;
 }
 
 .CartItemGeneral > p {
@@ -69,9 +77,12 @@ button {
   margin-left: 5px;
 }
 
-.CartItemRemove {
-  //position: absolute;
-  //right: 15px;
+.CartItemRemove > i {
+transition: .3s;
+}
+
+.CartItemRemove > i:hover {
+  color: #de1717;
 }
 
 .CartItemRemove > i {
@@ -95,4 +106,13 @@ button {
 
 .CartItemDetails > p {
   margin-right: 15px;
+}
+
+.CartItemDetails > p > i {
+  margin-right: 5px;
+}
+
+.Manage {
+  position: absolute;
+  right: 15px;
 }

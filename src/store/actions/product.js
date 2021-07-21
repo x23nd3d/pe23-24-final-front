@@ -1,6 +1,7 @@
 import {
   COLOR,
   SELECT_CURRENT_ITEM,
+  SELECT_CURRENT_ITEM_START,
   SELECT_PRODUCT_PREVIEW_PARAMS,
 } from "./actionTypes";
 
@@ -19,6 +20,7 @@ export const setColor = (color) => ({
 
 export const selectCurrentItem = (item) => (dispatch, getState) => {
   const { currentItem } = getState().product;
+  dispatch(setItemStart());
 
   if (currentItem === item) {
     return;
@@ -29,4 +31,8 @@ export const selectCurrentItem = (item) => (dispatch, getState) => {
 export const setItem = (item) => ({
   type: SELECT_CURRENT_ITEM,
   payload: item,
+});
+
+export const setItemStart = () => ({
+  type: SELECT_CURRENT_ITEM_START,
 });

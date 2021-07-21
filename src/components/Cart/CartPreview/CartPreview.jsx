@@ -51,7 +51,9 @@ const CartPreview = ({ items, removeCartPreview, cart }) => {
           </div>
           <div className={classes.CartShopping}>
             <div className={classes.CartContinueShopping}>
-              <button type="button">Continue shopping</button>
+              <button type="button" onClick={() => removeCartPreview()}>
+                Continue shopping
+              </button>
             </div>
             <div className={classes.CartTotalSum}>
               <div className={classes.CartTotal}>

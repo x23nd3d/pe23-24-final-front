@@ -17,6 +17,31 @@ const initialState = {
   error: false,
 };
 
+const transformPreviewItems = (array) => {
+  const newItems = array.map((item) => {
+    if (item.color.length === 1) {
+      const newObjects = {
+        ...item,
+        color: item.color[0],
+      };
+
+      return newObjects;
+    }
+
+    if (item.size.length === 1) {
+      const newObjects = {
+        ...item,
+        size: item.size[0],
+      };
+      return newObjects;
+    }
+
+    return item;
+  });
+
+  return newItems;
+};
+
 const handlers = {
   [RECEIVE_CURRENT_ROUTE_START]: (state) => ({ ...state, loading: true }),
   [RECEIVE_CURRENT_ROUTE_SUCCESS]: (state, { route }) => ({
@@ -36,7 +61,7 @@ const handlers = {
     ...state,
     loading: false,
     currentItems: data,
-    currentPreviewItems: data,
+    currentPreviewItems: transformPreviewItems(data),
   }),
   [SEND_PRODUCTS_REQUEST_ERROR]: (state, { e }) => ({
     ...state,

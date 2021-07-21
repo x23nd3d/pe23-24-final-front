@@ -6,6 +6,7 @@ import {
   DECREASE_ITEM_COUNT,
   INCREASE_ITEM_COUNT,
   REMOVE_FROM_CART,
+  SELECT_CURRENT_ITEM,
   SET_ITEM_COUNT,
   SHOW_CART_PREVIEW,
   TOGGLE_CART_PREVIEW,
@@ -50,6 +51,10 @@ const handlers = {
     items,
     total,
     isPreviewActive: true,
+  }),
+  [SELECT_CURRENT_ITEM]: (state) => ({
+    ...state,
+    isPreviewActive: false,
   }),
   [ADD_TO_CARD_INCREASE_COUNT]: (state, { items, total }) => ({
     ...state,

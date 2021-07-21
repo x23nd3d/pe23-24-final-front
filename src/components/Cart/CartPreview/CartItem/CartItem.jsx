@@ -1,20 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { Link, NavLink } from "react-router-dom";
 import {
   decreaseItemCount,
   increaseItemCount,
   removeFromCart,
   setItemCountHandler,
 } from "../../../../store/actions/cart";
+import { selectCurrentItem } from "../../../../store/actions/product";
 import classes from "./CartItem.module.scss";
+import colorize from "../../../../utils/colorize";
 
 const CartItem = ({
   item,
+  shop,
   cart,
   increaseCount,
   decreaseCount,
   removeFromCartHandler,
+  selectCurrentItemHandler,
   setItemCount,
 }) => {
   const decreaseCountHandler = (currentItem) => {
@@ -28,13 +33,22 @@ const CartItem = ({
     item.count === 1 ? classes.CartCountDecreaseOff : null,
   ];
 
+  const idx = shop.currentItems.findIndex((current) => current.id === item.id);
+  const colorClass = colorize(item.color.trim());
+
   return (
     <div className={classes.CartItem} key={item.title}>
       <div className={classes.CartItemImage}>
         <img src={item.viewImage} alt="Cart Item" />
       </div>
       <div className={classes.CartItemGeneral}>
-        <p>{item.description}</p>
+        <NavLink
+          to={`/shop/product/${item.id}`}
+          onClick={() => selectCurrentItemHandler(shop.currentItems[idx])}
+        >
+          <p>{item.description.join(" ")}</p>
+        </NavLink>
+
         <div className={classes.CartManage}>
           <div className={classes.CartCountContainer}>
             <button
@@ -59,16 +73,20 @@ const CartItem = ({
           </div>
           <div className={classes.CartItemMoreDetails}>
             <div className={classes.CartItemDetails}>
-              {item.size ? (
-                <p>
-                  <i className="far fa-tshirt" />
-                  {item.size}
-                </p>
+              {item.size.length ? (
+                <div
+                  className={`${classes.sizeItem} ${classes.sizeItemActive} ${classes.sizeItemActiveCart}`}
+                >
+                  <p>{item.size}</p>
+                </div>
               ) : null}
               {item.color ? (
-                <p>
-                  <i className="far fa-palette" /> {item.color}
-                </p>
+                <div className={classes.CartColor}>
+                  <div
+                    className={`${classes.colorItem} ${classes[colorClass]}`}
+                  />{" "}
+                  <p> {item.color}</p>
+                </div>
               ) : null}
             </div>
           </div>
@@ -89,24 +107,29 @@ const CartItem = ({
 
 CartItem.defaultProps = {
   cart: {},
+  shop: {},
   increaseCount: (f) => f,
   decreaseCount: (f) => f,
   removeFromCartHandler: (f) => f,
   setItemCount: (f) => f,
+  selectCurrentItemHandler: (f) => f,
 };
 
 CartItem.propTypes = {
   item: PropTypes.instanceOf(Object).isRequired,
   cart: PropTypes.instanceOf(Object),
+  shop: PropTypes.instanceOf(Object),
   increaseCount: PropTypes.func,
   decreaseCount: PropTypes.func,
   removeFromCartHandler: PropTypes.func,
   setItemCount: PropTypes.func,
+  selectCurrentItemHandler: PropTypes.func,
 };
 
 function mapStateToProps(state) {
   return {
     cart: state.cart,
+    shop: state.shop,
   };
 }
 
@@ -116,6 +139,7 @@ function mapDispatchToProps(dispatch) {
     decreaseCount: (item) => dispatch(decreaseItemCount(item)),
     removeFromCartHandler: (item) => dispatch(removeFromCart(item)),
     setItemCount: (item, count) => dispatch(setItemCountHandler(item, count)),
+    selectCurrentItemHandler: (item) => dispatch(selectCurrentItem(item)),
   };
 }
 

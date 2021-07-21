@@ -10,12 +10,13 @@ import Product from "./components/Product/Product";
 import LoginRegistration from "./components/LoginRegistration/LoginRegistration";
 import { logout } from "./store/actions/auth";
 import Logout from "./components/Logout/Logout";
+import Spinner from "./components/UI/Spinner/Spinner";
 
 function App({ isAuthenticated, product }) {
   let routes = (
     <Switch>
       <Route path="/shop/product/:id">
-        <Product data={product.currentItem} />
+        {product.loading ? <Spinner /> : <Product data={product.currentItem} />}
       </Route>
       <Route path="/shop">
         <ShopLayout>
