@@ -14,15 +14,22 @@
     height: 70px;
 
     &:last-of-type {
-      width: 200px;
+      margin-bottom: 12px;
     }
+  }
+
+  .select-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    width: 200px;
   }
 
   .field {
     width: 100px;
     display: flex;
     justify-content: space-between;
-    @include highlight;
   }
 
   .dataPointer {
@@ -62,6 +69,20 @@
     position: absolute;
     bottom: -50%;
     border-radius: 10px;
+  }
+}
+
+.formBlock:first-child {
+
+  @media (min-width: 320px) and (max-width: 450px) {
+    width: 100%;
+    flex-wrap: wrap;
+    & div {margin: 10px 8px;}
+  }
+  @media (max-width: 420px) {
+    flex-wrap: wrap;
+    & div {margin: 8px 8px;}
+    width: 100%;
   }
 }
 

@@ -14,22 +14,33 @@
     width: 100%;
   }
 
+  @media (max-width: 480px) {
+    height: 440px;
+  }
+
 }
 
 .photo {
-  background-image: url("../../stock/suits/suits/1701 - Canali/navy_color/1701_navy_canali1.png");
-  background-size: cover;
-  background-repeat: no-repeat;
   height: 600px;
   @media (max-width: 640px) {
-    width: 100%;
+    width: 80%;
     background-position: center;
+  }
+  @media (max-width: 640px){
+    height: 80%;
   }
 }
 
-// .Navy {background-image: url("../../stock/suits/suits/1701 - Canali/navy_color/1701_navy_canali1.png");}
-// .Carcoal {background-image: url("../../stock/suits/suits/1701 - Canali/charcoal_color/1701_charcoal_canali1.png");}
-// .Black {background-image: url("../../stock/suits/suits/1701 - Canali/black_color/1701_black_canali1.png");}
+.photo_wrapper {
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: 460px) {
+    width: 100%;
+    background-position: center;
+  }
+
+}
 
 .carou {
   border: 1px solid rgb(252, 252, 252);

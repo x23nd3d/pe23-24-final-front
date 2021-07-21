@@ -1,19 +1,12 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "./SlideShow.scss";
 
-const SlideShow = ({photos}) => {
-  const [...photo] = Object.entries(photos);
+/* eslint-disable react/jsx-boolean-value */
 
-  // console.log(photos);
-
-  // const view = useContext(ProductViewContext);
-
-  // const [currentPhotos, setCurrentPhotos] = useState(view);
-  // const [currentColor, setCurrentColor] = useState(view);
-
+const SlideShow = ({photo, alt}) => {
 
   const responsive = {
     superLargeDesktop: {
@@ -36,18 +29,24 @@ const SlideShow = ({photos}) => {
 
   return (
     <div className="photo-block">
-        <Carousel className="carou" responsive={responsive}>
-          {photo[0].map((path, index) => <div key={path} >
-              <div className="photo" />
+        <Carousel
+          className="carou"
+          responsive={responsive}
+          ssr={true}
+          transitionDuration={2}
+          swipeable={true}
+        >
+          {photo.map((path) => <div className="photo_wrapper" key={path} >
+              <img src={path} alt={alt} className="photo" />
             </div>)}
         </Carousel>
     </div>
   )
 }
 
-
 SlideShow.propTypes = {
-  photos: PropTypes.instanceOf(Object).isRequired
+  photo: PropTypes.instanceOf(Array).isRequired,
+  alt: PropTypes.string.isRequired
 }
 
 export default SlideShow;

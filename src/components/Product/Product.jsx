@@ -20,11 +20,12 @@ import {
     dataBlock
 } from "./Product.module.scss";
 
-const Product = ({data}) => {
+const Product = ({data, store}) => {
     const {
         id,
         name,
         caption,
+        category,
         material,
         type,
         color,
@@ -37,7 +38,7 @@ const Product = ({data}) => {
 
     return (
         <section className={product}>
-            <SlideShow photos={photo} />
+            <SlideShow photo={store.product.photo} alt={`${material}${category}`} />
             <article className={dataBlock}>
                 <ul className={classNames(Details)}>
                     <li className={primaryBlock}>
@@ -48,20 +49,26 @@ const Product = ({data}) => {
                         <span className={classNames(dataPointer, Price)}>Price<p>{`$${price}`}</p></span>
                     </li>
                     <li className={selectionBlock}>
-                        <AddToCartForm id={id} colors={color} sizes={size} />
+                        <AddToCartForm data={data} store={store} />
                         <hr />
                     </li>
                     <li className={bottomBlock}>
                         <h3 className={moreDetails}>More details</h3>
-                        <span className={dataPointer}>Type<p>{type}</p></span>
-                        <span className={dataPointer}>Material<p>{material}</p></span>
+                        <span className={dataPointer}>
+                            <h5>Type</h5>
+                            <p>{type}</p>
+                        </span>
+                        <span className={dataPointer}>
+                            <h5>Material</h5>
+                            <p>{material}</p>
+                            </span>
                         <ul className={dsc}>
                         {description.map((point) => <li
                             key={`${point.slice(-3)}${Math.random() * 50}${point.slice(0, 5)}`}>
                                 {point}
                             </li>)}
                         </ul>
-                    {producingCountry && <p>Made in {producingCountry}</p> }
+                    {producingCountry && <p style={{margin: "10px 0"}}>Made in {producingCountry}</p> }
                     </li>
                 </ul>
             </article>
@@ -75,6 +82,7 @@ Product.propTypes = {
         name: PropTypes.string,
         caption: PropTypes.string,
         type: PropTypes.string,
+        category: PropTypes.string,
         material: PropTypes.string,
         price: PropTypes.string,
         photo: PropTypes.instanceOf(Object),
@@ -82,6 +90,12 @@ Product.propTypes = {
         color: PropTypes.arrayOf(PropTypes.string),
         size: PropTypes.arrayOf(PropTypes.string),
         description: PropTypes.instanceOf(Array)
+    }).isRequired,
+    store: PropTypes.shape({
+        product: PropTypes.instanceOf(Object),
+        dispatchColor: PropTypes.func,
+        dispatchPhoto: PropTypes.func
     }).isRequired
 }
+
 export default Product;
