@@ -40,6 +40,9 @@ const ProductCard = ({
           ? classes.sizeItemActive
           : null,
         cartIdx >= 0 ? classes.freezeItem : null,
+        cartIdx >= 0 && size === cart.items[cartIdx].size
+          ? classes.sizeItemActive
+          : null,
       ];
       return (
         <button
@@ -64,6 +67,9 @@ const ProductCard = ({
           : null,
         color ? classes[colorClass] : null,
         cartIdx >= 0 ? classes.freezeItem : null,
+        cartIdx >= 0 && color === cart.items[cartIdx].color
+          ? classes.colorItemActive
+          : null,
       ];
 
       return (

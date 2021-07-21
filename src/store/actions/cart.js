@@ -128,9 +128,12 @@ export const toggleCartPreviewHandler = () => (dispatch, getState) => {
   return dispatch(toggleCartPreview());
 };
 
-export const openCart = () => ({
-  type: SHOW_CART_PREVIEW,
-});
+export const openCart = () => {
+  preventBodyScrolling();
+  return {
+    type: SHOW_CART_PREVIEW,
+  };
+};
 
 export const toggleCartPreview = () => ({
   type: TOGGLE_CART_PREVIEW,
