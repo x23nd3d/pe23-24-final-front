@@ -2,6 +2,7 @@ import {
   RECEIVE_CURRENT_ROUTE_ERROR,
   RECEIVE_CURRENT_ROUTE_START,
   RECEIVE_CURRENT_ROUTE_SUCCESS,
+  SELECT_PRODUCT_PREVIEW_PARAMS,
   SEND_PRODUCTS_REQUEST_ERROR,
   SEND_PRODUCTS_REQUEST_START,
   SEND_PRODUCTS_REQUEST_SUCCESS,
@@ -10,9 +11,35 @@ import {
 
 const initialState = {
   currentItems: [],
+  currentPreviewItems: [],
   currentRoute: "/shop/?category=all&type=all",
   loading: false,
   error: false,
+};
+
+const transformPreviewItems = (array) => {
+  const newItems = array.map((item) => {
+    if (item.color.length === 1) {
+      const newObjects = {
+        ...item,
+        color: item.color[0],
+      };
+
+      return newObjects;
+    }
+
+    if (item.size.length === 1) {
+      const newObjects = {
+        ...item,
+        size: item.size[0],
+      };
+      return newObjects;
+    }
+
+    return item;
+  });
+
+  return newItems;
 };
 
 const handlers = {
@@ -34,10 +61,15 @@ const handlers = {
     ...state,
     loading: false,
     currentItems: data,
+    currentPreviewItems: transformPreviewItems(data),
   }),
   [SEND_PRODUCTS_REQUEST_ERROR]: (state, { e }) => ({
     ...state,
     error: e,
+  }),
+  [SELECT_PRODUCT_PREVIEW_PARAMS]: (state, { data }) => ({
+    ...state,
+    currentPreviewItems: data,
   }),
   [SHOP_SET_DEFAULT]: (state) => ({
     ...state,

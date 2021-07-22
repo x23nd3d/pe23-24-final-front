@@ -8,14 +8,16 @@ import Shop from "./components/Shop/Shop";
 import ShopLayout from "./hoc/ShopLayout/ShopLayout";
 import Product from "./components/Product/Product";
 import LoginRegistration from "./components/LoginRegistration/LoginRegistration";
+import dataSample from "./utils/dataSample";
 import { logout } from "./store/actions/auth";
 import Logout from "./components/Logout/Logout";
+import Spinner from "./components/UI/Spinner/Spinner";
 
-function App({ isAuthenticated }) {
+function App({ isAuthenticated, product }) {
   let routes = (
     <Switch>
       <Route path="/shop/product/:id">
-        <Product />
+        {product.loading ? <Spinner /> : <Product data={product.currentItem} />}
       </Route>
       <Route path="/shop">
         <ShopLayout>
@@ -27,6 +29,7 @@ function App({ isAuthenticated }) {
           <LoginRegistration />
         </AnimatePresence>
       </Route>
+
       <Route path="/" component={MainPage} />
     </Switch>
   );
@@ -35,7 +38,7 @@ function App({ isAuthenticated }) {
     routes = (
       <Switch>
         <Route path="/shop/product/:id">
-          <Product />
+          <Product data={product.currentItem} />
         </Route>
         <Route path="/shop">
           <ShopLayout>
@@ -57,6 +60,7 @@ function mapStateToProps(state) {
     isAuthenticated: !!state.auth.token,
     user: state.user.userId,
     loading: state.auth.loading,
+    product: state.product,
   };
 }
 

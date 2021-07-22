@@ -9,8 +9,9 @@ import Backdrop from "../../UI/Backdrop/Backdrop";
 import classes from "./Navbar.module.scss";
 import Search from "./Search/Search";
 import AccountRoutes from "../../Account/AccountRoutes/AccountRoutes";
+import { openCart } from "../../../store/actions/cart";
 
-const Nav = ({ isAuthenticated, user, history }) => {
+const Nav = ({ isAuthenticated, user, history, showCart, cart }) => {
   const [man, setMan] = useState(false);
   const [accountMenu, setAccountMenu] = useState(false);
   const [activeNav, setActiveNav] = useState({});
@@ -113,7 +114,7 @@ const Nav = ({ isAuthenticated, user, history }) => {
           <Search />
           {isAuthenticated ? (
             <AccountRoutes
-              to={history.location.search}
+              to={history.location.search || history.location.pathname}
               active={accountMenu}
               content={user.name}
               listClass={classNames(classes.NavItem, classes.NavItemMyAccount)}
@@ -124,15 +125,21 @@ const Nav = ({ isAuthenticated, user, history }) => {
           ) : (
             <ListRoute
               route="/login"
-              content="My Account"
+              content="Sign In"
               listClass={classNames(classes.NavItem, classes.NavItemMyAccount)}
             />
           )}
           <ListRoute
-            route="/"
-            content="Shopping bag"
+            route={history.location.search || history.location.pathname}
+            content="Cart"
+            onClick={showCart}
             listClass={classNames(classes.NavItem, classes.NavItemShoppingBag)}
           />
+          {cart.items.length > 0 ? (
+            <div className={classes.NavCartActive}>
+              <p>{cart.items.length}</p>
+            </div>
+          ) : null}
         </ul>
       </nav>
     </>
@@ -141,13 +148,17 @@ const Nav = ({ isAuthenticated, user, history }) => {
 
 Nav.defaultProps = {
   isAuthenticated: null,
+  showCart: (f) => f,
   user: {},
+  cart: {},
   history: {},
 };
 
 Nav.propTypes = {
   isAuthenticated: PropTypes.bool,
+  showCart: PropTypes.func,
   user: PropTypes.instanceOf(Object),
+  cart: PropTypes.instanceOf(Object),
   history: PropTypes.instanceOf(Object),
 };
 
@@ -155,7 +166,14 @@ function mapStateToProps(state) {
   return {
     isAuthenticated: !!state.auth.token,
     user: state.user.userId,
+    cart: state.cart,
   };
 }
 
-export default connect(mapStateToProps)(withRouter(Nav));
+function mapDispatchToProps(dispatch) {
+  return {
+    showCart: () => dispatch(openCart()),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Nav));

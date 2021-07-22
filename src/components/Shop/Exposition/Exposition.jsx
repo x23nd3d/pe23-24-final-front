@@ -8,9 +8,9 @@ import ProductCard from "./ProductCard";
 
 const Exposition = ({ productList }) => (
   <ul className={expo}>
-    {productList.map((product) => (
-      <li className={listItem} key={product.id + product.name}>
-        <ProductCard product={product} />
+    {productList.map((item) => (
+      <li className={listItem} key={item.id + item.name}>
+        <ProductCard item={item} />
       </li>
     ))}
   </ul>
