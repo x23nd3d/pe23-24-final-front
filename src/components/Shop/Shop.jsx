@@ -14,7 +14,6 @@ const Shop = ({ shop, sidebar, history, filterItemsHandler }) => {
   }
 
   useEffect(() => {
-    console.log("UPDATEEEEEEEEEEEEEEE");
     filterItemsHandler();
   }, [
     filterItemsHandler,
