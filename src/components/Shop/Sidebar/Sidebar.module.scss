@@ -76,3 +76,24 @@
     }
   }
 }
+
+.Button {
+  color: #fff;
+  background-color: #000;
+  border: 1px solid #fff;
+  padding: 10px 25px;
+  transition: all 0.25s;
+  cursor: pointer;
+  width: 100%;
+
+  &Warning {
+    border-color: #ff0000;
+  }
+
+  &:hover {
+    border-color: gold;
+  }
+  &s {
+    margin-top: 50px;
+  }
+}

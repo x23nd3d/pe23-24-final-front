@@ -1,3 +1,5 @@
+@import "../../../../styles/variables";
+
 .ColorFilter {
   color: #fff;
   font-family: "Open Sans", sans-serif;
@@ -15,9 +17,14 @@
 .Color {
   display: block;
   position: relative;
-  padding-left: 50px;
-  margin-top: 33px;
+  padding: 7px 7px 7px 50px;
+  margin-top: 10px;
   cursor: pointer;
+
+  &Active {
+    border-right: 1px solid #ffd700;
+    background: linear-gradient(90deg, #000000, #141414);
+  }
 
   &:before {
     position: absolute;
@@ -32,19 +39,167 @@
   }
 }
 
-.black:before {
-  border: 1px solid #fff;
+.Button {
+  color: #fff;
   background-color: #000;
+  border: 1px solid #fff;
+  padding: 10px 25px;
+  transition: all 0.25s;
+  cursor: pointer;
+  width: 100%;
+
+  &:hover {
+    border-color: gold;
+  }
+  &s {
+    margin-top: 50px;
+  }
 }
 
-.red:before {
-  background-color: red;
+.AirForce:before {
+  background-color: $air-force;
 }
 
-.brown:before {
-  background-color: brown;
+.Black:before {
+  background-color: $black;
 }
 
-.white:before {
-  background-color: white;
+.BlackDial:before {
+  background-color: $black;
+}
+
+.BlackSolid:before {
+  background-color: $black;
+}
+
+.BlackGold:before {
+  background-color: gold;
+}
+
+.BlueBlazer:before {
+  background-color: $blue-blazer;
+}
+
+.BlueSilver:before {
+  background-color: $blue-silver;
+}
+
+.Brown:before {
+  background-color: $brown;
+}
+
+.CamelotGray:before {
+  background-color: grey;
+}
+
+.Charcoal:before {
+  background-color: $charcoal;
+}
+
+.Coastal:before {
+  background-color: $coastal;
+}
+
+.DarkBlue:before {
+  background-color: $dark-blue;
+}
+
+.Denim:before {
+  background-color: #304560;
+}
+
+.DuffleBag:before {
+  background-color: $duffle-bag;
+}
+
+.DustyOlive:before {
+  background-color: $dusty-olive;
+}
+
+.FlowBoneRed:before {
+  background-color: #a62c2b;
+}
+
+.GoldBrownGradient:before {
+  background-color: $brown;
+}
+
+.Gray:before {
+  background-color: grey;
+}
+
+.GrayHarbor:before {
+  background-color: $gray-harbor;
+}
+
+.JetBlack:before {
+  background-color: $jet-black;
+}
+
+.Kalamata:before {
+  background-color: $kalamata;
+}
+
+.Khaki:before {
+  background-color: $khaki;
+}
+
+.MarroneBrown:before {
+  background-color: $marrone-brown;
+}
+
+.Mauz:before {
+  background-color: $mauz;
+}
+
+.MidnightNavy:before {
+  background-color: $midnight-navy;
+}
+
+.Navy:before {
+  background-color: $navy;
+}
+
+.Nero:before {
+  background-color: $nero;
+}
+
+.NightBlue:before {
+  background-color: $night-blue;
+}
+
+.PearlGray:before {
+  background-color: $pearl-gray;
+}
+
+.ShinyEndura:before {
+  background-color: $shiny-endura;
+}
+
+.Silver:before {
+  background-color: $silver;
+}
+
+.SmokeGray:before {
+  background-color: $smoke-gray;
+}
+
+.Stone:before {
+  background-color: $stone;
+}
+
+.SuperLightIndigo:before {
+  background-color: $super-light-indigo;
+}
+
+.TwoTone:before {
+  background-color: tomato;
+}
+
+.White:before {
+  background-color: #fff;
+}
+
+.WhiteNight:before {
+  background-color: $white-night;
 }

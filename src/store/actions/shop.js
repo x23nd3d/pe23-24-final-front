@@ -20,7 +20,7 @@ export function receiveCurrentRoute(route) {
       dispatch(receiveRouteSuccess(route));
       dispatch(sendProductsRequest(route));
     } catch (e) {
-      console.error(e);
+      // console.error(e);
       dispatch(receiveRouteError(e));
     }
   };
@@ -34,7 +34,7 @@ export function sendProductsRequest(route) {
       const { data } = result;
       dispatch(sendProductsRequestSuccess(data));
     } catch (e) {
-      console.error(e);
+      // console.error(e);
       dispatch(sendProductsRequestError(e));
     }
   };

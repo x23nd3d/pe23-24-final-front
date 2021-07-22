@@ -275,7 +275,7 @@ export function logout() {
         dispatch(logOff());
       }, 500);
     } catch (e) {
-      console.error(e);
+      // console.error(e);
     }
   };
 }
