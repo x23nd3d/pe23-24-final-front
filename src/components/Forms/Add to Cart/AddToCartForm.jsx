@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import PropTypes from "prop-types";
 import { Formik, Form, Field } from "formik";
 import colorize from "../../../utils/colorize";
@@ -11,9 +11,9 @@ import "./AddToCartForm.scss";
 const AddToCartForm = ({ data, store }) => {
     const {productStore, dispatchColor} = store;
 
-    function handleColorState ({color}) {
-        dispatchColor(color);
-    }
+    const handleColorState = useCallback(({color}) => {
+        dispatchColor(color)
+    }, [dispatchColor]);
 
     return (
     <Formik

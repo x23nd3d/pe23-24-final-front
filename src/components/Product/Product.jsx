@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 import classNames from "classnames";
 import AddToCartForm from "../Forms/Add to Cart/AddToCartForm";
 import SlideShow from "./SlideShow";
-import {colorAction, photoAction, visitedProductsAction } from "../../store/actions/product";
+import {colorAction, photoAction } from "../../store/actions/product";
+import VisitedProducts from "./VisitedProducts";
 
 import {
   product,
@@ -27,19 +28,15 @@ const Product = ({
   productStore,
   dispatchColor,
   dispatchPhoto,
-  dispatchVisitedProducts
 }) => {
   const store = {productStore, dispatchColor}
 
   const {
-    id,
     name,
     caption,
     category,
     material,
     type,
-    color,
-    size,
     photo,
     price,
     description,
@@ -52,6 +49,7 @@ const Product = ({
 
 
   return (
+    <>
       <section className={product}>
         <SlideShow
             photo={productStore.photo}
@@ -91,6 +89,9 @@ const Product = ({
             </ul>
         </article>
     </section>
+
+    <VisitedProducts data={productStore.visited} />
+  </>
   )
 }
 
@@ -136,7 +137,6 @@ Product.propTypes = {
   productStore: PropTypes.PropTypes.instanceOf(Object).isRequired,
   dispatchPhoto: PropTypes.func.isRequired,
   dispatchColor: PropTypes.func.isRequired,
-  dispatchVisitedProducts: PropTypes.func.isRequired,
 }
 
 function mapStateToProps (state) {
@@ -147,7 +147,6 @@ function mapDispatchToProps (dispatch) {
   return {
     dispatchColor: (value) => dispatch(colorAction(value)),
     dispatchPhoto: (value) => dispatch(photoAction(value)),
-    dispatchVisitedProducts: (value) => dispatch(visitedProductsAction(value)),
   }
 }
 

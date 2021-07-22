@@ -13,7 +13,7 @@ const ProductCard = ({ product, dispatchColor, dispatchPhoto, dispatchVisitedPro
   }
   return (
   <NavLink onClick={dispatchProduct} to={`/shop/product/${product.id}`} className={card}>
-    <img className={image} src={product.viewImage} alt="Product Item" />
+    <img className={image} src={product.viewImage || product.photo[product.color[0]]} alt="Product Item" />
     <div className={boxBanner}>
       <span>{product.name}</span>
       <span>{product.price} $</span>

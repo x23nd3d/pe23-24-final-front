@@ -1,6 +1,6 @@
 import { COLOR, PHOTO, VISITED_PRODUCTS } from "../actions/actionTypes";
 
-export const initialState = { color: "", photo: null, visited: new Set() };
+export const initialState = { color: "", photo: null, visited: [] };
 
 const productReducer = (state = initialState, action) => {
   switch (action.type) {
