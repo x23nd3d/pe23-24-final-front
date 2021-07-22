@@ -8,6 +8,8 @@ import {
   checkCategories,
   chooseCategory,
   chooseSubcategory,
+  resetFiltersAction,
+  resetFiltersItemsFunction,
 } from "../../../store/actions/sidebar";
 import classes from "./Sidebar.module.scss";
 
@@ -22,6 +24,8 @@ const Sidebar = ({
   receiveRoute,
   subcategoryChooser,
   allCategoriesChooser,
+  resetFiltersHandler,
+  resetFiltersItemsHandler,
 }) => {
   const { chosenCategory, chosenSubcategory, categories, chosenItems } =
     sidebar;
@@ -117,6 +121,15 @@ const Sidebar = ({
         )}
         <ColorFilter />
         <PriceFilter />
+        <div className={classes.Buttons}>
+          <button
+            className={classNames(classes.Button, classes.ButtonWarning)}
+            type="button"
+            onClick={resetFiltersHandler}
+          >
+            RESET FILTERS
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -129,6 +142,8 @@ Sidebar.defaultProps = {
   categoryChooser: (f) => f,
   subcategoryChooser: (f) => f,
   allCategoriesChooser: (f) => f,
+  resetFiltersHandler: (f) => f,
+  resetFiltersItemsHandler: (f) => f,
 };
 
 Sidebar.propTypes = {
@@ -138,6 +153,8 @@ Sidebar.propTypes = {
   categoryChooser: PropTypes.func,
   subcategoryChooser: PropTypes.func,
   allCategoriesChooser: PropTypes.func,
+  resetFiltersHandler: PropTypes.func,
+  resetFiltersItemsHandler: PropTypes.func,
 };
 
 function mapStateToProps(state) {
@@ -153,6 +170,8 @@ function mapDispatchToProps(dispatch) {
     categoryChooser: (route) => dispatch(chooseCategory(route)),
     subcategoryChooser: (route) => dispatch(chooseSubcategory(route)),
     allCategoriesChooser: (route) => dispatch(checkCategories(route)),
+    resetFiltersHandler: () => dispatch(resetFiltersAction()),
+    resetFiltersItemsHandler: () => dispatch(resetFiltersItemsFunction()),
   };
 }
 

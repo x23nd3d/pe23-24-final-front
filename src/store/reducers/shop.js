@@ -3,6 +3,8 @@ import {
   RECEIVE_CURRENT_ROUTE_START,
   RECEIVE_CURRENT_ROUTE_SUCCESS,
   SELECT_PRODUCT_PREVIEW_PARAMS,
+  RESET_FILTER_ITEMS,
+  SET_FILTER_ITEMS,
   SEND_PRODUCTS_REQUEST_ERROR,
   SEND_PRODUCTS_REQUEST_START,
   SEND_PRODUCTS_REQUEST_SUCCESS,
@@ -15,6 +17,7 @@ const initialState = {
   currentRoute: "/shop/?category=all&type=all",
   loading: false,
   error: false,
+  filteredItems: [],
 };
 
 const transformPreviewItems = (array) => {
@@ -75,6 +78,14 @@ const handlers = {
     ...state,
     currentItems: [],
     currentRoute: null,
+  }),
+  [SET_FILTER_ITEMS]: (state, action) => ({
+    ...state,
+    filteredItems: action.payload,
+  }),
+  [RESET_FILTER_ITEMS]: (state, action) => ({
+    ...state,
+    filteredItems: [],
   }),
   DEFAULT: (state) => state,
 };
