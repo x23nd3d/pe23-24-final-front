@@ -14,8 +14,14 @@ const Shop = ({ shop, sidebar, history, filterItemsHandler }) => {
   }
 
   useEffect(() => {
+    console.log("UPDATEEEEEEEEEEEEEEE");
     filterItemsHandler();
-  }, [shop.currentItems, sidebar.chosenColors, sidebar.chosenPriceRange]);
+  }, [
+    filterItemsHandler,
+    shop.currentItems,
+    sidebar.chosenColors,
+    sidebar.chosenPriceRange,
+  ]);
 
   return (
     <div className={classes.Shop}>
@@ -23,7 +29,11 @@ const Shop = ({ shop, sidebar, history, filterItemsHandler }) => {
       {shop.loading ? (
         <ShopSpinner />
       ) : (
-        <Exposition productList={shop.filteredItems} />
+        <Exposition
+          productList={
+            shop.filteredItems.length ? shop.filteredItems : shop.currentItems
+          }
+        />
       )}
     </div>
   );

@@ -6,6 +6,7 @@ import {
   ADD_REMOVE_COLOR,
   RESET_FILTERS,
   SET_PRICE_RANGE,
+  RECEIVE_CURRENT_ROUTE_START,
 } from "../actions/actionTypes";
 
 const INITIAL_STATE = {
@@ -62,6 +63,15 @@ const handlers = {
     chosenPriceRange: action.payload,
   }),
   [RESET_FILTERS]: (state, action) => ({
+    ...state,
+    chosenColors: [],
+    chosenPriceRange: {
+      min: 0,
+      max: 0,
+    },
+    reset: !state.reset,
+  }),
+  [RECEIVE_CURRENT_ROUTE_START]: (state) => ({
     ...state,
     chosenColors: [],
     chosenPriceRange: {

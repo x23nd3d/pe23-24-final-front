@@ -84,7 +84,7 @@ const CartItem = ({
           </div>
           <div className={classes.CartItemMoreDetails}>
             <div className={classes.CartItemDetails}>
-              {item.size ? (
+              {Array.isArray(item.size) && item.size.length ? (
                 <div
                   className={`${classes.sizeItem} ${classes.sizeItemActive} ${classes.sizeItemActiveCart}`}
                 >

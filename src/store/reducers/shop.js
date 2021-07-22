@@ -46,7 +46,11 @@ const transformPreviewItems = (array) => {
 };
 
 const handlers = {
-  [RECEIVE_CURRENT_ROUTE_START]: (state) => ({ ...state, loading: true }),
+  [RECEIVE_CURRENT_ROUTE_START]: (state) => ({
+    ...state,
+    loading: true,
+    filteredItems: [],
+  }),
   [RECEIVE_CURRENT_ROUTE_SUCCESS]: (state, { route }) => ({
     ...state,
     loading: false,
@@ -64,6 +68,7 @@ const handlers = {
     ...state,
     loading: false,
     currentItems: data,
+    filteredItems: [],
     currentPreviewItems: transformPreviewItems(data),
   }),
   [SEND_PRODUCTS_REQUEST_ERROR]: (state, { e }) => ({
@@ -72,7 +77,7 @@ const handlers = {
   }),
   [SELECT_PRODUCT_PREVIEW_PARAMS]: (state, { data }) => ({
     ...state,
-    currentPreviewItems: data,
+    currentPreviewItems: transformPreviewItems(data),
   }),
   [SHOP_SET_DEFAULT]: (state) => ({
     ...state,
@@ -82,6 +87,7 @@ const handlers = {
   [SET_FILTER_ITEMS]: (state, action) => ({
     ...state,
     filteredItems: action.payload,
+    currentPreviewItems: transformPreviewItems(action.payload),
   }),
   [RESET_FILTER_ITEMS]: (state, action) => ({
     ...state,
