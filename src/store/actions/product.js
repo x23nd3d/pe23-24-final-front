@@ -24,10 +24,10 @@ export const visitedProductsAction = (data) => (dispatch, getState) => {
 
   visited[0] && visited.forEach(o => set.add(o));
   set.size < 4 && set.add(data);
-  const [...uniqueAll] = set;
+  const [...unique] = set;
 
   dispatch({
     type: VISITED_PRODUCTS,
-    payload: uniqueAll
+    payload: unique
   })
 }
