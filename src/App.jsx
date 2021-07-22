@@ -1,14 +1,13 @@
 import React from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import "./App.module.scss";
+import "./App.scss";
 import { AnimatePresence } from "framer-motion";
 import MainPage from "./components/Main Page/MainPage";
 import Shop from "./components/Shop/Shop";
 import ShopLayout from "./hoc/ShopLayout/ShopLayout";
 import Product from "./components/Product/Product";
 import LoginRegistration from "./components/LoginRegistration/LoginRegistration";
-import dataSample from "./utils/dataSample";
 import { logout } from "./store/actions/auth";
 import Logout from "./components/Logout/Logout";
 import Spinner from "./components/UI/Spinner/Spinner";
@@ -38,7 +37,11 @@ function App({ isAuthenticated, product }) {
     routes = (
       <Switch>
         <Route path="/shop/product/:id">
-          <Product data={product.currentItem} />
+          {product.loading ? (
+            <Spinner />
+          ) : (
+            <Product data={product.currentItem} />
+          )}
         </Route>
         <Route path="/shop">
           <ShopLayout>

@@ -8,7 +8,13 @@ import {
   removeFromCart,
   setItemCountHandler,
 } from "../../../../store/actions/cart";
-import { selectCurrentItem } from "../../../../store/actions/product";
+import {
+  colorAction,
+  photoAction,
+  selectCurrentItem,
+  sendProductRequest,
+  visitedProductsAction,
+} from "../../../../store/actions/product";
 import classes from "./CartItem.module.scss";
 import colorize from "../../../../utils/colorize";
 
@@ -16,11 +22,16 @@ const CartItem = ({
   item,
   shop,
   cart,
+  product,
   increaseCount,
   decreaseCount,
   removeFromCartHandler,
   selectCurrentItemHandler,
   setItemCount,
+  dispatchColor,
+  dispatchPhoto,
+  dispatchVisitedProducts,
+  sendProductRequestHandler,
 }) => {
   const decreaseCountHandler = (currentItem) => {
     if (currentItem.count === 1) {
@@ -32,9 +43,12 @@ const CartItem = ({
   const decreaseCountCls = [
     item.count === 1 ? classes.CartCountDecreaseOff : null,
   ];
-
-  const idx = shop.currentItems.findIndex((current) => current.id === item.id);
   const colorClass = colorize(item.color.trim());
+
+  const dispatchProduct = async () => {
+    await sendProductRequestHandler(item.id);
+    dispatchVisitedProducts(item);
+  };
 
   return (
     <div className={classes.CartItem} key={item.title}>
@@ -42,10 +56,7 @@ const CartItem = ({
         <img src={item.viewImage} alt="Cart Item" />
       </div>
       <div className={classes.CartItemGeneral}>
-        <NavLink
-          to={`/shop/product/${item.id}`}
-          onClick={() => selectCurrentItemHandler(shop.currentItems[idx])}
-        >
+        <NavLink to={`/shop/product/${item.id}`} onClick={dispatchProduct}>
           <p>{item.description.join(" ")}</p>
         </NavLink>
 
@@ -108,6 +119,7 @@ const CartItem = ({
 CartItem.defaultProps = {
   cart: {},
   shop: {},
+  product: {},
   increaseCount: (f) => f,
   decreaseCount: (f) => f,
   removeFromCartHandler: (f) => f,
@@ -119,17 +131,23 @@ CartItem.propTypes = {
   item: PropTypes.instanceOf(Object).isRequired,
   cart: PropTypes.instanceOf(Object),
   shop: PropTypes.instanceOf(Object),
+  product: PropTypes.instanceOf(Object),
   increaseCount: PropTypes.func,
   decreaseCount: PropTypes.func,
   removeFromCartHandler: PropTypes.func,
   setItemCount: PropTypes.func,
   selectCurrentItemHandler: PropTypes.func,
+  dispatchPhoto: PropTypes.func.isRequired,
+  dispatchColor: PropTypes.func.isRequired,
+  dispatchVisitedProducts: PropTypes.func.isRequired,
+  sendProductRequestHandler: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
   return {
     cart: state.cart,
     shop: state.shop,
+    product: state.product,
   };
 }
 
@@ -140,6 +158,10 @@ function mapDispatchToProps(dispatch) {
     removeFromCartHandler: (item) => dispatch(removeFromCart(item)),
     setItemCount: (item, count) => dispatch(setItemCountHandler(item, count)),
     selectCurrentItemHandler: (item) => dispatch(selectCurrentItem(item)),
+    dispatchColor: (value) => dispatch(colorAction(value)),
+    dispatchPhoto: (value) => dispatch(photoAction(value)),
+    dispatchVisitedProducts: (value) => dispatch(visitedProductsAction(value)),
+    sendProductRequestHandler: (id) => dispatch(sendProductRequest(id)),
   };
 }
 

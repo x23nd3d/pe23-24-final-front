@@ -7,7 +7,6 @@ import userReducer from "./user";
 import shopReducer from "./shop";
 import sidebarReducer from "./sidebar";
 import productReducer from "./product";
-// import productReducer from "./productReducer";
 import cartReducer from "./cart";
 
 const persistConfig = {

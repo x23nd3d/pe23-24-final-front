@@ -1,14 +1,18 @@
 import React from "react";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { NavLink, withRouter } from "react-router-dom";
-import { selectCurrentItem, colorAction, photoAction, visitedProductsAction } from "../../../store/actions/product";
+import {
+  selectCurrentItem,
+  colorAction,
+  photoAction,
+  visitedProductsAction,
+} from "../../../store/actions/product";
 import { addToCart } from "../../../store/actions/cart";
 import classes from "./Exposition.module.scss";
 import "../../../styles/productColors.scss";
 import { handleItemPreviewParams } from "../../../store/actions/shop";
 import colorize from "../../../utils/colorize";
-
 
 const ProductCard = ({
   product,
@@ -21,14 +25,8 @@ const ProductCard = ({
   history,
   cart,
   shop,
-  handleItemPreview, }) => {
-
-  const dispatchProduct = () => {
-    dispatchColor(product.color[0]);
-    dispatchPhoto(product.photo[product.color[0]]);
-    dispatchVisitedProducts(product);
-  }
-
+  handleItemPreview,
+}) => {
   const findCurrentItemByIdx = (array, currentItem) =>
     array.findIndex((current) => current.id === currentItem.id);
 
@@ -37,6 +35,14 @@ const ProductCard = ({
     cart.items,
     shop.currentPreviewItems[idx]
   );
+
+  const dispatchProduct = () => {
+    selectCurrentItemHandler(item);
+    dispatchColor(item.color[0]);
+    dispatchPhoto(item.photo[item.color[0]]);
+    dispatchVisitedProducts(item);
+  };
+
   const clsHoverDetails = [
     classes.CartHoverDetails,
     cartIdx >= 0 ? classes.CartHoverDetailsFreeze : null,
@@ -105,7 +111,7 @@ const ProductCard = ({
       !shop.currentPreviewItems[idx].color.length) &&
       (typeof shop.currentPreviewItems[idx].size === "string" ||
         !shop.currentPreviewItems[idx].size.length)) ||
-    cartIdx >= 0 ? (
+      cartIdx >= 0 ? (
       <div
         role="none"
         className={cls.join(" ")}
@@ -120,12 +126,11 @@ const ProductCard = ({
     ) : null;
   };
 
-
   return (
     <>
       <NavLink
         to={`/shop/product/${item.id}`}
-        onClick={() => selectCurrentItemHandler(item)}
+        onClick={dispatchProduct}
         className={classes.card}
       >
         <img
@@ -166,7 +171,6 @@ ProductCard.defaultProps = {
   shop: {},
   cart: {},
 };
-
 
 ProductCard.propTypes = {
   item: PropTypes.instanceOf(Object).isRequired,

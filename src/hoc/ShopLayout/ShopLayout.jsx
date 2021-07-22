@@ -15,7 +15,7 @@ const ShopLayout = ({
 }) => {
   useEffect(() => {
     if (history.location.search === "?category=all&type=all") {
-      receiveRoute(`/shop/${history.location.search}`);
+      receiveRoute(`${history.location.search}`);
       setSidebarDefaultHandler();
     }
   }, [history.location.search, receiveRoute, setSidebarDefaultHandler]);

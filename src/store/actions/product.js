@@ -1,9 +1,12 @@
 import {
   COLOR,
-  PHOTO, VISITED_PRODUCTS,
+  PHOTO,
+  VISITED_PRODUCTS,
   SELECT_CURRENT_ITEM,
   SELECT_CURRENT_ITEM_START,
+  SEND_PRODUCT_REQUEST_ERROR,
 } from "./actionTypes";
+import axios from "../../axios/axios-product";
 
 /* eslint-disable guard-for-in */
 export const colorAction = (value) => (dispatch, getState) => {
@@ -27,7 +30,6 @@ export const setColor = (color) => ({
 export const selectCurrentItem = (item) => (dispatch, getState) => {
   const { currentItem } = getState().product;
   dispatch(setItemStart());
-
   if (currentItem === item) {
     return;
   }
@@ -43,13 +45,12 @@ export const setItemStart = () => ({
   type: SELECT_CURRENT_ITEM_START,
 });
 
-
 export const visitedProductsAction = (data) => (dispatch, getState) => {
-  const {visited} = getState().product;
+  const { visited } = getState().product;
 
   const set = new Set();
   if (visited.size === 0) {
-    for(const o in visited) {
+    for (const o in visited) {
       o && set.add(o);
     }
   }
@@ -58,6 +59,25 @@ export const visitedProductsAction = (data) => (dispatch, getState) => {
 
   dispatch({
     type: VISITED_PRODUCTS,
-    payload: set
-  })
-}
+    payload: set,
+  });
+};
+
+export const sendProductRequest = (id) => async (dispatch) => {
+  dispatch(setItemStart());
+  try {
+    const result = await axios.get(id);
+    const { data } = result;
+    const currentItem = data[0];
+    dispatch(colorAction(currentItem.color[0]));
+    dispatch(photoAction(currentItem.photo[currentItem.color[0]]));
+    dispatch(setItem(currentItem));
+  } catch (e) {
+    dispatch(sendProductRequestError(e));
+  }
+};
+
+export const sendProductRequestError = (e) => ({
+  type: SEND_PRODUCT_REQUEST_ERROR,
+  e,
+});

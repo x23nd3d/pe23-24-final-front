@@ -10,6 +10,10 @@ import Spinner from "../../components/UI/Spinner/Spinner";
 import classes from "./Layout.module.scss";
 import CartPreview from "../../components/Cart/CartPreview/CartPreview";
 import { toggleCartPreviewHandler } from "../../store/actions/cart";
+import {
+  allowBodyScrolling,
+  preventBodyScrolling,
+} from "../../utils/bodyStyling";
 
 const Layout = ({
   children,
@@ -21,6 +25,10 @@ const Layout = ({
   useEffect(() => {
     disableCartPreview();
   }, [disableCartPreview]);
+
+  useEffect(() => {
+    cartPreviewActive ? preventBodyScrolling() : allowBodyScrolling();
+  }, [cartPreviewActive]);
 
   return (
     <div className={classes.Layout}>

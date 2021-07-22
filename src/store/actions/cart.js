@@ -10,10 +10,6 @@ import {
   SHOW_CART_PREVIEW,
   TOGGLE_CART_PREVIEW,
 } from "./actionTypes";
-import {
-  allowBodyScrolling,
-  preventBodyScrolling,
-} from "../../utils/bodyStyling";
 
 function calculateTotal(array) {
   return array.reduce((result, item) => {
@@ -44,14 +40,12 @@ export const addToCart = (item) => (dispatch, getState) => {
       // we have item in card, we should add count
       const idx = initialItems.indexOf(itemFound);
       initialItems[idx].count += 1;
-      preventBodyScrolling();
       const total = calculateTotal(initialItems);
       return dispatch(updateCount(initialItems, total));
     }
 
     // we do not have item, should add it first with count: 1
     const newItems = [...initialItems, itemToAdd];
-    preventBodyScrolling();
     const total = calculateTotal(newItems);
     return dispatch(addToCartSuccess(newItems, total));
   } catch (e) {
@@ -115,25 +109,17 @@ export const updateCount = (items, total) => ({
   total,
 });
 
-// export const updateTotal = (value) => ({
-//
-// })
-
 export const toggleCartPreviewHandler = () => (dispatch, getState) => {
   const { isPreviewActive } = getState().cart;
   if (!isPreviewActive) {
     return;
   }
-  allowBodyScrolling();
   return dispatch(toggleCartPreview());
 };
 
-export const openCart = () => {
-  preventBodyScrolling();
-  return {
-    type: SHOW_CART_PREVIEW,
-  };
-};
+export const openCart = () => ({
+  type: SHOW_CART_PREVIEW,
+});
 
 export const toggleCartPreview = () => ({
   type: TOGGLE_CART_PREVIEW,
