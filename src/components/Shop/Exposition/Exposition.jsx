@@ -7,13 +7,21 @@ import { expo, listItem } from "./Exposition.module.scss";
 import ProductCard from "./ProductCard";
 
 const Exposition = ({ productList }) => (
-  <ul className={expo}>
-    {productList.map((item) => (
-      <li className={listItem} key={item.id + item.name}>
-        <ProductCard item={item} />
-      </li>
-    ))}
-  </ul>
+  <>
+    <div>
+      {!Array.isArray(productList) ? (
+        <p>{productList}</p>
+      ) : (
+        <ul className={expo}>
+          {productList.map((item) => (
+            <li className={listItem} key={item.id + item.name}>
+              <ProductCard item={item} />
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </>
 );
 
 Exposition.propTypes = {

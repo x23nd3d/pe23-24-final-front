@@ -30,6 +30,8 @@ const ProductCard = ({
   const findCurrentItemByIdx = (array, currentItem) =>
     array.findIndex((current) => current.id === currentItem.id);
 
+  // console.log("ITEMMMM", shop.currentPreviewItems);
+
   const idx = findCurrentItemByIdx(shop.currentPreviewItems, item);
   const cartIdx = findCurrentItemByIdx(
     cart.items,
@@ -73,8 +75,10 @@ const ProductCard = ({
       );
     });
 
-  const renderItemColors = (currentItem) =>
-    currentItem.color.map((color) => {
+  const renderItemColors = (currentItem) => {
+    if (!currentItem) return;
+
+    return currentItem.color.map((color) => {
       const colorClass = colorize(color.trim());
       const cls = [
         classes.colorItem,
@@ -100,6 +104,7 @@ const ProductCard = ({
         </button>
       );
     });
+  };
 
   const renderCartIcon = () => {
     const cls = [

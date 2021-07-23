@@ -108,7 +108,10 @@ export const filterItemsFunction = () => (dispatch, getState) => {
     return filterByPrice(filterByColor(currentItems, chosenColors));
   }
 
-  const result = filteredItems().length === 0 ? currentItems : filteredItems();
+  const result =
+    filteredItems().length === 0
+      ? "Nothing matches your choice"
+      : filteredItems();
 
   // console.log(result.length === 0 ? "Nothing matches your choice" : result);
 
