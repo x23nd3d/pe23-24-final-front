@@ -21,6 +21,7 @@ const initialState = {
 };
 
 const transformPreviewItems = (array) => {
+  if (!Array.isArray(array)) return;
   const newItems = array.map((item) => {
     if (item.color.length === 1) {
       const newObjects = {

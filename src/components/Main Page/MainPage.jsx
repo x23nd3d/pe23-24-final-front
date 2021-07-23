@@ -9,7 +9,7 @@ const MainPage = () => (
   <div className={classes.MainPage}>
     <Slider />
     <PageContainer />
-    <VisitedProducts />
+    {/* <VisitedProducts /> */}
   </div>
 );
 
