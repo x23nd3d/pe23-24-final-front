@@ -1,5 +1,5 @@
-import React from "react";
-import { connect } from "react-redux";
+import React, { useCallback } from "react";
+import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import { Formik, Form, Field } from "formik";
 import colorize from "../../../utils/colorize";
@@ -13,9 +13,9 @@ import { addToCart } from "../../../store/actions/cart";
 const AddToCartForm = ({ data, store, dispatchCart, product }) => {
   const { productStore, dispatchColor } = store;
 
-  function handleColorState({ color }) {
-    dispatchColor(color);
-  }
+    const handleColorState = useCallback(({color}) => {
+        dispatchColor(color)
+    }, [dispatchColor]);
 
   const addToCartHandler = (dataItem, changedDetails) => {
     const color = changedDetails?.color
@@ -44,7 +44,7 @@ const AddToCartForm = ({ data, store, dispatchCart, product }) => {
       {({ values, handleSubmit }) => (
         <Form className="form" onSubmit={handleSubmit}>
           <div className="formBlock">
-            <span className="dataPointer">
+            <span className="dataPointer color-pointer">
               {data.color.length > 1 ? (
                 "Select a color"
               ) : (
@@ -56,6 +56,7 @@ const AddToCartForm = ({ data, store, dispatchCart, product }) => {
                 </>
               )}
             </span>
+            <div className="color-block">
             {data.color.length > 1 &&
               data.color.map((color, index) => (
                 <div key={color}>
@@ -73,8 +74,9 @@ const AddToCartForm = ({ data, store, dispatchCart, product }) => {
                     </span>
                   </label>
                 </div>
-              ))}
-          </div>
+                ))}
+                </div>
+            </div>
           {data.size && (
             <div className="formBlock select-block">
               <span className="dataPointer">Select a size</span>
