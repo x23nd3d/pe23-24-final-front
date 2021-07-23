@@ -39,7 +39,6 @@ const CartItem = ({
     }
     decreaseCount(currentItem);
   };
-
   const decreaseCountCls = [
     item.count === 1 ? classes.CartCountDecreaseOff : null,
   ];
@@ -84,7 +83,7 @@ const CartItem = ({
           </div>
           <div className={classes.CartItemMoreDetails}>
             <div className={classes.CartItemDetails}>
-              {!Array.isArray(item.size) && item.size.length ? (
+              {item.size ? (
                 <div
                   className={`${classes.sizeItem} ${classes.sizeItemActive} ${classes.sizeItemActiveCart}`}
                 >

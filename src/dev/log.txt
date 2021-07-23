@@ -19,5 +19,5 @@
 DB:
 
 // change item price 30+k
-// items with 1794 ID
++ // items with 1794 ID
 // stock add count items and warnings if we do not have items

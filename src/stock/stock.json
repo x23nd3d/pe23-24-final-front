@@ -1,27 +1,28 @@
 [
-    {
-        "clothes": [
             {
+                "mainCategory": "clothes",
+                "subCategory": "suits",
+                "viewImage": "http://176.104.6.131:2222/images/stock/suits/suits/1701_Canali/navy_color/1701_navy_canali1.png",
                 "id": "1701",
                 "name": "Canali",
                 "caption": "Siena Suit - Classic Fit",
-                "category": "Suit",
+                "category": "Suits",
                 "type": "Classic",
                 "photo": {
                     "Navy": [
-                        "./suits/1701 - Canali/navy_color/1701_navy_canali1.png",
-                        "./suits/1701 - Canali/navy_color/1701_navy_canali2.png",
-                        "./suits/1701 - Canali/navy_color/1701_navy_canali3.png"
+                        "http://176.104.6.131:2222/images/stock/suits/suits/1701_Canali/navy_color/1701_navy_canali1.png",
+                        "http://176.104.6.131:2222/images/stock/suits/suits/1701_Canali/navy_color/1701_navy_canali2.png",
+                        "http://176.104.6.131:2222/images/stock/suits/suits/1701_Canali/navy_color/1701_navy_canali3.png"
                     ],
                     "Black": [
-                        "./suits/1701 - Canali/black_color/1701_black_canali1.png",
-                        "./suits/1701 - Canali/black_color/1701_black_canali2.png",
-                        "./suits/1701 - Canali/black_color/1701_black_canali3.png"
+                        "http://176.104.6.131:2222/images/stock/suits/suits/1701_Canali/black_color/1701_black_canali1.png",
+                        "http://176.104.6.131:2222/images/stock/suits/suits/1701_Canali/black_color/1701_black_canali2.png",
+                        "http://176.104.6.131:2222/images/stock/suits/suits/1701_Canali/black_color/1701_black_canali3.png"
                     ],
                     "Charcoal": [
-                        "./suits/1701 - Canali/charcoal_color/1701_charcoal_canali1.png",
-                        "./suits/1701 - Canali/charcoal_color/1701_charcoal_canali2.png",
-                        "./suits/1701 - Canali/charcoal_color/1701_charcoal_canali3.png"
+                        "http://176.104.6.131:2222/images/stock/suits/suits/1701_Canali/charcoal_color/1701_charcoal_canali1.png",
+                        "http://176.104.6.131:2222/images/stock/suits/suits/1701_Canali/charcoal_color/1701_charcoal_canali2.png",
+                        "http://176.104.6.131:2222/images/stock/suits/suits/1701_Canali/charcoal_color/1701_charcoal_canali3.png"
                     ]
                 },
                 "color": ["Navy", "Black", "Charcoal"],
@@ -34,9 +35,18 @@
                     "Trousers: slide and two-button closure with zip fly, hand pockets, back button pockets, flat front, creased",
                     "Family-run since 1934, Canali’s tailored designs are handcrafted with premium fabrics and a meticulous attention to detail."
                 ],
-                "stock": true
+                "stock": true,
+                "count": 30,
+                "bought": 16,
+                "collections": {
+                    "new": true,
+                    "recommended": true
+                }
             },
             {
+                "mainCategory": "clothes",
+                "subCategory": "suits",
+                "viewImage": "http://176.104.6.131:2222/images/stock/suits/suits/1702_John_Varvatos_Star_USA/1702_pearl-gray_john-varvatos-star1.png",
                 "id": "1702",
                 "name": "John Varvatos Star USA",
                 "caption": "Basic Slim Fit Suit Separates",
@@ -44,10 +54,10 @@
                 "type": "Basic Slim",
                 "photo": {
                     "Pearl Gray": [
-                        "./suits/1702 - John Varvatos Star USA/1702_pearl-gray_john-varvatos-star1.png",
-                        "./suits/1702 - John Varvatos Star USA/1702_pearl-gray_john-varvatos-star2.png",
-                        "./suits/1702 - John Varvatos Star USA/1702_pearl-gray_john-varvatos-star3.png",
-                        "./suits/1702 - John Varvatos Star USA/1702_pearl-gray_john-varvatos-star4.png"
+                        "http://176.104.6.131:2222/images/stock/suits/suits/1702_John_Varvatos_Star_USA/1702_pearl-gray_john-varvatos-star1.png",
+                        "http://176.104.6.131:2222/images/stock/suits/suits/1702_John_Varvatos_Star_USA/1702_pearl-gray_john-varvatos-star2.png",
+                        "http://176.104.6.131:2222/images/stock/suits/suits/1702_John_Varvatos_Star_USA/1702_pearl-gray_john-varvatos-star3.png",
+                        "http://176.104.6.131:2222/images/stock/suits/suits/1702_John_Varvatos_Star_USA/1702_pearl-gray_john-varvatos-star4.png"
                     ]
                 },
                 "color": ["Pearl Gray"],
@@ -58,10 +68,18 @@
                 "description": [
                     "Cut for a slim fit, John Varvatos Star USA's crisp suit separates effortlessly segue from workweek to weekend."
                 ],
-                "stock": true
-
+                "stock": true,
+                "count": 74,
+                "bought": 32,
+                "collections": {
+                    "new": false,
+                    "recommended": true
+                }
             },
             {
+                "mainCategory": "clothes",
+                "subCategory": "suits",
+                "viewImage": "http://176.104.6.131:2222/images/stock/suits/suits/1703_Theory/1703_charcoal_theory1.png",
                 "id": "1703",
                 "name": "Theory",
                 "caption": "Tonal Plaid Slim Fit Suit Separates",
@@ -69,9 +87,9 @@
                 "type": "Tonal Plaid Slim",
                 "photo": {
                     "Charcoal": [
-                        "./suits/1703 - Theory/1703_charcoal_theory1.png",
-                        "./suits/1703 - Theory/1703_charcoal_theory2.png",
-                        "./suits/1703 - Theory/1703_charcoal_theory3.png"
+                        "http://176.104.6.131:2222/images/stock/suits/suits/1703_Theory/1703_charcoal_theory1.png",
+                        "http://176.104.6.131:2222/images/stock/suits/suits/1703_Theory/1703_charcoal_theory2.png",
+                        "http://176.104.6.131:2222/images/stock/suits/suits/1703_Theory/1703_charcoal_theory3.png"
                     ]
                 },
                 "color": ["Charcoal"],
@@ -82,9 +100,18 @@
                 "description": [
                     "Theory's tonal plaid suit brings a subtle hint of print to your work wardrobe, while the refined details and slim cut update the timeless motif."
                 ],
-                "stock": true
+                "stock": true,
+                "count": 18,
+                "bought": 69,
+                "collections": {
+                "new": false,
+                "recommended": false
+            }
             },
             {
+                "mainCategory": "clothes",
+                "subCategory": "suits",
+                "viewImage": "http://176.104.6.131:2222/images/stock/suits/tuxedo/1704_BOSS_Hugo_Boss/1704_black_boss-hugo-boss1.png",
                 "id": "1704",
                 "name": "BOSS Hugo Boss",
                 "caption": "Halven/Gentry Slim Fit Tuxedo",
@@ -92,10 +119,10 @@
                 "type": "Tuxedo",
                 "photo": {
                     "Black": [
-                        "./suits/1704 - BOSS Hugo Boss/1704_black_boss-hugo-boss1.png",
-                        "./suits/1704 - BOSS Hugo Boss/1704_black_boss-hugo-boss2.png",
-                        "./suits/1704 - BOSS Hugo Boss/1704_black_boss-hugo-boss3.png",
-                        "./suits/1704 - BOSS Hugo Boss/1704_black_boss-hugo-boss4.png"
+                        "http://176.104.6.131:2222/images/stock/suits/tuxedo/1704_BOSS_Hugo_Boss/1704_black_boss-hugo-boss1.png",
+                        "http://176.104.6.131:2222/images/stock/suits/tuxedo/1704_BOSS_Hugo_Boss/1704_black_boss-hugo-boss2.png",
+                        "http://176.104.6.131:2222/images/stock/suits/tuxedo/1704_BOSS_Hugo_Boss/1704_black_boss-hugo-boss3.png",
+                        "http://176.104.6.131:2222/images/stock/suits/tuxedo/1704_BOSS_Hugo_Boss/1704_black_boss-hugo-boss4.png"
                     ]
                 },
                 "color": ["Black"],
@@ -107,9 +134,18 @@
                     "Jacket: notch lapel, two-button closure, four non-functional sleeve buttons, double vent, two front flap pockets, left chest welt pocket, fully lined",
                     "Pants: zip fly with tab closure, two back besom pockets, two side entry pockets, unhemmed, partially lined"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 96,
+                "bought": 36,
+                "collections": {
+                    "new": true,
+                    "recommended": false
+            }
             },
             {
+                "mainCategory": "clothes",
+                "subCategory": "suits",
+                "viewImage": "http://176.104.6.131:2222/images/stock/suits/tuxedo/1788_Ermenegildo_Zegna/1788_black-solid_ermenegildo-zegna1.png",
                 "id": "1788",
                 "name": "Ermenegildo Zegna",
                 "caption": "Milano Tailored Fit Tuxedo",
@@ -117,14 +153,14 @@
                 "type": "Tuxedo",
                 "photo": {
                     "Black Solid": [
-                        "./suits/1788 - Ermenegildo Zegna/1788_black-solid_ermenegildo-zegna1.png",
-                        "./suits/1788 - Ermenegildo Zegna/1788_black-solid_ermenegildo-zegna2.png",
-                        "./suits/1788 - Ermenegildo Zegna/1788_black-solid_ermenegildo-zegna3.png"
+                        "http://176.104.6.131:2222/images/stock/suits/tuxedo/1788_Ermenegildo_Zegna/1788_black-solid_ermenegildo-zegna1.png",
+                        "http://176.104.6.131:2222/images/stock/suits/tuxedo/1788_Ermenegildo_Zegna/1788_black-solid_ermenegildo-zegna2.png",
+                        "http://176.104.6.131:2222/images/stock/suits/tuxedo/1788_Ermenegildo_Zegna/1788_black-solid_ermenegildo-zegna3.png"
                     ]
                 },
                 "color": ["Black Solid"],
                 "material": "Wool/Polyester",
-                "price": "32999",
+                "price": "3299",
                 "size": ["40", "42", "44", "48"],
                 "producingCountry": "Italy",
                 "description": [
@@ -134,9 +170,18 @@
                     "Jacket: peak satin lapel, single-button front closure, welt chest pocket, two front besom pockets, four nonfunctional sleeve buttons, double vent, fully lined",
                     "Pants: mid-rise, zip fly with button tab closure, flat front, satin tuxedo stripes two side pockets, one coin pocket, two back besom pockets with button closures, unfinished hem, unlined"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 42,
+                "bought": 25,
+                "collections": {
+                    "new": false,
+                    "recommended": true
+            }
             },
             {
+                "mainCategory": "clothes",
+                "subCategory": "outerwear",
+                "viewImage": "http://176.104.6.131:2222/images/stock/outerwear/jackets/1705_ALLSAINTS/1705_jet-black_allsaints1.png",
                 "id": "1705",
                 "name": "ALLSAINTS",
                 "caption": "Cora Leather Jacket",
@@ -144,10 +189,10 @@
                 "type": "Leather Jacket",
                 "photo": {
                     "Jet Black": [
-                        "./outerwear/jackets/1705 - ALLSAINTS/1705_jet-black_allsaints1.png",
-                        "./outerwear/jackets/1705 - ALLSAINTS/1705_jet-black_allsaints2.png",
-                        "./outerwear/jackets/1705 - ALLSAINTS/1705_jet-black_allsaints3.png",
-                        "./outerwear/jackets/1705 - ALLSAINTS/1705_jet-black_allsaints4.png"
+                        "http://176.104.6.131:2222/images/stock/outerwear/jackets/1705_ALLSAINTS/1705_jet-black_allsaints1.png",
+                        "http://176.104.6.131:2222/images/stock/outerwear/jackets/1705_ALLSAINTS/1705_jet-black_allsaints2.png",
+                        "http://176.104.6.131:2222/images/stock/outerwear/jackets/1705_ALLSAINTS/1705_jet-black_allsaints3.png",
+                        "http://176.104.6.131:2222/images/stock/outerwear/jackets/1705_ALLSAINTS/1705_jet-black_allsaints4.png"
                     ]
                 },
                 "color": ["Jet Black"],
@@ -160,9 +205,18 @@
                     "Long seams with geometric panels and zip cuffs, zip hand pockets",
                     "Smooth leather, allover flat seamwork, lined"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 96,
+                "bought": 99,
+                "collections": {
+                    "new": false,
+                    "recommended": false
+                }
             },
             {
+                "mainCategory": "clothes",
+                "subCategory": "outerwear",
+                "viewImage": "http://176.104.6.131:2222/images/stock/outerwear/hoodies/1794_Alternative/black_color/1794_black_alternative1.png",
                 "id": "1794",
                 "name": "Alternative",
                 "caption": "Weekender Zip Hoodie",
@@ -170,19 +224,19 @@
                 "type": "Hoodie",
                 "photo": {
                     "Black": [
-                        "./outerwear/hoodies/1794 - Alternative/black_color/1794_black_alternative1.png",
-                        "./outerwear/hoodies/1794 - Alternative/black_color/1794_black_alternative2.png",
-                        "./outerwear/hoodies/1794 - Alternative/black_color/1794_black_alternative3.png"
+                        "http://176.104.6.131:2222/images/stock/outerwear/hoodies/1794_Alternative/black_color/1794_black_alternative1.png",
+                        "http://176.104.6.131:2222/images/stock/outerwear/hoodies/1794_Alternative/black_color/1794_black_alternative2.png",
+                        "http://176.104.6.131:2222/images/stock/outerwear/hoodies/1794_Alternative/black_color/1794_black_alternative3.png"
                     ],
                     "Navy": [
-                        "./outerwear/hoodies/1794 - Alternative/navy_color/1794_navy_alternative1.png",
-                        "./outerwear/hoodies/1794 - Alternative/navy_color/1794_navy_alternative2.png",
-                        "./outerwear/hoodies/1794 - Alternative/navy_color/1794_navy_alternative3.png"
+                        "http://176.104.6.131:2222/images/stock/outerwear/hoodies/1794_Alternative/navy_color/1794_navy_alternative1.png",
+                        "http://176.104.6.131:2222/images/stock/outerwear/hoodies/1794_Alternative/navy_color/1794_navy_alternative2.png",
+                        "http://176.104.6.131:2222/images/stock/outerwear/hoodies/1794_Alternative/navy_color/1794_navy_alternative3.png"
                     ],
                     "Smoke Gray": [
-                        "./outerwear/hoodies/1794 - Alternative/smoke-gray_color/1794_smoke-gray_alternative1.png",
-                        "./outerwear/hoodies/1794 - Alternative/smoke-gray_color/1794_smoke-gray_alternative2.png",
-                        "./outerwear/hoodies/1794 - Alternative/smoke-gray_color/1794_smoke-gray_alternative3.png"
+                        "http://176.104.6.131:2222/images/stock/outerwear/hoodies/1794_Alternative/smoke-gray_color/1794_smoke-gray_alternative1.png",
+                        "http://176.104.6.131:2222/images/stock/outerwear/hoodies/1794_Alternative/smoke-gray_color/1794_smoke-gray_alternative2.png",
+                        "http://176.104.6.131:2222/images/stock/outerwear/hoodies/1794_Alternative/smoke-gray_color/1794_smoke-gray_alternative3.png"
                     ]
                 },
                 "color": ["Black", "Navy", "Smoke Gray"],
@@ -200,24 +254,33 @@
                     "Split front kangaroo pocket",
                     "Ribbed hems"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 41,
+                "bought": 158,
+                "collections": {
+                    "new": false,
+                    "recommended": true
+                }
             },
             {
-                "id": "1794",
+                "mainCategory": "clothes",
+                "subCategory": "outerwear",
+                "viewImage": "http://176.104.6.131:2222/images/stock/outerwear/hoodies/1795_Theory/black_color/1795_black_theory1.png",
+                "id": "1795",
                 "name": "Theory",
                 "caption": "Mini Waffle Organic Pima Cotton Zip Hoodie",
                 "category": "Outerwear",
                 "type": "Hoodie",
                 "photo": {
                     "Black": [
-                        "./outerwear/hoodies/1795 - Theory/black_color/1795_black_theory1.png",
-                        "./outerwear/hoodies/1795 - Theory/black_color/1795_black_theory2.png",
-                        "./outerwear/hoodies/1795 - Theory/black_color/1795_black_theory3.png"
+                        "http://176.104.6.131:2222/images/stock/outerwear/hoodies/1795_Theory/black_color/1795_black_theory1.png",
+                        "http://176.104.6.131:2222/images/stock/outerwear/hoodies/1795_Theory/black_color/1795_black_theory2.png",
+                        "http://176.104.6.131:2222/images/stock/outerwear/hoodies/1795_Theory/black_color/1795_black_theory3.png"
                     ],
                     "Air Force": [
-                        "./outerwear/hoodies/1795 - Theory/air-force_color/1795_air-force_color_theory1.png",
-                        "./outerwear/hoodies/1795 - Theory/air-force_color/1795_air-force_color_theory2.png",
-                        "./outerwear/hoodies/1795 - Theory/air-force_color/1795_air-force_color_theory3.png"
+                        "http://176.104.6.131:2222/images/stock/outerwear/hoodies/1795_Theory/air-force_color/1795_air-force_theory1.png",
+                        "http://176.104.6.131:2222/images/stock/outerwear/hoodies/1795_Theory/air-force_color/1795_air-force_theory2.png",
+                        "http://176.104.6.131:2222/images/stock/outerwear/hoodies/1795_Theory/air-force_color/1795_air-force_theory3.png"
                     ]
                 },
                 "color": ["Black", "Air Force"],
@@ -233,9 +296,18 @@
                     "Kangaroo pocket",
                     "Mini waffle textured fabric"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 25,
+                "bought": 84,
+                "collections": {
+                    "new": false,
+                    "recommended": false
+                }
             },
             {
+                "mainCategory": "clothes",
+                "subCategory": "outerwear",
+                "viewImage": "http://176.104.6.131:2222/images/stock/outerwear/jackets/1706_Vince/1706_black_vince1.png",
                 "id": "1706",
                 "name": "Vince",
                 "caption": "Classic Leather Jacket",
@@ -243,8 +315,8 @@
                 "type": "Classic Leather Jacket",
                 "photo": {
                     "Black": [
-                        "./outerwear/jackets/1706 - Vince/1706_black_vince1.png",
-                        "./outerwear/jackets/1706 - Vince/1706_black_vince2.png"
+                        "http://176.104.6.131:2222/images/stock/outerwear/jackets/1706_Vince/1706_black_vince1.png",
+                        "http://176.104.6.131:2222/images/stock/outerwear/jackets/1706_Vince/1706_black_vince2.png"
                     ]
                 },
                 "color": ["Black"],
@@ -260,9 +332,18 @@
                     "Center seam and waist yoke at back",
                     "Unlined"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 64,
+                "bought": 94,
+                "collections": {
+                    "new": false,
+                    "recommended": false
+                }
             },
             {
+                "mainCategory": "clothes",
+                "subCategory": "outerwear",
+                "viewImage": "http://176.104.6.131:2222/images/stock/outerwear/coats/1799_John_Varvatos_Star_USA/1799_navy_john-varvatos-star-usa1.png",
                 "id": "1799",
                 "name": "John Varvatos Star USA",
                 "caption": "Slim Fit Varick Textured Jersey Sport Coat",
@@ -270,8 +351,8 @@
                 "type": "Coat",
                 "photo": {
                     "Navy": [
-                        "./outerwear/jackets/1799 - John Varvatos Star USA/1799_navy_john-varvatos-star-usa1.png",
-                        "./outerwear/jackets/1799 - John Varvatos Star USA/1799_navy_john-varvatos-star-usa2.png"
+                        "http://176.104.6.131:2222/images/stock/outerwear/coats/1799_John_Varvatos_Star_USA/1799_navy_john-varvatos-star-usa1.png",
+                        "http://176.104.6.131:2222/images/stock/outerwear/coats/1799_John_Varvatos_Star_USA/1799_navy_john-varvatos-star-usa2.png"
                     ]
                 },
                 "color": ["Navy"],
@@ -287,9 +368,18 @@
                     "Button cuffs",
                     "Side vents"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 68,
+                "bought": 300,
+                "collections": {
+                    "new": true,
+                    "recommended": true
+                }
             },
             {
+                "mainCategory": "clothes",
+                "subCategory": "outerwear",
+                "viewImage": "http://176.104.6.131:2222/images/stock/outerwear/jackets/1798_Joe's_Jeans/1798_joes-jeans1.png",
                 "id": "1798",
                 "name": "Joe's Jeans",
                 "caption": "Linen Regular Fit Military Jacket",
@@ -297,9 +387,9 @@
                 "type": "Jacket",
                 "photo": {
                     "Dusty Olive": [
-                        "./outerwear/jackets/1798 - Joe's Jeans/1798_joes-jeans1.png",
-                        "./outerwear/jackets/1798 - Joe's Jeans/1798_joes-jeans2.png",
-                        "./outerwear/jackets/1798 - Joe's Jeans/1798_joes-jeans3.png"
+                        "http://176.104.6.131:2222/images/stock/outerwear/jackets/1798_Joe's_Jeans/1798_joes-jeans1.png",
+                        "http://176.104.6.131:2222/images/stock/outerwear/jackets/1798_Joe's_Jeans/1798_joes-jeans2.png",
+                        "http://176.104.6.131:2222/images/stock/outerwear/jackets/1798_Joe's_Jeans/1798_joes-jeans3.png"
                     ]
                 },
                 "color": ["Dusty Olive"],
@@ -316,9 +406,18 @@
                     "Front zip and button placket",
                     "Two chest cargo button flap pockets"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 72,
+                "bought": 125,
+                "collections": {
+                    "new": false,
+                    "recommended": true
+                }
             },
             {
+                "mainCategory": "clothes",
+                "subCategory": "outerwear",
+                "viewImage": "http://176.104.6.131:2222/images/stock/outerwear/parka/1797_ALLSAINTS/1797_allsaints1.png",
                 "id": "1797",
                 "name": "ALLSAINTS",
                 "caption": "Elm Regular Fit Removable Hood Down Parka",
@@ -326,9 +425,9 @@
                 "type": "Parka",
                 "photo": {
                     "Black": [
-                        "./outerwear/parka/1797 - ALLSAINTS/1797_allsaints1.png",
-                        "./outerwear/parka/1797 - ALLSAINTS/1797_allsaints2.png",
-                        "./outerwear/parka/1797 - ALLSAINTS/1797_allsaints3.png"
+                        "http://176.104.6.131:2222/images/stock/outerwear/parka/1797_ALLSAINTS/1797_allsaints1.png",
+                        "http://176.104.6.131:2222/images/stock/outerwear/parka/1797_ALLSAINTS/1797_allsaints2.png",
+                        "http://176.104.6.131:2222/images/stock/outerwear/parka/1797_ALLSAINTS/1797_allsaints3.png"
                     ]
                 },
                 "color": ["Black"],
@@ -346,9 +445,18 @@
                     "Adjustable side vents with zipper closures",
                     "Lined"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 119,
+                "bought": 23,
+                "collections": {
+                    "new": false,
+                    "recommended": false
+                }
             },
             {
+                "mainCategory": "clothes",
+                "subCategory": "outerwear",
+                "viewImage": "http://176.104.6.131:2222/images/stock/outerwear/coats/1707_Robert_Graham/1707_black_robert-graham1.png",
                 "id": "1707",
                 "name": "Robert Graham",
                 "caption": "Hoyle Velvet Textured Camouflage Jacquard Tailored Fit Sport Coat",
@@ -356,9 +464,9 @@
                 "type": "Coat",
                 "photo": {
                     "Black": [
-                        "./outerwear/coats/1707 - Robert Graham/1707_black_robert-graham1.png",
-                        "./outerwear/coats/1707 - Robert Graham/1707_black_robert-graham2.png",
-                        "./outerwear/coats/1707 - Robert Graham/1707_black_robert-graham3.png"
+                        "http://176.104.6.131:2222/images/stock/outerwear/coats/1707_Robert_Graham/1707_black_robert-graham1.png",
+                        "http://176.104.6.131:2222/images/stock/outerwear/coats/1707_Robert_Graham/1707_black_robert-graham2.png",
+                        "http://176.104.6.131:2222/images/stock/outerwear/coats/1707_Robert_Graham/1707_black_robert-graham3.png"
                     ]
                 },
                 "color": ["Black"],
@@ -373,9 +481,18 @@
                     "Four sleeve buttons",
                     "Double vent"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 98,
+                "bought": 68,
+                "collections": {
+                    "new": false,
+                    "recommended": false
+                }
             },
             {
+                "mainCategory": "clothes",
+                "subCategory": "pants",
+                "viewImage": "http://176.104.6.131:2222/images/stock/pants/jeans/1708_7_For_All_Mankind/1708_camelot-gray_7-for-all-mankind1.png",
                 "id": "1708",
                 "name": "7 For All Mankind",
                 "caption": "The Stacked Skinny Fit Jeans in Camelot Gray",
@@ -383,9 +500,9 @@
                 "type": "Jeans",
                 "photo": {
                     "Camelot Gray": [
-                        "./pants/jeans/1708 - 7 For All Mankind/1708_camelot-gray_7-for-all-mankind1.png",
-                        "./pants/jeans/1708 - 7 For All Mankind/1708_camelot-gray_7-for-all-mankind2.png",
-                        "./pants/jeans/1708 - 7 For All Mankind/1708_camelot-gray_7-for-all-mankind3.png"
+                        "http://176.104.6.131:2222/images/stock/pants/jeans/1708_7_For_All_Mankind/1708_camelot-gray_7-for-all-mankind1.png",
+                        "http://176.104.6.131:2222/images/stock/pants/jeans/1708_7_For_All_Mankind/1708_camelot-gray_7-for-all-mankind2.png",
+                        "http://176.104.6.131:2222/images/stock/pants/jeans/1708_7_For_All_Mankind/1708_camelot-gray_7-for-all-mankind3.png"
                     ]
                 },
                 "color": ["Camelot Gray"],
@@ -402,9 +519,18 @@
                     "Whiskered",
                     "Faded"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 77,
+                "bought": 42,
+                "collections": {
+                    "new": false,
+                    "recommended": false
+                }
             },
             {
+                "mainCategory": "clothes",
+                "subCategory": "pants",
+                "viewImage": "http://176.104.6.131:2222/images/stock/pants/jeans/1709_Purple_Brand/1709_super-light-indigo_purple-brand1.png",
                 "id": "1709",
                 "name": "Purple Brand",
                 "caption": "Super Light Indigo Skinny Jeans",
@@ -412,9 +538,9 @@
                 "type": "Jeans",
                 "photo": {
                     "Super Light Indigo": [
-                        "./pants/jeans/1709 - Purple Brand/1709_super-light-indigo_purple-brand1.png",
-                        "./pants/jeans/1709 - Purple Brand/1709_super-light-indigo_purple-brand2.png",
-                        "./pants/jeans/1709 - Purple Brand/1709_super-light-indigo_purple-brand3.png"
+                        "http://176.104.6.131:2222/images/stock/pants/jeans/1709_Purple_Brand/1709_super-light-indigo_purple-brand1.png",
+                        "http://176.104.6.131:2222/images/stock/pants/jeans/1709_Purple_Brand/1709_super-light-indigo_purple-brand2.png",
+                        "http://176.104.6.131:2222/images/stock/pants/jeans/1709_Purple_Brand/1709_super-light-indigo_purple-brand3.png"
                     ]
                 },
                 "color": ["Super Light Indigo"],
@@ -427,9 +553,18 @@
                     "Five pocket silhouette",
                     "Distressed"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 60,
+                "bought": 16,
+                "collections": {
+                    "new": true,
+                    "recommended": false
+                }
             },
             {
+                "mainCategory": "clothes",
+                "subCategory": "pants",
+                "viewImage": "http://176.104.6.131:2222/images/stock/pants/pants/1796_Vineyard_Vines/stone_color/1796_stone_vineyard-vines1.png",
                 "id": "1796",
                 "name": "Vineyard Vines",
                 "caption": "Performance Slim Pants",
@@ -437,20 +572,20 @@
                 "type": "Pants",
                 "photo": {
                     "Stone": [
-                        "./pants/jeans/1796 - Vineyard Vines/stone_color/1796_stone_vineyard-vines1.png",
-                        "./pants/jeans/1796 - Vineyard Vines/stone_color/1796_stone_vineyard-vines2.png"
+                        "http://176.104.6.131:2222/images/stock/pants/pants/1796_Vineyard_Vines/stone_color/1796_stone_vineyard-vines1.png",
+                        "http://176.104.6.131:2222/images/stock/pants/pants/1796_Vineyard_Vines/stone_color/1796_stone_vineyard-vines2.png"
                     ],
                     "Khaki": [
-                        "./pants/jeans/1796 - Vineyard Vines/khaki_color/1796_khaki_vineyard-vines1.png",
-                        "./pants/jeans/1796 - Vineyard Vines/khaki_color/1796_khaki_vineyard-vines2.png"
+                        "http://176.104.6.131:2222/images/stock/pants/pants/1796_Vineyard_Vines/khaki_color/1796_khaki_vineyard-vines1.png",
+                        "http://176.104.6.131:2222/images/stock/pants/pants/1796_Vineyard_Vines/khaki_color/1796_khaki_vineyard-vines2.png"
                     ],
                     "Gray Harbor": [
-                        "./pants/jeans/1796 - Vineyard Vines/gray-harbor_color/1796_gray-harbor_vineyard-vines1.png",
-                        "./pants/jeans/1796 - Vineyard Vines/gray-harbor_color/1796_gray-harbor_vineyard-vines2.png"
+                        "http://176.104.6.131:2222/images/stock/pants/pants/1796_Vineyard_Vines/gray-harbor_color/1796_gray-harbor_vineyard-vines1.png",
+                        "http://176.104.6.131:2222/images/stock/pants/pants/1796_Vineyard_Vines/gray-harbor_color/1796_gray-harbor_vineyard-vines2.png"
                     ],
                     "Blue Blazer": [
-                        "./pants/jeans/1796 - Vineyard Vines/blue-blazer_color/1796_blue-blazer_vineyard-vines1.png",
-                        "./pants/jeans/1796 - Vineyard Vines/blue-blazer_color/1796_blue-blazer_vineyard-vines2.png"
+                        "http://176.104.6.131:2222/images/stock/pants/pants/1796_Vineyard_Vines/blue-blazer_color/1796_blue-blazer_vineyard-vines1.png",
+                        "http://176.104.6.131:2222/images/stock/pants/pants/1796_Vineyard_Vines/blue-blazer_color/1796_blue-blazer_vineyard-vines2.png"
                     ]
                 },
                 "color": ["Stone", "Khaki", "Gray Harbor", "Blue Blazer"],
@@ -469,9 +604,18 @@
                     "Straight through thigh, tapers slightly to ankle",
                     "Moisture wicking, quick drying, wrinkle resistant fabric with DWR \"Durable Water Repellent\" finish that repels water and stains"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 89,
+                "bought": 96,
+                "collections": {
+                    "new": false,
+                    "recommended": true
+                }
             },
             {
+                "mainCategory": "clothes",
+                "subCategory": "pants",
+                "viewImage":  "http://176.104.6.131:2222/images/stock/pants/pants/1783_BLANKNYC/duffle-bag_color/1783_duffle-bag_blanknyc1.png",
                 "id": "1783",
                 "name": "BLANKNYC",
                 "caption": "Slim Fit Pants",
@@ -479,14 +623,14 @@
                 "type": "Pants",
                 "photo": {
                     "Duffle Bag": [
-                        "./pants/pants/1783 - BLANKNYC/duffle-bag_color/1783_duffle-bag_blanknyc1.png",
-                        "./pants/pants/1783 - BLANKNYC/duffle-bag_color/1783_duffle-bag_blanknyc2.png",
-                        "./pants/pants/1783 - BLANKNYC/duffle-bag_color/1783_duffle-bag_blanknyc3.png"
+                        "http://176.104.6.131:2222/images/stock/pants/pants/1783_BLANKNYC/duffle-bag_color/1783_duffle-bag_blanknyc1.png",
+                        "http://176.104.6.131:2222/images/stock/pants/pants/1783_BLANKNYC/duffle-bag_color/1783_duffle-bag_blanknyc2.png",
+                        "http://176.104.6.131:2222/images/stock/pants/pants/1783_BLANKNYC/duffle-bag_color/1783_duffle-bag_blanknyc3.png"
                     ],
                     "Kalamata": [
-                        "./pants/pants/1783 - BLANKNYC/kalamata_color/1783_kalamata_blanknyc1.png",
-                        "./pants/pants/1783 - BLANKNYC/kalamata_color/1783_kalamata_blanknyc2.png",
-                        "./pants/pants/1783 - BLANKNYC/kalamata_color/1783_kalamata_blanknyc3.png"
+                        "http://176.104.6.131:2222/images/stock/pants/pants/1783_BLANKNYC/kalamata_color/1783_kalamata_blanknyc1.png",
+                        "http://176.104.6.131:2222/images/stock/pants/pants/1783_BLANKNYC/kalamata_color/1783_kalamata_blanknyc2.png",
+                        "http://176.104.6.131:2222/images/stock/pants/pants/1783_BLANKNYC/kalamata_color/1783_kalamata_blanknyc3.png"
                     ]
                 },
                 "color": ["Duffle Bag", "Kalamata"],
@@ -502,9 +646,18 @@
                     "Five-pocket silhouette",
                     "Belt loops"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 77,
+                "bought": 38,
+                "collections": {
+                    "new": true,
+                    "recommended": false
+                }
             },
             {
+                "mainCategory": "clothes",
+                "subCategory": "pants",
+                "viewImage": "http://176.104.6.131:2222/images/stock/pants/jeans/1785_PRPS/1785_dark-blue_prps1.png",
                 "id": "1785",
                 "name": "PRPS",
                 "caption": "Regina Warlock Ripped Skinny Jeans",
@@ -512,8 +665,8 @@
                 "type": "Jeans",
                 "photo": {
                     "Dark Blue": [
-                        "./pants/jeans/1785 - PRPS/1785_dark-blue_prps1.png",
-                        "./pants/jeans/1785 - PRPS/1785_dark-blue_prps2.png"
+                        "http://176.104.6.131:2222/images/stock/pants/jeans/1785_PRPS/1785_dark-blue_prps1.png",
+                        "http://176.104.6.131:2222/images/stock/pants/jeans/1785_PRPS/1785_dark-blue_prps2.png"
                     ]
                 },
                 "color": ["Dark Blue"],
@@ -530,9 +683,18 @@
                     "Rip and repair styling",
                     "Belt loops"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 99,
+                "bought": 65,
+                "collections": {
+                    "new": false,
+                    "recommended": true
+                }
             },
             {
+                "mainCategory": "clothes",
+                "subCategory": "pants",
+                "viewImage": "http://176.104.6.131:2222/images/stock/pants/jeans/1784_Diesel/1784_denim_diesel1.png",
                 "id": "1784",
                 "name": "Diesel",
                 "caption": "D-Strukt Slim Fit Jeans in Denim",
@@ -540,8 +702,8 @@
                 "type": "Jeans",
                 "photo": {
                     "Denim": [
-                        "./pants/jeans/1784 - Diesel/1784_denim_diesel1.png",
-                        "./pants/jeans/1784 - Diesel/1784_denim_diesel2.png"
+                        "http://176.104.6.131:2222/images/stock/pants/jeans/1784_Diesel/1784_denim_diesel1.png",
+                        "http://176.104.6.131:2222/images/stock/pants/jeans/1784_Diesel/1784_denim_diesel2.png"
                     ]
                 },
                 "color": ["Denim"],
@@ -558,9 +720,18 @@
                     "Rip and repair styling",
                     "Belt loops"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 74,
+                "bought": 35,
+                "collections": {
+                    "new": true,
+                    "recommended": false
+                }
             },
             {
+                "mainCategory": "clothes",
+                "subCategory": "pants",
+                "viewImage": "http://176.104.6.131:2222/images/stock/pants/jeans/1780_J_BRAND/1780_mauz_j-brand1.png",
                 "id": "1780",
                 "name": "J BRAND",
                 "caption": "Kane Straight Fit Jeans",
@@ -568,7 +739,7 @@
                 "type": "Jeans",
                 "photo": {
                     "Mauz": [
-                        "./pants/jeans/1780 - J BRAND/1780_mauz_j-brand1.png"
+                        "http://176.104.6.131:2222/images/stock/pants/jeans/1780_J_BRAND/1780_mauz_j-brand1.png"
                     ]
                 },
                 "color": ["Mauz"],
@@ -585,9 +756,18 @@
                     "Five-pocket silhouette",
                     "Tonal stitching"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 85,
+                "bought": 41,
+                "collections": {
+                    "new": false,
+                    "recommended": true
+                }
             },
             {
+                "mainCategory": "clothes",
+                "subCategory": "pants",
+                "viewImage": "http://176.104.6.131:2222/images/stock/pants/pants/1710_AG/1710_midnight-navy_ag1.png",
                 "id": "1710",
                 "name": "AG",
                 "caption": "Tellis Slim Fit Pants in Midnight Navy",
@@ -595,9 +775,9 @@
                 "type": "Pants",
                 "photo": {
                     "Midnight Navy": [
-                        "./pants/pants/1710 - AG/1710_midnight-navy_ag1.png",
-                        "./pants/pants/1710 - AG/1710_midnight-navy_ag2.png",
-                        "./pants/pants/1710 - AG/1710_midnight-navy_ag3.png"
+                        "http://176.104.6.131:2222/images/stock/pants/pants/1710_AG/1710_midnight-navy_ag1.png",
+                        "http://176.104.6.131:2222/images/stock/pants/pants/1710_AG/1710_midnight-navy_ag2.png",
+                        "http://176.104.6.131:2222/images/stock/pants/pants/1710_AG/1710_midnight-navy_ag3.png"
                     ]
                 },
                 "color": ["Midnight Navy"],
@@ -610,13 +790,18 @@
                     "Tonal stitching, gunmetal hardware, belt loops",
                     "AG strives for environmental responsibility by using Ozone Technology and recycling heat to cut water and energy consumption and incorporating more sustainable fibers such as Tencel® and Modal® in its products."
                 ],
-                "stock": true
-            }
-        ]
-    },
-    {
-        "shoes": [
+                "stock": true,
+                "count": 16,
+                "bought": 345,
+                "collections": {
+                    "new": false,
+                    "recommended": true
+                }
+            },
             {
+                "mainCategory": "shoes",
+                "subCategory": "boots",
+                "viewImage": "http://176.104.6.131:2222/images/stock/shoes/boots/1711_The_Kooples/1711_black_the-kooples1.png",
                 "id": "1711",
                 "name": "The Kooples",
                 "caption": "Men's Lace Up Boots",
@@ -624,11 +809,11 @@
                 "type": "Boots",
                 "photo": {
                     "Black": [
-                        "./shoes/boots/1711 - The Kooples/1711_black_the-kooples1.png",
-                        "./shoes/boots/1711 - The Kooples/1711_black_the-kooples2.png",
-                        "./shoes/boots/1711 - The Kooples/1711_black_the-kooples3.png",
-                        "./shoes/boots/1711 - The Kooples/1711_black_the-kooples4.png",
-                        "./shoes/boots/1711 - The Kooples/1711_black_the-kooples5.png"
+                        "http://176.104.6.131:2222/images/stock/shoes/boots/1711_The_Kooples/1711_black_the-kooples1.png",
+                        "http://176.104.6.131:2222/images/stock/shoes/boots/1711_The_Kooples/1711_black_the-kooples2.png",
+                        "http://176.104.6.131:2222/images/stock/shoes/boots/1711_The_Kooples/1711_black_the-kooples3.png",
+                        "http://176.104.6.131:2222/images/stock/shoes/boots/1711_The_Kooples/1711_black_the-kooples4.png",
+                        "http://176.104.6.131:2222/images/stock/shoes/boots/1711_The_Kooples/1711_black_the-kooples5.png"
                     ]
                 },
                 "color": ["Black"],
@@ -644,9 +829,18 @@
                     "1.5\" heel",
                     "Calfskin leather upper, pigskin leather lining, rubber sole"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 30,
+                "bought": 48,
+                "collections": {
+                    "new": true,
+                    "recommended": true
+                }
             },
             {
+                "mainCategory": "shoes",
+                "subCategory": "sneakers",
+                "viewImage": "http://176.104.6.131:2222/images/stock/shoes/sneakers/1712_Bally/1712_black_bally1.png",
                 "id": "1712",
                 "name": "Bally",
                 "caption": "Men's Arnold Low Top Sneakers",
@@ -654,10 +848,10 @@
                 "type": "Sneakers",
                 "photo": {
                     "Black": [
-                        "./shoes/sneakers/1712 - Bally/1712_black_bally1.png",
-                        "./shoes/sneakers/1712 - Bally/1712_black_bally2.png",
-                        "./shoes/sneakers/1712 - Bally/1712_black_bally3.png",
-                        "./shoes/sneakers/1712 - Bally/1712_black_bally4.png"
+                        "http://176.104.6.131:2222/images/stock/shoes/sneakers/1712_Bally/1712_black_bally1.png",
+                        "http://176.104.6.131:2222/images/stock/shoes/sneakers/1712_Bally/1712_black_bally2.png",
+                        "http://176.104.6.131:2222/images/stock/shoes/sneakers/1712_Bally/1712_black_bally3.png",
+                        "http://176.104.6.131:2222/images/stock/shoes/sneakers/1712_Bally/1712_black_bally4.png"
                     ]
                 },
                 "color": ["Black"],
@@ -674,9 +868,18 @@
                     "Logo charm at side",
                     "Leather upper, leather and fabric lining, rubber sole"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 27,
+                "bought": 187,
+                "collections": {
+                    "new": true,
+                    "recommended": false
+                }
             },
             {
+                "mainCategory": "shoes",
+                "subCategory": "sneakers",
+                "viewImage": "http://176.104.6.131:2222/images/stock/shoes/sneakers/1776_PS_Paul_Smith/1776_white_ps-paul-smith1.png",
                 "id": "1776",
                 "name": "PS Paul Smith",
                 "caption": "Men's Prince Low Top Sneakers",
@@ -684,9 +887,9 @@
                 "type": "Sneakers",
                 "photo": {
                     "White": [
-                        "./shoes/sneakers/1776 - PS Paul Smith/1776_white_ps-paul-smith1.png",
-                        "./shoes/sneakers/1776 - PS Paul Smith/1776_white_ps-paul-smith2.png",
-                        "./shoes/sneakers/1776 - PS Paul Smith/1776_white_ps-paul-smith3.png"
+                        "http://176.104.6.131:2222/images/stock/shoes/sneakers/1776_PS_Paul_Smith/1776_white_ps-paul-smith1.png",
+                        "http://176.104.6.131:2222/images/stock/shoes/sneakers/1776_PS_Paul_Smith/1776_white_ps-paul-smith2.png",
+                        "http://176.104.6.131:2222/images/stock/shoes/sneakers/1776_PS_Paul_Smith/1776_white_ps-paul-smith3.png"
                     ]
                 },
                 "color": ["White"],
@@ -703,9 +906,18 @@
                     "Logo at tongue and heel",
                     "Nylon and leather upper, fabric lining, rubber sole"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 99,
+                "bought": 43,
+                "collections": {
+                    "new": true,
+                    "recommended": true
+                }
             },
             {
+                "mainCategory": "shoes",
+                "subCategory": "shoes",
+                "viewImage": "http://176.104.6.131:2222/images/stock/shoes/dress_shoes/1713_Salvatore_Ferragamo/1713_nero_salvatore-ferragamo1.png",
                 "id": "1713",
                 "name": "Salvatore Ferragamo",
                 "caption": "Men's Belshaw Patent Leather Plain-Toe Oxfords",
@@ -713,9 +925,9 @@
                 "type": "Dress shoes",
                 "photo": {
                     "Nero": [
-                        "./shoes/dress_shoes/1713 - Salvatore Ferragamo/1713_nero_salvatore-ferragamo1.png",
-                        "./shoes/dress_shoes/1713 - Salvatore Ferragamo/1713_nero_salvatore-ferragamo2.png",
-                        "./shoes/dress_shoes/1713 - Salvatore Ferragamo/1713_nero_salvatore-ferragamo3.png"
+                        "http://176.104.6.131:2222/images/stock/shoes/dress_shoes/1713_Salvatore_Ferragamo/1713_nero_salvatore-ferragamo1.png",
+                        "http://176.104.6.131:2222/images/stock/shoes/dress_shoes/1713_Salvatore_Ferragamo/1713_nero_salvatore-ferragamo2.png",
+                        "http://176.104.6.131:2222/images/stock/shoes/dress_shoes/1713_Salvatore_Ferragamo/1713_nero_salvatore-ferragamo3.png"
                     ]
                 },
                 "color": ["Nero"],
@@ -732,9 +944,18 @@
                     "Logo charm at side",
                     "Leather upper, leather and fabric lining, rubber sole"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 89,
+                "bought": 64,
+                "collections": {
+                    "new": false,
+                    "recommended": false
+                }
             },
             {
+                "mainCategory": "shoes",
+                "subCategory": "sneakers",
+                "viewImage": "http://176.104.6.131:2222/images/stock/shoes/sneakers/1714_Golden_Goose_Deluxe_Brand/white-night_color/white-night_golden-goose-deluxe-brand1.png",
                 "id": "1714",
                 "name": "Golden Goose Deluxe Brand",
                 "caption": "Men's Super-Star Low Top Sneakers",
@@ -742,17 +963,17 @@
                 "type": "Sneakers",
                 "photo": {
                     "White Night": [
-                        "./shoes/sneakers/1714 - Golden Goose Deluxe Brand/white-night_color/white-night_golden-goose-deluxe-brand1.png",
-                        "./shoes/sneakers/1714 - Golden Goose Deluxe Brand/white-night_color/white-night_golden-goose-deluxe-brand2.png",
-                        "./shoes/sneakers/1714 - Golden Goose Deluxe Brand/white-night_color/white-night_golden-goose-deluxe-brand3.png",
-                        "./shoes/sneakers/1714 - Golden Goose Deluxe Brand/white-night_color/white-night_golden-goose-deluxe-brand4.png"
+                        "http://176.104.6.131:2222/images/stock/shoes/sneakers/1714_Golden_Goose_Deluxe_Brand/white-night_color/white-night_golden-goose-deluxe-brand1.png",
+                        "http://176.104.6.131:2222/images/stock/shoes/sneakers/1714_Golden_Goose_Deluxe_Brand/white-night_color/white-night_golden-goose-deluxe-brand2.png",
+                        "http://176.104.6.131:2222/images/stock/shoes/sneakers/1714_Golden_Goose_Deluxe_Brand/white-night_color/white-night_golden-goose-deluxe-brand3.png",
+                        "http://176.104.6.131:2222/images/stock/shoes/sneakers/1714_Golden_Goose_Deluxe_Brand/white-night_color/white-night_golden-goose-deluxe-brand4.png"
 
                     ],
                     "Night Blue": [
-                        "./shoes/sneakers/1714 - Golden Goose Deluxe Brand/night-blue_color/night-blue_golden-goose-deluxe-brand1.png",
-                        "./shoes/sneakers/1714 - Golden Goose Deluxe Brand/night-blue_color/night-blue_golden-goose-deluxe-brand2.png",
-                        "./shoes/sneakers/1714 - Golden Goose Deluxe Brand/night-blue_color/night-blue_golden-goose-deluxe-brand3.png",
-                        "./shoes/sneakers/1714 - Golden Goose Deluxe Brand/night-blue_color/night-blue_golden-goose-deluxe-brand4.png"
+                        "http://176.104.6.131:2222/images/stock/shoes/sneakers/1714_Golden_Goose_Deluxe_Brand/night-blue_color/night-blue_golden-goose-deluxe-brand1.png",
+                        "http://176.104.6.131:2222/images/stock/shoes/sneakers/1714_Golden_Goose_Deluxe_Brand/night-blue_color/night-blue_golden-goose-deluxe-brand2.png",
+                        "http://176.104.6.131:2222/images/stock/shoes/sneakers/1714_Golden_Goose_Deluxe_Brand/night-blue_color/night-blue_golden-goose-deluxe-brand3.png",
+                        "http://176.104.6.131:2222/images/stock/shoes/sneakers/1714_Golden_Goose_Deluxe_Brand/night-blue_color/night-blue_golden-goose-deluxe-brand4.png"
                     ]
                 },
                 "color": ["White Night", "Night Blue"],
@@ -770,9 +991,18 @@
                     "Leather or suede upper",
                     "Leather and fabric lining, rubber sole"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 64,
+                "bought": 74,
+                "collections": {
+                    "new": false,
+                    "recommended": false
+                }
             },
             {
+                "mainCategory": "shoes",
+                "subCategory": "shoes",
+                "viewImage": "http://176.104.6.131:2222/images/stock/shoes/dress_shoes/1787_To_Boot_New_York/marrone-brown_color/1787_marrone-brown_to-boot-new-york1.png",
                 "id": "1787",
                 "name": "To Boot New York",
                 "caption": "Men's Francis Penny Loafers - 100% Exclusive",
@@ -780,12 +1010,12 @@
                 "type": "Dress shoes",
                 "photo": {
                     "Marrone Brown": [
-                        "./shoes/dress_shoes/1787 - To Boot New York/marrone-brown_color/1787_marrone-brown_to-boot-new-york1.png",
-                        "./shoes/dress_shoes/1787 - To Boot New York/marrone-brown_color/1787_marrone-brown_to-boot-new-york2.png"
+                        "http://176.104.6.131:2222/images/stock/shoes/dress_shoes/1787_To_Boot_New_York/marrone-brown_color/1787_marrone-brown_to-boot-new-york1.png",
+                        "http://176.104.6.131:2222/images/stock/shoes/dress_shoes/1787_To_Boot_New_York/marrone-brown_color/1787_marrone-brown_to-boot-new-york2.png"
                     ],
                     "Black": [
-                        "./shoes/dress_shoes/1787 - To Boot New York/black_color/1787_black_to-boot-new-york1.png",
-                        "./shoes/dress_shoes/1787 - To Boot New York/black_color/1787_black_to-boot-new-york2.png"
+                        "http://176.104.6.131:2222/images/stock/shoes/dress_shoes/1787_To_Boot_New_York/black_color/1787_black_to-boot-new-york1.png",
+                        "http://176.104.6.131:2222/images/stock/shoes/dress_shoes/1787_To_Boot_New_York/black_color/1787_black_to-boot-new-york2.png"
                     ]
                 },
                 "color": ["Marrone Brown", "Black"],
@@ -800,22 +1030,31 @@
                     "This item is part of our 100% Bloomingdale's collection, featuring exclusive pieces you won't find anywhere else.",
                     "Leather upper, leather lining, leather and rubber sole"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 96,
+                "bought": 25,
+                "collections": {
+                    "new": false,
+                    "recommended": true
+                }
             },
             {
+                "mainCategory": "shoes",
+                "subCategory": "sneakers",
+                "viewImage": "http://176.104.6.131:2222/images/stock/shoes/sneakers/1786_Vince/black_color/1786_black_vince1.png",
                 "id": "1786",
                 "name": "Vince",
-                "caption": "Men's Floyd Slip On Sneakers - 100% Exclusive",
+                "caption": "Men's Floyd Slip On Sneakers_100% Exclusive",
                 "category": "Shoes",
                 "type": "Sneakers",
                 "photo": {
                     "Black": [
-                        "./shoes/sneakers/1786 - Vince/black_color/1786_black_vince1.png",
-                        "./shoes/sneakers/1786 - Vince/black_color/1786_black_vince2.png"
+                        "http://176.104.6.131:2222/images/stock/shoes/sneakers/1786_Vince/black_color/1786_black_vince1.png",
+                        "http://176.104.6.131:2222/images/stock/shoes/sneakers/1786_Vince/black_color/1786_black_vince2.png"
                     ],
                     "Coastal": [
-                        "./shoes/sneakers/1786 - Vince/coastal_color/1786_coastal_vince1.png",
-                        "./shoes/sneakers/1786 - Vince/coastal_color/1786_coastal_vince2.png"
+                        "http://176.104.6.131:2222/images/stock/shoes/sneakers/1786_Vince/coastal_color/1786_coastal_vince1.png",
+                        "http://176.104.6.131:2222/images/stock/shoes/sneakers/1786_Vince/coastal_color/1786_coastal_vince2.png"
                     ]
 
                 },
@@ -830,13 +1069,18 @@
                     "Logo at heel",
                     "Leather upper, leather and fabric lining, rubber sole"
                 ],
-                "stock": true
-            }
-        ]
-    },
-    {
-        "accessories": [
+                "stock": true,
+                "count": 41,
+                "bought": 16,
+                "collections": {
+                    "new": true,
+                    "recommended": false
+                }
+            },
             {
+                "mainCategory": "accessories",
+                "subCategory": "watches",
+                "viewImage": "http://176.104.6.131:2222/images/stock/accessories/watches/1715_Movado/1715_black-dial_movado1.png",
                 "id": "1715",
                 "name": "Movado",
                 "caption": "Ario Diamond Watch, 28mm",
@@ -844,14 +1088,15 @@
                 "type": "Luxury",
                 "photo": {
                     "Black Dial": [
-                        "./accessories/watches/1715 - Movado/1715_black-dial_movado1.png",
-                        "./accessories/watches/1715 - Movado/1715_black-dial_movado2.png",
-                        "./accessories/watches/1715 - Movado/1715_black-dial_movado3.png"
+                        "http://176.104.6.131:2222/images/stock/accessories/watches/1715_Movado/1715_black-dial_movado1.png",
+                        "http://176.104.6.131:2222/images/stock/accessories/watches/1715_Movado/1715_black-dial_movado2.png",
+                        "http://176.104.6.131:2222/images/stock/accessories/watches/1715_Movado/1715_black-dial_movado3.png"
                     ]
                 },
                 "color": ["Black Dial"],
                 "material": "Steel/Stones",
                 "price": "900",
+                "size":[],
                 "producingCountry": "Switzerland",
                 "description": [
                     "Diamonds: 0.047 ct. t.w.",
@@ -865,9 +1110,18 @@
                     "Stainless steel link bracelet",
                     "Manufacturer's 2-year limited warranty"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 8,
+                "bought": 218,
+                "collections": {
+                    "new": true,
+                    "recommended": false
+                }
             },
             {
+                "mainCategory": "accessories",
+                "subCategory": "watches",
+                "viewImage": "http://176.104.6.131:2222/images/stock/accessories/watches/1793_Fendi/1793_black_fendi1.png",
                 "id": "1793",
                 "name": "Fendi",
                 "caption": "Fendimania Watch, 40mm x 40mm",
@@ -875,14 +1129,15 @@
                 "type": "Luxury Smart",
                 "photo": {
                     "Black": [
-                        "./accessories/watches/1793 - Fendi/1793_black_fendi1.png",
-                        "./accessories/watches/1793 - Fendi/1793_black_fendi2.png",
-                        "./accessories/watches/1793 - Fendi/1793_black_fendi3.png"
+                        "http://176.104.6.131:2222/images/stock/accessories/watches/1793_Fendi/1793_black_fendi1.png",
+                        "http://176.104.6.131:2222/images/stock/accessories/watches/1793_Fendi/1793_black_fendi2.png",
+                        "http://176.104.6.131:2222/images/stock/accessories/watches/1793_Fendi/1793_black_fendi3.png"
                     ]
                 },
                 "color": ["Black"],
                 "material": "Steel",
                 "price": "1750",
+                "size":[],
                 "producingCountry": "Switzerland",
                 "description": [
                     "Black IP stainless steel; black opalin",
@@ -895,9 +1150,18 @@
                     "Black IP stainless steel bracelet",
                     "Manufacturer's 2-year international warranty"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 32,
+                "bought": 350,
+                "collections": {
+                    "new": false,
+                    "recommended": true
+                }
             },
             {
+                "mainCategory": "accessories",
+                "subCategory": "watches",
+                "viewImage": "http://176.104.6.131:2222/images/stock/accessories/watches/1792_Garmin/1792_black_garmin1.png",
                 "id": "1792",
                 "name": "Garmin",
                 "caption": "MARQ Adventurer Performance Edition Smart Watch, 46mm",
@@ -905,15 +1169,16 @@
                 "type": "Smart",
                 "photo": {
                     "Black": [
-                        "./accessories/watches/1792 - Garmin/1792_black_garmin1.png",
-                        "./accessories/watches/1792 - Garmin/1792_black_garmin2.png",
-                        "./accessories/watches/1792 - Garmin/1792_black_garmin3.png",
-                        "./accessories/watches/1792 - Garmin/1792_black_garmin4.png"
+                        "http://176.104.6.131:2222/images/stock/accessories/watches/1792_Garmin/1792_black_garmin1.png",
+                        "http://176.104.6.131:2222/images/stock/accessories/watches/1792_Garmin/1792_black_garmin2.png",
+                        "http://176.104.6.131:2222/images/stock/accessories/watches/1792_Garmin/1792_black_garmin3.png",
+                        "http://176.104.6.131:2222/images/stock/accessories/watches/1792_Garmin/1792_black_garmin4.png"
                     ]
                 },
                 "color": ["Black"],
                 "material": "Steel",
                 "price": "1999",
+                "size":[],
                 "producingCountry": "",
                 "description": [
                     "A modern luxury tool watch that compels you to push higher",
@@ -931,9 +1196,18 @@
                     "Buckle closure",
                     "Manufacturer's 1-year limited warranty"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 96,
+                "bought": 25,
+                "collections": {
+                    "new": false,
+                    "recommended": false
+                }
             },
             {
+                "mainCategory": "accessories",
+                "subCategory": "watches",
+                "viewImage": "http://176.104.6.131:2222/images/stock/accessories/watches/1791_Versus_Versace/1791_black-gold_versus-versace1.png",
                 "id": "1791",
                 "name": "Versus Versace",
                 "caption": "Runyon Watch, 44mm",
@@ -941,14 +1215,15 @@
                 "type": "Luxury",
                 "photo": {
                     "Black/Gold": [
-                        "./accessories/watches/1791- Versus Versace/1791_black-gold_versus-versace1.png",
-                        "./accessories/watches/1791- Versus Versace/1791_black-gold_versus-versace2.png",
-                        "./accessories/watches/1791- Versus Versace/1791_black-gold_versus-versace3.png"
+                        "http://176.104.6.131:2222/images/stock/accessories/watches/1791_Versus_Versace/1791_black-gold_versus-versace1.png",
+                        "http://176.104.6.131:2222/images/stock/accessories/watches/1791_Versus_Versace/1791_black-gold_versus-versace2.png",
+                        "http://176.104.6.131:2222/images/stock/accessories/watches/1791_Versus_Versace/1791_black-gold_versus-versace3.png"
                     ]
                 },
                 "color": ["Black/Gold"],
                 "material": "Stainless steel",
                 "price": "2300",
+                "size":[],
                 "producingCountry": "",
                 "description": [
                     "Case size: 44mm",
@@ -960,9 +1235,18 @@
                     "Two-tone stainless steel bracelet",
                     "Manufacturer's 2-year limited"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 30,
+                "bought": 269,
+                "collections": {
+                    "new": true,
+                    "recommended": false
+                }
             },
             {
+                "mainCategory": "accessories",
+                "subCategory": "watches",
+                "viewImage": "http://176.104.6.131:2222/images/stock/accessories/watches/1790_Movado/1790_black_movado1.png",
                 "id": "1790",
                 "name": "Movado",
                 "caption": "Stiri Stainless Steel Watch, 40mm",
@@ -970,12 +1254,13 @@
                 "type": "Luxury",
                 "photo": {
                     "Black": [
-                        "./accessories/watches/1790 - Movado/1790_black_movado1.png"
+                        "http://176.104.6.131:2222/images/stock/accessories/watches/1790_Movado/1790_black_movado1.png"
                     ]
                 },
                 "color": ["Black"],
                 "material": "Stainless steel/Sapphire crystal",
                 "price": "999",
+                "size":[],
                 "producingCountry": "Switzerland",
                 "description": [
                     "Case size: 40mm",
@@ -987,9 +1272,18 @@
                     "Stainless steel link bracelet",
                     "Manufacturer's 2-year limited"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 77,
+                "bought": 56,
+                "collections": {
+                    "new": true,
+                    "recommended": true
+                }
             },
             {
+                "mainCategory": "accessories",
+                "subCategory": "watches",
+                "viewImage": "http://176.104.6.131:2222/images/stock/accessories/watches/1789_Movado/1789_black_movado1.png",
                 "id": "1789",
                 "name": "Movado",
                 "caption": "Movado BOLD Large Black TR90 and Stainless Steel Watch, 42mm",
@@ -997,13 +1291,14 @@
                 "type": "Styled",
                 "photo": {
                     "Black": [
-                        "./accessories/watches/1789 - Movado/1789_black_movado1.png",
-                        "./accessories/watches/1789 - Movado/1789_black_movado2.png"
+                        "http://176.104.6.131:2222/images/stock/accessories/watches/1789_Movado/1789_black_movado1.png",
+                        "http://176.104.6.131:2222/images/stock/accessories/watches/1789_Movado/1789_black_movado2.png"
                     ]
                 },
                 "color": ["Black"],
                 "material": "Stainless steel",
                 "price": "410",
+                "size":[],
                 "producingCountry": "",
                 "description": [
                     "The Movado BOLD watch features a black TR90 composite and stainless steel case, and a black dial with black sunray dot and hands on a leather strap.",
@@ -1016,9 +1311,18 @@
                     "Stainless steel/black TR90 composite/K1 crystal/leather strap",
                     "Manufacturer's 2-year limited"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 63,
+                "bought": 46,
+                "collections": {
+                    "new": false,
+                    "recommended": true
+                }
             },
             {
+                "mainCategory": "accessories",
+                "subCategory": "watches",
+                "viewImage": "http://176.104.6.131:2222/images/stock/accessories/watches/1781_Frederique_Constant/1781_gray_frederique-constant1.png",
                 "id": "1781",
                 "name": "Frederique Constant",
                 "caption": "Horological Gents Classic Smartwatch, 42mm",
@@ -1026,12 +1330,13 @@
                 "type": "Smart",
                 "photo": {
                     "Gray": [
-                        "./accessories/watches/1781- Frederique Constant/1781_gray_frederique-constant1.png"
+                        "http://176.104.6.131:2222/images/stock/accessories/watches/1781_Frederique_Constant/1781_gray_frederique-constant1.png"
                     ]
                 },
                 "color": ["Gray"],
                 "material": "Stainless steel/Leather/Sapphire crystal",
                 "price": "850",
+                "size":[],
                 "producingCountry": "Switzerland",
                 "description": [
                     "Elegant quartz design updated with exciting connected features such as dynamic coaching, sleep monitoring, Worldtimer function, activity tracking, get-active alerts, always-on time & date function",
@@ -1051,9 +1356,18 @@
                     "One sub-dial",
                     "Manufacturer's 3-year international warranty"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 7,
+                "bought": 269,
+                "collections": {
+                    "new": false,
+                    "recommended": true
+                }
             },
             {
+                "mainCategory": "accessories",
+                "subCategory": "watches",
+                "viewImage": "http://176.104.6.131:2222/images/stock/accessories/watches/1716_Bulova/1716_blue-silver_bulova1.png",
                 "id": "1716",
                 "name": "Bulova",
                 "caption": "Marine Star Watch, 45mm",
@@ -1061,13 +1375,14 @@
                 "type": "Luxury",
                 "photo": {
                     "Blue/Silver": [
-                        "./accessories/watches/1716 - Bulova/1716_blue-silver_bulova1.png",
-                        "./accessories/watches/1716 - Bulova/1716_blue-silver_bulova2.png"
+                        "http://176.104.6.131:2222/images/stock/accessories/watches/1716_Bulova/1716_blue-silver_bulova1.png",
+                        "http://176.104.6.131:2222/images/stock/accessories/watches/1716_Bulova/1716_blue-silver_bulova2.png"
                     ]
                 },
                 "color": ["Blue/Silver"],
                 "material": "Steel/Stones",
                 "price": "500",
+                "size":[],
                 "producingCountry": "",
                 "description": [
                     "Case size: 45mm",
@@ -1078,9 +1393,18 @@
                     "3-year limited warranty",
                     "Stainless steel/rose gold tone–plated stainless steel"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 63,
+                "bought": 78,
+                "collections": {
+                    "new": true,
+                    "recommended": false
+                }
             },
             {
+                "mainCategory": "accessories",
+                "subCategory": "watches",
+                "viewImage": "http://176.104.6.131:2222/images/stock/accessories/watches/1717_Salvatore_Ferragamo/1717_two-tone_salvatore-ferragamo1.png",
                 "id": "1717",
                 "name": "Salvatore Ferragamo",
                 "caption": "Feroni Watch, 40mm",
@@ -1088,12 +1412,13 @@
                 "type": "Luxury",
                 "photo": {
                     "Two Tone": [
-                        "./accessories/watches/1717 - Salvatore Ferragamo/1717_two-tone_salvatore-ferragamo1.png"
+                        "http://176.104.6.131:2222/images/stock/accessories/watches/1717_Salvatore_Ferragamo/1717_two-tone_salvatore-ferragamo1.png"
                     ]
                 },
                 "color": ["Two Tone"],
                 "material": "Steel/Stones",
                 "price": "1180",
+                "size":[],
                 "producingCountry": "Switzerland",
                 "description": [
                     "Gold-tone IP stainless steel; sapphire crystal",
@@ -1106,9 +1431,18 @@
                     "Gold-tone stainless steel link bracelet",
                     "Manufacturer's 2-year limited warranty"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 30,
+                "bought": 69,
+                "collections": {
+                    "new": false,
+                    "recommended": false
+                }
             },
             {
+                "mainCategory": "accessories",
+                "subCategory": "glasses",
+                "viewImage": "http://176.104.6.131:2222/images/stock/accessories/glasses/1718_Maui_Jim/1718_silver-gray_maui-jim1.png",
                 "id": "1718",
                 "name": "Maui Jim",
                 "caption": "Unisex Guardrails Polarized Brow Bar Aviator Sunglasses, 58mm",
@@ -1116,14 +1450,15 @@
                 "type": "Sunglasses",
                 "photo": {
                     "Silver": [
-                        "./accessories/glasses/1718 - Maui Jim/1718_silver-gray_maui-jim1.png",
-                        "./accessories/glasses/1718 - Maui Jim/1718_silver-gray_maui-jim2.png",
-                        "./accessories/glasses/1718 - Maui Jim/1718_silver-gray_maui-jim3.png"
+                        "http://176.104.6.131:2222/images/stock/accessories/glasses/1718_Maui_Jim/1718_silver-gray_maui-jim1.png",
+                        "http://176.104.6.131:2222/images/stock/accessories/glasses/1718_Maui_Jim/1718_silver-gray_maui-jim2.png",
+                        "http://176.104.6.131:2222/images/stock/accessories/glasses/1718_Maui_Jim/1718_silver-gray_maui-jim3.png"
                     ]
                 },
                 "color": ["Silver"],
                 "material": "Steel",
                 "price": "790",
+                "size":[],
                 "producingCountry": "",
                 "description": [
                     "100% UV protection",
@@ -1133,9 +1468,18 @@
                     "Arm length: 140 mm",
                     "Includes hard case and cleaning cloth"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 13,
+                "bought": 251,
+                "collections": {
+                    "new": false,
+                    "recommended": false
+                }
             },
             {
+                "mainCategory": "accessories",
+                "subCategory": "glasses",
+                "viewImage": "http://176.104.6.131:2222/images/stock/accessories/glasses/1782_Carrera/1782_gray_carrera1.png",
                 "id": "1782",
                 "name": "Carrera",
                 "caption": "Men's Brow Bar Aviator Sunglasses, 63mm",
@@ -1143,14 +1487,15 @@
                 "type": "Sunglasses",
                 "photo": {
                     "Gray": [
-                        "./accessories/glasses/1782 - Carrera/1782_gray_carrera1.png",
-                        "./accessories/glasses/1782 - Carrera/1782_gray_carrera2.png",
-                        "./accessories/glasses/1782 - Carrera/1782_gray_carrera3.png"
+                        "http://176.104.6.131:2222/images/stock/accessories/glasses/1782_Carrera/1782_gray_carrera1.png",
+                        "http://176.104.6.131:2222/images/stock/accessories/glasses/1782_Carrera/1782_gray_carrera2.png",
+                        "http://176.104.6.131:2222/images/stock/accessories/glasses/1782_Carrera/1782_gray_carrera3.png"
                     ]
                 },
                 "color": ["Gray"],
                 "material": "Steel",
                 "price": "120",
+                "size":[],
                 "producingCountry": "",
                 "description": [
                     "100% UV protection",
@@ -1160,9 +1505,18 @@
                     "Arm length: 135 mm",
                     "Includes hard case and cleaning cloth"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 99,
+                "bought": 36,
+                "collections": {
+                    "new": true,
+                    "recommended": true
+                }
             },
             {
+                "mainCategory": "accessories",
+                "subCategory": "glasses",
+                "viewImage": "http://176.104.6.131:2222/images/stock/accessories/glasses/1779_Celine/1779_shiny-endura-gold_celine1.png",
                 "id": "1779",
                 "name": "CELINE",
                 "caption": "Men's Brow Bar Aviator Sunglasses, 59mm",
@@ -1170,13 +1524,14 @@
                 "type": "Sunglasses",
                 "photo": {
                     "Shiny Endura": [
-                        "./accessories/glasses/1779 - Celine/1779_shiny-endura-gold_celine1.png",
-                        "./accessories/glasses/1779 - Celine/1779_shiny-endura-gold_celine2.png"
+                        "http://176.104.6.131:2222/images/stock/accessories/glasses/1779_Celine/1779_shiny-endura-gold_celine1.png",
+                        "http://176.104.6.131:2222/images/stock/accessories/glasses/1779_Celine/1779_shiny-endura-gold_celine2.png"
                     ]
                 },
                 "color": ["Shiny Endura"],
                 "material": "Steel",
                 "price": "320",
+                "size":[],
                 "producingCountry": "Italy",
                 "description": [
                     "100% UV protection",
@@ -1186,9 +1541,18 @@
                     "Arm length: 140 mm",
                     "Includes soft case and cleaning cloth"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 36,
+                "bought": 189,
+                "collections": {
+                    "new": false,
+                    "recommended": true
+                }
             },
             {
+                "mainCategory": "accessories",
+                "subCategory": "glasses",
+                "viewImage": "http://176.104.6.131:2222/images/stock/accessories/glasses/1778_Ray-Ban/1778_silver-flash-mirror_ray-ban1.png",
                 "id": "1778",
                 "name": "Ray-Ban",
                 "caption": "Unisex Icons Round Sunglasses",
@@ -1196,12 +1560,13 @@
                 "type": "Sunglasses",
                 "photo": {
                     "Silver": [
-                        "./accessories/glasses/1778 - Ray-Ban/1778_silver-flash-mirror_ray-ban1.png"
+                        "http://176.104.6.131:2222/images/stock/accessories/glasses/1778_Ray-Ban/1778_silver-flash-mirror_ray-ban1.png"
                     ]
                 },
                 "color": ["Silver"],
                 "material": "Steel",
                 "price": "196",
+                "size":[],
                 "producingCountry": "Italy",
                 "description": [
                     "100% UV protection",
@@ -1209,9 +1574,18 @@
                     "Logo at lens corner",
                     "Includes soft case and cleaning cloth"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 41,
+                "bought": 63,
+                "collections": {
+                    "new": true,
+                    "recommended": false
+                }
             },
             {
+                "mainCategory": "accessories",
+                "subCategory": "glasses",
+                "viewImage": "http://176.104.6.131:2222/images/stock/accessories/glasses/1777_Ray-Ban_Junior/1777_silver-on-top-black_ray-ban-junior1.png",
                 "id": "1777",
                 "name": "Ray-Ban Junior",
                 "caption": "Junior Unisex Pilot Sunglasses, 50mm",
@@ -1219,13 +1593,14 @@
                 "type": "Sunglasses",
                 "photo": {
                     "Silver": [
-                        "./accessories/glasses/1777 - Ray-Ban Junior/1777_silver-on-top-black_ray-ban-junior1.png",
-                        "./accessories/glasses/1777 - Ray-Ban Junior/1777_silver-on-top-black_ray-ban-junior2.png"
+                        "http://176.104.6.131:2222/images/stock/accessories/glasses/1777_Ray-Ban_Junior/1777_silver-on-top-black_ray-ban-junior1.png",
+                        "http://176.104.6.131:2222/images/stock/accessories/glasses/1777_Ray-Ban_Junior/1777_silver-on-top-black_ray-ban-junior2.png"
                     ]
                 },
                 "color": ["Silver"],
                 "material": "Steel",
                 "price": "70",
+                "size":[],
                 "producingCountry": "",
                 "description": [
                     "100% UV protection",
@@ -1233,9 +1608,18 @@
                     "Logo at lens corner",
                     "Includes soft case and cleaning cloth"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 21,
+                "bought": 412,
+                "collections": {
+                    "new": false,
+                    "recommended": true
+                }
             },
             {
+                "mainCategory": "accessories",
+                "subCategory": "glasses",
+                "viewImage": "http://176.104.6.131:2222/images/stock/accessories/glasses/1719_Carrera/1719_gold-brown_carrera1.png",
                 "id": "1719",
                 "name": "Carrera",
                 "caption": "Men's Rimless Aviator Sunglasses, 73mm",
@@ -1243,14 +1627,15 @@
                 "type": "Sunglasses",
                 "photo": {
                     "Gold/Brown Gradient": [
-                        "./accessories/glasses/1719 - Carrera/1719_gold-brown_carrera1.png",
-                        "./accessories/glasses/1719 - Carrera/1719_gold-brown_carrera2.png",
-                        "./accessories/glasses/1719 - Carrera/1719_gold-brown_carrera3.png"
+                        "http://176.104.6.131:2222/images/stock/accessories/glasses/1719_Carrera/1719_gold-brown_carrera1.png",
+                        "http://176.104.6.131:2222/images/stock/accessories/glasses/1719_Carrera/1719_gold-brown_carrera2.png",
+                        "http://176.104.6.131:2222/images/stock/accessories/glasses/1719_Carrera/1719_gold-brown_carrera3.png"
                     ]
                 },
                 "color": ["Gold/Brown Gradient"],
                 "material": "Steel",
                 "price": "220",
+                "size":[],
                 "producingCountry": "",
                 "description": [
                     "100% UV protection",
@@ -1260,9 +1645,18 @@
                     "Arm length: 145 mm",
                     "Includes hard case and cleaning cloth"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 87,
+                "bought": 96,
+                "collections": {
+                    "new": false,
+                    "recommended": false
+                }
             },
             {
+                "mainCategory": "accessories",
+                "subCategory": "cufflinks",
+                "viewImage": "http://176.104.6.131:2222/images/stock/accessories/cufflinks/1720_Lanvin/1720_silver_lanvin1.png",
                 "id": "1720",
                 "name": "Lanvin",
                 "caption": "Engraved Loop Cufflinks",
@@ -1270,12 +1664,13 @@
                 "type": "Engraved",
                 "photo": {
                     "Silver": [
-                        "./accessories/cufflinks/1720 - Lanvin/1720_silver_lanvin1.png"
+                        "http://176.104.6.131:2222/images/stock/accessories/cufflinks/1720_Lanvin/1720_silver_lanvin1.png"
                     ]
                 },
                 "color": ["Silver"],
                 "material": "Brass/rhodium",
                 "price": "169",
+                "size":[],
                 "producingCountry": "Germany",
                 "description": [
                     "0.75\"W x 0.5\"H",
@@ -1283,9 +1678,18 @@
                     "Engraved line detailing with logo at front",
                     "Rhodium-plated brass"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 42,
+                "bought": 125,
+                "collections": {
+                    "new": false,
+                    "recommended": false
+                }
             },
             {
+                "mainCategory": "accessories",
+                "subCategory": "cufflinks",
+                "viewImage": "http://176.104.6.131:2222/images/stock/accessories/cufflinks/1721_BOSS_Hugo_Boss/1721_silver_boss-hugo-boss1.png",
                 "id": "1721",
                 "name": "BOSS Hugo Boss",
                 "caption": "Adel Engraved Check Cufflinks",
@@ -1293,12 +1697,13 @@
                 "type": "Engraved",
                 "photo": {
                     "Silver": [
-                        "./accessories/cufflinks/1721 - BOSS Hugo Boss/1721_silver_boss-hugo-boss1.png"
+                        "http://176.104.6.131:2222/images/stock/accessories/cufflinks/1721_BOSS_Hugo_Boss/1721_silver_boss-hugo-boss1.png"
                     ]
                 },
                 "color": ["Silver"],
                 "material": "Brass/rhodium",
                 "price": "130",
+                "size":[],
                 "producingCountry": "Germany",
                 "description": [
                     "0.75\"W x 0.5\"H",
@@ -1307,9 +1712,18 @@
                     "Engraved logo at closure",
                     "Brass"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 20,
+                "bought": 69,
+                "collections": {
+                    "new": true,
+                    "recommended": false
+                }
             },
             {
+                "mainCategory": "accessories",
+                "subCategory": "belts",
+                "viewImage": "http://176.104.6.131:2222/images/stock/accessories/belts/1722_Salvatore_Ferragamo/1722_nero_salvatore-ferragamo1.png",
                 "id": "1722",
                 "name": "Salvatore Ferragamo",
                 "caption": "Men's Reversible Leather Belt",
@@ -1317,7 +1731,7 @@
                 "type": "Reversible dress belt",
                 "photo": {
                     "Nero": [
-                        "./accessories/belts/1722 - Salvatore Ferragamo/1722_nero_salvatore-ferragamo1.png"
+                        "http://176.104.6.131:2222/images/stock/accessories/belts/1722_Salvatore_Ferragamo/1722_nero_salvatore-ferragamo1.png"
                     ]
                 },
                 "color": ["Nero"],
@@ -1330,9 +1744,18 @@
                     "Silver-tone square buckle with engraved signature Gancini detail",
                     "Belt fits small, order two waist sizes up"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 32,
+                "bought": 87,
+                "collections": {
+                    "new": false,
+                    "recommended": true
+                }
             },
             {
+                "mainCategory": "accessories",
+                "subCategory": "belts",
+                "viewImage":  "http://176.104.6.131:2222/images/stock/accessories/belts/1723_Salvatore_Ferragamo/nero_color/1723_nero_salvatore-ferragamo1.png",
                 "id": "1723",
                 "name": "Salvatore Ferragamo",
                 "caption": "Men's Double Gancini Buckle Leather Belt",
@@ -1340,10 +1763,10 @@
                 "type": "Leather Belt",
                 "photo": {
                     "Nero": [
-                        "./accessories/belts/1723 - Salvatore Ferragamo/nero_color/1723_nero_salvatore-ferragamo1.png"
+                        "http://176.104.6.131:2222/images/stock/accessories/belts/1723_Salvatore_Ferragamo/nero_color/1723_nero_salvatore-ferragamo1.png"
                     ],
                     "Brown": [
-                        "./accessories/belts/1723 - Salvatore Ferragamo/brown_color/1723_brown-salvatore-ferragamo1.png"
+                        "http://176.104.6.131:2222/images/stock/accessories/belts/1723_Salvatore_Ferragamo/brown_color/1723_brown-salvatore-ferragamo1.png"
                     ]
                 },
                 "color": ["Nero", "Brown"],
@@ -1357,9 +1780,18 @@
                     "Gold-tone engraved logo at center buckle",
                     "Belt fits small, order two waist sizes up"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 30,
+                "bought": 169,
+                "collections": {
+                    "new": false,
+                    "recommended": true
+                }
             },
             {
+                "mainCategory": "accessories",
+                "subCategory": "belts",
+                "viewImage": "http://176.104.6.131:2222/images/stock/accessories/belts/1724_Bally/1724_flow-bone-red_bally1.png",
                 "id": "1724",
                 "name": "Bally",
                 "caption": "Men's Tally Reversible Belt",
@@ -1367,8 +1799,8 @@
                 "type": "Reversible Belt",
                 "photo": {
                     "Flow/Bone/Red": [
-                        "./accessories/belts/1724 - Bally/brown_color/1724_flow-bone-red_bally1.png",
-                        "./accessories/belts/1724 - Bally/brown_color/1724_flow-bone-red_bally2.png"
+                        "http://176.104.6.131:2222/images/stock/accessories/belts/1724_Bally/1724_flow-bone-red_bally1.png",
+                        "http://176.104.6.131:2222/images/stock/accessories/belts/1724_Bally/1724_flow-bone-red_bally2.png"
                     ]
                 },
                 "color": ["Flow/Bone/Red"],
@@ -1383,8 +1815,12 @@
                     "Reverses from striped webbing to leather",
                     "Order one waist size up"
                 ],
-                "stock": true
+                "stock": true,
+                "count": 30,
+                "bought": 200,
+                "collections": {
+                    "new": false,
+                    "recommended": false
+                }
             }
-        ]
-    }
 ]
