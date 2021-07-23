@@ -3,12 +3,12 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 import PropTypes from "prop-types";
-import { expo, listItem } from "./Exposition.module.scss";
+import { expo, listItem, itemsContainer } from "./Exposition.module.scss";
 import ProductCard from "./ProductCard";
 
 const Exposition = ({ productList }) => (
   <>
-    <div>
+    <div className={itemsContainer}>
       {!Array.isArray(productList) ? (
         <p>{productList}</p>
       ) : (

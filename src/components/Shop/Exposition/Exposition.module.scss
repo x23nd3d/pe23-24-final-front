@@ -2,13 +2,17 @@
 @import "../../../styles/variables";
 @import "../../../styles/productColors";
 
+.itemsContainer {
+  padding: 5%;
+  width: 100%;
+}
+
+
 .expo {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 50px 25px;
-  width: 100%;
   background-color: #fff;
-  padding: 5%;
 
   @media screen and (max-width: 1368px) {
     grid-template-columns: 1fr 1fr 1fr;
@@ -173,3 +177,5 @@
 .freezeItem {
   pointer-events: none!important;
 }
+
+
