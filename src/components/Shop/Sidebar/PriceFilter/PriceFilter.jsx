@@ -23,10 +23,12 @@ const PriceFilter = ({
     max: 0,
   });
 
-  useEffect(
-    () => setRangeValue(getMinMaxPrice(shop.currentItems)),
-    [shop.currentItems, sidebar.reset]
-  );
+  useEffect(() => {
+    const minPrice = getMinMaxPrice(shop.currentItems).min;
+    const maxPrice = getMinMaxPrice(shop.currentItems).max;
+    console.log(minPrice, maxPrice);
+    setRangeValue({ min: minPrice, max: maxPrice });
+  }, [shop.currentItems, sidebar.reset]);
 
   return (
     <div className={classes.PriceFilter}>
