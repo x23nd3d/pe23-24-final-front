@@ -37,11 +37,9 @@
                 ],
                 "stock": true,
                 "count": 30,
-                "bought": 16,
-                "collections": {
-                    "new": true,
-                    "recommended": true
-                }
+                "ordered": 16,
+                "new": true,
+                "recommended": true
             },
             {
                 "mainCategory": "clothes",
@@ -70,11 +68,9 @@
                 ],
                 "stock": true,
                 "count": 74,
-                "bought": 32,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-                }
+                "ordered": 32,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "clothes",
@@ -102,11 +98,9 @@
                 ],
                 "stock": true,
                 "count": 18,
-                "bought": 69,
-                "collections": {
+                "ordered": 69,
                 "new": false,
                 "recommended": false
-            }
             },
             {
                 "mainCategory": "clothes",
@@ -136,11 +130,9 @@
                 ],
                 "stock": true,
                 "count": 96,
-                "bought": 36,
-                "collections": {
-                    "new": true,
-                    "recommended": false
-            }
+                "ordered": 36,
+                "new": true,
+                "recommended": false
             },
             {
                 "mainCategory": "clothes",
@@ -172,11 +164,9 @@
                 ],
                 "stock": true,
                 "count": 42,
-                "bought": 25,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-            }
+                "ordered": 25,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "clothes",
@@ -207,11 +197,9 @@
                 ],
                 "stock": true,
                 "count": 96,
-                "bought": 99,
-                "collections": {
-                    "new": false,
-                    "recommended": false
-                }
+                "ordered": 99,
+                "new": false,
+                "recommended": false
             },
             {
                 "mainCategory": "clothes",
@@ -256,11 +244,9 @@
                 ],
                 "stock": true,
                 "count": 41,
-                "bought": 158,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-                }
+                "ordered": 158,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "clothes",
@@ -298,11 +284,9 @@
                 ],
                 "stock": true,
                 "count": 25,
-                "bought": 84,
-                "collections": {
-                    "new": false,
-                    "recommended": false
-                }
+                "ordered": 84,
+                "new": false,
+                "recommended": false
             },
             {
                 "mainCategory": "clothes",
@@ -334,11 +318,10 @@
                 ],
                 "stock": true,
                 "count": 64,
-                "bought": 94,
-                "collections": {
-                    "new": false,
-                    "recommended": false
-                }
+                "ordered": 94,
+                "new": false,
+                "recommended": false
+
             },
             {
                 "mainCategory": "clothes",
@@ -370,11 +353,9 @@
                 ],
                 "stock": true,
                 "count": 68,
-                "bought": 300,
-                "collections": {
-                    "new": true,
-                    "recommended": true
-                }
+                "ordered": 300,
+                "new": true,
+                "recommended": true
             },
             {
                 "mainCategory": "clothes",
@@ -408,11 +389,9 @@
                 ],
                 "stock": true,
                 "count": 72,
-                "bought": 125,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-                }
+                "ordered": 125,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "clothes",
@@ -447,11 +426,9 @@
                 ],
                 "stock": true,
                 "count": 119,
-                "bought": 23,
-                "collections": {
-                    "new": false,
-                    "recommended": false
-                }
+                "ordered": 23,
+                "new": false,
+                "recommended": false
             },
             {
                 "mainCategory": "clothes",
@@ -483,11 +460,9 @@
                 ],
                 "stock": true,
                 "count": 98,
-                "bought": 68,
-                "collections": {
-                    "new": false,
-                    "recommended": false
-                }
+                "ordered": 68,
+                "new": false,
+                "recommended": false
             },
             {
                 "mainCategory": "clothes",
@@ -521,11 +496,9 @@
                 ],
                 "stock": true,
                 "count": 77,
-                "bought": 42,
-                "collections": {
-                    "new": false,
-                    "recommended": false
-                }
+                "ordered": 42,
+                "new": false,
+                "recommended": false
             },
             {
                 "mainCategory": "clothes",
@@ -555,11 +528,9 @@
                 ],
                 "stock": true,
                 "count": 60,
-                "bought": 16,
-                "collections": {
-                    "new": true,
-                    "recommended": false
-                }
+                "ordered": 16,
+                "new": true,
+                "recommended": false
             },
             {
                 "mainCategory": "clothes",
@@ -606,11 +577,9 @@
                 ],
                 "stock": true,
                 "count": 89,
-                "bought": 96,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-                }
+                "ordered": 96,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "clothes",
@@ -648,11 +617,9 @@
                 ],
                 "stock": true,
                 "count": 77,
-                "bought": 38,
-                "collections": {
-                    "new": true,
-                    "recommended": false
-                }
+                "ordered": 38,
+                "new": true,
+                "recommended": false
             },
             {
                 "mainCategory": "clothes",
@@ -685,11 +652,9 @@
                 ],
                 "stock": true,
                 "count": 99,
-                "bought": 65,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-                }
+                "ordered": 65,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "clothes",
@@ -722,11 +687,9 @@
                 ],
                 "stock": true,
                 "count": 74,
-                "bought": 35,
-                "collections": {
-                    "new": true,
-                    "recommended": false
-                }
+                "ordered": 35,
+                "new": true,
+                "recommended": false
             },
             {
                 "mainCategory": "clothes",
@@ -758,11 +721,9 @@
                 ],
                 "stock": true,
                 "count": 85,
-                "bought": 41,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-                }
+                "ordered": 41,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "clothes",
@@ -792,11 +753,9 @@
                 ],
                 "stock": true,
                 "count": 16,
-                "bought": 345,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-                }
+                "ordered": 345,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "shoes",
@@ -831,11 +790,9 @@
                 ],
                 "stock": true,
                 "count": 30,
-                "bought": 48,
-                "collections": {
-                    "new": true,
-                    "recommended": true
-                }
+                "ordered": 48,
+                "new": true,
+                "recommended": true
             },
             {
                 "mainCategory": "shoes",
@@ -870,11 +827,9 @@
                 ],
                 "stock": true,
                 "count": 27,
-                "bought": 187,
-                "collections": {
-                    "new": true,
-                    "recommended": false
-                }
+                "ordered": 187,
+                "new": true,
+                "recommended": false
             },
             {
                 "mainCategory": "shoes",
@@ -908,11 +863,9 @@
                 ],
                 "stock": true,
                 "count": 99,
-                "bought": 43,
-                "collections": {
-                    "new": true,
-                    "recommended": true
-                }
+                "ordered": 43,
+                "new": true,
+                "recommended": true
             },
             {
                 "mainCategory": "shoes",
@@ -946,11 +899,9 @@
                 ],
                 "stock": true,
                 "count": 89,
-                "bought": 64,
-                "collections": {
-                    "new": false,
-                    "recommended": false
-                }
+                "ordered": 64,
+                "new": false,
+                "recommended": false
             },
             {
                 "mainCategory": "shoes",
@@ -993,11 +944,9 @@
                 ],
                 "stock": true,
                 "count": 64,
-                "bought": 74,
-                "collections": {
-                    "new": false,
-                    "recommended": false
-                }
+                "ordered": 74,
+                "new": false,
+                "recommended": false
             },
             {
                 "mainCategory": "shoes",
@@ -1032,11 +981,9 @@
                 ],
                 "stock": true,
                 "count": 96,
-                "bought": 25,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-                }
+                "ordered": 25,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "shoes",
@@ -1071,11 +1018,9 @@
                 ],
                 "stock": true,
                 "count": 41,
-                "bought": 16,
-                "collections": {
-                    "new": true,
-                    "recommended": false
-                }
+                "ordered": 16,
+                "new": true,
+                "recommended": false
             },
             {
                 "mainCategory": "accessories",
@@ -1112,11 +1057,9 @@
                 ],
                 "stock": true,
                 "count": 8,
-                "bought": 218,
-                "collections": {
-                    "new": true,
-                    "recommended": false
-                }
+                "ordered": 218,
+                "new": true,
+                "recommended": false
             },
             {
                 "mainCategory": "accessories",
@@ -1152,11 +1095,9 @@
                 ],
                 "stock": true,
                 "count": 32,
-                "bought": 350,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-                }
+                "ordered": 350,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "accessories",
@@ -1198,11 +1139,9 @@
                 ],
                 "stock": true,
                 "count": 96,
-                "bought": 25,
-                "collections": {
-                    "new": false,
-                    "recommended": false
-                }
+                "ordered": 25,
+                "new": false,
+                "recommended": false
             },
             {
                 "mainCategory": "accessories",
@@ -1237,11 +1176,9 @@
                 ],
                 "stock": true,
                 "count": 30,
-                "bought": 269,
-                "collections": {
-                    "new": true,
-                    "recommended": false
-                }
+                "ordered": 269,
+                "new": true,
+                "recommended": false
             },
             {
                 "mainCategory": "accessories",
@@ -1274,11 +1211,9 @@
                 ],
                 "stock": true,
                 "count": 77,
-                "bought": 56,
-                "collections": {
-                    "new": true,
-                    "recommended": true
-                }
+                "ordered": 56,
+                "new": true,
+                "recommended": true
             },
             {
                 "mainCategory": "accessories",
@@ -1313,11 +1248,9 @@
                 ],
                 "stock": true,
                 "count": 63,
-                "bought": 46,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-                }
+                "ordered": 46,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "accessories",
@@ -1358,11 +1291,9 @@
                 ],
                 "stock": true,
                 "count": 7,
-                "bought": 269,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-                }
+                "ordered": 269,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "accessories",
@@ -1395,11 +1326,9 @@
                 ],
                 "stock": true,
                 "count": 63,
-                "bought": 78,
-                "collections": {
-                    "new": true,
-                    "recommended": false
-                }
+                "ordered": 78,
+                "new": true,
+                "recommended": false
             },
             {
                 "mainCategory": "accessories",
@@ -1433,11 +1362,9 @@
                 ],
                 "stock": true,
                 "count": 30,
-                "bought": 69,
-                "collections": {
-                    "new": false,
-                    "recommended": false
-                }
+                "ordered": 69,
+                "new": false,
+                "recommended": false
             },
             {
                 "mainCategory": "accessories",
@@ -1470,11 +1397,9 @@
                 ],
                 "stock": true,
                 "count": 13,
-                "bought": 251,
-                "collections": {
-                    "new": false,
-                    "recommended": false
-                }
+                "ordered": 251,
+                "new": false,
+                "recommended": false
             },
             {
                 "mainCategory": "accessories",
@@ -1507,11 +1432,9 @@
                 ],
                 "stock": true,
                 "count": 99,
-                "bought": 36,
-                "collections": {
-                    "new": true,
-                    "recommended": true
-                }
+                "ordered": 36,
+                "new": true,
+                "recommended": true
             },
             {
                 "mainCategory": "accessories",
@@ -1543,11 +1466,9 @@
                 ],
                 "stock": true,
                 "count": 36,
-                "bought": 189,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-                }
+                "ordered": 189,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "accessories",
@@ -1576,11 +1497,9 @@
                 ],
                 "stock": true,
                 "count": 41,
-                "bought": 63,
-                "collections": {
-                    "new": true,
-                    "recommended": false
-                }
+                "ordered": 63,
+                "new": true,
+                "recommended": false
             },
             {
                 "mainCategory": "accessories",
@@ -1610,11 +1529,9 @@
                 ],
                 "stock": true,
                 "count": 21,
-                "bought": 412,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-                }
+                "ordered": 412,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "accessories",
@@ -1647,11 +1564,9 @@
                 ],
                 "stock": true,
                 "count": 87,
-                "bought": 96,
-                "collections": {
-                    "new": false,
-                    "recommended": false
-                }
+                "ordered": 96,
+                "new": false,
+                "recommended": false
             },
             {
                 "mainCategory": "accessories",
@@ -1680,11 +1595,9 @@
                 ],
                 "stock": true,
                 "count": 42,
-                "bought": 125,
-                "collections": {
-                    "new": false,
-                    "recommended": false
-                }
+                "ordered": 125,
+                "new": false,
+                "recommended": false
             },
             {
                 "mainCategory": "accessories",
@@ -1714,11 +1627,9 @@
                 ],
                 "stock": true,
                 "count": 20,
-                "bought": 69,
-                "collections": {
-                    "new": true,
-                    "recommended": false
-                }
+                "ordered": 69,
+                "new": true,
+                "recommended": false
             },
             {
                 "mainCategory": "accessories",
@@ -1746,11 +1657,9 @@
                 ],
                 "stock": true,
                 "count": 32,
-                "bought": 87,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-                }
+                "ordered": 87,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "accessories",
@@ -1782,11 +1691,9 @@
                 ],
                 "stock": true,
                 "count": 30,
-                "bought": 169,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-                }
+                "ordered": 169,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "accessories",
@@ -1817,10 +1724,8 @@
                 ],
                 "stock": true,
                 "count": 30,
-                "bought": 200,
-                "collections": {
-                    "new": false,
-                    "recommended": false
-                }
+                "ordered": 200,
+                "new": false,
+                "recommended": false
             }
 ]
