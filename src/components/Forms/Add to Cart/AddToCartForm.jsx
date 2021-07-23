@@ -1,5 +1,5 @@
-import React from "react";
-import { connect } from "react-redux";
+import React, { useCallback } from "react";
+import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import { Formik, Form, Field } from "formik";
 import colorize from "../../../utils/colorize";
@@ -13,9 +13,9 @@ import { addToCart } from "../../../store/actions/cart";
 const AddToCartForm = ({ data, store, dispatchCart, product }) => {
   const { productStore, dispatchColor } = store;
 
-  function handleColorState({ color }) {
-    dispatchColor(color);
-  }
+    const handleColorState = useCallback(({color}) => {
+        dispatchColor(color)
+    }, [dispatchColor]);
 
   const addToCartHandler = (dataItem, changedDetails) => {
     const color = changedDetails?.color
