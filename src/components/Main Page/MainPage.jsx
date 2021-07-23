@@ -9,7 +9,6 @@ const MainPage = () => (
   <div className={classes.MainPage}>
     <Slider />
     <PageContainer />
-    <VisitedProducts />
   </div>
 );
 
