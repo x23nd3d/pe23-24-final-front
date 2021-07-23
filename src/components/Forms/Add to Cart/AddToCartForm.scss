@@ -11,10 +11,13 @@
     justify-content: space-between;
     align-items: center;
     width: 300px;
-    height: 70px;
+    height: 100px;
 
     &:last-of-type {
       margin-bottom: 12px;
+    }
+    @media (max-width: 450px) {
+      margin-top: 40px;
     }
   }
 
@@ -24,6 +27,10 @@
     align-items: center;
     height: 70px;
     width: 200px;
+
+    @media (max-width: 450px) {
+      margin-top: 20px;
+    }
   }
 
   .field {
@@ -73,11 +80,22 @@
 }
 
 .formBlock:first-child {
+  width: 100%;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
 
   @media (min-width: 320px) and (max-width: 450px) {
     width: 100%;
     flex-wrap: wrap;
     & div {margin: 10px 8px;}
+    & .color-block {
+      width: 100%;
+    }
   }
   @media (max-width: 420px) {
     flex-wrap: wrap;
@@ -163,4 +181,27 @@
   border: none;
   outline: none;
   align-self: center;
+}
+
+.color-block {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 70%;
+  flex-wrap: wrap;
+  @media (max-width: 450px) {
+    margin-top: 20px;
+  }
+  @media (max-width: 670px) {
+    font-size: 14px;
+  }
+}
+.color-block span {
+  background-color: #fff;
+}
+
+.color-pointer {
+  @media (max-width: 450px) {
+    margin-top: 20px;
+  }
 }

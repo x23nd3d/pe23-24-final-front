@@ -88,8 +88,7 @@ const Product = ({
               </ul>
         </article>
       </section>
-
-    <VisitedProducts data={productStore.visited} />
+    {/* <VisitedProducts data={productStore.visited} /> */}
   </>
   )
 }

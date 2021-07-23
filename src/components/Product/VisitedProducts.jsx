@@ -38,7 +38,7 @@ const VisitedProducts = ({data}) => {
 }
 
 VisitedProducts.propTypes = {
-  data: PropTypes.instanceOf(Array)
+  data: PropTypes.instanceOf(Array).isRequired
 }
 
 export default VisitedProducts;
