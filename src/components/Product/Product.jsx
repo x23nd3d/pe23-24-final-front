@@ -8,10 +8,13 @@ import {colorAction, photoAction } from "../../store/actions/product";
 import VisitedProducts from "./VisitedProducts";
 
 import {
-  product,
+  productPage,
   Details,
+  collectionLabel,
   topBlock,
-  interactionBlock,
+  NameBox,
+  PriceBox,
+  inputBlock,
   Title,
   Name,
   Caption,
@@ -49,7 +52,7 @@ const Product = ({
 
   return (
     <>
-      <section className={product}>
+      <section className={productPage}>
         <SlideShow
             photo={productStore.photo}
             alt={`${material}${category}`}
@@ -58,12 +61,18 @@ const Product = ({
             <ul className={classNames(Details)}>
                 <li className={topBlock}>
                     <header className={classNames(Title)}>
+                      <div className={NameBox}>
                         <h2 className={classNames(Name)}>{name}</h2>
+                        <span className={collectionLabel}>Recommended</span>
+                      </div>
                         <p className={classNames(Caption)}>{caption}</p>
                     </header>
-                    <span className={classNames(dataPointer, Price)}>Price<p>{`$${price}`}</p></span>
+                    <div className={PriceBox}>
+                      <span className={classNames(dataPointer, Price)}>Price<p>{`$${price}`}</p></span>
+                      <span>Available</span>
+                    </div>
                 </li>
-                <li className={interactionBlock}>
+                <li className={inputBlock}>
                     <AddToCartForm data={data} store={store} />
                     <hr />
                 </li>

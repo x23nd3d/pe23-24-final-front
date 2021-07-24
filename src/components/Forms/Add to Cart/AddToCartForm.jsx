@@ -48,16 +48,15 @@ const AddToCartForm = ({ data, store, dispatchCart, product }) => {
               {data.color.length > 1 ? (
                 "Select a color"
               ) : (
-                <>
+                <div className="formOneColorBlock">
                   Color
-                  <span
-                  // style={{ paddingLeft: "20px" }}
-                  >
+                  <span>
                     {productStore.color}
                   </span>
-                </>
+                </div>
               )}
             </span>
+            {data.color.length > 1 &&
             <div className="color-selection">
             {data.color.length > 1 &&
               data.color.map((color, index) => (
@@ -77,7 +76,7 @@ const AddToCartForm = ({ data, store, dispatchCart, product }) => {
                   </label>
                 </div>
                 ))}
-                </div>
+                </div>}
             </div>
           {data.size && (
             <div className="formBlockSize">

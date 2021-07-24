@@ -15,6 +15,7 @@ import { handleItemPreviewParams } from "../../../store/actions/shop";
 import colorize from "../../../utils/colorize";
 
 const ProductCard = ({
+  isVisited,
   product,
   dispatchColor,
   dispatchPhoto,
@@ -42,7 +43,7 @@ const ProductCard = ({
     selectCurrentItemHandler(item);
     dispatchColor(item.color[0]);
     dispatchPhoto(item.photo[item.color[0]]);
-    dispatchVisitedProducts(item);
+    isVisited && dispatchVisitedProducts(product);
   };
 
   const clsHoverDetails = [
@@ -175,9 +176,11 @@ ProductCard.defaultProps = {
   handleItemPreview: (f) => f,
   shop: {},
   cart: {},
+  isVisited: false
 };
 
 ProductCard.propTypes = {
+  isVisited: PropTypes.bool,
   item: PropTypes.instanceOf(Object).isRequired,
   history: PropTypes.instanceOf(Object).isRequired,
   selectCurrentItemHandler: PropTypes.func,
