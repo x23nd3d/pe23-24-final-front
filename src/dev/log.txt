@@ -53,3 +53,5 @@ Andrew Kucher, [24.07.21 19:15]
 если айтем available
 
 добавить теги в вид товара
+
+add more info to cart item like recommended, new, popular, implement discounts

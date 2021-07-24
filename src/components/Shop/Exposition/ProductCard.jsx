@@ -138,6 +138,31 @@ const ProductCard = ({
     return currentItem.photo[currentItem.color][0];
   };
 
+  const renderTags = (currentItem) => {
+    const tags = [
+      "new",
+      "recommended",
+      currentItem.ordered >= 120 ? "popular" : null,
+    ];
+
+    return tags.map((tag) => {
+      if (currentItem[tag] === true || tag === "popular") {
+        const cls = [
+          classes.productTag,
+          currentItem[tag] === true || tag === "popular" ? classes[tag] : null,
+        ];
+
+        return (
+          <div key={currentItem.name + tag} className={cls.join(" ")}>
+            {tag}
+          </div>
+        );
+      }
+
+      return null;
+    });
+  };
+
   return (
     <>
       <NavLink
@@ -153,7 +178,10 @@ const ProductCard = ({
         <div className={classes.boxBanner}>
           <div className={classes.info}>
             <span>{item.name}</span>
-            <span>{item.price} $</span>
+            <div className={classes.productHeader}>
+              <span>{item.price} $</span>
+              <div className={classes.productTags}>{renderTags(item)}</div>
+            </div>
           </div>
         </div>
       </NavLink>
