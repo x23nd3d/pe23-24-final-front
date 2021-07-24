@@ -18,21 +18,30 @@
     @media (max-width: 450px) {
         padding: 0;
     }
+    @include highlight;
+    width: 50%;
+
+    @media (max-width: 980px) {
+        width: 80%;
+    }
+
 }
 
 .Details {
+    @include highlight;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    width: 70%;
+    width: 90%;
 
     height: 100%;
     background-color: #fff;
     .primaryBlock, .selectionBlock {
         @include block-120;
     }
-    .primaryBlock {
+    .topBlock {
         margin-bottom: 20px;
+        @include highlight;
     }
 
     .Name {

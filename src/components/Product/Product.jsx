@@ -10,8 +10,8 @@ import VisitedProducts from "./VisitedProducts";
 import {
   product,
   Details,
-  primaryBlock,
-  selectionBlock,
+  topBlock,
+  interactionBlock,
   Title,
   Name,
   Caption,
@@ -56,14 +56,14 @@ const Product = ({
         />
         <article className={dataBlock}>
             <ul className={classNames(Details)}>
-                <li className={primaryBlock}>
+                <li className={topBlock}>
                     <header className={classNames(Title)}>
                         <h2 className={classNames(Name)}>{name}</h2>
                         <p className={classNames(Caption)}>{caption}</p>
                     </header>
                     <span className={classNames(dataPointer, Price)}>Price<p>{`$${price}`}</p></span>
                 </li>
-                <li className={selectionBlock}>
+                <li className={interactionBlock}>
                     <AddToCartForm data={data} store={store} />
                     <hr />
                 </li>
