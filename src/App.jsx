@@ -19,6 +19,11 @@ function App({ isAuthenticated, product }) {
       <Route path="/shop/product/:id">
         {product.loading ? <Spinner /> : <Product data={product.currentItem} />}
       </Route>
+      <Route path="/shop/collections/:collection">
+        <ShopLayout>
+          <Shop />
+        </ShopLayout>
+      </Route>
       <Route path="/shop">
         <ShopLayout>
           <Shop />
@@ -45,6 +50,11 @@ function App({ isAuthenticated, product }) {
           ) : (
             <Product data={product.currentItem} />
           )}
+        </Route>
+        <Route path="/shop/collections/:collection">
+          <ShopLayout>
+            <Shop />
+          </ShopLayout>
         </Route>
         <Route path="/shop">
           <ShopLayout>

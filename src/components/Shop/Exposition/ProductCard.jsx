@@ -131,6 +131,15 @@ const ProductCard = ({
     ) : null;
   };
 
+  const renderViewImage = () => {
+    const currentItem = shop.currentPreviewItems[idx];
+    const hasArrayImages = Array.isArray(currentItem.color);
+    if (hasArrayImages) {
+      return item.viewImage;
+    }
+    return currentItem.photo[currentItem.color][0];
+  };
+
   return (
     <>
       <NavLink
@@ -140,7 +149,7 @@ const ProductCard = ({
       >
         <img
           className={classes.image}
-          src={item.viewImage}
+          src={renderViewImage()}
           alt="Product Item"
         />
         <div className={classes.boxBanner}>

@@ -49,10 +49,19 @@ const CartItem = ({
     dispatchVisitedProducts(item);
   };
 
+  const renderViewImage = () => {
+    const itemInCart = cart.items.find((current) => current === item);
+    const hasArrayImages = Array.isArray(itemInCart.color);
+    if (hasArrayImages) {
+      return item.viewImage;
+    }
+    return itemInCart.photo[itemInCart.color][0];
+  };
+
   return (
     <div className={classes.CartItem} key={item.title}>
       <div className={classes.CartItemImage}>
-        <img src={item.viewImage} alt="Cart Item" />
+        <img src={renderViewImage()} alt="Cart Item" />
       </div>
       <div className={classes.CartItemGeneral}>
         <NavLink to={`/shop/product/${item.id}`} onClick={dispatchProduct}>
@@ -83,7 +92,7 @@ const CartItem = ({
           </div>
           <div className={classes.CartItemMoreDetails}>
             <div className={classes.CartItemDetails}>
-              {item.size ? (
+              {item.size.length ? (
                 <div
                   className={`${classes.sizeItem} ${classes.sizeItemActive} ${classes.sizeItemActiveCart}`}
                 >
