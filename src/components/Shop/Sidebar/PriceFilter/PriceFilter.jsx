@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import InputRange from "react-input-range";
+import { Range } from "rc-slider";
+import "rc-slider/assets/index.css";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
@@ -24,10 +25,10 @@ const PriceFilter = ({
   });
 
   useEffect(() => {
-    const minPrice = getMinMaxPrice(shop.currentItems).min;
-    const maxPrice = getMinMaxPrice(shop.currentItems).max;
-    console.log(minPrice, maxPrice);
-    setRangeValue({ min: minPrice, max: maxPrice });
+    setRangeValue({
+      min: getMinMaxPrice(shop.currentItems).min,
+      max: getMinMaxPrice(shop.currentItems).max,
+    });
   }, [shop.currentItems, sidebar.reset]);
 
   return (
@@ -37,12 +38,17 @@ const PriceFilter = ({
         ${rangeValue.min} - ${rangeValue.max}{" "}
       </p>
       <div className={classes.RangeBlock}>
-        <InputRange
-          maxValue={getMinMaxPrice(shop.currentItems).max}
-          minValue={getMinMaxPrice(shop.currentItems).min}
-          value={rangeValue}
-          onChange={(value) => setRangeValue(value)}
-          onChangeComplete={() => setPriceRangeHandler(rangeValue)}
+        <Range
+          min={getMinMaxPrice(shop.currentItems).min}
+          max={getMinMaxPrice(shop.currentItems).max}
+          value={[rangeValue.min, rangeValue.max]}
+          onChange={(value) => {
+            console.log(value);
+            setRangeValue({ max: value[1], min: value[0] });
+          }}
+          onAfterChange={(value) =>
+            setPriceRangeHandler({ max: value[1], min: value[0] })
+          }
         />
       </div>
     </div>
