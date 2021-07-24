@@ -175,5 +175,34 @@
 }
 
 .showMoreContainer {
-  display: block;
+  display: flex;
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.showMoreBtn {
+  display: flex;
+  font-size: 26px;
+}
+
+.showMoreBtn > p {
+  margin-left: 10px;
+}
+
+.showMoreAnim {
+  animation: animShowMore ease-in 1;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-duration: .5s;
+}
+
+@keyframes animShowMore {
+  from {
+    transform: rotate(50deg);
+  }
+  to {
+    transform: rotate(-180deg);
+  }
 }

@@ -11,6 +11,7 @@ import {
   SHOP_SET_DEFAULT,
   PAGINATION_SET_CONFIG,
   PAGINATION_ADD_MORE_ITEMS,
+  PAGINATION_ADD_MORE_ITEMS_START,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -18,11 +19,12 @@ const initialState = {
   currentPreviewItems: [],
   currentRoute: "/shop/?category=all&type=all",
   loading: false,
+  paginationLoading: false,
   error: false,
   filteredItems: [],
+  step: 10,
   leftCount: null,
   allItemsCount: null,
-  step: 10,
 };
 
 const transformPreviewItems = (array) => {
@@ -104,9 +106,15 @@ const handlers = {
     allItemsCount,
     step,
   }),
-  [PAGINATION_ADD_MORE_ITEMS]: (state, { step }) => ({
+  [PAGINATION_ADD_MORE_ITEMS_START]: (state) => ({
+    ...state,
+    paginationLoading: true,
+  }),
+  [PAGINATION_ADD_MORE_ITEMS]: (state, { step, leftCount }) => ({
     ...state,
     step,
+    leftCount,
+    paginationLoading: false,
   }),
   DEFAULT: (state) => state,
 };

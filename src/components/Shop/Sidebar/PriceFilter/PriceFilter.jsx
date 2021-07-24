@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import InputRange from "react-input-range";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import InputRange from "react-input-range";
 import { getMinMaxPrice } from "../../../../utils/sidebar.utils";
-
 import "./_price-filter.scss";
 import classes from "./PriceFilter.module.scss";
 import {
