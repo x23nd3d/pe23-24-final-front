@@ -12,6 +12,7 @@ import {
 } from "./actionTypes";
 
 export function auth(email, password, keepSigned) {
+
   // eslint-disable-next-line consistent-return
   return async (dispatch) => {
     const authData = {
