@@ -204,6 +204,12 @@
 
 .showMoreBtn > p {
   margin-left: 10px;
+  text-decoration: transparent;
+  transition: .2s;
+}
+
+.showMoreBtn > p:hover {
+  text-decoration: underline;
 }
 
 .showMoreAnim {
