@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
+import Exposition from "./Exposition/Exposition";
 import classes from "./Shop.module.scss";
 import Sidebar from "./Sidebar/Sidebar";
-import Exposition from "./Exposition/Exposition";
 import ShopSpinner from "../UI/Spinner/ShopSpinner/ShopSpinner";
 import { filterItemsFunction } from "../../store/actions/sidebar";
 import { paginationSetConfig } from "../../store/actions/shop";
@@ -32,10 +32,6 @@ const Shop = ({
     sidebar.chosenColors,
     sidebar.chosenPriceRange,
   ]);
-
-  // useEffect(() => {
-  //   paginationSetConfigHandler();
-  // }, [shop.filteredItems]);
 
   return (
     <div className={classes.Shop}>

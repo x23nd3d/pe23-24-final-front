@@ -10,6 +10,7 @@
   box-sizing: border-box;
   background-color: #fff;
   padding: 5%;
+  margin-bottom: 140px;
 
   @media screen and (max-width: 1368px) {
     grid-template-columns: 1fr 1fr 1fr;
@@ -178,6 +179,7 @@
 
 .ExpositionInner {
   width: 100%;
+  position: relative;
 }
 
 .NoItemsWarning {

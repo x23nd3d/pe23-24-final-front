@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
@@ -43,12 +43,13 @@ const Exposition = ({
         {!Array.isArray(productList) ? (
           <p className={NoItemsWarning}>{productList}</p>
         ) : (
-        <ul className={expo}>
-          {showMoreItemsHandler(
-            shop.filteredItems.length ? shop.filteredItems : productList
-          ))}
-        </ul>
+          <ul className={expo}>
+            {showMoreItemsHandler(
+              shop.filteredItems.length ? shop.filteredItems : productList
+            )}
+          </ul>
         )}
+
         {!leftCount && leftCount !== 0 ? null : (
           <div className={showMoreContainer}>
             <button
