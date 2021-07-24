@@ -6,13 +6,13 @@ import {
   AUTH_LOGOUT_START,
   AUTH_START,
   AUTH_SUCCESS,
+  SET_LOGIN_TOGGLE,
   SIGNUP_ERROR,
   SIGNUP_START,
   SIGNUP_SUCCESS,
 } from "./actionTypes";
 
 export function auth(email, password, keepSigned) {
-
   // eslint-disable-next-line consistent-return
   return async (dispatch) => {
     const authData = {
@@ -148,6 +148,7 @@ export function signUp(name, surname, email, password) {
         );
       }, 3000);
       dispatch(signUpSuccess());
+      dispatch(setLogin(true));
       return true;
     } catch (e) {
       dispatch(authError(e));
@@ -290,5 +291,12 @@ export function logOff() {
 export function logOffStart() {
   return {
     type: AUTH_LOGOUT_START,
+  };
+}
+
+export function setLogin(isLogin) {
+  return {
+    type: SET_LOGIN_TOGGLE,
+    isLogin,
   };
 }

@@ -4,6 +4,7 @@ import {
   AUTH_LOGOUT_START,
   AUTH_START,
   AUTH_SUCCESS,
+  SET_LOGIN_TOGGLE,
   SIGNUP_SUCCESS,
 } from "../actions/actionTypes";
 
@@ -12,6 +13,7 @@ const initialState = {
   loading: false,
   error: false,
   expiresIn: null,
+  isLogin: true,
 };
 
 const handlers = {
@@ -31,7 +33,10 @@ const handlers = {
     loading: false,
     expiresIn: null,
   }),
-
+  [SET_LOGIN_TOGGLE]: (state, { isLogin }) => ({
+    ...state,
+    isLogin,
+  }),
   DEFAULT: (state) => state,
 };
 

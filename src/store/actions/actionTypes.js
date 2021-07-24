@@ -3,6 +3,7 @@ export const AUTH_SUCCESS = "AUTH_SUCCESS";
 export const AUTH_ERROR = "AUTH_ERROR";
 export const AUTH_LOGOUT = "AUTH_LOGOUT";
 export const AUTH_LOGOUT_START = "AUTH_LOGOUT_START";
+export const SET_LOGIN_TOGGLE = "LOGIN/SET_LOGIN_TOGGLE";
 
 export const SIGNUP_START = "AUTH_START";
 export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";

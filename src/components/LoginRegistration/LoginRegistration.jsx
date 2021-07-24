@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import classNames from "classnames";
 import { withRouter } from "react-router-dom";
-import { motion } from "framer-motion";
 import PropTypes from "prop-types";
+import { motion } from "framer-motion";
+import { connect } from "react-redux";
+import { setLogin } from "../../store/actions/auth";
 import LoginForm from "./LoginForm";
 import RegistrationForm from "./RegistrationForm";
 import classes from "./LoginRegistration.module.scss";
 
-const LoginRegistration = (props) => {
-  const [isLoginTab, setLoginTab] = useState(true);
-
+const LoginRegistration = ({ history, auth, setLoginTab }) => {
   const loginSwitcher = () => {
     setLoginTab(true);
   };
@@ -17,8 +17,6 @@ const LoginRegistration = (props) => {
   const registrationSwitcher = () => {
     setLoginTab(false);
   };
-
-  const {history} = props;
 
   return (
     <motion.div
@@ -30,28 +28,41 @@ const LoginRegistration = (props) => {
       <div className={classes.Inner}>
         <div className={classes.Tabs}>
           <button
-            className={classNames(classes.Tab, isLoginTab && classes.TabActive)}
+            className={classNames(
+              classes.Tab,
+              auth.isLogin && classes.TabActive
+            )}
             onClick={() => loginSwitcher()}
             type="button"
           >
             Sign in
           </button>
           <button
-            className={classNames(classes.Tab, !isLoginTab && classes.TabActive)}
+            className={classNames(
+              classes.Tab,
+              !auth.isLogin && classes.TabActive
+            )}
             onClick={() => registrationSwitcher()}
             type="button"
           >
             Sign up
           </button>
         </div>
-        <h3 className={classes.Title}>
-          Please enter your account details to log in
-        </h3>
-        {isLoginTab ?
-          <LoginForm history={history} />
-        :
-          <RegistrationForm />
-        }
+        {auth.isLogin ? (
+          <>
+            <h3 className={classes.Title}>
+              Please enter your account details to log in
+            </h3>
+            <LoginForm history={history} />
+          </>
+        ) : (
+          <>
+            <h3 className={classes.Title}>
+              To sign up, please type the required information
+            </h3>
+            <RegistrationForm />
+          </>
+        )}
       </div>
     </motion.div>
   );
@@ -59,11 +70,29 @@ const LoginRegistration = (props) => {
 
 LoginRegistration.defaultProps = {
   history: {},
+  auth: {},
+  setLoginTab: (f) => f,
 };
 
 LoginRegistration.propTypes = {
   history: PropTypes.instanceOf(Object),
+  auth: PropTypes.instanceOf(Object),
+  setLoginTab: PropTypes.func,
 };
 
+function mapStateToProps(state) {
+  return {
+    auth: state.auth,
+  };
+}
 
-export default (withRouter(LoginRegistration));
+function mapDispatchToProps(dispatch) {
+  return {
+    setLoginTab: (isLogin) => dispatch(setLogin(isLogin)),
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(LoginRegistration));
