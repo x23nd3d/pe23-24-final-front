@@ -53,6 +53,8 @@ function App({ isAuthenticated, product }) {
         </Route>
         <Route exact path="/logout" component={Logout} />
 
+        <Route path="/cart" component={Cart} />
+
         <Route path="/" component={MainPage} />
       </Switch>
     );
