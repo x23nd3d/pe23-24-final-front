@@ -7,11 +7,22 @@ import Sidebar from "./Sidebar/Sidebar";
 import Exposition from "./Exposition/Exposition";
 import ShopSpinner from "../UI/Spinner/ShopSpinner/ShopSpinner";
 import { filterItemsFunction } from "../../store/actions/sidebar";
+import { paginationSetConfig } from "../../store/actions/shop";
 
-const Shop = ({ shop, sidebar, history, filterItemsHandler }) => {
+const Shop = ({
+  shop,
+  sidebar,
+  history,
+  filterItemsHandler,
+  paginationSetConfigHandler,
+}) => {
   if (!history.location.search.length) {
     history.push("/shop/?category=all&type=all");
   }
+
+  useEffect(() => {
+    paginationSetConfigHandler();
+  }, [paginationSetConfigHandler, shop.filteredItems]);
 
   useEffect(() => {
     filterItemsHandler();
@@ -21,6 +32,10 @@ const Shop = ({ shop, sidebar, history, filterItemsHandler }) => {
     sidebar.chosenColors,
     sidebar.chosenPriceRange,
   ]);
+
+  // useEffect(() => {
+  //   paginationSetConfigHandler();
+  // }, [shop.filteredItems]);
 
   return (
     <div className={classes.Shop}>
@@ -43,6 +58,7 @@ Shop.defaultProps = {
   sidebar: {},
   history: {},
   filterItemsHandler: (f) => f,
+  paginationSetConfigHandler: (f) => f,
 };
 
 Shop.propTypes = {
@@ -50,6 +66,7 @@ Shop.propTypes = {
   sidebar: PropTypes.instanceOf(Object),
   history: PropTypes.instanceOf(Object),
   filterItemsHandler: PropTypes.func,
+  paginationSetConfigHandler: PropTypes.func,
 };
 
 function mapStateToProps(state) {
@@ -62,6 +79,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     filterItemsHandler: (items) => dispatch(filterItemsFunction(items)),
+    paginationSetConfigHandler: () => dispatch(paginationSetConfig()),
   };
 }
 

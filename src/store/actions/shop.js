@@ -1,4 +1,7 @@
 import {
+  PAGINATION_ADD_MORE_ITEMS,
+  PAGINATION_ADD_MORE_ITEMS_START,
+  PAGINATION_SET_CONFIG,
   RECEIVE_CURRENT_ROUTE_START,
   RECEIVE_CURRENT_ROUTE_SUCCESS,
   SELECT_PRODUCT_PREVIEW_PARAMS,
@@ -111,5 +114,89 @@ export function receiveRouteError(e) {
 export function setShopDefault() {
   return {
     type: SHOP_SET_DEFAULT,
+  };
+}
+
+export function paginationSetConfig() {
+  return (dispatch, getState) => {
+    const { currentItems, filteredItems } = getState().shop;
+    const settings = getState().shop;
+    const { step } = settings;
+    const currentStep = 10;
+    const allItemsCount = filteredItems.length
+      ? filteredItems.length
+      : currentItems.length;
+    let leftCount = null;
+
+    if (allItemsCount > step) {
+      leftCount = allItemsCount - step;
+    }
+
+    if (
+      step === currentStep &&
+      settings.allItemsCount === allItemsCount &&
+      leftCount === allItemsCount - currentStep
+    ) {
+      return;
+    }
+
+    dispatch(implementPaginationConfig(leftCount, allItemsCount, currentStep));
+  };
+}
+
+export function implementPaginationConfig(leftCount, allItemsCount, step) {
+  return {
+    type: PAGINATION_SET_CONFIG,
+    leftCount,
+    allItemsCount,
+    step,
+  };
+}
+
+export function addMoreItemsStart() {
+  return {
+    type: PAGINATION_ADD_MORE_ITEMS_START,
+  };
+}
+
+export function addMoreItems(addStepCount) {
+  return (dispatch, getState) => {
+    dispatch(addMoreItemsStart());
+    const { leftCount, step, allItemsCount } = getState().shop;
+    let time = 0;
+
+    if (leftCount > 5) {
+      time = 1500;
+    } else if (leftCount === 0) {
+      time = 0;
+    } else {
+      time = 500;
+    }
+
+    setTimeout(() => {
+      const defaultStep = 10;
+      let newLeftCount = addStepCount;
+      let newDefaultStep = step;
+
+      if (leftCount <= newLeftCount) {
+        if (leftCount === 0) {
+          return dispatch(addStep(defaultStep, allItemsCount - defaultStep));
+        }
+        newDefaultStep = leftCount;
+        newLeftCount = leftCount - newDefaultStep;
+        return dispatch(addStep(newDefaultStep, newLeftCount));
+      }
+      newLeftCount = leftCount - addStepCount;
+      newDefaultStep = leftCount;
+      return dispatch(addStep(newDefaultStep, newLeftCount));
+    }, time);
+  };
+}
+
+export function addStep(step, leftCount) {
+  return {
+    type: PAGINATION_ADD_MORE_ITEMS,
+    step,
+    leftCount,
   };
 }
