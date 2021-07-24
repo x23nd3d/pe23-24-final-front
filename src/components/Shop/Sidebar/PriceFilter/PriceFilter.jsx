@@ -42,7 +42,6 @@ const PriceFilter = ({
           max={getMinMaxPrice(shop.currentItems).max}
           value={[rangeValue.min, rangeValue.max]}
           onChange={(value) => {
-            console.log(value);
             setRangeValue({ max: value[1], min: value[0] });
           }}
           onAfterChange={(value) =>

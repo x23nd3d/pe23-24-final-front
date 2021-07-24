@@ -30,8 +30,6 @@ const ProductCard = ({
   const findCurrentItemByIdx = (array, currentItem) =>
     array.findIndex((current) => current.id === currentItem.id);
 
-  // console.log("ITEMMMM", shop.currentPreviewItems);
-
   const idx = findCurrentItemByIdx(shop.currentPreviewItems, item);
   const cartIdx = findCurrentItemByIdx(
     cart.items,

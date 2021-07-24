@@ -11,6 +11,8 @@
 + 11. Add color to Cart Preview and remove SIze of no size from Cart Preview
 + 13. On page reload show which colors and sizes are in cart (Product cart show)
 14. Add settings information about your favorite sizes, colors and show them by default on the product card
++ 15. do the same route as route for shop for collections like category=recommended
+16. If all collections -> shows popular and collection same items fix
 
 + // BUGS SCROLL ON ITEMS OPEN CHECK
 
@@ -21,3 +23,33 @@ DB:
 + // change item price 30+k
 + // items with 1794 ID
 // stock add count items and warnings if we do not have items
+
+
+Andrew Kucher, [24.07.21 19:14]
+available нет так как если этот айтем не available
+
+Andrew Kucher, [24.07.21 19:14]
+то он будет серого цвета типа
+
+Andrew Kucher, [24.07.21 19:14]
+ну как знаешь, товар, который закончился
+
+Andrew Kucher, [24.07.21 19:15]
+и у него не будет возможности добавлять в корзину
+
+Andrew Kucher, [24.07.21 19:15]
+и выбирать цвера итд
+
+Andrew Kucher, [24.07.21 19:15]
+но можно будет в wishlist добавить
+
+Andrew Kucher, [24.07.21 19:15]
+и если прям время будет
+
+Andrew Kucher, [24.07.21 19:15]
+то типа сделать оповещение по мылу
+
+Andrew Kucher, [24.07.21 19:15]
+если айтем available
+
+добавить теги в вид товара

@@ -2,50 +2,6 @@
             {
                 "mainCategory": "clothes",
                 "subCategory": "suits",
-                "viewImage": "http://176.104.6.131:2222/images/stock/suits/suits/1701_Canali/navy_color/1701_navy_canali1.png",
-                "id": "1701",
-                "name": "Canali",
-                "caption": "Siena Suit - Classic Fit",
-                "category": "Suits",
-                "type": "Classic",
-                "photo": {
-                    "Navy": [
-                        "http://176.104.6.131:2222/images/stock/suits/suits/1701_Canali/navy_color/1701_navy_canali1.png",
-                        "http://176.104.6.131:2222/images/stock/suits/suits/1701_Canali/navy_color/1701_navy_canali2.png",
-                        "http://176.104.6.131:2222/images/stock/suits/suits/1701_Canali/navy_color/1701_navy_canali3.png"
-                    ],
-                    "Black": [
-                        "http://176.104.6.131:2222/images/stock/suits/suits/1701_Canali/black_color/1701_black_canali1.png",
-                        "http://176.104.6.131:2222/images/stock/suits/suits/1701_Canali/black_color/1701_black_canali2.png",
-                        "http://176.104.6.131:2222/images/stock/suits/suits/1701_Canali/black_color/1701_black_canali3.png"
-                    ],
-                    "Charcoal": [
-                        "http://176.104.6.131:2222/images/stock/suits/suits/1701_Canali/charcoal_color/1701_charcoal_canali1.png",
-                        "http://176.104.6.131:2222/images/stock/suits/suits/1701_Canali/charcoal_color/1701_charcoal_canali2.png",
-                        "http://176.104.6.131:2222/images/stock/suits/suits/1701_Canali/charcoal_color/1701_charcoal_canali3.png"
-                    ]
-                },
-                "color": ["Navy", "Black", "Charcoal"],
-                "material": "Wool",
-                "price": "2099",
-                "size": ["38", "40", "42", "44", "48"],
-                "producingCountry": "Italy",
-                "description": [
-                    "Jacket: notch lapel, two-button front, chest pocket, flap hand pockets, non-functional four-button cuffs, double back vents",
-                    "Trousers: slide and two-button closure with zip fly, hand pockets, back button pockets, flat front, creased",
-                    "Family-run since 1934, Canali’s tailored designs are handcrafted with premium fabrics and a meticulous attention to detail."
-                ],
-                "stock": true,
-                "count": 30,
-                "bought": 16,
-                "collections": {
-                    "new": true,
-                    "recommended": true
-                }
-            },
-            {
-                "mainCategory": "clothes",
-                "subCategory": "suits",
                 "viewImage": "http://176.104.6.131:2222/images/stock/suits/suits/1702_John_Varvatos_Star_USA/1702_pearl-gray_john-varvatos-star1.png",
                 "id": "1702",
                 "name": "John Varvatos Star USA",
