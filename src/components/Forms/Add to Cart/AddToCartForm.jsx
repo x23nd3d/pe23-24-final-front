@@ -43,23 +43,25 @@ const AddToCartForm = ({ data, store, dispatchCart, product }) => {
     >
       {({ values, handleSubmit }) => (
         <Form className="form" onSubmit={handleSubmit}>
-          <div className="formBlock">
+          <div className="formBlockColor">
             <span className="dataPointer color-pointer">
               {data.color.length > 1 ? (
                 "Select a color"
               ) : (
                 <>
                   Color
-                  <span style={{ paddingLeft: "20px" }}>
+                  <span
+                  // style={{ paddingLeft: "20px" }}
+                  >
                     {productStore.color}
                   </span>
                 </>
               )}
             </span>
-            <div className="color-block">
+            <div className="color-selection">
             {data.color.length > 1 &&
               data.color.map((color, index) => (
-                <div key={color}>
+                <div className="color-box" key={color}>
                   <Field
                     type="radio"
                     name="color"
@@ -70,7 +72,7 @@ const AddToCartForm = ({ data, store, dispatchCart, product }) => {
                   />
                   <label className="customRadio" htmlFor={`${color}${index}`}>
                     <span className={`${colorize(color)} customRadio`}>
-                      {color}
+                      <p className="colorName">{color}</p>
                     </span>
                   </label>
                 </div>
@@ -78,7 +80,7 @@ const AddToCartForm = ({ data, store, dispatchCart, product }) => {
                 </div>
             </div>
           {data.size && (
-            <div className="formBlock select-block">
+            <div className="formBlockSize">
               <span className="dataPointer">Select a size</span>
               <Field className="size-select" name="size" as="select">
                 {data.size.map((size) => (
@@ -89,9 +91,10 @@ const AddToCartForm = ({ data, store, dispatchCart, product }) => {
               </Field>
             </div>
           )}
-          <button className="submit" type="submit">
-            Add to Cart
-          </button>
+          <div className="formBlockSubmit">
+            <button className="submit" type="submit">Add to Cart</button>
+            <div className="to-wishlist" >ICON</div>
+          </div>
         </Form>
       )}
     </Formik>

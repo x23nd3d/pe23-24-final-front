@@ -5,103 +5,101 @@
   @include block-120;
   height: 400px;
   justify-content: space-evenly;
+}
 
-  .formBlock {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 300px;
-    height: 100px;
-
-    &:last-of-type {
-      margin-bottom: 12px;
-    }
-    @media (max-width: 450px) {
-      margin-top: 40px;
-    }
-  }
-
-  .select-block {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 70px;
-    width: 200px;
-
-    @media (max-width: 450px) {
-      margin-top: 20px;
-    }
-  }
-
-  .field {
-    width: 100px;
-    display: flex;
-    justify-content: space-between;
-  }
+  // .field {
+  //   width: 100px;
+  //   display: flex;
+  //   background-color: aqua;
+  //   justify-content: space-between;
+  // }
 
   .dataPointer {
     @include point-info;
   }
-}
+// }
 
-.defaultRadio {
-  display: none;
-
-  &:checked + .customRadio::before {
-    content: "";
-    position: absolute;
-    bottom: -130%;
-    width: 140%;
-    height: 50px;
-    border: 1px solid black;
-  }
-}
-
-.customRadio {
-  position: relative;
+.formBlockColor {
+  @include highlight;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  cursor: pointer;
-  padding: 0;
-  margin: 0;
-
-  &::after {
-    content: "";
-    display: block;
-    width: 10px;
-    height: 2px;
-    position: absolute;
-    bottom: -50%;
-    border-radius: 10px;
-  }
-}
-
-.formBlock:first-child {
   width: 100%;
-
-  @media (max-width: 600px) {
-    flex-direction: column;
-    align-content: center;
-    align-items: flex-start;
+  height: 100px;
+  @media (max-width: 666px) {
     flex-wrap: wrap;
-  }
-
-  @media (min-width: 320px) and (max-width: 450px) {
-    width: 100%;
-    flex-wrap: wrap;
-    & div {margin: 10px 8px;}
-    & .color-block {
+    .color-selection {
       width: 100%;
+      @include highlight;
     }
   }
-  @media (max-width: 420px) {
-    flex-wrap: wrap;
-    & div {margin: 8px 8px;}
-    width: 100%;
+
+  .color-selection {
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+    @media (min-width:901px) and (max-width: 900px) {
+        width: 70%;
+    }
+    @media (max-width: 666px) {
+      width: 100%;
+      font-size: 14px;
+      height: 54px;
+      flex-wrap: wrap;
+      align-items: center;
+      @media (max-width: 370px) { align-content: space-between; }
+      @include highlight;
+    }
+
+    .color-box {
+      margin-left: 15px;
+    }
+
+    .defaultRadio {
+      display: none;
+
+      &:checked + .customRadio::before {
+        content: "";
+        position: absolute;
+        bottom: -90%;
+        width: 115%;
+        height: 35px;
+        border: 1.4px solid black;
+      }
+    }
+
+    .customRadio {
+      background-color: #fff;
+
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      cursor: pointer;
+      padding: 0;
+      margin: 0;
+
+      &::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 4px;
+        position: absolute;
+        bottom: -50%;
+        border-radius: 10px;
+      }
+    }
   }
+}
+
+.formBlockSubmit {
+  height: 60px;
+  width: 80%;
+  align-self: center;
+  display: flex;
+  justify-content: space-between;
 }
 
 .Navy::after { @include radioColorStyle; background-color: $navy; }
@@ -171,37 +169,24 @@
   }
 }
 
+
+
 .submit {
-  height: 60px;
-  width: 71%;
   background-color: #000;
-  color: #fff;
   font-size: 18px;
-  cursor: pointer;
   border: none;
   outline: none;
-  align-self: center;
+  cursor: pointer;
+  color: #fff;
+  width: 76%;
 }
 
-.color-block {
+.to-wishlist {
+  width: 20%;
+  height: 100%;
+  background-color: #000;
+  color: #fff;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
-  width: 70%;
-  flex-wrap: wrap;
-  @media (max-width: 450px) {
-    margin-top: 20px;
-  }
-  @media (max-width: 670px) {
-    font-size: 14px;
-  }
-}
-.color-block span {
-  background-color: #fff;
-}
-
-.color-pointer {
-  @media (max-width: 450px) {
-    margin-top: 20px;
-  }
 }
