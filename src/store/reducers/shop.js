@@ -9,6 +9,8 @@ import {
   SEND_PRODUCTS_REQUEST_START,
   SEND_PRODUCTS_REQUEST_SUCCESS,
   SHOP_SET_DEFAULT,
+  PAGINATION_SET_CONFIG,
+  PAGINATION_ADD_MORE_ITEMS,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -18,6 +20,9 @@ const initialState = {
   loading: false,
   error: false,
   filteredItems: [],
+  leftCount: null,
+  allItemsCount: null,
+  step: 10,
 };
 
 const transformPreviewItems = (array) => {
@@ -92,6 +97,16 @@ const handlers = {
   [RESET_FILTER_ITEMS]: (state, action) => ({
     ...state,
     filteredItems: [],
+  }),
+  [PAGINATION_SET_CONFIG]: (state, { leftCount, allItemsCount, step }) => ({
+    ...state,
+    leftCount,
+    allItemsCount,
+    step,
+  }),
+  [PAGINATION_ADD_MORE_ITEMS]: (state, { step }) => ({
+    ...state,
+    step,
   }),
   DEFAULT: (state) => state,
 };

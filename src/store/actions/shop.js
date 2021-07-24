@@ -1,4 +1,6 @@
 import {
+  PAGINATION_ADD_MORE_ITEMS,
+  PAGINATION_SET_CONFIG,
   RECEIVE_CURRENT_ROUTE_START,
   RECEIVE_CURRENT_ROUTE_SUCCESS,
   SELECT_PRODUCT_PREVIEW_PARAMS,
@@ -111,5 +113,64 @@ export function receiveRouteError(e) {
 export function setShopDefault() {
   return {
     type: SHOP_SET_DEFAULT,
+  };
+}
+
+export function paginationSetConfig() {
+  return (dispatch, getState) => {
+    const { currentItems } = getState().shop;
+    const settings = getState().shop;
+    const { step } = settings;
+    const allItemsCount = currentItems.length;
+    let leftCount = null;
+
+    if (allItemsCount > step) {
+      leftCount = allItemsCount - step;
+    }
+
+    console.log("{ leftCount, allItemsCount, step }", {
+      leftCount,
+      allItemsCount,
+      step,
+    });
+
+    dispatch(implementPaginationConfig(leftCount, allItemsCount, step));
+  };
+}
+
+export function implementPaginationConfig(leftCount, allItemsCount, step) {
+  return {
+    type: PAGINATION_SET_CONFIG,
+    leftCount,
+    allItemsCount,
+    step,
+  };
+}
+
+export function addMoreItems(addStepCount) {
+  return (dispatch, getState) => {
+    let newStepCount = addStepCount;
+
+    const { leftCount, step } = getState().shop;
+
+    if (leftCount < newStepCount) {
+      newStepCount = leftCount;
+    }
+
+    if (leftCount === 0) {
+      dispatch(addStep(10));
+    }
+    console.log("!!!", step);
+    console.log("@@@", addStepCount);
+    console.log("step + addStepCountstep + addStepCount", step + addStepCount);
+
+    dispatch(addStep(step + addStepCount));
+  };
+}
+
+export function addStep(step) {
+  return {
+    type: PAGINATION_ADD_MORE_ITEMS,
+    step,
   };
 }
