@@ -10,6 +10,7 @@ import Product from "./components/Product/Product";
 import LoginRegistration from "./components/LoginRegistration/LoginRegistration";
 import { logout } from "./store/actions/auth";
 import Logout from "./components/Logout/Logout";
+import Cart from "./components/Cart/Cart";
 import Spinner from "./components/UI/Spinner/Spinner";
 
 function App({ isAuthenticated, product }) {
@@ -28,6 +29,8 @@ function App({ isAuthenticated, product }) {
           <LoginRegistration />
         </AnimatePresence>
       </Route>
+
+      <Route path="/cart" component={Cart} />
 
       <Route path="/" component={MainPage} />
     </Switch>
