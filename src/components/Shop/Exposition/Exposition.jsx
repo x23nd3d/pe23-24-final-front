@@ -28,6 +28,8 @@ const Exposition = ({
     const showCount = allItemsCount - leftCount;
     const newArrayList = array.slice(0, showCount);
 
+    if (!Array.isArray(array)) return;
+
     return newArrayList.map((item) => (
       <li className={listItem} key={item.id + item.name}>
         <ProductCard item={item} />
@@ -50,7 +52,8 @@ const Exposition = ({
           </ul>
         )}
 
-        {!leftCount && leftCount !== 0 ? null : (
+        {(!leftCount && leftCount !== 0) ||
+        !Array.isArray(productList) ? null : (
           <div className={showMoreContainer}>
             <button
               className={showMoreBtn}
@@ -74,7 +77,10 @@ const Exposition = ({
 };
 
 Exposition.propTypes = {
-  productList: PropTypes.instanceOf(Object).isRequired,
+  productList: PropTypes.oneOfType([
+    PropTypes.instanceOf(Object),
+    PropTypes.string,
+  ]).isRequired,
   paginationSetConfigHandler: PropTypes.func.isRequired,
   addStepHandler: PropTypes.func.isRequired,
   shop: PropTypes.instanceOf(Object).isRequired,

@@ -25,7 +25,6 @@ const Dropdown = ({
   const registerRoutesHandler = (route, subcategory) => {
     dropdownOff();
     receiveRoute(route);
-    console.log("mainRoutemainRoutemainRoute", mainRoute);
     checkCategoriesHandler(mainRoute);
     categoryChooser(mainRoute);
     subcategoryChooser(subcategory);

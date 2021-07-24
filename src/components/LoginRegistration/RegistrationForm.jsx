@@ -29,7 +29,6 @@ const Registration = (props) => {
   const onSubmit = async (values) => {
     const { name, secondName, email, password } = values;
     const registered = await props.signUp(name, secondName, email, password);
-    console.log(registered);
   };
 
   return (
