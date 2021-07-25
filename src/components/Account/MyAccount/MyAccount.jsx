@@ -56,9 +56,9 @@ const MyAccount = (props) => {
         </button>
       </div>
       {active === 1 && <Profile />}
-      {active === 2 && <Address />}
-      {active === 3 && <Wishlist />}
-      {active === 4 && <History />}
+      {active === 2 && <Wishlist />}
+      {active === 3 && <History />}
+      {active === 4 && <Address />}
     </>
   );
 };
