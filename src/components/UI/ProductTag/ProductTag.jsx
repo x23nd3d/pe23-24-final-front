@@ -12,7 +12,7 @@ const ProductTag = ({ item, tag }) => {
 };
 
 ProductTag.propTypes = {
-  item: PropTypes.string.isRequired,
+  item: PropTypes.instanceOf(Object).isRequired,
   tag: PropTypes.string.isRequired,
 };
 

@@ -73,10 +73,6 @@ export const setItemCount = (items) => ({
   items,
 });
 
-export const increaseHandler = (count) => (dispatch, getState) => {
-  // if ()
-};
-
 export const increaseItemCount = (item) => ({
   type: INCREASE_ITEM_COUNT,
   item,
