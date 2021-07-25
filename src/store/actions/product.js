@@ -47,10 +47,12 @@ export const setItemStart = () => ({
 
 export const visitedProductsAction = (data) => (dispatch, getState) => {
   const {visited} = getState().product;
-  const set = new Set();
+  visited.length === 4 && visited.shift();
 
-  visited[0] && visited.forEach(o => set.add(o));
-  set.size < 4 && set.add(data);
+  const set = new Set();
+  visited.forEach(o => set.add(o));
+  set.add(data);
+
   const [...unique] = set;
 
   dispatch({

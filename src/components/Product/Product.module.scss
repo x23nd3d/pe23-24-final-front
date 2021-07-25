@@ -1,7 +1,7 @@
 @import "../../styles/mixins";
 @import "../../styles/variables";
 
-.product {
+.productPage {
     display: flex;
     width: 100%;
     background-color: #fff;
@@ -33,21 +33,35 @@
     flex-direction: column;
     justify-content: space-evenly;
     width: 90%;
-
-    height: 100%;
+    // height: 100%;
     background-color: #fff;
     .primaryBlock, .selectionBlock {
         @include block-120;
     }
     .topBlock {
-        margin-bottom: 20px;
-        @include highlight;
+        background-color: burlywood;
+    }
+
+    .NameBox {
+        display: flex;
+        align-items: center;
+        background-color: aqua;
+        .collectionLabel {
+            margin-left: 20px;
+            text-align: center;
+            padding: 3px 5px 2px;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+        .collectionLabel {
+            background-color: chartreuse;
+        }
     }
 
     .Name {
-        margin-top: 10px;
         font-size: 22px;
     }
+
     .Caption {
         margin-top: 10px;
         font-size: 14px;
@@ -58,13 +72,21 @@
     }
 }
 
+.PriceBox {
+    & span {
+        @include point-info;        // margin-bottom: 5px;
+        // margin-top: 5px;
+        padding-top: 10px;
+    }
+}
+
 .Price {
-    margin-top: 20px;
-    margin-bottom: 40px;
+    margin-top: 15px;
+    margin-bottom: 20px;
 }
 
 .bottomBlock {
-    margin-top: 50px;
+    // margin-top: 50px;
 
     .moreDetails {
         font-size: 20px;
