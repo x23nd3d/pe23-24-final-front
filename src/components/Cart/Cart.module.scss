@@ -31,12 +31,16 @@
 }
 
 .Button {
-  width: 269px;
-  height: 57px;
   background-color: #000000;
   color: #ffffff;
   text-transform: uppercase;
   padding: 15px 20px;
+  display: inline-block;
+}
+
+.ButtonCheckout {
+  padding: 15px 90px!important;
+  display: inline-block!important;
 }
 
 .Aside {
@@ -95,4 +99,9 @@
   .Button {
     width: 100%;
   }
+}
+
+.CartNoItems {
+  margin-top: 40px;
+  font-size: 30px
 }

@@ -1,0 +1,165 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.Checkout {
+  padding: 5%;
+  background-color: #fff;
+}
+
+.CheckoutContainer {
+  background-color: #e9e9e9;
+  padding: 50px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 18px 0 rgb(0 0 0 / 27%);
+  width: 600px;
+  border-radius: 5px 5px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  max-width: 600px;
+}
+
+.CheckoutContainer > p {
+  font-size: 18px;
+  font-family: "Open Sans", sans-serif;
+  margin-bottom: 40px;
+}
+
+
+
+.CheckoutPayments {
+  display: block;
+  margin-bottom: 75px;
+}
+
+.CheckoutPaymentImg {
+  margin-right: 30px;
+  vertical-align: middle;
+}
+
+.CheckoutInputField {
+  display: flex;
+}
+
+.CheckoutInputField > p {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  margin-right: 8px;
+}
+
+.CheckoutInput {
+  display: block;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #000;
+  outline: none;
+  margin-bottom: 38px;
+}
+
+
+.CheckoutPay {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.CheckoutForm {
+  margin-bottom: 50px;
+}
+
+.PaymentCardExpiry {
+  display: flex;
+  position: relative;
+}
+
+.PaymentCardExpiry > .CheckoutInput {
+  width: 40px;
+}
+
+.PaymentCardExpiry::after {
+  content: '/';
+  position: absolute;
+  left: 50%;
+  margin-left: -4px;
+  color: #aaa;
+}
+
+.CheckoutInputCVV {
+  width: 25px;
+}
+
+.Error {
+  display: block;
+  position: relative;
+  top: 24px;
+  right: 13px;
+}
+
+.Checkbox {
+  position: relative;
+  visibility: hidden;
+  cursor: pointer;
+  margin-bottom: 30px;
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    visibility: visible;
+    border-radius: 50%;
+  }
+
+  &:before {
+    left: 0;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    background-color: #fff;
+  }
+
+  &:after {
+    left: 3px;
+    top: 3px;
+    width: 10px;
+    height: 10px;
+  }
+
+  &:checked:after {
+    background-color: #000;
+  }
+
+  &Label {
+    color: #847a7a;
+    margin-left: 20px;
+    margin-top: 3px;
+  }
+}
+
+.CheckoutHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.CheckoutHeader > p{
+  font-weight: 600;
+  margin-bottom: 25px;
+  font-size: 18px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.CheckoutPayCancel {
+  color: #fff;
+  border: none;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  font-weight: 400;
+  font-family: "Open Sans", sans-serif;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 10px 30px;
+  background-color: #980000;
+  letter-spacing: 1px;
+}
