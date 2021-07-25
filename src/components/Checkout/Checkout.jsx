@@ -3,15 +3,17 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import * as yup from "yup";
-import { Form, Formik } from "formik";
+import { Form, Formik, Field } from "formik";
+import { Link } from "react-router-dom";
 import classes from "./Checkout.module.scss";
 import mastercard from "../../img/icons/Checkout/mastercard.png";
 import visa from "../../img/icons/Checkout/visa.png";
 import express from "../../img/icons/Checkout/express.jpg";
 import Button from "../UI/Buttons List/Button";
 import pushNotification from "../../utils/toastrConfig";
+import { checkout } from "../../store/actions/user";
 
-const Checkout = ({ cart, user }) => {
+const Checkout = ({ cart, user, checkoutHandler }) => {
   const validationSchema = yup.object().shape({
     cardNumber: yup
       .string()
@@ -37,57 +39,34 @@ const Checkout = ({ cart, user }) => {
   });
 
   const onSubmit = async (values) => {
-    const { cardNumber, cardName, cardExp, cardExp2, cardCvv } = values;
-    // pushNotification(
-    //   "error",
-    //   "You have no rights to access the system!",
-    //   "Error",
-    //   {
-    //     toastClass: "toastr-c-error",
-    //   }
-    // );
-    console.log(values, "@@@@");
-    console.log("cardNumber", cardNumber);
-    // const authenticated = await props.auth(email, password, isKeepSigned);
-    // if (authenticated) props.history.push("/shop?category=all&type=all");
-  };
+    const { cardNumber, cardName, cardExp, cardExp2, cardCvv, saveCard } =
+      values;
 
-  const cardLengthConfig = {
-    type: "Card Number",
-    minLength: 16,
-    maxLength: 16,
-    errorMessage: ["Please enter the correct card number", ""],
-    validate: false,
-  };
+    console.log("VALUES", values);
 
-  const cardNameLength = {
-    type: "Card Name",
-    minLength: 2,
-    maxLength: 50,
-    errorMessage: ["Please enter the correct card name", "Warning"],
-    validate: false,
-  };
+    const sendCheckoutRequest = await checkoutHandler(values);
+    console.log("sendCheckoutRequest", sendCheckoutRequest);
 
-  const cardExpiryConfig = {
-    type: "Card Expiry",
-    minLength: 2,
-    maxLength: 2,
-    errorMessage: ["Please enter proper numbers", "Incorrect Expiration Date"],
-    validate: false,
-  };
-
-  const cardCvvConfig = {
-    type: "Card CVV",
-    minLength: 3,
-    maxLength: 3,
-    errorMessage: ["Please enter proper CVV code", "Incorrect CVV"],
-    validate: false,
+    pushNotification(
+      "success",
+      "Please expect a receipt to your email",
+      "Thank you for your purchase!",
+      {
+        toastClass: "toastr-c-success",
+      }
+    );
   };
 
   return (
     <div className={classes.Checkout}>
       <div className={classes.CheckoutContainer}>
-        <p>Please select your payment method</p>
+        <div className={classes.CheckoutHeader}>
+          <p>Please select your payment method</p>
+          <Link to="/cart" className={classes.CheckoutPayCancel}>
+            Cancel
+          </Link>
+        </div>
+
         <p>Total payment amount $ {cart.total}</p>
         <div className={classes.CheckoutPayments}>
           <img
@@ -205,6 +184,18 @@ const Checkout = ({ cart, user }) => {
                   )}
                 </div>
 
+                <div className={classes.CheckoutInputField}>
+                  <Field
+                    className={classes.Checkbox}
+                    type="checkbox"
+                    name="saveCard"
+                  />
+
+                  <span className={classes.CheckboxLabel}>
+                    Save credit card for next purchases
+                  </span>
+                </div>
+
                 <Button
                   label="Pay"
                   submit="true"
@@ -222,11 +213,13 @@ const Checkout = ({ cart, user }) => {
 Checkout.defaultProps = {
   cart: {},
   user: {},
+  checkoutHandler: (f) => f,
 };
 
 Checkout.propTypes = {
   cart: PropTypes.instanceOf(Object),
   user: PropTypes.instanceOf(Object),
+  checkoutHandler: PropTypes.func,
 };
 
 function mapStateToProps(state) {
@@ -237,7 +230,9 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return {};
+  return {
+    checkoutHandler: (bool) => dispatch(checkout(bool)),
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Checkout);

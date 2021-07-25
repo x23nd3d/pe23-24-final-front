@@ -1,3 +1,8 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 .Checkout {
   padding: 5%;
   background-color: #fff;
@@ -19,16 +24,10 @@
 .CheckoutContainer > p {
   font-size: 18px;
   font-family: "Open Sans", sans-serif;
-}
-
-.CheckoutContainer > p:first-child {
-  font-weight: 600;
-  margin-bottom: 52px;
-}
-
-.CheckoutContainer > p:nth-child(2) {
   margin-bottom: 40px;
 }
+
+
 
 .CheckoutPayments {
   display: block;
@@ -58,6 +57,7 @@
   outline: none;
   margin-bottom: 38px;
 }
+
 
 .CheckoutPay {
   margin-left: auto;
@@ -96,3 +96,70 @@
   right: 13px;
 }
 
+.Checkbox {
+  position: relative;
+  visibility: hidden;
+  cursor: pointer;
+  margin-bottom: 30px;
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    visibility: visible;
+    border-radius: 50%;
+  }
+
+  &:before {
+    left: 0;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    background-color: #fff;
+  }
+
+  &:after {
+    left: 3px;
+    top: 3px;
+    width: 10px;
+    height: 10px;
+  }
+
+  &:checked:after {
+    background-color: #000;
+  }
+
+  &Label {
+    color: #847a7a;
+    margin-left: 20px;
+    margin-top: 3px;
+  }
+}
+
+.CheckoutHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.CheckoutHeader > p{
+  font-weight: 600;
+  margin-bottom: 25px;
+  font-size: 18px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.CheckoutPayCancel {
+  color: #fff;
+  border: none;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  font-weight: 400;
+  font-family: "Open Sans", sans-serif;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 10px 30px;
+  background-color: #980000;
+  letter-spacing: 1px;
+}
