@@ -2,8 +2,21 @@
   display: block;
   background-color: #fff;
   min-height: 90vh;
-  font-family: "Josefine Sans", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   padding-top: 40px;
+
+  &LoginMessage {
+    display: inline-block;
+    font-size: 20px;
+    font-family: "Josefin Sans", san-serif;
+  }
+
+  &SwitchForm {
+    display: inline-block;
+    border: 1px solid black;
+    margin-left: 0.5rem;
+    padding: 0.25rem 0.5rem;
+  }
 }
 
 .Inner {
@@ -31,6 +44,7 @@
   margin-left: 50px;
   padding: 40px;
   box-sizing: border-box;
+  height: fit-content;
 }
 
 .CartTotal {
