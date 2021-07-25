@@ -50,7 +50,7 @@ export const visitedProductsAction = (data) => (dispatch, getState) => {
   visited.length === 4 && visited.shift();
 
   const set = new Set();
-  visited.forEach(o => set.add(o));
+  visited[0] && visited.forEach(o => set.add(o));
   set.add(data);
 
   const [...unique] = set;

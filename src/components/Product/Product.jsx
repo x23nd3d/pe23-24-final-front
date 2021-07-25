@@ -6,6 +6,8 @@ import AddToCartForm from "../Forms/Add to Cart/AddToCartForm";
 import SlideShow from "./SlideShow/SlideShow";
 import {colorAction, photoAction } from "../../store/actions/product";
 import VisitedProducts from "./Visited/VisitedProducts";
+import Available from "../UI/SVG Icons Components/Available";
+import Unavailable from "../UI/SVG Icons Components/Unavilable";
 
 import {
   productPage,
@@ -23,7 +25,9 @@ import {
   moreDetails,
   bottomBlock,
   dsc,
+  backShopping,
   dataBlock,
+  isStock
 } from "./Product.module.scss";
 
 const Product = ({
@@ -69,7 +73,10 @@ const Product = ({
                     </header>
                     <div className={PriceBox}>
                       <span className={classNames(dataPointer, Price)}>Price<p>{`$${price}`}</p></span>
-                      <span>Available</span>
+                      <div className={isStock}>
+                        <span>Available</span>
+                        {1 > 0 ? <Available /> : <Unavailable />}
+                      </div>
                     </div>
                 </li>
                 <li className={inputBlock}>
@@ -97,7 +104,7 @@ const Product = ({
               </ul>
         </article>
       </section>
-    <VisitedProducts data={productStore.visited} />
+    {/* <VisitedProducts data={productStore.visited} /> */}
   </>
   )
 }

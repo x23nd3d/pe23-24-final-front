@@ -5,6 +5,13 @@ import { Formik, Form, Field } from "formik";
 import colorize from "../../../utils/colorize";
 import "./AddToCartForm.scss";
 import { addToCart } from "../../../store/actions/cart";
+import BackShoppingIcon from "../../UI/SVG Icons Components/BackShoppingIcon";
+import AddToWishlist from "../../UI/SVG Icons Components/AddToWishlistIcon";
+import AlreadyInWishlist from "../../UI/SVG Icons Components/AlreadyInWishlistIcon";
+import AddToCartButton from "./AddToCartButton";
+import AddToCartIcon from "../../UI/SVG Icons Components/AddToCartIcon";
+import BackShopping from "../../UI/Buttons List/BackShopping";
+import AddToWishList from "../../UI/Buttons List/AddToWishList";
 
 /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -49,7 +56,7 @@ const AddToCartForm = ({ data, store, dispatchCart, product }) => {
                 "Select a color"
               ) : (
                 <div className="formOneColorBlock">
-                  Color
+                  <p>Color</p>
                   <span>
                     {productStore.color}
                   </span>
@@ -78,8 +85,7 @@ const AddToCartForm = ({ data, store, dispatchCart, product }) => {
                 ))}
                 </div>}
             </div>
-          {data.size && (
-            <div className="formBlockSize">
+          {data.size && <div className="formBlockSize">
               <span className="dataPointer">Select a size</span>
               <Field className="size-select" name="size" as="select">
                 {data.size.map((size) => (
@@ -89,10 +95,11 @@ const AddToCartForm = ({ data, store, dispatchCart, product }) => {
                 ))}
               </Field>
             </div>
-          )}
+          }
           <div className="formBlockSubmit">
-            <button className="submit" type="submit">Add to Cart</button>
-            <div className="to-wishlist" >ICON</div>
+            <BackShopping />
+            <AddToCartButton />
+            <AddToWishList />
           </div>
         </Form>
       )}
