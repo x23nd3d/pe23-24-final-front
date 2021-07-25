@@ -1,0 +1,32 @@
+.AccountButton {
+  display: flex;
+  align-items: center;
+  padding: 50px;
+  background-color: #000;
+  color: #fff;
+  transition: .4s;
+}
+
+.AccountButton:hover {
+  box-shadow: 0 0 13px 6px #000000a8;
+}
+
+.AccountButton > i {
+  font-size: 30px;
+  margin-right: 15px;
+}
+
+.AccountButtonDetails {
+display: block;
+  margin: 0 10px;
+
+}
+
+.AccountButtonDetails > p:first-child {
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.AccountButtonDetails > p:last-child {
+  font-size: 18px;
+}
