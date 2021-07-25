@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import "./SlideShow.scss";
-import Title from "../UI/Section Title/Title";
-import ProductCard from "../Shop/Exposition/ProductCard";
+import "../SlideShow/SlideShow.scss";
+import Title from "../../UI/Section Title/Title";
+import VisitedCard from "./VisitedCard";
 
 /* eslint-disable react/jsx-boolean-value */
 
@@ -31,7 +31,7 @@ const VisitedProducts = ({data}) => {
           transitionDuration={2}
           swipeable={true}
         >
-        { data.map(card => <ProductCard product={card} key={card.id} />) }
+        { data.map(d => <VisitedCard product={d} key={d.id} />) }
         </Carousel>
     </section>
   )

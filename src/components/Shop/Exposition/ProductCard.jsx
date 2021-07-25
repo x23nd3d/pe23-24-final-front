@@ -15,7 +15,6 @@ import { handleItemPreviewParams } from "../../../store/actions/shop";
 import colorize from "../../../utils/colorize";
 
 const ProductCard = ({
-  isVisited,
   product,
   dispatchColor,
   dispatchPhoto,
@@ -31,8 +30,6 @@ const ProductCard = ({
   const findCurrentItemByIdx = (array, currentItem) =>
     array.findIndex((current) => current.id === currentItem.id);
 
-  // console.log("ITEMMMM", shop.currentPreviewItems);
-
   const idx = findCurrentItemByIdx(shop.currentPreviewItems, item);
   const cartIdx = findCurrentItemByIdx(
     cart.items,
@@ -43,7 +40,7 @@ const ProductCard = ({
     selectCurrentItemHandler(item);
     dispatchColor(item.color[0]);
     dispatchPhoto(item.photo[item.color[0]]);
-    isVisited && dispatchVisitedProducts(product);
+    dispatchVisitedProducts(item)
   };
 
   const clsHoverDetails = [
@@ -176,11 +173,9 @@ ProductCard.defaultProps = {
   handleItemPreview: (f) => f,
   shop: {},
   cart: {},
-  isVisited: false
 };
 
 ProductCard.propTypes = {
-  isVisited: PropTypes.bool,
   item: PropTypes.instanceOf(Object).isRequired,
   history: PropTypes.instanceOf(Object).isRequired,
   selectCurrentItemHandler: PropTypes.func,

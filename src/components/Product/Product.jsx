@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import classNames from "classnames";
 import AddToCartForm from "../Forms/Add to Cart/AddToCartForm";
-import SlideShow from "./SlideShow";
+import SlideShow from "./SlideShow/SlideShow";
 import {colorAction, photoAction } from "../../store/actions/product";
-import VisitedProducts from "./VisitedProducts";
+import VisitedProducts from "./Visited/VisitedProducts";
 
 import {
   productPage,
@@ -97,7 +97,7 @@ const Product = ({
               </ul>
         </article>
       </section>
-    {/* <VisitedProducts data={productStore.visited} /> */}
+    <VisitedProducts data={productStore.visited} />
   </>
   )
 }
