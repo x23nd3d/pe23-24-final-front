@@ -56,7 +56,7 @@ Wishlist.propTypes = {
   id: PropTypes.string,
   color: PropTypes.string,
   size: PropTypes.string,
-  price: PropTypes.number,
+  price: PropTypes.string,
 };
 
 export default Wishlist;

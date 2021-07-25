@@ -14,6 +14,7 @@ import Cart from "./components/Cart/Cart";
 import Spinner from "./components/UI/Spinner/Spinner";
 import Account from "./components/Account/Account";
 import Checkout from "./components/Checkout/Checkout";
+import MyAccount from "./components/Account/MyAccount/MyAccount";
 
 function App({ isAuthenticated, product }) {
   let routes = (
@@ -54,11 +55,10 @@ function App({ isAuthenticated, product }) {
           </ShopLayout>
         </Route>
         <Route exact path="/logout" component={Logout} />
-
-        <Route path="/cart" component={Cart} />
-        <Route path="/account" component={Account} />
-        <Route path="/checkout" component={Checkout} />
-
+        <Route exact path="/cart" component={Cart} />
+        <Route exact path="/account/:details" component={MyAccount} />
+        <Route exact path="/account" component={Account} />
+        <Route exact path="/checkout" component={Checkout} />
         <Route path="/" component={MainPage} />
       </Switch>
     );

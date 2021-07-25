@@ -1,6 +1,10 @@
 import axios from "../../axios/axios-user";
 
-import { SAVE_CREDIT_CARD_DETAILS } from "./actionTypes";
+import {
+  SAVE_CREDIT_CARD_DETAILS,
+  SET_ACCOUNT_ACTIVE_TAB,
+  SET_ACCOUNT_DEFAULT_TAB,
+} from "./actionTypes";
 
 export const checkout = (config) => async (dispatch, getState) => {
   try {
@@ -24,3 +28,16 @@ export const toggleSaveCreditCardDetails = (isCardSaved) => ({
   type: SAVE_CREDIT_CARD_DETAILS,
   isCardSaved,
 });
+
+export const setDefaultAccountTab = () => ({
+  type: SET_ACCOUNT_DEFAULT_TAB,
+});
+
+export const setActiveTab = (accountActiveTab) => ({
+  type: SET_ACCOUNT_ACTIVE_TAB,
+  accountActiveTab,
+});
+
+export const setAccountActiveTab = (tab) => (dispatch, getState) => {
+  dispatch(setActiveTab(tab));
+};

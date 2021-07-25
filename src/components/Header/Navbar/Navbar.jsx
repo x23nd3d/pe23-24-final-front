@@ -100,6 +100,12 @@ const Nav = ({ isAuthenticated, user, history, showCart, cart }) => {
       );
     });
 
+  const showCartHandler = () => {
+    setMan(false);
+    setAccountMenu(false);
+    showCart();
+  };
+
   return (
     <>
       <nav className={classes.Nav}>
@@ -132,7 +138,7 @@ const Nav = ({ isAuthenticated, user, history, showCart, cart }) => {
           <ListRoute
             route={history.location.search || history.location.pathname}
             content="Cart"
-            onClick={showCart}
+            onClick={showCartHandler}
             listClass={classNames(classes.NavItem, classes.NavItemShoppingBag)}
           />
           {cart.items.length > 0 ? (

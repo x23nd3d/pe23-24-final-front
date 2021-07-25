@@ -1,4 +1,4 @@
-7. PRODUCT Size undefined check
+
 14. Add settings information about your favorite sizes, colors and show them by default on the product card
 
 
@@ -75,3 +75,5 @@ Andrew Kucher, [25.07.21 22:16]
 
 Andrew Kucher, [25.07.21 22:17]
 также будет возможность у пользователя свою карту сохранить
+
+dropdown account close on click Cart
