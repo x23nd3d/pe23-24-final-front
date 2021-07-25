@@ -59,3 +59,5 @@ Andrew Kucher, [24.07.21 19:15]
 add delivery price and delivery method
 
 add discounts  ["peApjvTe","xJlqFcLP","5Q6wsLii","QlHTY7Of","oxR3s47z","X97AQgT2","roneZjIt","uF9ZUi8T","qAtBYdDy","wkXDXH44","XeuM8lwC","DQeKpN9J","FfqzOua0","xTJcWnKC","1UHL0JFP","vyPcBI1e","rwy2s13y","kpEFRxb9","140kOJpK","WIlzkxU7","HqTK6gy1","PUYyzBCO","iGCVzefb","DGWz1aU7","u3EvCqqP","DFVPGuAV","ev9u1ttf","Y2TfkjZk","XES692Cv","Fh73ZhIg","kzalLtSg","Dr3flaRa","KiipUVTu","f8ToiB9R","W8bXDiwf","rjDVVBeX","wsnTyuGx","GtDPB3iK","n4rZ8I5m","poZcFKRa","xQxHgXBy","O6QLaMpU","6U3Kcslb","aLWIfd45","F3kX5h5N"]
+
+add mark to save card for further payments and suggest it

@@ -74,7 +74,7 @@
 }
 
 .PaymentCardExpiry > .CheckoutInput {
-  width: 25px;
+  width: 40px;
 }
 
 .PaymentCardExpiry::after {
@@ -88,3 +88,11 @@
 .CheckoutInputCVV {
   width: 25px;
 }
+
+.Error {
+  display: block;
+  position: relative;
+  top: 24px;
+  right: 13px;
+}
+
