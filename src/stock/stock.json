@@ -25,12 +25,10 @@
                     "Cut for a slim fit, John Varvatos Star USA's crisp suit separates effortlessly segue from workweek to weekend."
                 ],
                 "stock": true,
-                "count": 74,
-                "bought": 32,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-                }
+                "left": 74,
+                "ordered": 32,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "clothes",
@@ -57,12 +55,10 @@
                     "Theory's tonal plaid suit brings a subtle hint of print to your work wardrobe, while the refined details and slim cut update the timeless motif."
                 ],
                 "stock": true,
-                "count": 18,
-                "bought": 69,
-                "collections": {
+                "left": 18,
+                "ordered": 69,
                 "new": false,
                 "recommended": false
-            }
             },
             {
                 "mainCategory": "clothes",
@@ -91,12 +87,10 @@
                     "Pants: zip fly with tab closure, two back besom pockets, two side entry pockets, unhemmed, partially lined"
                 ],
                 "stock": true,
-                "count": 96,
-                "bought": 36,
-                "collections": {
-                    "new": true,
-                    "recommended": false
-            }
+                "left": 96,
+                "ordered": 36,
+                "new": true,
+                "recommended": false
             },
             {
                 "mainCategory": "clothes",
@@ -127,12 +121,10 @@
                     "Pants: mid-rise, zip fly with button tab closure, flat front, satin tuxedo stripes two side pockets, one coin pocket, two back besom pockets with button closures, unfinished hem, unlined"
                 ],
                 "stock": true,
-                "count": 42,
-                "bought": 25,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-            }
+                "left": 42,
+                "ordered": 25,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "clothes",
@@ -162,12 +154,10 @@
                     "Smooth leather, allover flat seamwork, lined"
                 ],
                 "stock": true,
-                "count": 96,
-                "bought": 99,
-                "collections": {
-                    "new": false,
-                    "recommended": false
-                }
+                "left": 96,
+                "ordered": 99,
+                "new": false,
+                "recommended": false
             },
             {
                 "mainCategory": "clothes",
@@ -211,12 +201,10 @@
                     "Ribbed hems"
                 ],
                 "stock": true,
-                "count": 41,
-                "bought": 158,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-                }
+                "left": 41,
+                "ordered": 158,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "clothes",
@@ -253,12 +241,10 @@
                     "Mini waffle textured fabric"
                 ],
                 "stock": true,
-                "count": 25,
-                "bought": 84,
-                "collections": {
-                    "new": false,
-                    "recommended": false
-                }
+                "left": 25,
+                "ordered": 84,
+                "new": false,
+                "recommended": false
             },
             {
                 "mainCategory": "clothes",
@@ -289,12 +275,10 @@
                     "Unlined"
                 ],
                 "stock": true,
-                "count": 64,
-                "bought": 94,
-                "collections": {
-                    "new": false,
-                    "recommended": false
-                }
+                "left": 64,
+                "ordered": 94,
+                "new": false,
+                "recommended": false
             },
             {
                 "mainCategory": "clothes",
@@ -325,12 +309,10 @@
                     "Side vents"
                 ],
                 "stock": true,
-                "count": 68,
-                "bought": 300,
-                "collections": {
-                    "new": true,
-                    "recommended": true
-                }
+                "left": 68,
+                "ordered": 300,
+                "new": true,
+                "recommended": true
             },
             {
                 "mainCategory": "clothes",
@@ -363,12 +345,10 @@
                     "Two chest cargo button flap pockets"
                 ],
                 "stock": true,
-                "count": 72,
-                "bought": 125,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-                }
+                "left": 72,
+                "ordered": 125,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "clothes",
@@ -402,12 +382,10 @@
                     "Lined"
                 ],
                 "stock": true,
-                "count": 119,
-                "bought": 23,
-                "collections": {
-                    "new": false,
-                    "recommended": false
-                }
+                "left": 119,
+                "ordered": 23,
+                "new": false,
+                "recommended": false
             },
             {
                 "mainCategory": "clothes",
@@ -438,12 +416,10 @@
                     "Double vent"
                 ],
                 "stock": true,
-                "count": 98,
-                "bought": 68,
-                "collections": {
-                    "new": false,
-                    "recommended": false
-                }
+                "left": 98,
+                "ordered": 68,
+                "new": false,
+                "recommended": false
             },
             {
                 "mainCategory": "clothes",
@@ -476,12 +452,10 @@
                     "Faded"
                 ],
                 "stock": true,
-                "count": 77,
-                "bought": 42,
-                "collections": {
-                    "new": false,
-                    "recommended": false
-                }
+                "left": 77,
+                "ordered": 42,
+                "new": false,
+                "recommended": false
             },
             {
                 "mainCategory": "clothes",
@@ -510,12 +484,10 @@
                     "Distressed"
                 ],
                 "stock": true,
-                "count": 60,
-                "bought": 16,
-                "collections": {
-                    "new": true,
-                    "recommended": false
-                }
+                "left": 60,
+                "ordered": 16,
+                "new": true,
+                "recommended": false
             },
             {
                 "mainCategory": "clothes",
@@ -561,12 +533,10 @@
                     "Moisture wicking, quick drying, wrinkle resistant fabric with DWR \"Durable Water Repellent\" finish that repels water and stains"
                 ],
                 "stock": true,
-                "count": 89,
-                "bought": 96,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-                }
+                "left": 89,
+                "ordered": 96,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "clothes",
@@ -603,12 +573,10 @@
                     "Belt loops"
                 ],
                 "stock": true,
-                "count": 77,
-                "bought": 38,
-                "collections": {
-                    "new": true,
-                    "recommended": false
-                }
+                "left": 77,
+                "ordered": 38,
+                "new": true,
+                "recommended": false
             },
             {
                 "mainCategory": "clothes",
@@ -640,12 +608,10 @@
                     "Belt loops"
                 ],
                 "stock": true,
-                "count": 99,
-                "bought": 65,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-                }
+                "left": 99,
+                "ordered": 65,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "clothes",
@@ -677,12 +643,10 @@
                     "Belt loops"
                 ],
                 "stock": true,
-                "count": 74,
-                "bought": 35,
-                "collections": {
-                    "new": true,
-                    "recommended": false
-                }
+                "left": 74,
+                "ordered": 35,
+                "new": true,
+                "recommended": false
             },
             {
                 "mainCategory": "clothes",
@@ -713,12 +677,10 @@
                     "Tonal stitching"
                 ],
                 "stock": true,
-                "count": 85,
-                "bought": 41,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-                }
+                "left": 85,
+                "ordered": 41,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "clothes",
@@ -747,12 +709,10 @@
                     "AG strives for environmental responsibility by using Ozone Technology and recycling heat to cut water and energy consumption and incorporating more sustainable fibers such as Tencel® and Modal® in its products."
                 ],
                 "stock": true,
-                "count": 16,
-                "bought": 345,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-                }
+                "left": 16,
+                "ordered": 345,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "shoes",
@@ -786,12 +746,10 @@
                     "Calfskin leather upper, pigskin leather lining, rubber sole"
                 ],
                 "stock": true,
-                "count": 30,
-                "bought": 48,
-                "collections": {
-                    "new": true,
-                    "recommended": true
-                }
+                "left": 30,
+                "ordered": 48,
+                "new": true,
+                "recommended": true
             },
             {
                 "mainCategory": "shoes",
@@ -825,12 +783,10 @@
                     "Leather upper, leather and fabric lining, rubber sole"
                 ],
                 "stock": true,
-                "count": 27,
-                "bought": 187,
-                "collections": {
-                    "new": true,
-                    "recommended": false
-                }
+                "left": 27,
+                "ordered": 187,
+                "new": true,
+                "recommended": false
             },
             {
                 "mainCategory": "shoes",
@@ -863,12 +819,10 @@
                     "Nylon and leather upper, fabric lining, rubber sole"
                 ],
                 "stock": true,
-                "count": 99,
-                "bought": 43,
-                "collections": {
-                    "new": true,
-                    "recommended": true
-                }
+                "left": 99,
+                "ordered": 43,
+                "new": true,
+                "recommended": true
             },
             {
                 "mainCategory": "shoes",
@@ -901,12 +855,10 @@
                     "Leather upper, leather and fabric lining, rubber sole"
                 ],
                 "stock": true,
-                "count": 89,
-                "bought": 64,
-                "collections": {
-                    "new": false,
-                    "recommended": false
-                }
+                "left": 89,
+                "ordered": 64,
+                "new": false,
+                "recommended": false
             },
             {
                 "mainCategory": "shoes",
@@ -948,12 +900,10 @@
                     "Leather and fabric lining, rubber sole"
                 ],
                 "stock": true,
-                "count": 64,
-                "bought": 74,
-                "collections": {
-                    "new": false,
-                    "recommended": false
-                }
+                "left": 64,
+                "ordered": 74,
+                "new": false,
+                "recommended": false
             },
             {
                 "mainCategory": "shoes",
@@ -987,12 +937,10 @@
                     "Leather upper, leather lining, leather and rubber sole"
                 ],
                 "stock": true,
-                "count": 96,
-                "bought": 25,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-                }
+                "left": 96,
+                "ordered": 25,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "shoes",
@@ -1026,12 +974,10 @@
                     "Leather upper, leather and fabric lining, rubber sole"
                 ],
                 "stock": true,
-                "count": 41,
-                "bought": 16,
-                "collections": {
-                    "new": true,
-                    "recommended": false
-                }
+                "left": 41,
+                "ordered": 16,
+                "new": true,
+                "recommended": false
             },
             {
                 "mainCategory": "accessories",
@@ -1067,12 +1013,10 @@
                     "Manufacturer's 2-year limited warranty"
                 ],
                 "stock": true,
-                "count": 8,
-                "bought": 218,
-                "collections": {
-                    "new": true,
-                    "recommended": false
-                }
+                "left": 8,
+                "ordered": 218,
+                "new": true,
+                "recommended": false
             },
             {
                 "mainCategory": "accessories",
@@ -1107,12 +1051,10 @@
                     "Manufacturer's 2-year international warranty"
                 ],
                 "stock": true,
-                "count": 32,
-                "bought": 350,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-                }
+                "left": 32,
+                "ordered": 350,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "accessories",
@@ -1153,12 +1095,10 @@
                     "Manufacturer's 1-year limited warranty"
                 ],
                 "stock": true,
-                "count": 96,
-                "bought": 25,
-                "collections": {
-                    "new": false,
-                    "recommended": false
-                }
+                "left": 96,
+                "ordered": 25,
+                "new": false,
+                "recommended": false
             },
             {
                 "mainCategory": "accessories",
@@ -1192,12 +1132,10 @@
                     "Manufacturer's 2-year limited"
                 ],
                 "stock": true,
-                "count": 30,
-                "bought": 269,
-                "collections": {
-                    "new": true,
-                    "recommended": false
-                }
+                "left": 30,
+                "ordered": 269,
+                "new": true,
+                "recommended": false
             },
             {
                 "mainCategory": "accessories",
@@ -1229,12 +1167,10 @@
                     "Manufacturer's 2-year limited"
                 ],
                 "stock": true,
-                "count": 77,
-                "bought": 56,
-                "collections": {
-                    "new": true,
-                    "recommended": true
-                }
+                "left": 77,
+                "ordered": 56,
+                "new": true,
+                "recommended": true
             },
             {
                 "mainCategory": "accessories",
@@ -1268,12 +1204,10 @@
                     "Manufacturer's 2-year limited"
                 ],
                 "stock": true,
-                "count": 63,
-                "bought": 46,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-                }
+                "left": 63,
+                "ordered": 46,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "accessories",
@@ -1313,12 +1247,10 @@
                     "Manufacturer's 3-year international warranty"
                 ],
                 "stock": true,
-                "count": 7,
-                "bought": 269,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-                }
+                "left": 7,
+                "ordered": 269,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "accessories",
@@ -1350,12 +1282,10 @@
                     "Stainless steel/rose gold tone–plated stainless steel"
                 ],
                 "stock": true,
-                "count": 63,
-                "bought": 78,
-                "collections": {
-                    "new": true,
-                    "recommended": false
-                }
+                "left": 63,
+                "ordered": 78,
+                "new": true,
+                "recommended": false
             },
             {
                 "mainCategory": "accessories",
@@ -1388,12 +1318,10 @@
                     "Manufacturer's 2-year limited warranty"
                 ],
                 "stock": true,
-                "count": 30,
-                "bought": 69,
-                "collections": {
-                    "new": false,
-                    "recommended": false
-                }
+                "left": 30,
+                "ordered": 69,
+                "new": false,
+                "recommended": false
             },
             {
                 "mainCategory": "accessories",
@@ -1425,12 +1353,10 @@
                     "Includes hard case and cleaning cloth"
                 ],
                 "stock": true,
-                "count": 13,
-                "bought": 251,
-                "collections": {
-                    "new": false,
-                    "recommended": false
-                }
+                "left": 13,
+                "ordered": 251,
+                "new": false,
+                "recommended": false
             },
             {
                 "mainCategory": "accessories",
@@ -1462,12 +1388,10 @@
                     "Includes hard case and cleaning cloth"
                 ],
                 "stock": true,
-                "count": 99,
-                "bought": 36,
-                "collections": {
-                    "new": true,
-                    "recommended": true
-                }
+                "left": 99,
+                "ordered": 36,
+                "new": true,
+                "recommended": true
             },
             {
                 "mainCategory": "accessories",
@@ -1498,12 +1422,10 @@
                     "Includes soft case and cleaning cloth"
                 ],
                 "stock": true,
-                "count": 36,
-                "bought": 189,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-                }
+                "left": 36,
+                "ordered": 189,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "accessories",
@@ -1531,12 +1453,10 @@
                     "Includes soft case and cleaning cloth"
                 ],
                 "stock": true,
-                "count": 41,
-                "bought": 63,
-                "collections": {
-                    "new": true,
-                    "recommended": false
-                }
+                "left": 41,
+                "ordered": 63,
+                "new": true,
+                "recommended": false
             },
             {
                 "mainCategory": "accessories",
@@ -1565,12 +1485,10 @@
                     "Includes soft case and cleaning cloth"
                 ],
                 "stock": true,
-                "count": 21,
-                "bought": 412,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-                }
+                "left": 21,
+                "ordered": 412,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "accessories",
@@ -1602,12 +1520,10 @@
                     "Includes hard case and cleaning cloth"
                 ],
                 "stock": true,
-                "count": 87,
-                "bought": 96,
-                "collections": {
-                    "new": false,
-                    "recommended": false
-                }
+                "left": 87,
+                "ordered": 96,
+                "new": false,
+                "recommended": false
             },
             {
                 "mainCategory": "accessories",
@@ -1635,12 +1551,10 @@
                     "Rhodium-plated brass"
                 ],
                 "stock": true,
-                "count": 42,
-                "bought": 125,
-                "collections": {
-                    "new": false,
-                    "recommended": false
-                }
+                "left": 42,
+                "ordered": 125,
+                "new": false,
+                "recommended": false
             },
             {
                 "mainCategory": "accessories",
@@ -1669,12 +1583,10 @@
                     "Brass"
                 ],
                 "stock": true,
-                "count": 20,
-                "bought": 69,
-                "collections": {
-                    "new": true,
-                    "recommended": false
-                }
+                "left": 20,
+                "ordered": 69,
+                "new": true,
+                "recommended": false
             },
             {
                 "mainCategory": "accessories",
@@ -1701,12 +1613,10 @@
                     "Belt fits small, order two waist sizes up"
                 ],
                 "stock": true,
-                "count": 32,
-                "bought": 87,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-                }
+                "left": 32,
+                "ordered": 87,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "accessories",
@@ -1737,12 +1647,10 @@
                     "Belt fits small, order two waist sizes up"
                 ],
                 "stock": true,
-                "count": 30,
-                "bought": 169,
-                "collections": {
-                    "new": false,
-                    "recommended": true
-                }
+                "left": 30,
+                "ordered": 169,
+                "new": false,
+                "recommended": true
             },
             {
                 "mainCategory": "accessories",
@@ -1772,11 +1680,9 @@
                     "Order one waist size up"
                 ],
                 "stock": true,
-                "count": 30,
-                "bought": 200,
-                "collections": {
-                    "new": false,
-                    "recommended": false
-                }
+                "left": 30,
+                "ordered": 200,
+                "new": false,
+                "recommended": false
             }
 ]
