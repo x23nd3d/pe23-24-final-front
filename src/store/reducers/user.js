@@ -3,13 +3,14 @@ import {
   AUTH_SUCCESS,
   SAVE_CREDIT_CARD_DETAILS,
   SET_ACCOUNT_ACTIVE_TAB,
-  SET_ACCOUNT_DEFAULT_TAB,
+  SET_LOGIN_ACTIVE_TAB,
 } from "../actions/actionTypes";
 
 const initialState = {
   userId: {},
   isCardSaved: false,
   accountActiveTab: "profile",
+  loginActiveTab: true,
   loading: false,
   error: false,
 };
@@ -25,9 +26,9 @@ const handlers = {
     ...state,
     accountActiveTab,
   }),
-  [SET_ACCOUNT_DEFAULT_TAB]: (state) => ({
+  [SET_LOGIN_ACTIVE_TAB]: (state, { loginActiveTab }) => ({
     ...state,
-    accountActiveTab: "profile",
+    loginActiveTab,
   }),
   DEFAULT: (state) => state,
 };

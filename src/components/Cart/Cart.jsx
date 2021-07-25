@@ -13,13 +13,16 @@ import {
 } from "../../store/actions/sidebar";
 import LoginForm from "../LoginRegistration/LoginForm";
 import RegistrationForm from "../LoginRegistration/RegistrationForm";
+import { setLoginActiveTab } from "../../store/actions/user";
 
 const Cart = ({
   cart,
+  user,
   receiveRoute,
   categoryChooser,
   subcategoryChooser,
   checkCategoriesHandler,
+  setLoginActiveTabHandler,
 }) => {
   const registerRoutesHandler = (route, subcategory, mainRoute) => {
     receiveRoute(route);
@@ -28,31 +31,32 @@ const Cart = ({
     subcategoryChooser(subcategory);
   };
 
-  const [isLoggedIn] = useState(true);
-  const [isUser, setIsUser] = useState(true);
-
   return (
     <div className={classes.Cart}>
       <div className={classes.Inner}>
         <div className={classes.Carts}>
-          {isLoggedIn && (
+          {!user.userId && (
             <>
               <h3 className={classes.CartLoginMessage}>
-                {isUser
+                {user.loginActiveTab
                   ? "Please, enter your login information, or"
                   : "Please, sign up to proceed with shopping, or"}
               </h3>
               <button
                 className={classes.CartSwitchForm}
                 type="button"
-                onClick={() => setIsUser(!isUser)}
+                onClick={() => setLoginActiveTabHandler(!user.loginActiveTab)}
               >
-                {isUser ? "Sign up" : "Log in"}
+                {user.loginActiveTab ? "Sign up" : "Log in"}
               </button>
             </>
           )}
-          {isLoggedIn &&
-            (isUser ? <LoginForm cart /> : <RegistrationForm cart />)}
+          {!user.userId &&
+            (user.loginActiveTab ? (
+              <LoginForm cart />
+            ) : (
+              <RegistrationForm cart />
+            ))}
           <NavLink
             className={classes.Button}
             type="button"
@@ -68,7 +72,7 @@ const Cart = ({
             Keep shopping
           </NavLink>
           <ul className={classes.CartItems}>
-            {cart.items.length ? (
+            {cart.items && cart.total > 0 ? (
               cart.items.map((item) => (
                 <CartItem
                   key={item.id + item.color}
@@ -96,16 +100,23 @@ const Cart = ({
           <form action="#">
             <input className={classes.DiscountCode} type="text" />
           </form>
-          <p className={classes.AsideInfo}>Order value 420$</p>
           <p className={classes.AsideInfo}>Delivery Free</p>
           <p className={classes.AsideInfo}>Total {cart.total}$</p>
-          <NavLink
-            to="/checkout"
-            className={classnames(classes.Button, classes.ButtonCheckout)}
-            type="button"
-          >
-            Checkout
-          </NavLink>
+          {user.userId && cart.items.length ? (
+            <NavLink
+              to="/checkout"
+              className={classnames(classes.Button, classes.ButtonCheckout)}
+              type="button"
+            >
+              Checkout
+            </NavLink>
+          ) : (
+            <p className={classes.CheckoutLogin}>
+              {cart.items.length
+                ? "Please login to checkout."
+                : "The cart is empty"}
+            </p>
+          )}
         </aside>
       </div>
     </div>
@@ -117,20 +128,23 @@ Cart.defaultProps = {
   categoryChooser: (f) => f,
   subcategoryChooser: (f) => f,
   checkCategoriesHandler: (f) => f,
+  setLoginActiveTabHandler: (f) => f,
 };
 
 Cart.propTypes = {
   cart: PropTypes.instanceOf(Object).isRequired,
+  user: PropTypes.instanceOf(Object).isRequired,
   receiveRoute: PropTypes.func,
   categoryChooser: PropTypes.func,
   subcategoryChooser: PropTypes.func,
+  setLoginActiveTabHandler: PropTypes.func,
   checkCategoriesHandler: PropTypes.func,
 };
 
 function mapStateToProps(state) {
   return {
-    ...state,
     cart: state.cart,
+    user: state.user,
   };
 }
 
@@ -141,6 +155,7 @@ function mapDispatchToProps(dispatch) {
     subcategoryChooser: (route) => dispatch(chooseSubcategory(route)),
     checkCategoriesHandler: (category, sub) =>
       dispatch(checkCategories(category, sub)),
+    setLoginActiveTabHandler: (tab) => dispatch(setLoginActiveTab(tab)),
   };
 }
 
