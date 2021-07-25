@@ -16,10 +16,10 @@ const CollectionsRoutes = ({
   subcategoryChooser,
   checkCategoriesHandler,
 }) => {
-  const registerRoutesHandler = (route, subcategory) => {
+  const registerRoutesHandler = (route, subcategory, mainRoute) => {
     receiveRoute(route);
-    checkCategoriesHandler("collections");
-    categoryChooser("collections");
+    checkCategoriesHandler(mainRoute);
+    categoryChooser(mainRoute);
     subcategoryChooser(subcategory);
   };
 

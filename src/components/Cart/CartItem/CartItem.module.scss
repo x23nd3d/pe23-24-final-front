@@ -37,6 +37,14 @@
 
 .ImageBox {
   margin-right: 35px;
+  max-width: 100%;
+  width: 180px;
+  height: 100%;
+}
+
+.Image {
+  width: 100%;
+  height: 100%;
 }
 
 .Remove {
@@ -78,4 +86,14 @@
     padding: 0;
     margin-left: auto;
   }
+}
+
+
+.CartCountDecreaseOff {
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.CartCountIncreaseOff {
+  opacity: 0.3;
 }

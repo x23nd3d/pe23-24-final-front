@@ -233,31 +233,7 @@
   display: flex;
 }
 
-.productTag {
-  display: none;
-  font-size: 12px;
-  padding: 5px;
-  margin: 0 3px;
-}
 
-.new {
-  background: #b30808;
-  color: #fff;
-}
-
-.recommended {
-  background: #9d00ff;
-  color: #fff;
-}
-
-.popular {
-  background: #00ff43;
-  color: #000;
-}
-
-.listItem:hover .productTag {
-  display: block;
-}
 
 .productHeader {
   display: flex;
@@ -265,5 +241,9 @@
 }
 
 .productTags {
+  display: none;
+}
+
+.listItem:hover .productTags {
   display: flex;
 }

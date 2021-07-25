@@ -13,6 +13,7 @@ import classes from "./Exposition.module.scss";
 import "../../../styles/productColors.scss";
 import { handleItemPreviewParams } from "../../../store/actions/shop";
 import colorize from "../../../utils/colorize";
+import ProductTag from "../../UI/ProductTag/ProductTag";
 
 const ProductCard = ({
   product,
@@ -147,15 +148,12 @@ const ProductCard = ({
 
     return tags.map((tag) => {
       if (currentItem[tag] === true || tag === "popular") {
-        const cls = [
-          classes.productTag,
-          currentItem[tag] === true || tag === "popular" ? classes[tag] : null,
-        ];
-
         return (
-          <div key={currentItem.name + tag} className={cls.join(" ")}>
-            {tag}
-          </div>
+          <ProductTag
+            item={currentItem}
+            tag={tag}
+            key={currentItem.name + tag}
+          />
         );
       }
 
