@@ -1,0 +1,39 @@
+.AddressBook {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 100px;
+
+  &Delivery {
+    border-right: 1px solid #000000;
+    padding: 50px;
+  }
+
+  &Billing {
+    padding: 50px;
+  }
+
+  .Button {
+    width: 25%;
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 1rem 0.5rem;
+    color: #ffffff;
+    background-color: #000000;
+    width: 350px;
+    margin: 50px 0;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .AddressBook {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    &Delivery {
+      border-right: none;
+      border-bottom: 1px solid #000000;
+    }
+  }
+}
