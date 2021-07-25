@@ -62,7 +62,7 @@ const CartPreview = ({ items, removeCartPreview, cart }) => {
                 onClick={() => removeCartPreview()}
                 className={classes.CartAddItems}
               >
-                Checkout
+                Go to cart
               </NavLink>
             </div>
           </div>
