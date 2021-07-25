@@ -12,7 +12,7 @@
 + 13. On page reload show which colors and sizes are in cart (Product cart show)
 14. Add settings information about your favorite sizes, colors and show them by default on the product card
 + 15. do the same route as route for shop for collections like category=recommended
-16. If all collections -> shows popular and collection same items fix
++ 16. If all collections -> shows popular and collection same items fix
 
 + // BUGS SCROLL ON ITEMS OPEN CHECK
 
@@ -22,7 +22,7 @@ DB:
 
 + // change item price 30+k
 + // items with 1794 ID
-// stock add count items and warnings if we do not have items
++ // stock add count items and warnings if we do not have items
 
 
 Andrew Kucher, [24.07.21 19:14]
