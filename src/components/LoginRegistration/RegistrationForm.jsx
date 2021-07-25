@@ -2,29 +2,27 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Formik, Form } from "formik";
+import classNames from "classnames";
 import * as yup from "yup";
 import classes from "./LoginRegistration.module.scss";
 import { signUp } from "../../store/actions/auth";
 
 const Registration = (props) => {
   const validationSchema = yup.object().shape({
-    name: yup.string().typeError("Should be a string").required("Necessarily"),
+    name: yup.string().typeError("Should be a string").required("Required"),
     secondName: yup
       .string()
       .typeError("Should be a string")
-      .required("Necessarily"),
+      .required("Required"),
     email: yup
       .string()
       .email("Please enter a valid email")
-      .required("Necessarily"),
-    password: yup
-      .string()
-      .typeError("Should be a string")
-      .required("Necessarily"),
+      .required("Required"),
+    password: yup.string().typeError("Should be a string").required("Required"),
     confirmPassword: yup
       .string()
       .oneOf([yup.ref("password")], "Password mismatch")
-      .required("Necessarily"),
+      .required("Required"),
   });
   const onSubmit = async (values) => {
     const { name, secondName, email, password } = values;
@@ -55,10 +53,16 @@ const Registration = (props) => {
           handleSubmit,
           dirty,
         }) => (
-          <Form onSubmit={handleSubmit}>
+          <Form
+            className={props.cart && classes.RegistrationForm}
+            onSubmit={handleSubmit}
+          >
             <div className={classes.InputField}>
               <input
-                className={classes.Input}
+                className={classNames(
+                  classes.Input,
+                  props.cart && classes.CartInput
+                )}
                 type="text"
                 name="name"
                 onChange={handleChange}
@@ -73,7 +77,10 @@ const Registration = (props) => {
 
             <div className={classes.InputField}>
               <input
-                className={classes.Input}
+                className={classNames(
+                  classes.Input,
+                  props.cart && classes.CartInput
+                )}
                 type="text"
                 name="secondName"
                 onChange={handleChange}
@@ -88,7 +95,10 @@ const Registration = (props) => {
 
             <div className={classes.InputField}>
               <input
-                className={classes.Input}
+                className={classNames(
+                  classes.Input,
+                  props.cart && classes.CartInput
+                )}
                 type="text"
                 name="email"
                 onChange={handleChange}
@@ -103,7 +113,10 @@ const Registration = (props) => {
 
             <div className={classes.InputField}>
               <input
-                className={classes.Input}
+                className={classNames(
+                  classes.Input,
+                  props.cart && classes.CartInput
+                )}
                 type="password"
                 name="password"
                 onChange={handleChange}
@@ -118,7 +131,10 @@ const Registration = (props) => {
 
             <div className={classes.InputField}>
               <input
-                className={classes.Input}
+                className={classNames(
+                  classes.Input,
+                  props.cart && classes.CartInput
+                )}
                 type="password"
                 name="confirmPassword"
                 onChange={handleChange}
@@ -131,7 +147,10 @@ const Registration = (props) => {
               )}
             </div>
             <button
-              className={classes.Button}
+              className={classNames(
+                classes.Button,
+                props.cart && classes.CartButton
+              )}
               disabled={!isValid && !dirty}
               type="submit"
             >
@@ -145,9 +164,11 @@ const Registration = (props) => {
 };
 Registration.defaultProps = {
   signUp: (f) => f,
+  cart: false,
 };
 Registration.propTypes = {
   signUp: PropTypes.func,
+  cart: PropTypes.bool,
 };
 function mapDispatchToProps(dispatch) {
   return {

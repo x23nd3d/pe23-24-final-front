@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
@@ -10,6 +10,8 @@ import {
   chooseCategory,
   chooseSubcategory,
 } from "../../store/actions/sidebar";
+import LoginForm from "../LoginRegistration/LoginForm";
+import RegistrationForm from "../LoginRegistration/RegistrationForm";
 
 const Cart = ({
   cart,
@@ -25,10 +27,31 @@ const Cart = ({
     subcategoryChooser(subcategory);
   };
 
+  const [isLoggedIn] = useState(true);
+  const [isUser, setIsUser] = useState(true);
+
   return (
     <div className={classes.Cart}>
       <div className={classes.Inner}>
         <div className={classes.Carts}>
+          {isLoggedIn && (
+            <>
+              <h3 className={classes.CartLoginMessage}>
+                {isUser
+                  ? "Please, enter your login information, or"
+                  : "Please, sign up to proceed with shopping, or"}
+              </h3>
+              <button
+                className={classes.CartSwitchForm}
+                type="button"
+                onClick={() => setIsUser(!isUser)}
+              >
+                {isUser ? "Sign up" : "Log in"}
+              </button>
+            </>
+          )}
+          {isLoggedIn &&
+            (isUser ? <LoginForm cart /> : <RegistrationForm cart />)}
           <NavLink
             className={classes.Button}
             type="button"
