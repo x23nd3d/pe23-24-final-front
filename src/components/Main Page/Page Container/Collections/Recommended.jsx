@@ -13,7 +13,8 @@ const Recommended = () => {
       onClick={() =>
         registerRoutesHandler(
           "/shop/?category=collections&type=recommended",
-          "recommended"
+          "recommended",
+          "collections"
         )
       }
       className={classNames(classes.group, classes.Recommended)}

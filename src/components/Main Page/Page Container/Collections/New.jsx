@@ -12,7 +12,11 @@ const New = () => {
       className={classNames(classes.group, classes.New)}
       to="/shop/?category=collections&type=new"
       onClick={() =>
-        registerRoutesHandler("/shop/?category=collections&type=new", "new")
+        registerRoutesHandler(
+          "/shop/?category=collections&type=new",
+          "new",
+          "collections"
+        )
       }
     >
       <div>

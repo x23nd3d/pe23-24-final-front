@@ -9,11 +9,9 @@ import CollectionsRoutes from "../../../../context/CollectionsRoutes/Collections
 const Collections = () => (
   <section className={collections}>
     <Title text="Collections" position />
-    <CollectionsRoutes>
-      <New />
-      <Recommended />
-      <Popular />
-    </CollectionsRoutes>
+    <New />
+    <Recommended />
+    <Popular />
   </section>
 );
 

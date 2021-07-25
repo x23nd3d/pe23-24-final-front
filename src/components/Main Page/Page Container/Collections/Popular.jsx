@@ -13,7 +13,8 @@ const Popular = () => {
       onClick={() =>
         registerRoutesHandler(
           "/shop/?category=collections&type=popular",
-          "popular"
+          "popular",
+          "collections"
         )
       }
       className={classNames(classes.group, classes.Popular)}
