@@ -13,6 +13,7 @@ import Logout from "./components/Logout/Logout";
 import Cart from "./components/Cart/Cart";
 import Spinner from "./components/UI/Spinner/Spinner";
 import Account from "./components/Account/Account";
+import Checkout from "./components/Checkout/Checkout";
 
 function App({ isAuthenticated, product }) {
   let routes = (
@@ -56,6 +57,7 @@ function App({ isAuthenticated, product }) {
 
         <Route path="/cart" component={Cart} />
         <Route path="/account" component={Account} />
+        <Route path="/checkout" component={Checkout} />
 
         <Route path="/" component={MainPage} />
       </Switch>
