@@ -1,7 +1,7 @@
 @import "../../styles/mixins";
 @import "../../styles/variables";
 
-.product {
+.productPage {
     display: flex;
     width: 100%;
     background-color: #fff;
@@ -14,11 +14,10 @@
 .dataBlock {
     display: flex;
     justify-content: center;
-    padding: 0 20px 20px;
+    padding: 20px;
     @media (max-width: 450px) {
         padding: 0;
     }
-    @include highlight;
     width: 50%;
 
     @media (max-width: 980px) {
@@ -28,26 +27,28 @@
 }
 
 .Details {
-    @include highlight;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     width: 90%;
-
-    height: 100%;
     background-color: #fff;
     .primaryBlock, .selectionBlock {
         @include block-120;
     }
-    .topBlock {
-        margin-bottom: 20px;
-        @include highlight;
+
+    .NameBox {
+        display: flex;
+        align-items: center;
+        .collectionTags {
+            margin-left: 20px;
+            border-radius: 3px;
+        }
     }
 
     .Name {
-        margin-top: 10px;
         font-size: 22px;
     }
+
     .Caption {
         margin-top: 10px;
         font-size: 14px;
@@ -58,14 +59,28 @@
     }
 }
 
+.PriceBox {
+    & span {
+        @include point-info;
+        // margin-top: 5px;
+        padding-top: 10px;
+    }
+}
+
 .Price {
-    margin-top: 20px;
-    margin-bottom: 40px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.isStock {
+    display: flex;
+    align-items: flex-end;
+    & span {
+        width: 80px;
+    }
 }
 
 .bottomBlock {
-    margin-top: 50px;
-
     .moreDetails {
         font-size: 20px;
         text-align: center;
@@ -79,7 +94,7 @@
             margin-left: 20px;
         }
 
-        height: 50px;
+        height: 30px;
         align-items: center;
         align-self: flex-start;
         justify-content: flex-start;
@@ -103,11 +118,18 @@
     }
 
     .dsc {
-        @include block-120;
-        height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        max-height: 220px;
+        min-height: 200px;
 
         & li {
             font-size: 16px;
+        }
+
+        @media (max-width: 420px) {
+            height: 220px;
         }
     }
 }

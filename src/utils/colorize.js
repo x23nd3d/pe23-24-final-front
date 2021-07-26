@@ -20,6 +20,7 @@ const colorClasses = [
   ["Mauz", "Mauz"],
   ["MidnightNavy", "Midnight Navy"],
   ["White", "White"],
+  ["Night Blue", "NightBlue"],
   ["Nero", "Nero"],
   ["WhiteNight", "White Night"],
   ["MarroneBrown", "Marrone Brown"],

@@ -5,6 +5,9 @@ import { Formik, Form, Field } from "formik";
 import colorize from "../../../utils/colorize";
 import "./AddToCartForm.scss";
 import { addToCart } from "../../../store/actions/cart";
+import AddToCartButton from "./AddToCartButton";
+import BackShopping from "../../UI/Buttons List/BackShopping";
+import AddToWishList from "../../UI/Buttons List/AddToWishList";
 
 /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -62,16 +65,16 @@ const AddToCartForm = ({ data, store, dispatchCart, product }) => {
               {data.color.length > 1 ? (
                 "Select a color"
               ) : (
-                <>
-                  Color
-                  <span
-                  // style={{ paddingLeft: "20px" }}
-                  >
+                <div className="formOneColorBlock">
+                  <p>Color</p>
+                  <span>
                     {productStore.color}
                   </span>
-                </>
+                </div>
               )}
             </span>
+          </div>
+            {data.color.length > 1 &&
             <div className="color-selection">
               {data.color.length > 1 &&
                 data.color.map((color, index) => (
@@ -91,8 +94,7 @@ const AddToCartForm = ({ data, store, dispatchCart, product }) => {
                     </label>
                   </div>
                 ))}
-            </div>
-          </div>
+            </div>}
           {Array.isArray(data.size) && data.size.length ? (
             <div className="formBlockSize">
               <span className="dataPointer">Select a size</span>
@@ -106,13 +108,11 @@ const AddToCartForm = ({ data, store, dispatchCart, product }) => {
             </div>
           ) : null}
           <div className="formBlockSubmit">
-            <button className="submit" type="submit">
-              Add to Cart
-            </button>
-            <div className="to-wishlist">ICON</div>
+            <BackShopping />
+            <AddToCartButton />
+            <AddToWishList />
           </div>
-        </Form>
-      )}
+        </Form>)}
     </Formik>
   );
 };

@@ -41,7 +41,7 @@ const ProductCard = ({
     selectCurrentItemHandler(item);
     dispatchColor(item.color[0]);
     dispatchPhoto(item.photo[item.color[0]]);
-    dispatchVisitedProducts(item);
+    dispatchVisitedProducts(item)
   };
 
   const clsHoverDetails = [
