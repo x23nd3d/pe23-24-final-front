@@ -74,13 +74,7 @@ export const filterItemsFunction = () => (dispatch, getState) => {
   const { chosenColors } = getState().sidebar;
   const { chosenPriceRange } = getState().sidebar;
 
-  // console.log("ITEMS:", currentItems);
-  // console.log("COLORS:", chosenColors);
-  // console.log("PRICES:", chosenPriceRange);
-
   const currentItemsMinMaxPrice = getMinMaxPrice(currentItems);
-
-  // console.log("currentItemsMinMaxPrice:", currentItemsMinMaxPrice);
 
   function filterByPrice(
     array,
@@ -112,8 +106,6 @@ export const filterItemsFunction = () => (dispatch, getState) => {
     filteredItems().length === 0
       ? "Nothing matches your choice"
       : filteredItems();
-
-  // console.log(result.length === 0 ? "Nothing matches your choice" : result);
 
   dispatch(filterItemsAction(result));
 };

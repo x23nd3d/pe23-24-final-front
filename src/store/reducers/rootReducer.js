@@ -10,7 +10,7 @@ import productReducer from "./product";
 import cartReducer from "./cart";
 
 const persistConfig = {
-  key: "root",
+  key: "store",
   storage,
   stateReconciler: autoMergeLevel2,
   whitelist: ["auth", "user", "shop", "sidebar", "product", "cart"],

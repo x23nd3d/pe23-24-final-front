@@ -1,15 +1,11 @@
 import React, { useCallback } from "react";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Formik, Form, Field } from "formik";
 import colorize from "../../../utils/colorize";
 import "./AddToCartForm.scss";
 import { addToCart } from "../../../store/actions/cart";
-import BackShoppingIcon from "../../UI/SVG Icons Components/BackShoppingIcon";
-import AddToWishlist from "../../UI/SVG Icons Components/AddToWishlistIcon";
-import AlreadyInWishlist from "../../UI/SVG Icons Components/AlreadyInWishlistIcon";
 import AddToCartButton from "./AddToCartButton";
-import AddToCartIcon from "../../UI/SVG Icons Components/AddToCartIcon";
 import BackShopping from "../../UI/Buttons List/BackShopping";
 import AddToWishList from "../../UI/Buttons List/AddToWishList";
 
@@ -20,15 +16,29 @@ import AddToWishList from "../../UI/Buttons List/AddToWishList";
 const AddToCartForm = ({ data, store, dispatchCart, product }) => {
   const { productStore, dispatchColor } = store;
 
-    const handleColorState = useCallback(({color}) => {
-        dispatchColor(color)
-    }, [dispatchColor]);
+  const handleColorState = useCallback(
+    ({ color }) => {
+      dispatchColor(color);
+    },
+    [dispatchColor]
+  );
 
   const addToCartHandler = (dataItem, changedDetails) => {
     const color = changedDetails?.color
       ? changedDetails.color
       : dataItem.color[0];
-    const size = changedDetails?.size ? changedDetails.size : dataItem.size[0];
+    let size = null;
+    if (changedDetails.size !== "undefined") {
+      console.log("changedDetails.size.length", changedDetails.size);
+      size = changedDetails.size;
+    } else if (dataItem.size[0] !== undefined) {
+      console.log("ataItem.size[0].length", dataItem.size[0].length);
+      // eslint-disable-next-line prefer-destructuring
+      size = dataItem.size[0];
+    } else {
+      size = [];
+    }
+    console.log("DIZE", size);
 
     const item = {
       ...dataItem,
@@ -44,7 +54,7 @@ const AddToCartForm = ({ data, store, dispatchCart, product }) => {
       initialValues={{
         id: data.id,
         color: productStore.color,
-        size: `${data.size ? data.size[0] : ""}`,
+        size: `${data.size ? data.size[0] : []}`,
       }}
       onSubmit={(values) => addToCartHandler(product.currentItem, values)}
     >
@@ -63,29 +73,30 @@ const AddToCartForm = ({ data, store, dispatchCart, product }) => {
                 </div>
               )}
             </span>
+          </div>
             {data.color.length > 1 &&
             <div className="color-selection">
-            {data.color.length > 1 &&
-              data.color.map((color, index) => (
-                <div className="color-box" key={color}>
-                  <Field
-                    type="radio"
-                    name="color"
-                    id={`${color}${index}`}
-                    value={color}
-                    className="defaultRadio"
-                    onClick={handleColorState(values)}
-                  />
-                  <label className="customRadio" htmlFor={`${color}${index}`}>
-                    <span className={`${colorize(color)} customRadio`}>
-                      <p className="colorName">{color}</p>
-                    </span>
-                  </label>
-                </div>
+              {data.color.length > 1 &&
+                data.color.map((color, index) => (
+                  <div className="color-box" key={color}>
+                    <Field
+                      type="radio"
+                      name="color"
+                      id={`${color}${index}`}
+                      value={color}
+                      className="defaultRadio"
+                      onClick={handleColorState(values)}
+                    />
+                    <label className="customRadio" htmlFor={`${color}${index}`}>
+                      <span className={`${colorize(color)} customRadio`}>
+                        <p className="colorName">{color}</p>
+                      </span>
+                    </label>
+                  </div>
                 ))}
-                </div>}
-            </div>
-          {data.size && <div className="formBlockSize">
+            </div>}
+          {Array.isArray(data.size) && data.size.length ? (
+            <div className="formBlockSize">
               <span className="dataPointer">Select a size</span>
               <Field className="size-select" name="size" as="select">
                 {data.size.map((size) => (
@@ -95,14 +106,13 @@ const AddToCartForm = ({ data, store, dispatchCart, product }) => {
                 ))}
               </Field>
             </div>
-          }
+          ) : null}
           <div className="formBlockSubmit">
             <BackShopping />
             <AddToCartButton />
             <AddToWishList />
           </div>
-        </Form>
-      )}
+        </Form>)}
     </Formik>
   );
 };

@@ -1,0 +1,22 @@
+.Account {
+  background: #fff;
+  font-family: "Josefin Sans", sans-serif;
+  padding: 5%;
+}
+
+.AccountTitle {
+  font-size: 36px;
+  margin-bottom: 140px;
+}
+
+.AccountContainer {
+  display: block;
+}
+
+.AccountButtonList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 50px;
+  width: 100%;
+  line-height: 2;
+}

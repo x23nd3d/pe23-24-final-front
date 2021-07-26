@@ -1,53 +1,93 @@
-// eslint-disable-next-line react/prefer-stateless-function
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { NavLink } from "react-router-dom";
+import classnames from "classnames";
 import CartItem from "./CartItem/CartItem";
 import classes from "./Cart.module.scss";
+import { receiveCurrentRoute } from "../../store/actions/shop";
+import {
+  checkCategories,
+  chooseCategory,
+  chooseSubcategory,
+} from "../../store/actions/sidebar";
+import LoginForm from "../LoginRegistration/LoginForm";
+import RegistrationForm from "../LoginRegistration/RegistrationForm";
 
-const Cart = (props) => {
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      title: "black jacket",
-      setNumber: "3294786 - 01",
-      image: "/item-1.svg",
-      color: ["black"],
-      size: [8],
-      quantity: 1,
-      price: 420,
-      total: 420,
-    },
-    {
-      id: 2,
-      title: "black jacket",
-      setNumber: "3294786 - 01",
-      image: "/item-2.svg",
-      color: ["black"],
-      size: [8, 10],
-      quantity: 2,
-      price: 420,
-      total: 840,
-    },
-  ]);
+const Cart = ({
+  cart,
+  receiveRoute,
+  categoryChooser,
+  subcategoryChooser,
+  checkCategoriesHandler,
+}) => {
+  const registerRoutesHandler = (route, subcategory, mainRoute) => {
+    receiveRoute(route);
+    checkCategoriesHandler(mainRoute);
+    categoryChooser(mainRoute);
+    subcategoryChooser(subcategory);
+  };
+
+  const [isLoggedIn] = useState(true);
+  const [isUser, setIsUser] = useState(true);
+
   return (
     <div className={classes.Cart}>
       <div className={classes.Inner}>
         <div className={classes.Carts}>
-          <button className={classes.Button} type="button">
+          {isLoggedIn && (
+            <>
+              <h3 className={classes.CartLoginMessage}>
+                {isUser
+                  ? "Please, enter your login information, or"
+                  : "Please, sign up to proceed with shopping, or"}
+              </h3>
+              <button
+                className={classes.CartSwitchForm}
+                type="button"
+                onClick={() => setIsUser(!isUser)}
+              >
+                {isUser ? "Sign up" : "Log in"}
+              </button>
+            </>
+          )}
+          {isLoggedIn &&
+            (isUser ? <LoginForm cart /> : <RegistrationForm cart />)}
+          <NavLink
+            className={classes.Button}
+            type="button"
+            to="/shop/?category=all&type=all"
+            onClick={() =>
+              registerRoutesHandler(
+                "/shop/?category=all&type=all",
+                "all",
+                "all"
+              )
+            }
+          >
             Keep shopping
-          </button>
+          </NavLink>
           <ul className={classes.CartItems}>
-            {cartItems.map((item) => (
-              <CartItem
-                key={item.id}
-                title={item.title}
-                image={item.image}
-                setNumber={item.setNumber}
-                color={item.color}
-                size={item.size}
-                quantity={item.quantity}
-                price={item.price}
-              />
-            ))}
+            {cart.items.length ? (
+              cart.items.map((item) => (
+                <CartItem
+                  key={item.id + item.color}
+                  item={item}
+                  title={item.name}
+                  image={item.photo[item.color][0]}
+                  id={item.id}
+                  color={item.color}
+                  size={item.size}
+                  quantity={item.left}
+                  price={item.price}
+                  count={item.count}
+                />
+              ))
+            ) : (
+              <p className={classes.CartNoItems}>
+                No items found. The cart is waiting for you.
+              </p>
+            )}
           </ul>
         </div>
         <aside className={classes.Aside}>
@@ -58,13 +98,50 @@ const Cart = (props) => {
           </form>
           <p className={classes.AsideInfo}>Order value 420$</p>
           <p className={classes.AsideInfo}>Delivery Free</p>
-          <p className={classes.AsideInfo}>Total 1260$</p>
-          <button className={classes.Button} type="button">
+          <p className={classes.AsideInfo}>Total {cart.total}$</p>
+          <NavLink
+            to="/checkout"
+            className={classnames(classes.Button, classes.ButtonCheckout)}
+            type="button"
+          >
             Checkout
-          </button>
+          </NavLink>
         </aside>
       </div>
     </div>
   );
 };
-export default Cart;
+
+Cart.defaultProps = {
+  receiveRoute: (f) => f,
+  categoryChooser: (f) => f,
+  subcategoryChooser: (f) => f,
+  checkCategoriesHandler: (f) => f,
+};
+
+Cart.propTypes = {
+  cart: PropTypes.instanceOf(Object).isRequired,
+  receiveRoute: PropTypes.func,
+  categoryChooser: PropTypes.func,
+  subcategoryChooser: PropTypes.func,
+  checkCategoriesHandler: PropTypes.func,
+};
+
+function mapStateToProps(state) {
+  return {
+    ...state,
+    cart: state.cart,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    receiveRoute: (route) => dispatch(receiveCurrentRoute(route)),
+    categoryChooser: (route) => dispatch(chooseCategory(route)),
+    subcategoryChooser: (route) => dispatch(chooseSubcategory(route)),
+    checkCategoriesHandler: (category, sub) =>
+      dispatch(checkCategories(category, sub)),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);

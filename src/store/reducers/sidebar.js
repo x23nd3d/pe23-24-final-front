@@ -25,6 +25,10 @@ const INITIAL_STATE = {
       title: "accessories",
       items: ["Glasses", "Belts", "Cufflinks", "Watches"],
     },
+    {
+      title: "collections",
+      items: ["New", "Recommended", "Popular"],
+    },
   ],
   chosenItems: [],
   chosenColors: [],

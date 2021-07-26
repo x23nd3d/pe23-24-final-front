@@ -1,7 +1,12 @@
-import { AUTH_LOGOUT, AUTH_SUCCESS } from "../actions/actionTypes";
+import {
+  AUTH_LOGOUT,
+  AUTH_SUCCESS,
+  SAVE_CREDIT_CARD_DETAILS,
+} from "../actions/actionTypes";
 
 const initialState = {
   userId: {},
+  isCardSaved: false,
   loading: false,
   error: false,
 };
@@ -9,6 +14,10 @@ const initialState = {
 const handlers = {
   [AUTH_SUCCESS]: (state, { user }) => ({ ...state, userId: user }),
   [AUTH_LOGOUT]: (state) => ({ ...state, userId: null }),
+  [SAVE_CREDIT_CARD_DETAILS]: (state, { isCardSaved }) => ({
+    ...state,
+    isCardSaved,
+  }),
   DEFAULT: (state) => state,
 };
 

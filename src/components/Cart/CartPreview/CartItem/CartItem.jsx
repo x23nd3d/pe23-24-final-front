@@ -17,6 +17,7 @@ import {
 } from "../../../../store/actions/product";
 import classes from "./CartItem.module.scss";
 import colorize from "../../../../utils/colorize";
+import pushNotification from "../../../../utils/toastrConfig";
 
 const CartItem = ({
   item,
@@ -39,8 +40,26 @@ const CartItem = ({
     }
     decreaseCount(currentItem);
   };
+
+  const increaseCountHandler = (currentItem) => {
+    if (currentItem.count === currentItem.left) {
+      return pushNotification(
+        "warning",
+        "Seems we do not have more items in stock",
+        "We are sorry",
+        {
+          toastClass: "toastr-c-warning",
+        }
+      );
+    }
+    increaseCount(currentItem);
+  };
   const decreaseCountCls = [
     item.count === 1 ? classes.CartCountDecreaseOff : null,
+  ];
+
+  const increaseCountCls = [
+    item.count === item.left ? classes.CartCountIncreaseOff : null,
   ];
   const colorClass = colorize(item.color.trim());
 
@@ -49,10 +68,19 @@ const CartItem = ({
     dispatchVisitedProducts(item);
   };
 
+  const renderViewImage = () => {
+    const itemInCart = cart.items.find((current) => current === item);
+    const hasArrayImages = Array.isArray(itemInCart.color);
+    if (hasArrayImages) {
+      return item.viewImage;
+    }
+    return itemInCart.photo[itemInCart.color][0];
+  };
+
   return (
     <div className={classes.CartItem} key={item.title}>
       <div className={classes.CartItemImage}>
-        <img src={item.viewImage} alt="Cart Item" />
+        <img src={renderViewImage()} alt="Cart Item" />
       </div>
       <div className={classes.CartItemGeneral}>
         <NavLink to={`/shop/product/${item.id}`} onClick={dispatchProduct}>
@@ -75,15 +103,15 @@ const CartItem = ({
             />
             <button
               type="button"
-              onClick={() => increaseCount(item)}
-              className={classes.CartCountIncrease}
+              onClick={() => increaseCountHandler(item)}
+              className={increaseCountCls.join(" ")}
             >
               <i className="far fa-plus" />
             </button>
           </div>
           <div className={classes.CartItemMoreDetails}>
             <div className={classes.CartItemDetails}>
-              {item.size ? (
+              {item.size.length ? (
                 <div
                   className={`${classes.sizeItem} ${classes.sizeItemActive} ${classes.sizeItemActiveCart}`}
                 >

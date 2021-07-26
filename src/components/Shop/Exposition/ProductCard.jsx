@@ -13,6 +13,7 @@ import classes from "./Exposition.module.scss";
 import "../../../styles/productColors.scss";
 import { handleItemPreviewParams } from "../../../store/actions/shop";
 import colorize from "../../../utils/colorize";
+import ProductTag from "../../UI/ProductTag/ProductTag";
 
 const ProductCard = ({
   product,
@@ -129,6 +130,37 @@ const ProductCard = ({
     ) : null;
   };
 
+  const renderViewImage = () => {
+    const currentItem = shop.currentPreviewItems[idx];
+    const hasArrayImages = Array.isArray(currentItem.color);
+    if (hasArrayImages) {
+      return item.viewImage;
+    }
+    return currentItem.photo[currentItem.color][0];
+  };
+
+  const renderTags = (currentItem) => {
+    const tags = [
+      "new",
+      "recommended",
+      currentItem.ordered >= 120 ? "popular" : null,
+    ];
+
+    return tags.map((tag) => {
+      if (currentItem[tag] === true || tag === "popular") {
+        return (
+          <ProductTag
+            item={currentItem}
+            tag={tag}
+            key={currentItem.name + tag}
+          />
+        );
+      }
+
+      return null;
+    });
+  };
+
   return (
     <>
       <NavLink
@@ -138,13 +170,16 @@ const ProductCard = ({
       >
         <img
           className={classes.image}
-          src={item.viewImage}
+          src={renderViewImage()}
           alt="Product Item"
         />
         <div className={classes.boxBanner}>
           <div className={classes.info}>
             <span>{item.name}</span>
-            <span>{item.price} $</span>
+            <div className={classes.productHeader}>
+              <span>{item.price} $</span>
+              <div className={classes.productTags}>{renderTags(item)}</div>
+            </div>
           </div>
         </div>
       </NavLink>

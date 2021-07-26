@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { AnimatePresence, motion } from "framer-motion";
-import { withRouter } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import CartItem from "./CartItem/CartItem";
 import classes from "./CartPreview.module.scss";
 import Backdrop from "../../UI/Backdrop/Backdrop";
@@ -57,9 +57,13 @@ const CartPreview = ({ items, removeCartPreview, cart }) => {
                 Total: <span>&#36;</span>
                 {cart.total}
               </div>
-              <button type="button" className={classes.CartAddItems}>
-                Checkout
-              </button>
+              <NavLink
+                to="/cart"
+                onClick={() => removeCartPreview()}
+                className={classes.CartAddItems}
+              >
+                Go to cart
+              </NavLink>
             </div>
           </div>
         </motion.div>
