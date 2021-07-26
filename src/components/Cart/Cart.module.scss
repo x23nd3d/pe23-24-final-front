@@ -109,3 +109,36 @@
 .CheckoutLogin {
   color: darkred;
 }
+
+.DiscountCodeCheck {
+  padding-bottom: 20px;
+}
+
+.DiscountNotFound {
+  color: red;
+}
+
+.DiscountFound {
+  color: green;
+}
+
+.DiscountExists {
+  color: maroon;
+}
+
+.CartDiscountSuccess {
+  border-bottom: 2px solid green!important;
+}
+
+.CartDiscountError {
+  border-bottom: 2px solid red!important;
+}
+
+.CartDiscountExists {
+  border-bottom: 2px solid maroon!important;
+}
+
+.TotalPrice {
+  margin-left: 10px;
+  color: darkgreen;
+}

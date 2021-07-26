@@ -3,6 +3,9 @@ import {
   ADD_TO_CART_ERROR,
   ADD_TO_CART_START,
   ADD_TO_CART_SUCCESS,
+  CART_DISCOUNT_CODE_ERROR,
+  CART_DISCOUNT_CODE_SUCCESS,
+  CART_DISCOUNT_RESET,
   DECREASE_ITEM_COUNT,
   INCREASE_ITEM_COUNT,
   REMOVE_FROM_CART,
@@ -10,11 +13,20 @@ import {
   SET_ITEM_COUNT,
   SHOW_CART_PREVIEW,
   TOGGLE_CART_PREVIEW,
+  USER_DISCOUNT_EXIST,
 } from "../actions/actionTypes";
 
 const initialState = {
   items: [],
   total: 0,
+  totalOff: null,
+  offSaved: null,
+  discount: {
+    error: false,
+    code: null,
+    typed: false,
+    exists: false,
+  },
   isPreviewActive: false,
   loading: false,
   error: false,
@@ -24,8 +36,27 @@ function calculateTotal(array) {
   return array.reduce((result, item) => {
     let final = result;
     final += item.count * item.price;
-    return final;
+    return Math.round(final * 100) / 100;
   }, 0);
+}
+
+// function calculateTotalOff(cart, hasDiscount) {
+//   if (hasDiscount) {
+//     const { total } = cart;
+//     const { percentage } = cart.discount.code;
+//     const offPrice = (total * percentage) / 100;
+//     const result = total - offPrice;
+//     return Math.round(result * 100) / 100;
+//   }
+//   return null;
+// }
+
+function calculateOffPrice(total, hasDiscount) {
+  if (hasDiscount) {
+    const result = (total * hasDiscount.percentage) / 100;
+    return Math.round(result * 100) / 100;
+  }
+  return null;
 }
 
 function manageCountUpdate(array, item, action) {
@@ -45,22 +76,26 @@ const handlers = {
     ...state,
     loading: true,
   }),
-  [ADD_TO_CART_SUCCESS]: (state, { items, total }) => ({
+  [ADD_TO_CART_SUCCESS]: (state, { items, total, totalOff }) => ({
     ...state,
     loading: false,
     items,
     total,
+    totalOff,
+    offSaved: calculateOffPrice(state.total, state.discount.code),
     isPreviewActive: true,
   }),
   [SELECT_CURRENT_ITEM]: (state) => ({
     ...state,
     isPreviewActive: false,
   }),
-  [ADD_TO_CARD_INCREASE_COUNT]: (state, { items, total }) => ({
+  [ADD_TO_CARD_INCREASE_COUNT]: (state, { items, total, totalOff }) => ({
     ...state,
     items,
     loading: false,
     total,
+    totalOff,
+    offSaved: calculateOffPrice(state.total, state.discount.code),
     isPreviewActive: true,
   }),
   [ADD_TO_CART_ERROR]: (state, { e }) => ({
@@ -75,17 +110,21 @@ const handlers = {
     ...state,
     isPreviewActive: true,
   }),
-  [INCREASE_ITEM_COUNT]: (state, { item }) => ({
+  [INCREASE_ITEM_COUNT]: (state, { item, totalOff }) => ({
     ...state,
     items: manageCountUpdate(state.items, item, "plus"),
     total: calculateTotal(state.items),
+    totalOff,
+    offSaved: calculateOffPrice(state.total, state.discount.code),
   }),
-  [DECREASE_ITEM_COUNT]: (state, { item }) => ({
+  [DECREASE_ITEM_COUNT]: (state, { item, totalOff }) => ({
     ...state,
     items: manageCountUpdate(state.items, item, "minus"),
     total: calculateTotal(state.items),
+    totalOff,
+    offSaved: calculateOffPrice(state.total, state.discount.code),
   }),
-  [REMOVE_FROM_CART]: (state, { item }) => {
+  [REMOVE_FROM_CART]: (state, { item, totalOff }) => {
     const idx = state.items.findIndex((current) => current.id === item.id);
     const updatedItems = [
       ...state.items.slice(0, idx),
@@ -95,12 +134,51 @@ const handlers = {
       ...state,
       items: updatedItems,
       total: calculateTotal(updatedItems),
+      totalOff,
+      offSaved: calculateOffPrice(state.total, state.discount.code),
     };
   },
-  [SET_ITEM_COUNT]: (state, { items }) => ({
+  [SET_ITEM_COUNT]: (state, { items, totalOff }) => ({
     ...state,
     items,
     total: calculateTotal(state.items),
+    totalOff,
+    offSaved: calculateOffPrice(state.total, state.discount.code),
+  }),
+  [CART_DISCOUNT_CODE_SUCCESS]: (state, { code, totalOff, offSaved }) => ({
+    ...state,
+    discount: {
+      error: false,
+      code,
+      exists: false,
+    },
+    totalOff,
+    offSaved,
+  }),
+  [CART_DISCOUNT_CODE_ERROR]: (state, { typed }) => ({
+    ...state,
+    discount: {
+      error: true,
+      typed,
+      exists: false,
+    },
+    totalOff: 0,
+  }),
+  [CART_DISCOUNT_RESET]: (state) => ({
+    ...state,
+    discount: {
+      error: false,
+      code: null,
+      exists: false,
+    },
+  }),
+  [USER_DISCOUNT_EXIST]: (state) => ({
+    ...state,
+    discount: {
+      error: true,
+      code: null,
+      exists: true,
+    },
   }),
   DEFAULT: (state) => state,
 };

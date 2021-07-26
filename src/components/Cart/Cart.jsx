@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
@@ -14,6 +14,7 @@ import {
 import LoginForm from "../LoginRegistration/LoginForm";
 import RegistrationForm from "../LoginRegistration/RegistrationForm";
 import { setLoginActiveTab } from "../../store/actions/user";
+import { checkDiscount, resetDiscount } from "../../store/actions/cart";
 
 const Cart = ({
   cart,
@@ -23,12 +24,55 @@ const Cart = ({
   subcategoryChooser,
   checkCategoriesHandler,
   setLoginActiveTabHandler,
+  checkDiscountHandler,
+  discountResetHandler,
 }) => {
+  useEffect(() => {
+    discountResetHandler();
+  }, [discountResetHandler]);
+
   const registerRoutesHandler = (route, subcategory, mainRoute) => {
     receiveRoute(route);
     checkCategoriesHandler(mainRoute);
     categoryChooser(mainRoute);
     subcategoryChooser(subcategory);
+  };
+
+  const parseDiscountCondition = (alpha, omega, bravo) => {
+    if (cart.discount.error && cart.discount.typed) {
+      return alpha;
+    }
+    if (!cart.discount.error && cart.discount.code) {
+      return omega;
+    }
+
+    if (cart.discount.error && cart.discount.exists) {
+      return bravo;
+    }
+
+    return null;
+  };
+
+  const clsDiscounts = [
+    classes.DiscountCode,
+    parseDiscountCondition(
+      classes.CartDiscountError,
+      classes.CartDiscountSuccess,
+      classes.CartDiscountExists
+    ),
+  ];
+
+  const renderTotalPrice = () => {
+    if (cart.discount.code && cart.totalOff > 0) {
+      const totalPrice = `$${cart.totalOff}`;
+      return (
+        <>
+          <s>${cart.total}</s>
+          <span className={classes.TotalPrice}>{totalPrice}</span>
+        </>
+      );
+    }
+    return cart.total;
   };
 
   return (
@@ -97,11 +141,40 @@ const Cart = ({
         <aside className={classes.Aside}>
           <h3 className={classes.CartTotal}>Shopping Cart Total</h3>
           <p className={classes.Discount}>Add a discount code</p>
-          <form action="#">
-            <input className={classes.DiscountCode} type="text" />
-          </form>
+          <input
+            onChange={(e) => checkDiscountHandler(e.target)}
+            defaultValue={cart.discount.code ? cart.discount.code.key : null}
+            className={clsDiscounts.join(" ")}
+            type="text"
+          />
+          {parseDiscountCondition(
+            <p
+              className={classnames(
+                classes.DiscountCodeCheck,
+                classes.DiscountNotFound
+              )}
+            >
+              Code not found
+            </p>,
+            <p
+              className={classnames(
+                classes.DiscountCodeCheck,
+                classes.DiscountFound
+              )}
+            >
+              You save: ${cart.offSaved}
+            </p>,
+            <p
+              className={classnames(
+                classes.DiscountCodeCheck,
+                classes.DiscountExists
+              )}
+            >
+              The code was already used or expired
+            </p>
+          )}
           <p className={classes.AsideInfo}>Delivery Free</p>
-          <p className={classes.AsideInfo}>Total {cart.total}$</p>
+          <p className={classes.AsideInfo}>Total {renderTotalPrice()}</p>
           {user.userId && cart.items.length ? (
             <NavLink
               to="/checkout"
@@ -129,6 +202,8 @@ Cart.defaultProps = {
   subcategoryChooser: (f) => f,
   checkCategoriesHandler: (f) => f,
   setLoginActiveTabHandler: (f) => f,
+  checkDiscountHandler: (f) => f,
+  discountResetHandler: (f) => f,
 };
 
 Cart.propTypes = {
@@ -139,6 +214,8 @@ Cart.propTypes = {
   subcategoryChooser: PropTypes.func,
   setLoginActiveTabHandler: PropTypes.func,
   checkCategoriesHandler: PropTypes.func,
+  checkDiscountHandler: PropTypes.func,
+  discountResetHandler: PropTypes.func,
 };
 
 function mapStateToProps(state) {
@@ -156,6 +233,8 @@ function mapDispatchToProps(dispatch) {
     checkCategoriesHandler: (category, sub) =>
       dispatch(checkCategories(category, sub)),
     setLoginActiveTabHandler: (tab) => dispatch(setLoginActiveTab(tab)),
+    checkDiscountHandler: (key) => dispatch(checkDiscount(key)),
+    discountResetHandler: () => dispatch(resetDiscount()),
   };
 }
 

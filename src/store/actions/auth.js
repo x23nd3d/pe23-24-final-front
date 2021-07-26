@@ -1,4 +1,5 @@
 import axios from "../../axios/axios-auth";
+import check from "../../axios/axios-user";
 import pushNotification from "../../utils/toastrConfig";
 import {
   AUTH_ERROR,
@@ -6,11 +7,58 @@ import {
   AUTH_LOGOUT_START,
   AUTH_START,
   AUTH_SUCCESS,
+  CART_DISCOUNT_CODE_ERROR,
   SET_LOGIN_TOGGLE,
   SIGNUP_ERROR,
   SIGNUP_START,
   SIGNUP_SUCCESS,
+  USER_DISCOUNT_EXIST,
 } from "./actionTypes";
+
+export const checkDiscount = () => async (dispatch, getState) => {
+  console.log("CHECKING");
+  const { discount } = getState().cart;
+  const { token } = getState().auth;
+  try {
+    if (discount.code) {
+      const { key } = getState().cart.discount.code;
+      console.log("KEYYYY", key);
+      const request = await check.post(
+        "/checkDiscount",
+        { key },
+        {
+          headers: {
+            Authorization: `${token}`,
+          },
+        }
+      );
+
+      const response = request.data;
+
+      console.log("response", response);
+      if (response.error === "discount_not_found") {
+        console.log("NOT FOUND");
+        return dispatch(checkAuthDiscountError());
+      }
+
+      if (response.error === "already_exists") {
+        console.log("ESIXTS");
+        return dispatch(checkAuthDiscountExists());
+      }
+      return true;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const checkAuthDiscountExists = () => ({
+  type: USER_DISCOUNT_EXIST,
+});
+
+export const checkAuthDiscountError = () => ({
+  type: CART_DISCOUNT_CODE_ERROR,
+});
 
 export function auth(email, password, keepSigned) {
   // eslint-disable-next-line consistent-return
@@ -83,6 +131,7 @@ export function auth(email, password, keepSigned) {
           }
         );
         dispatch(authSuccess(data.token, data.userId, expirationDate));
+        dispatch(checkDiscount());
         sessionStorage.setItem("token", data.token);
         dispatch(autoLogout(data.expiresIn));
       }, 500);
