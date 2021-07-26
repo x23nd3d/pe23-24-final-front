@@ -58,6 +58,7 @@ const Product = ({ data, productStore, dispatchColor, dispatchPhoto }) => {
         />
         <article className={dataBlock}>
             <ul className={classNames(Details)}>
+
                 <li className={topBlock}>
                     <header className={classNames(Title)}>
                       <div className={NameBox}>
@@ -85,10 +86,9 @@ const Product = ({ data, productStore, dispatchColor, dispatchPhoto }) => {
                       </div>
                     </div>
                 </li>
-                <li className={inputBlock}>
-                    <AddToCartForm data={data} store={store} />
-                    <hr />
-                </li>
+
+                <li className={inputBlock}><AddToCartForm data={data} store={store} /><hr /></li>
+
                 <li className={bottomBlock}>
                     <h3 className={moreDetails}>More details</h3>
                     <span className={dataPointer}>
@@ -107,6 +107,7 @@ const Product = ({ data, productStore, dispatchColor, dispatchPhoto }) => {
                     </ul>
                 {producingCountry && <p style={{margin: "10px 0"}}>Made in {producingCountry}</p> }
                 </li>
+
               </ul>
         </article>
       </section>

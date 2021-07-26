@@ -29,16 +29,13 @@ const AddToCartForm = ({ data, store, dispatchCart, product }) => {
       : dataItem.color[0];
     let size = null;
     if (changedDetails.size !== "undefined") {
-      console.log("changedDetails.size.length", changedDetails.size);
       size = changedDetails.size;
     } else if (dataItem.size[0] !== undefined) {
-      console.log("ataItem.size[0].length", dataItem.size[0].length);
       // eslint-disable-next-line prefer-destructuring
       size = dataItem.size[0];
     } else {
       size = [];
     }
-    console.log("DIZE", size);
 
     const item = {
       ...dataItem,
