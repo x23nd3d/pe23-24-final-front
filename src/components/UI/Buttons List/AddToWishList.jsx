@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "../../Forms/Add to Cart/AddToCartForm.scss";
+import classes from "../../Forms/Add to Cart/AddToCartForm.module.scss";
 import AddToWishlistIcon from "../SVG Icons Components/AddToWishlistIcon";
 import AlreadyInWishlistIcon from "../SVG Icons Components/AlreadyInWishlistIcon";
 
 const AddToWishList = ({isAdded}) => (
-  <button className="to-wishlist" type="button" >
+  <button className={classes.toWishlist} type="button" >
     {isAdded ? <AlreadyInWishlistIcon /> : <AddToWishlistIcon /> }
   </button>
 );

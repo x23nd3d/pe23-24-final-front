@@ -20,12 +20,12 @@
   @media (max-width: 370px) { height: 100px; }
   @media (max-width: 666px) {
     flex-wrap: wrap;
-    .color-selection {
+    .colorSelection {
       width: 100%;
     }
   }
 
-  .color-selection {
+  .colorSelection {
     width: 80%;
     display: flex;
     justify-content: flex-start;
@@ -41,7 +41,7 @@
       @media (max-width: 370px) { align-content: space-between; }
     }
 
-    .color-box {
+    .colorBox {
       margin-left: 15px;
     }
 
@@ -148,7 +148,7 @@
   position: relative;
 }
 
-.size-select {
+.sizeSelect {
   width: 100px;
   height: 36px;
   border: 1px solid black;
@@ -217,7 +217,7 @@
   width: 60%;
 }
 
-.to-wishlist {
+.toWishlist {
   width: 15%;
   @media (max-width: 420px) {
     width: 18%;
