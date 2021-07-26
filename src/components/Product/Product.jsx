@@ -8,11 +8,12 @@ import {colorAction, photoAction } from "../../store/actions/product";
 import VisitedProducts from "./Visited/VisitedProducts";
 import Available from "../UI/SVG Icons Components/Available";
 import Unavailable from "../UI/SVG Icons Components/Unavilable";
+import ProductTag from "../UI/ProductTag/ProductTag";
 
 import {
   productPage,
   Details,
-  collectionLabel,
+  collectionTags,
   topBlock,
   NameBox,
   PriceBox,
@@ -25,7 +26,6 @@ import {
   moreDetails,
   bottomBlock,
   dsc,
-  backShopping,
   dataBlock,
   isStock
 } from "./Product.module.scss";
@@ -62,7 +62,18 @@ const Product = ({ data, productStore, dispatchColor, dispatchPhoto }) => {
                     <header className={classNames(Title)}>
                       <div className={NameBox}>
                         <h2 className={classNames(Name)}>{name}</h2>
-                        <span className={collectionLabel}>Recommended</span>
+                        {productStore.currentItem.new &&
+                          <div style={{background: "#b30808", color: "#fff"}} className={collectionTags}>
+                            <ProductTag item={productStore.currentItem} tag="New" />
+                          </div>}
+                        {productStore.currentItem.recommended &&
+                          <div style={{background: "#9d00ff", color: "#fff"}} className={collectionTags}>
+                            <ProductTag item={productStore.currentItem} tag="Recommended" />
+                          </div>}
+                        {productStore.currentItem.ordered >= 120 &&
+                          <div style={{background: "#00ff43", color: "#000"}} className={collectionTags}>
+                            <ProductTag item={productStore.currentItem} tag="Popular" />
+                          </div>}
                       </div>
                         <p className={classNames(Caption)}>{caption}</p>
                     </header>

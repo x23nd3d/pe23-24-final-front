@@ -39,15 +39,9 @@
     .NameBox {
         display: flex;
         align-items: center;
-        .collectionLabel {
+        .collectionTags {
             margin-left: 20px;
-            text-align: center;
-            padding: 3px 5px 2px;
-            border-radius: 10px;
-            font-size: 14px;
-        }
-        .collectionLabel {
-            background-color: chartreuse;
+            border-radius: 3px;
         }
     }
 
