@@ -34,7 +34,7 @@
   border: none;
   border-bottom: 1px solid #000000;
   width: 50%;
-
+ 
   &:active {
     outline: none;
   }
@@ -53,6 +53,7 @@
 
 .InputField {
   margin-bottom: 50px;
+  position: relative;
 }
 
 label {
@@ -68,4 +69,10 @@ label {
   .Button {
     width: 100%;
   }
+}
+.Error {
+  color: red;
+  font-size: 12px;
+  position: absolute;
+  bottom: -20px;
 }
