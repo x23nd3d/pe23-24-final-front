@@ -102,8 +102,8 @@ const Delivery = ({
                     className={classes.Checkbox}
                     type="radio"
                     name="delivery"
-                    value="myself"
-                    checked={user.deliveryMethod === "myself" ? true : null}
+                    value={"myself" || ""}
+                    checked={user.deliveryMethod === "myself"}
                   />
                   Pick up by myself
                 </div>
@@ -114,8 +114,8 @@ const Delivery = ({
                     className={classes.Checkbox}
                     type="radio"
                     name="delivery"
-                    value="courier"
-                    checked={user.deliveryMethod === "courier" ? true : null}
+                    value={"courier" || ""}
+                    checked={user.deliveryMethod === "courier"}
                   />
                   Courier delivery
                   {cart.deliveryPay > 0 ? ` + $${cart.deliveryPay}` : null}
@@ -131,7 +131,9 @@ const Delivery = ({
                     placeholder="Your address"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.cardName}
+                    defaultValue={
+                      user.deliveryAddress ? user.deliveryAddress : ""
+                    }
                   />
                   {touched.cardName && errors.cardName && (
                     <p className={classes.Error}>{errors.cardName}</p>

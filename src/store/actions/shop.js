@@ -63,8 +63,31 @@ export const handleItemPreviewParams =
       ...currentPreviewItemsList.slice(idx + 1),
     ];
 
+    console.log("NEWITEMS", newItems);
     dispatch(setItemPreview(newItems));
   };
+
+// export const setDefaultItems = (param) => (dispatch, getState) => {
+//   const { currentPreviewItems } = getState().shop;
+//   const currentPreviewItemsList = [...currentPreviewItems];
+//
+//   const oldObj = currentPreviewItemsList.find(
+//     (searchItem) => searchItem.id === currentPreviewItems[0].id
+//   );
+//
+//   if (!currentPreviewItems[0].size.length) {
+//     return;
+//   }
+//
+//   const newObj = { ...oldObj, [param]: currentPreviewItems[0].size[0] };
+//   const newItems = [
+//     ...currentPreviewItemsList.slice(0),
+//     newObj,
+//     ...currentPreviewItemsList.slice(1),
+//   ];
+//
+//   dispatch(setItemPreview(newItems));
+// };
 
 export const setItemPreview = (data) => ({
   type: SELECT_PRODUCT_PREVIEW_PARAMS,

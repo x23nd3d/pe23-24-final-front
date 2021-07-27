@@ -84,9 +84,49 @@ const Cart = ({
   const percentage = cart.discount.code ? cart.discount.code.percentage : null;
 
   const saveDeliveryHandler = (e) => {
-    if (e.target.checked) {
-      saveDeliveryOptionsHandler();
+    console.log("e.target.checked", e.target.checked);
+    saveDeliveryOptionsHandler(e.target.checked);
+  };
+
+  const renderCheckoutInfo = () => {
+    if (auth.token && cart.items.length) {
+      if (!user.deliveryAddress && user.deliveryMethod === "courier") {
+        return (
+          <p className={classes.CheckoutLogin}>
+            Please type your address to checkout
+          </p>
+        );
+      }
+
+      return (
+        <>
+          <div className={classes.DeliveryAddressField}>
+            <input
+              className={classes.Checkbox}
+              type="checkbox"
+              name="saveCard"
+              checked={user.isDeliverySaved || false}
+              onChange={(e) => saveDeliveryHandler(e)}
+            />
+
+            <span className={classes.CheckboxLabel}>Save delivery address</span>
+          </div>
+          <NavLink
+            to="/checkout"
+            className={classnames(classes.Button, classes.ButtonCheckout)}
+            type="button"
+          >
+            Checkout
+          </NavLink>
+        </>
+      );
     }
+
+    return (
+      <p className={classes.CheckoutLogin}>
+        {cart.items.length ? "Please login to checkout." : "The cart is empty"}
+      </p>
+    );
   };
 
   return (
@@ -206,42 +246,11 @@ const Cart = ({
                   </p>
                 </>
               ) : null}
+              {cart.items.length ? (
+                <p className={classes.AsideInfo}>Total ${renderTotalPrice()}</p>
+              ) : null}
 
-              {auth.token && cart.items.length ? (
-                <>
-                  <p className={classes.AsideInfo}>
-                    Total ${renderTotalPrice()}
-                  </p>
-                  <div className={classes.DeliveryAddressField}>
-                    <input
-                      className={classes.Checkbox}
-                      type="checkbox"
-                      name="saveCard"
-                      onChange={(e) => saveDeliveryHandler(e)}
-                    />
-
-                    <span className={classes.CheckboxLabel}>
-                      Save delivery address for next purchases
-                    </span>
-                  </div>
-                  <NavLink
-                    to="/checkout"
-                    className={classnames(
-                      classes.Button,
-                      classes.ButtonCheckout
-                    )}
-                    type="button"
-                  >
-                    Checkout
-                  </NavLink>
-                </>
-              ) : (
-                <p className={classes.CheckoutLogin}>
-                  {cart.items.length
-                    ? "Please login to checkout."
-                    : "The cart is empty"}
-                </p>
-              )}
+              {renderCheckoutInfo()}
             </aside>
           </div>
         </div>
@@ -293,7 +302,8 @@ function mapDispatchToProps(dispatch) {
     setLoginActiveTabHandler: (tab) => dispatch(setLoginActiveTab(tab)),
     checkDiscountHandler: (key) => dispatch(checkDiscount(key)),
     discountResetHandler: () => dispatch(resetDiscount()),
-    saveDeliveryOptionsHandler: () => dispatch(saveDeliveryOptions()),
+    saveDeliveryOptionsHandler: (isDeliverySaved) =>
+      dispatch(saveDeliveryOptions(isDeliverySaved)),
   };
 }
 

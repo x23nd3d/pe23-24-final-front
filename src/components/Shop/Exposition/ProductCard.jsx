@@ -41,7 +41,7 @@ const ProductCard = ({
     selectCurrentItemHandler(item);
     dispatchColor(item.color[0]);
     dispatchPhoto(item.photo[item.color[0]]);
-    dispatchVisitedProducts(item)
+    dispatchVisitedProducts(item);
   };
 
   const clsHoverDetails = [
@@ -49,12 +49,14 @@ const ProductCard = ({
     cartIdx >= 0 ? classes.CartHoverDetailsFreeze : null,
   ];
 
-  const renderItemSizes = (currentItem) =>
-    currentItem.size.map((size) => {
+  const renderItemSizes = (currentItem) => {
+    if (!currentItem) return;
+    return currentItem.size.map((size) => {
       const cls = [
         classes.sizeItem,
         size === shop.currentPreviewItems[idx].size &&
-        currentItem.id === shop.currentPreviewItems[idx].id
+        currentItem.id === shop.currentPreviewItems[idx].id &&
+        cartIdx < 0
           ? classes.sizeItemActive
           : null,
         cartIdx >= 0 ? classes.freezeItem : null,
@@ -73,6 +75,7 @@ const ProductCard = ({
         </button>
       );
     });
+  };
 
   const renderItemColors = (currentItem) => {
     if (!currentItem) return;
@@ -82,7 +85,8 @@ const ProductCard = ({
       const cls = [
         classes.colorItem,
         color === shop.currentPreviewItems[idx].color &&
-        currentItem.id === shop.currentPreviewItems[idx].id
+        currentItem.id === shop.currentPreviewItems[idx].id &&
+        cartIdx < 0
           ? classes.colorItemActive
           : null,
         color ? classes[colorClass] : null,
@@ -112,9 +116,9 @@ const ProductCard = ({
     ];
 
     return ((typeof shop.currentPreviewItems[idx].color === "string" ||
-      !shop.currentPreviewItems[idx].color.length) &&
+      !shop.currentPreviewItems[idx].color) &&
       (typeof shop.currentPreviewItems[idx].size === "string" ||
-        !shop.currentPreviewItems[idx].size.length)) ||
+        !shop.currentPreviewItems[idx].size)) ||
       cartIdx >= 0 ? (
       <div
         role="none"

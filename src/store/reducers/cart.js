@@ -166,7 +166,7 @@ const handlers = {
       items: updatedItems,
       total: calculateTotal(updatedItems, state.deliveryPay),
       discount: {
-        code: !state.items.length ? null : state.discount.code,
+        code: !updatedItems.length ? null : state.discount.code,
       },
       totalOff: calculateTotalOff(
         calculateTotal(updatedItems, state.deliveryPay),

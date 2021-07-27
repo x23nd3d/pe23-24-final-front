@@ -75,6 +75,10 @@ export const deliveryHandler = (method) => (dispatch, getState) => {
     dispatch(setDeliveryPay(deliveryPay));
   }
 
+  // if (method === "myself") {
+  //   dispatch(deliveryAddressHandler(null));
+  // }
+
   dispatch(setDelivery(method));
   dispatch(setDeliveryPay(deliveryPay));
 };
@@ -96,6 +100,10 @@ export const deliveryAddressHandler = (address) => (dispatch, getState) => {
     return;
   }
 
+  if (!address) {
+    dispatch(saveDeliveryAddress(null));
+  }
+
   dispatch(saveDeliveryAddress(address));
 };
 
@@ -104,20 +112,28 @@ export const saveDeliveryAddress = (deliveryAddress) => ({
   deliveryAddress,
 });
 
-export const saveDeliveryOptions = () => (dispatch, getState) => {
-  const { deliveryMethod, deliveryAddress } = getState().user;
-  // TODO: SERVER SAVE
+export const saveDeliveryOptions =
+  (isDeliverySaved) => (dispatch, getState) => {
+    const { deliveryMethod, deliveryAddress } = getState().user;
+    // TODO: SERVER SAVE
 
-  const options = {
-    deliveryMethod,
-    deliveryAddress,
+    const options = {
+      deliveryMethod,
+      deliveryAddress,
+    };
+
+    console.log("SAVED", deliveryMethod, deliveryAddress, isDeliverySaved);
+
+    dispatch(saveDelivery(deliveryMethod, deliveryAddress, isDeliverySaved));
   };
 
-  console.log("SAVED");
-
-  dispatch(saveDelivery(options));
-};
-
-export const saveDelivery = () => ({
+export const saveDelivery = (
+  deliveryMethod,
+  deliveryAddress,
+  isDeliverySaved
+) => ({
   type: SAVE_DELIVERY_OPTIONS,
+  deliveryMethod,
+  deliveryAddress,
+  isDeliverySaved,
 });

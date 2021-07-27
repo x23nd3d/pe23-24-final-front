@@ -77,3 +77,6 @@ Andrew Kucher, [25.07.21 22:17]
 также будет возможность у пользователя свою карту сохранить
 
 dropdown account close on click Cart
+
+
+if not save delivery = reset delivery on reload

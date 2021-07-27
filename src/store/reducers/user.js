@@ -3,6 +3,7 @@ import {
   AUTH_SUCCESS,
   SAVE_CREDIT_CARD_DETAILS,
   SAVE_DELIVERY_ADDRESS,
+  SAVE_DELIVERY_OPTIONS,
   SET_ACCOUNT_ACTIVE_TAB,
   SET_DELIVERY_METHOD,
   SET_LOGIN_ACTIVE_TAB,
@@ -13,6 +14,7 @@ const initialState = {
   deliveryMethod: "myself",
   deliveryAddress: null,
   isCardSaved: false,
+  isDeliverySaved: false,
   accountActiveTab: "profile",
   loginActiveTab: true,
   loading: false,
@@ -41,6 +43,15 @@ const handlers = {
   [SAVE_DELIVERY_ADDRESS]: (state, { deliveryAddress }) => ({
     ...state,
     deliveryAddress,
+  }),
+  [SAVE_DELIVERY_OPTIONS]: (
+    state,
+    { deliveryMethod, deliveryAddress, isDeliverySaved }
+  ) => ({
+    ...state,
+    deliveryMethod,
+    deliveryAddress,
+    isDeliverySaved,
   }),
   DEFAULT: (state) => state,
 };
