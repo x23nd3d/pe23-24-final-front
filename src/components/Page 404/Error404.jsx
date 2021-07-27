@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import hereIsJohnny from "./heres404.png";
 import {backBt, container, content} from "./err404.module.scss";
 
@@ -11,10 +12,10 @@ const Error404 = () => (
       </header>
       <div>
         <p>
-          The path you tried to pass does not exist. You may click below to back the home page.
+          The path you tried to pass does not exist. You may click below to back to the home page.
         </p>
       </div>
-    <button className={backBt} type="button">Back</button>
+      <NavLink className={backBt} exact to="/" type="button">Back</NavLink>
     </article>
   </section>
 );

@@ -41,6 +41,9 @@
 }
 
 .backBt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 240px;
   margin-top: 40px;
   height: 60px;
