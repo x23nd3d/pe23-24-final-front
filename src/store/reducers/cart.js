@@ -40,16 +40,15 @@ function calculateTotal(array) {
   }, 0);
 }
 
-// function calculateTotalOff(cart, hasDiscount) {
-//   if (hasDiscount) {
-//     const { total } = cart;
-//     const { percentage } = cart.discount.code;
-//     const offPrice = (total * percentage) / 100;
-//     const result = total - offPrice;
-//     return Math.round(result * 100) / 100;
-//   }
-//   return null;
-// }
+function calculateTotalOff(total, hasDiscount) {
+  if (hasDiscount) {
+    const { percentage } = hasDiscount;
+    const offPrice = (total * percentage) / 100;
+    const result = total - offPrice;
+    return Math.round(result * 100) / 100;
+  }
+  return null;
+}
 
 function calculateOffPrice(total, hasDiscount) {
   if (hasDiscount) {
@@ -76,26 +75,38 @@ const handlers = {
     ...state,
     loading: true,
   }),
-  [ADD_TO_CART_SUCCESS]: (state, { items, total, totalOff }) => ({
+  [ADD_TO_CART_SUCCESS]: (state, { items, total }) => ({
     ...state,
     loading: false,
     items,
     total,
-    totalOff,
-    offSaved: calculateOffPrice(state.total, state.discount.code),
+    totalOff: calculateTotalOff(
+      calculateTotal(state.items),
+      state.discount.code
+    ),
+    offSaved: calculateOffPrice(
+      calculateTotal(state.items),
+      state.discount.code
+    ),
     isPreviewActive: true,
   }),
   [SELECT_CURRENT_ITEM]: (state) => ({
     ...state,
     isPreviewActive: false,
   }),
-  [ADD_TO_CARD_INCREASE_COUNT]: (state, { items, total, totalOff }) => ({
+  [ADD_TO_CARD_INCREASE_COUNT]: (state, { items, total }) => ({
     ...state,
     items,
     loading: false,
     total,
-    totalOff,
-    offSaved: calculateOffPrice(state.total, state.discount.code),
+    totalOff: calculateTotalOff(
+      calculateTotal(state.items),
+      state.discount.code
+    ),
+    offSaved: calculateOffPrice(
+      calculateTotal(state.items),
+      state.discount.code
+    ),
     isPreviewActive: true,
   }),
   [ADD_TO_CART_ERROR]: (state, { e }) => ({
@@ -110,21 +121,33 @@ const handlers = {
     ...state,
     isPreviewActive: true,
   }),
-  [INCREASE_ITEM_COUNT]: (state, { item, totalOff }) => ({
+  [INCREASE_ITEM_COUNT]: (state, { item }) => ({
     ...state,
     items: manageCountUpdate(state.items, item, "plus"),
     total: calculateTotal(state.items),
-    totalOff,
-    offSaved: calculateOffPrice(state.total, state.discount.code),
+    totalOff: calculateTotalOff(
+      calculateTotal(state.items),
+      state.discount.code
+    ),
+    offSaved: calculateOffPrice(
+      calculateTotal(state.items),
+      state.discount.code
+    ),
   }),
-  [DECREASE_ITEM_COUNT]: (state, { item, totalOff }) => ({
+  [DECREASE_ITEM_COUNT]: (state, { item }) => ({
     ...state,
     items: manageCountUpdate(state.items, item, "minus"),
     total: calculateTotal(state.items),
-    totalOff,
-    offSaved: calculateOffPrice(state.total, state.discount.code),
+    totalOff: calculateTotalOff(
+      calculateTotal(state.items),
+      state.discount.code
+    ),
+    offSaved: calculateOffPrice(
+      calculateTotal(state.items),
+      state.discount.code
+    ),
   }),
-  [REMOVE_FROM_CART]: (state, { item, totalOff }) => {
+  [REMOVE_FROM_CART]: (state, { item }) => {
     const idx = state.items.findIndex((current) => current.id === item.id);
     const updatedItems = [
       ...state.items.slice(0, idx),
@@ -134,16 +157,31 @@ const handlers = {
       ...state,
       items: updatedItems,
       total: calculateTotal(updatedItems),
-      totalOff,
-      offSaved: calculateOffPrice(state.total, state.discount.code),
+      discount: {
+        code: !state.items.length ? null : state.discount.code,
+      },
+      totalOff: calculateTotalOff(
+        calculateTotal(updatedItems),
+        state.discount.code
+      ),
+      offSaved: calculateOffPrice(
+        calculateTotal(updatedItems),
+        state.discount.code
+      ),
     };
   },
-  [SET_ITEM_COUNT]: (state, { items, totalOff }) => ({
+  [SET_ITEM_COUNT]: (state, { items }) => ({
     ...state,
     items,
     total: calculateTotal(state.items),
-    totalOff,
-    offSaved: calculateOffPrice(state.total, state.discount.code),
+    totalOff: calculateTotalOff(
+      calculateTotal(state.items),
+      state.discount.code
+    ),
+    offSaved: calculateOffPrice(
+      calculateTotal(state.items),
+      state.discount.code
+    ),
   }),
   [CART_DISCOUNT_CODE_SUCCESS]: (state, { code, totalOff, offSaved }) => ({
     ...state,

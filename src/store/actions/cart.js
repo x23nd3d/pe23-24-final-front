@@ -25,20 +25,8 @@ function calculateTotal(array) {
   }, 0);
 }
 
-function calculateTotalOff(cart, hasDiscount) {
-  if (hasDiscount) {
-    const { total } = cart;
-    console.log("TOTAL", total);
-    const { percentage } = cart.discount.code;
-    const offPrice = (total * percentage) / 100;
-    return total - offPrice;
-  }
-  return null;
-}
-
 export const addToCart = (item) => (dispatch, getState) => {
   const initialItems = getState().cart.items;
-  const initialCart = getState().cart;
 
   const itemFound = initialItems.find((goods) => {
     const itemToCheck = { ...goods };
@@ -59,21 +47,13 @@ export const addToCart = (item) => (dispatch, getState) => {
       const idx = initialItems.indexOf(itemFound);
       initialItems[idx].count += 1;
       const total = calculateTotal(initialItems);
-      const totalOff = calculateTotalOff(
-        initialCart,
-        getState().cart.discount.code
-      );
-      return dispatch(updateCount(initialItems, total, totalOff));
+      return dispatch(updateCount(initialItems, total));
     }
 
     // we do not have item, should add it first with count: 1
     const newItems = [...initialItems, itemToAdd];
     const total = calculateTotal(newItems);
-    const totalOff = calculateTotalOff(
-      initialCart,
-      getState().cart.discount.code
-    );
-    return dispatch(addToCartSuccess(newItems, total, totalOff));
+    return dispatch(addToCartSuccess(newItems, total));
   } catch (e) {
     dispatch(addToCartError(e));
   }
@@ -94,62 +74,30 @@ export const setItemCountHandler = (item, count) => (dispatch, getState) => {
   return dispatch(setItemCount(initialItems));
 };
 
-export const setItemCount = (items) => (dispatch, getState) => {
-  const totalOff = calculateTotalOff(
-    getState().cart,
-    getState().cart.discount.code
-  );
+export const setItemCount = (items) => ({
+  type: SET_ITEM_COUNT,
+  items,
+});
 
-  return dispatch({
-    type: SET_ITEM_COUNT,
-    items,
-    totalOff,
-  });
-};
+export const increaseItemCount = (item) => ({
+  type: INCREASE_ITEM_COUNT,
+  item,
+});
 
-export const increaseItemCount = (item) => (dispatch, getState) => {
-  console.log("etState().cart", getState().cart.total);
-  const totalOff = calculateTotalOff(
-    getState().cart,
-    getState().cart.discount.code
-  );
+export const decreaseItemCount = (item) => ({
+  type: DECREASE_ITEM_COUNT,
+  item,
+});
 
-  return dispatch({
-    type: INCREASE_ITEM_COUNT,
-    item,
-    totalOff,
-  });
-};
+export const removeFromCart = (item) => ({
+  type: REMOVE_FROM_CART,
+  item,
+});
 
-export const decreaseItemCount = (item) => (dispatch, getState) => {
-  const totalOff = calculateTotalOff(
-    getState().cart,
-    getState().cart.discount.code
-  );
-
-  return dispatch({
-    type: DECREASE_ITEM_COUNT,
-    item,
-    totalOff,
-  });
-};
-export const removeFromCart = (item) => (dispatch, getState) => {
-  const totalOff = calculateTotalOff(
-    getState().cart,
-    getState().cart.discount.code
-  );
-  return dispatch({
-    type: REMOVE_FROM_CART,
-    item,
-    totalOff,
-  });
-};
-
-export const addToCartSuccess = (items, total, totalOff) => ({
+export const addToCartSuccess = (items, total) => ({
   type: ADD_TO_CART_SUCCESS,
   items,
   total,
-  totalOff,
 });
 
 export const addToCartStart = () => ({
@@ -161,11 +109,10 @@ export const addToCartError = (e) => ({
   e,
 });
 
-export const updateCount = (items, total, totalOff) => ({
+export const updateCount = (items, total) => ({
   type: ADD_TO_CARD_INCREASE_COUNT,
   items,
   total,
-  totalOff,
 });
 
 export const toggleCartPreviewHandler = () => (dispatch, getState) => {
@@ -185,15 +132,20 @@ export const toggleCartPreview = () => ({
 });
 
 export const checkDiscount = (e) => async (dispatch, getState) => {
-  console.log("key.lengthkey.lengthkey.length", e.value.length);
   const { token } = getState().auth;
   const { userId } = getState().user;
   const { total } = getState().cart;
+  const { items } = getState().cart;
   const key = e.value;
 
   const typed = key.length >= 1;
   try {
     let request = null;
+
+    if (!items.length) {
+      return;
+    }
+
     if (userId && token) {
       request = await axios.post(
         "/checkDiscount",

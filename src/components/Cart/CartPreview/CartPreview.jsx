@@ -16,6 +16,19 @@ const CartPreview = ({ items, removeCartPreview, cart }) => {
       <CartItem key={`item_${Math.random() * 20}${item.title}`} item={item} />
     ));
 
+  const renderTotalPrice = () => {
+    if (cart.discount.code && cart.totalOff > 0) {
+      const totalPrice = `$${cart.totalOff}`;
+      return (
+        <>
+          <s>{cart.total}</s>
+          <span className={classes.TotalPrice}>{totalPrice}</span>
+        </>
+      );
+    }
+    return cart.total;
+  };
+
   return (
     <>
       {isPreviewActive ? (
@@ -55,7 +68,7 @@ const CartPreview = ({ items, removeCartPreview, cart }) => {
             <div className={classes.CartTotalSum}>
               <div className={classes.CartTotal}>
                 Total: <span>&#36;</span>
-                {cart.total}
+                {renderTotalPrice()}
               </div>
               <NavLink
                 to="/cart"

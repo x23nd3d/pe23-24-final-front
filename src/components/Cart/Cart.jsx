@@ -19,6 +19,7 @@ import { checkDiscount, resetDiscount } from "../../store/actions/cart";
 const Cart = ({
   cart,
   user,
+  auth,
   receiveRoute,
   categoryChooser,
   subcategoryChooser,
@@ -67,7 +68,7 @@ const Cart = ({
       const totalPrice = `$${cart.totalOff}`;
       return (
         <>
-          <s>${cart.total}</s>
+          <s>{cart.total}</s>
           <span className={classes.TotalPrice}>{totalPrice}</span>
         </>
       );
@@ -75,11 +76,13 @@ const Cart = ({
     return cart.total;
   };
 
+  const percentage = cart.discount.code ? cart.discount.code.percentage : null;
+
   return (
     <div className={classes.Cart}>
       <div className={classes.Inner}>
         <div className={classes.Carts}>
-          {!user.userId && (
+          {!auth.token && (
             <>
               <h3 className={classes.CartLoginMessage}>
                 {user.loginActiveTab
@@ -95,7 +98,7 @@ const Cart = ({
               </button>
             </>
           )}
-          {!user.userId &&
+          {!auth.token &&
             (user.loginActiveTab ? (
               <LoginForm cart />
             ) : (
@@ -119,7 +122,7 @@ const Cart = ({
             {cart.items && cart.total > 0 ? (
               cart.items.map((item) => (
                 <CartItem
-                  key={item.id + item.color}
+                  key={item.id + item.color + Math.random() * 10}
                   item={item}
                   title={item.name}
                   image={item.photo[item.color][0]}
@@ -140,42 +143,49 @@ const Cart = ({
         </div>
         <aside className={classes.Aside}>
           <h3 className={classes.CartTotal}>Shopping Cart Total</h3>
-          <p className={classes.Discount}>Add a discount code</p>
-          <input
-            onChange={(e) => checkDiscountHandler(e.target)}
-            defaultValue={cart.discount.code ? cart.discount.code.key : null}
-            className={clsDiscounts.join(" ")}
-            type="text"
-          />
-          {parseDiscountCondition(
-            <p
-              className={classnames(
-                classes.DiscountCodeCheck,
-                classes.DiscountNotFound
+          {cart.items.length ? (
+            <>
+              <p className={classes.Discount}>Add a discount code</p>
+              <input
+                onChange={(e) => checkDiscountHandler(e.target)}
+                defaultValue={
+                  cart.discount.code ? cart.discount.code.key : null
+                }
+                className={clsDiscounts.join(" ")}
+                type="text"
+              />
+              {parseDiscountCondition(
+                <p
+                  className={classnames(
+                    classes.DiscountCodeCheck,
+                    classes.DiscountNotFound
+                  )}
+                >
+                  Code not found
+                </p>,
+                <p
+                  className={classnames(
+                    classes.DiscountCodeCheck,
+                    classes.DiscountFound
+                  )}
+                >
+                  You save: ${cart.offSaved} / {percentage}%
+                </p>,
+                <p
+                  className={classnames(
+                    classes.DiscountCodeCheck,
+                    classes.DiscountExists
+                  )}
+                >
+                  The code was already used or expired
+                </p>
               )}
-            >
-              Code not found
-            </p>,
-            <p
-              className={classnames(
-                classes.DiscountCodeCheck,
-                classes.DiscountFound
-              )}
-            >
-              You save: ${cart.offSaved}
-            </p>,
-            <p
-              className={classnames(
-                classes.DiscountCodeCheck,
-                classes.DiscountExists
-              )}
-            >
-              The code was already used or expired
-            </p>
-          )}
+            </>
+          ) : null}
+
           <p className={classes.AsideInfo}>Delivery Free</p>
-          <p className={classes.AsideInfo}>Total {renderTotalPrice()}</p>
-          {user.userId && cart.items.length ? (
+          <p className={classes.AsideInfo}>Total ${renderTotalPrice()}</p>
+          {auth.token && cart.items.length ? (
             <NavLink
               to="/checkout"
               className={classnames(classes.Button, classes.ButtonCheckout)}
@@ -209,6 +219,7 @@ Cart.defaultProps = {
 Cart.propTypes = {
   cart: PropTypes.instanceOf(Object).isRequired,
   user: PropTypes.instanceOf(Object).isRequired,
+  auth: PropTypes.instanceOf(Object).isRequired,
   receiveRoute: PropTypes.func,
   categoryChooser: PropTypes.func,
   subcategoryChooser: PropTypes.func,
@@ -222,6 +233,7 @@ function mapStateToProps(state) {
   return {
     cart: state.cart,
     user: state.user,
+    auth: state.auth,
   };
 }
 

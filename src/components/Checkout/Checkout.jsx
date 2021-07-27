@@ -57,6 +57,19 @@ const Checkout = ({ cart, user, checkoutHandler }) => {
     );
   };
 
+  const renderTotalPrice = () => {
+    if (cart.discount.code && cart.totalOff > 0) {
+      const totalPrice = `$${cart.totalOff}`;
+      return (
+        <>
+          <s>{cart.total}</s>
+          <span className={classes.TotalPrice}>{totalPrice}</span>
+        </>
+      );
+    }
+    return cart.total;
+  };
+
   return (
     <div className={classes.Checkout}>
       <div className={classes.CheckoutContainer}>
@@ -67,7 +80,7 @@ const Checkout = ({ cart, user, checkoutHandler }) => {
           </Link>
         </div>
 
-        <p>Total payment amount $ {cart.total}</p>
+        <p>Total payment amount ${renderTotalPrice()}</p>
         <div className={classes.CheckoutPayments}>
           <img
             className={classes.CheckoutPaymentImg}
