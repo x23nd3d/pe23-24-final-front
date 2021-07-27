@@ -1,38 +1,82 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from "react";
+import React from "react";
+import { Formik, Form } from "formik";
+import * as yup from "yup";
 import classes from "./Profile.module.scss";
 
 const Profile = (props) => {
-  const [accountInfo, setAccountInfo] = useState({
-    email: "",
-    firstName: "",
-    secondName: "",
-    mobilePhone: "",
-    birthday: "",
-    clothesSize: "",
-    shoesSize: "",
+  const validationSchema = yup.object().shape({
+    email: yup
+      .string()
+      .email("Please enter a valid email")
+      .required("Required"),
+    firstName: yup
+      .string()
+      .typeError("Should be a string")
+      .required("Required"),
+    secondName: yup
+      .string()
+      .typeError("Should be a string")
+      .required("Required"),
+    mobilePhone: yup
+      .string()
+      .min(10, "Must be more than 10 characters")
+      .required("Required"),
+    birthday: yup
+      .date()
+      .min(new Date(100), "Are you a mummy?")
+      .max(new Date(), "Are you a time traveler?!")
+      .required("Required"),
+    clothesSize: yup
+      .string()
+      .typeError("Should be a string")
+      .required("Required"),
+    shoesSize: yup
+      .number()
+      .typeError("Should be a number")
+      .required("Required"),
   });
-
-  const handleOnChange = (event) => {
-    const { value, name } = event.target;
-    setAccountInfo({
-      ...accountInfo,
-      [name]: value,
-    });
-  };
-  return (
-    <form className={classes.MyAccountForm}>
-      <div className={classes.InputField}>
+    return (
+      <div>
+      <Formik
+        initialValues={{
+          email: "",
+          firstName: "",
+          secondName: "",
+          mobilePhone: "",
+          birthday: "",
+          clothesSize: "",
+          shoesSize: "",
+        }}
+        validateOnBlur
+        validationSchema={validationSchema}
+      >
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          isValid,
+          handleSubmit,
+          dirty,
+        }) => (
+          <Form className={classes.MyAccountForm}>
+             <div className={classes.InputField}>
         <label htmlFor="InputEmail">Email</label>
-        <input
+         <input
           className={classes.Input}
           id="InputEmail"
           type="text"
           name="email"
-          value={accountInfo.email}
+          value={values.email}
           placeholder="Email address"
-          onChange={(event) => handleOnChange(event)}
+          onChange={handleChange}
+          onBlur={handleBlur}
         />
+         {touched.email && errors.email && (
+                <p className={classes.Error}>{errors.email}</p>
+              )}
       </div>
       <div className={classes.InputField}>
         <label htmlFor={classes.InputFirstName}>First name</label>
@@ -41,10 +85,14 @@ const Profile = (props) => {
           id={classes.InputFirstName}
           type="text"
           name="firstName"
-          value={accountInfo.firstName}
+          value={values.firstName}
           placeholder="First name"
-          onChange={(event) => handleOnChange(event)}
+          onChange={handleChange}
+          onBlur={handleBlur}
         />
+         {touched.firstName && errors.firstName && (
+                <p className={classes.Error}>{errors.firstName}</p>
+              )}
       </div>
       <div className={classes.InputField}>
         <label htmlFor={classes.InputSecondName}>Second name</label>
@@ -53,10 +101,14 @@ const Profile = (props) => {
           id={classes.InputSecondName}
           type="text"
           name="secondName"
-          value={accountInfo.secondName}
+          value={values.secondName}
           placeholder="Second name"
-          onChange={(event) => handleOnChange(event)}
+          onChange={handleChange}
+          onBlur={handleBlur}
         />
+         {touched.secondName && errors.secondName && (
+                <p className={classes.Error}>{errors.secondName}</p>
+              )}
       </div>
       <div className={classes.InputField}>
         <label htmlFor={classes.InputMobilePhone}>Mobile phone</label>
@@ -65,10 +117,14 @@ const Profile = (props) => {
           id={classes.InputMobilePhone}
           type="phone"
           name="mobilePhone"
-          value={accountInfo.mobilePhone}
+          value={values.mobilePhone}
           placeholder="Mobile phone"
-          onChange={(event) => handleOnChange(event)}
+          onChange={handleChange}
+          onBlur={handleBlur}
         />
+         {touched.mobilePhone && errors.mobilePhone && (
+                <p className={classes.Error}>{errors.mobilePhone}</p>
+              )}
       </div>
       <div className={classes.InputField}>
         <label htmlFor={classes.InputDate}>Birthday</label>
@@ -77,9 +133,13 @@ const Profile = (props) => {
           id={classes.InputDate}
           type="date"
           name="birthday"
-          value={accountInfo.birthday}
-          onChange={(event) => handleOnChange(event)}
+          value={values.birthday}
+          onChange={handleChange}
+          onBlur={handleBlur}
         />
+         {touched.birthday && errors.birthday && (
+                <p className={classes.Error}>{errors.birthday}</p>
+              )}
       </div>
       <div className={classes.InputField}>
         <label htmlFor={classes.InputClothesSize}>Your clothes size</label>
@@ -88,10 +148,14 @@ const Profile = (props) => {
           id={classes.InputClothesSize}
           type="text"
           name="clothesSize"
-          value={accountInfo.clothesSize}
+          value={values.clothesSize}
           placeholder="Your clothes size"
-          onChange={(event) => handleOnChange(event)}
+          onChange={handleChange}
+          onBlur={handleBlur}
         />
+         {touched.clothesSize && errors.clothesSize && (
+                <p className={classes.Error}>{errors.clothesSize}</p>
+              )}
       </div>
       <div className={classes.InputField}>
         <label htmlFor={classes.InputShoesSize}>Your shoes size</label>
@@ -100,16 +164,26 @@ const Profile = (props) => {
           id={classes.InputShoesSize}
           type="text"
           name="shoesSize"
-          value={accountInfo.shoesSize}
+          value={values.shoesSize}
           placeholder="Your shoes size"
-          onChange={(event) => handleOnChange(event)}
+          onChange={handleChange}
+          onBlur={handleBlur}
         />
+         {touched.shoesSize && errors.shoesSize && (
+                <p className={classes.Error}>{errors.shoesSize}</p>
+              )}
       </div>
-      <button className={classes.Button} type="button">
+      <button className={classes.Button}
+       type="button"
+      >
         Save
       </button>
-    </form>
-  );
-};
+            
+          </Form>
+        )}
+      </Formik>
+    </div>
+    );
+  };
 
 export default Profile;
