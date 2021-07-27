@@ -197,12 +197,21 @@ const Cart = ({
                   )}
                 </>
               ) : null}
-              <Delivery />
-
-              <p className={classes.AsideInfo}>Delivery Free</p>
-              <p className={classes.AsideInfo}>Total ${renderTotalPrice()}</p>
               {auth.token && cart.items.length ? (
                 <>
+                  <Delivery />{" "}
+                  <p className={classes.AsideInfo}>
+                    Delivery{" "}
+                    {cart.deliveryPay > 0 ? `$${cart.deliveryPay}` : "Free"}
+                  </p>
+                </>
+              ) : null}
+
+              {auth.token && cart.items.length ? (
+                <>
+                  <p className={classes.AsideInfo}>
+                    Total ${renderTotalPrice()}
+                  </p>
                   <div className={classes.DeliveryAddressField}>
                     <input
                       className={classes.Checkbox}
