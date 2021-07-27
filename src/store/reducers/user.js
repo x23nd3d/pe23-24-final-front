@@ -2,12 +2,16 @@ import {
   AUTH_LOGOUT,
   AUTH_SUCCESS,
   SAVE_CREDIT_CARD_DETAILS,
+  SAVE_DELIVERY_ADDRESS,
   SET_ACCOUNT_ACTIVE_TAB,
+  SET_DELIVERY_METHOD,
   SET_LOGIN_ACTIVE_TAB,
 } from "../actions/actionTypes";
 
 const initialState = {
   userId: {},
+  deliveryMethod: "myself",
+  deliveryAddress: null,
   isCardSaved: false,
   accountActiveTab: "profile",
   loginActiveTab: true,
@@ -29,6 +33,14 @@ const handlers = {
   [SET_LOGIN_ACTIVE_TAB]: (state, { loginActiveTab }) => ({
     ...state,
     loginActiveTab,
+  }),
+  [SET_DELIVERY_METHOD]: (state, { deliveryMethod }) => ({
+    ...state,
+    deliveryMethod,
+  }),
+  [SAVE_DELIVERY_ADDRESS]: (state, { deliveryAddress }) => ({
+    ...state,
+    deliveryAddress,
   }),
   DEFAULT: (state) => state,
 };

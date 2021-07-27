@@ -10,6 +10,7 @@ import {
   INCREASE_ITEM_COUNT,
   REMOVE_FROM_CART,
   SELECT_CURRENT_ITEM,
+  SET_DELIVERY_PAY,
   SET_ITEM_COUNT,
   SHOW_CART_PREVIEW,
   TOGGLE_CART_PREVIEW,
@@ -27,13 +28,20 @@ const initialState = {
     typed: false,
     exists: false,
   },
+  deliveryPay: 15,
   isPreviewActive: false,
   loading: false,
   error: false,
 };
 
-function calculateTotal(array) {
+function calculateTotal(array, delivery) {
   return array.reduce((result, item) => {
+    if (delivery > 0) {
+      let final = result;
+      final += item.count * item.price;
+      const withDelivery = final + delivery;
+      return Math.round(withDelivery * 100) / 100;
+    }
     let final = result;
     final += item.count * item.price;
     return Math.round(final * 100) / 100;
@@ -81,11 +89,11 @@ const handlers = {
     items,
     total,
     totalOff: calculateTotalOff(
-      calculateTotal(state.items),
+      calculateTotal(state.items, state.deliveryPay),
       state.discount.code
     ),
     offSaved: calculateOffPrice(
-      calculateTotal(state.items),
+      calculateTotal(state.items, state.deliveryPay),
       state.discount.code
     ),
     isPreviewActive: true,
@@ -100,11 +108,11 @@ const handlers = {
     loading: false,
     total,
     totalOff: calculateTotalOff(
-      calculateTotal(state.items),
+      calculateTotal(state.items, state.deliveryPay),
       state.discount.code
     ),
     offSaved: calculateOffPrice(
-      calculateTotal(state.items),
+      calculateTotal(state.items, state.deliveryPay),
       state.discount.code
     ),
     isPreviewActive: true,
@@ -124,26 +132,26 @@ const handlers = {
   [INCREASE_ITEM_COUNT]: (state, { item }) => ({
     ...state,
     items: manageCountUpdate(state.items, item, "plus"),
-    total: calculateTotal(state.items),
+    total: calculateTotal(state.items, state.deliveryPay),
     totalOff: calculateTotalOff(
-      calculateTotal(state.items),
+      calculateTotal(state.items, state.deliveryPay),
       state.discount.code
     ),
     offSaved: calculateOffPrice(
-      calculateTotal(state.items),
+      calculateTotal(state.items, state.deliveryPay),
       state.discount.code
     ),
   }),
   [DECREASE_ITEM_COUNT]: (state, { item }) => ({
     ...state,
     items: manageCountUpdate(state.items, item, "minus"),
-    total: calculateTotal(state.items),
+    total: calculateTotal(state.items, state.deliveryPay),
     totalOff: calculateTotalOff(
-      calculateTotal(state.items),
+      calculateTotal(state.items, state.deliveryPay),
       state.discount.code
     ),
     offSaved: calculateOffPrice(
-      calculateTotal(state.items),
+      calculateTotal(state.items, state.deliveryPay),
       state.discount.code
     ),
   }),
@@ -156,16 +164,16 @@ const handlers = {
     return {
       ...state,
       items: updatedItems,
-      total: calculateTotal(updatedItems),
+      total: calculateTotal(updatedItems, state.deliveryPay),
       discount: {
         code: !state.items.length ? null : state.discount.code,
       },
       totalOff: calculateTotalOff(
-        calculateTotal(updatedItems),
+        calculateTotal(updatedItems, state.deliveryPay),
         state.discount.code
       ),
       offSaved: calculateOffPrice(
-        calculateTotal(updatedItems),
+        calculateTotal(updatedItems, state.deliveryPay),
         state.discount.code
       ),
     };
@@ -173,13 +181,13 @@ const handlers = {
   [SET_ITEM_COUNT]: (state, { items }) => ({
     ...state,
     items,
-    total: calculateTotal(state.items),
+    total: calculateTotal(state.items, state.deliveryPay),
     totalOff: calculateTotalOff(
-      calculateTotal(state.items),
+      calculateTotal(state.items, state.deliveryPay),
       state.discount.code
     ),
     offSaved: calculateOffPrice(
-      calculateTotal(state.items),
+      calculateTotal(state.items, state.deliveryPay),
       state.discount.code
     ),
   }),
@@ -217,6 +225,19 @@ const handlers = {
       code: null,
       exists: true,
     },
+  }),
+  [SET_DELIVERY_PAY]: (state, { deliveryPay }) => ({
+    ...state,
+    deliveryPay,
+    total: calculateTotal(state.items, deliveryPay),
+    totalOff: calculateTotalOff(
+      calculateTotal(state.items, deliveryPay),
+      state.discount.code
+    ),
+    offSaved: calculateOffPrice(
+      calculateTotal(state.items, deliveryPay),
+      state.discount.code
+    ),
   }),
   DEFAULT: (state) => state,
 };

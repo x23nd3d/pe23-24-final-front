@@ -9,6 +9,7 @@ import {
   DECREASE_ITEM_COUNT,
   INCREASE_ITEM_COUNT,
   REMOVE_FROM_CART,
+  SET_DELIVERY_METHOD,
   SET_ITEM_COUNT,
   SHOW_CART_PREVIEW,
   TOGGLE_CART_PREVIEW,
@@ -17,8 +18,14 @@ import {
 
 import axios from "../../axios/axios-user";
 
-function calculateTotal(array) {
+function calculateTotal(array, delivery) {
   return array.reduce((result, item) => {
+    if (delivery > 0) {
+      let final = result;
+      final += item.count * item.price;
+      const withDelivery = final + delivery;
+      return Math.round(withDelivery * 100) / 100;
+    }
     let final = result;
     final += item.count * item.price;
     return Math.round(final * 100) / 100;
@@ -27,6 +34,7 @@ function calculateTotal(array) {
 
 export const addToCart = (item) => (dispatch, getState) => {
   const initialItems = getState().cart.items;
+  const { deliveryPay } = getState().cart;
 
   const itemFound = initialItems.find((goods) => {
     const itemToCheck = { ...goods };
@@ -46,13 +54,13 @@ export const addToCart = (item) => (dispatch, getState) => {
       // we have item in card, we should add count
       const idx = initialItems.indexOf(itemFound);
       initialItems[idx].count += 1;
-      const total = calculateTotal(initialItems);
+      const total = calculateTotal(initialItems, deliveryPay);
       return dispatch(updateCount(initialItems, total));
     }
 
     // we do not have item, should add it first with count: 1
     const newItems = [...initialItems, itemToAdd];
-    const total = calculateTotal(newItems);
+    const total = calculateTotal(newItems, deliveryPay);
     return dispatch(addToCartSuccess(newItems, total));
   } catch (e) {
     dispatch(addToCartError(e));

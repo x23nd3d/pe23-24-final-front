@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
@@ -13,8 +13,12 @@ import {
 } from "../../store/actions/sidebar";
 import LoginForm from "../LoginRegistration/LoginForm";
 import RegistrationForm from "../LoginRegistration/RegistrationForm";
-import { setLoginActiveTab } from "../../store/actions/user";
+import {
+  saveDeliveryOptions,
+  setLoginActiveTab,
+} from "../../store/actions/user";
 import { checkDiscount, resetDiscount } from "../../store/actions/cart";
+import Delivery from "./Delivery/Delivery";
 
 const Cart = ({
   cart,
@@ -27,6 +31,7 @@ const Cart = ({
   setLoginActiveTabHandler,
   checkDiscountHandler,
   discountResetHandler,
+  saveDeliveryOptionsHandler,
 }) => {
   useEffect(() => {
     discountResetHandler();
@@ -78,131 +83,161 @@ const Cart = ({
 
   const percentage = cart.discount.code ? cart.discount.code.percentage : null;
 
+  const saveDeliveryHandler = (e) => {
+    if (e.target.checked) {
+      saveDeliveryOptionsHandler();
+    }
+  };
+
   return (
-    <div className={classes.Cart}>
-      <div className={classes.Inner}>
-        <div className={classes.Carts}>
-          {!auth.token && (
-            <>
-              <h3 className={classes.CartLoginMessage}>
-                {user.loginActiveTab
-                  ? "Please, enter your login information, or"
-                  : "Please, sign up to proceed with shopping, or"}
-              </h3>
-              <button
-                className={classes.CartSwitchForm}
+    <>
+      <div className={classes.Cart}>
+        <div className={classes.Inner}>
+          <div className={classes.InnerContainer}>
+            <div className={classes.Carts}>
+              {!auth.token && (
+                <>
+                  <h3 className={classes.CartLoginMessage}>
+                    {user.loginActiveTab
+                      ? "Please, enter your login information, or"
+                      : "Please, sign up to proceed with shopping, or"}
+                  </h3>
+                  <button
+                    className={classes.CartSwitchForm}
+                    type="button"
+                    onClick={() =>
+                      setLoginActiveTabHandler(!user.loginActiveTab)
+                    }
+                  >
+                    {user.loginActiveTab ? "Sign up" : "Log in"}
+                  </button>
+                </>
+              )}
+              {!auth.token &&
+                (user.loginActiveTab ? (
+                  <LoginForm cart />
+                ) : (
+                  <RegistrationForm cart />
+                ))}
+              <NavLink
+                className={classes.Button}
                 type="button"
-                onClick={() => setLoginActiveTabHandler(!user.loginActiveTab)}
-              >
-                {user.loginActiveTab ? "Sign up" : "Log in"}
-              </button>
-            </>
-          )}
-          {!auth.token &&
-            (user.loginActiveTab ? (
-              <LoginForm cart />
-            ) : (
-              <RegistrationForm cart />
-            ))}
-          <NavLink
-            className={classes.Button}
-            type="button"
-            to="/shop/?category=all&type=all"
-            onClick={() =>
-              registerRoutesHandler(
-                "/shop/?category=all&type=all",
-                "all",
-                "all"
-              )
-            }
-          >
-            Keep shopping
-          </NavLink>
-          <ul className={classes.CartItems}>
-            {cart.items && cart.total > 0 ? (
-              cart.items.map((item) => (
-                <CartItem
-                  key={item.id + item.color + Math.random() * 10}
-                  item={item}
-                  title={item.name}
-                  image={item.photo[item.color][0]}
-                  id={item.id}
-                  color={item.color}
-                  size={item.size}
-                  quantity={item.left}
-                  price={item.price}
-                  count={item.count}
-                />
-              ))
-            ) : (
-              <p className={classes.CartNoItems}>
-                No items found. The cart is waiting for you.
-              </p>
-            )}
-          </ul>
-        </div>
-        <aside className={classes.Aside}>
-          <h3 className={classes.CartTotal}>Shopping Cart Total</h3>
-          {cart.items.length ? (
-            <>
-              <p className={classes.Discount}>Add a discount code</p>
-              <input
-                onChange={(e) => checkDiscountHandler(e.target)}
-                defaultValue={
-                  cart.discount.code ? cart.discount.code.key : null
+                to="/shop/?category=all&type=all"
+                onClick={() =>
+                  registerRoutesHandler(
+                    "/shop/?category=all&type=all",
+                    "all",
+                    "all"
+                  )
                 }
-                className={clsDiscounts.join(" ")}
-                type="text"
-              />
-              {parseDiscountCondition(
-                <p
-                  className={classnames(
-                    classes.DiscountCodeCheck,
-                    classes.DiscountNotFound
+              >
+                Keep shopping
+              </NavLink>
+              <ul className={classes.CartItems}>
+                {cart.items && cart.total > 0 ? (
+                  cart.items.map((item) => (
+                    <CartItem
+                      key={item.id + item.color + Math.random() * 10}
+                      item={item}
+                      title={item.name}
+                      image={item.photo[item.color][0]}
+                      id={item.id}
+                      color={item.color}
+                      size={item.size}
+                      quantity={item.left}
+                      price={item.price}
+                      count={item.count}
+                    />
+                  ))
+                ) : (
+                  <p className={classes.CartNoItems}>
+                    No items found. The cart is waiting for you.
+                  </p>
+                )}
+              </ul>
+            </div>
+            <aside className={classes.Aside}>
+              <h3 className={classes.CartTotal}>Shopping Cart Total</h3>
+              {cart.items.length ? (
+                <>
+                  <p className={classes.Discount}>Add a discount code</p>
+                  <input
+                    onChange={(e) => checkDiscountHandler(e.target)}
+                    defaultValue={
+                      cart.discount.code ? cart.discount.code.key : null
+                    }
+                    className={clsDiscounts.join(" ")}
+                    type="text"
+                  />
+                  {parseDiscountCondition(
+                    <p
+                      className={classnames(
+                        classes.DiscountCodeCheck,
+                        classes.DiscountNotFound
+                      )}
+                    >
+                      Code not found
+                    </p>,
+                    <p
+                      className={classnames(
+                        classes.DiscountCodeCheck,
+                        classes.DiscountFound
+                      )}
+                    >
+                      You save: ${cart.offSaved} / {percentage}%
+                    </p>,
+                    <p
+                      className={classnames(
+                        classes.DiscountCodeCheck,
+                        classes.DiscountExists
+                      )}
+                    >
+                      The code was already used or expired
+                    </p>
                   )}
-                >
-                  Code not found
-                </p>,
-                <p
-                  className={classnames(
-                    classes.DiscountCodeCheck,
-                    classes.DiscountFound
-                  )}
-                >
-                  You save: ${cart.offSaved} / {percentage}%
-                </p>,
-                <p
-                  className={classnames(
-                    classes.DiscountCodeCheck,
-                    classes.DiscountExists
-                  )}
-                >
-                  The code was already used or expired
+                </>
+              ) : null}
+              <Delivery />
+
+              <p className={classes.AsideInfo}>Delivery Free</p>
+              <p className={classes.AsideInfo}>Total ${renderTotalPrice()}</p>
+              {auth.token && cart.items.length ? (
+                <>
+                  <div className={classes.DeliveryAddressField}>
+                    <input
+                      className={classes.Checkbox}
+                      type="checkbox"
+                      name="saveCard"
+                      onChange={(e) => saveDeliveryHandler(e)}
+                    />
+
+                    <span className={classes.CheckboxLabel}>
+                      Save delivery address for next purchases
+                    </span>
+                  </div>
+                  <NavLink
+                    to="/checkout"
+                    className={classnames(
+                      classes.Button,
+                      classes.ButtonCheckout
+                    )}
+                    type="button"
+                  >
+                    Checkout
+                  </NavLink>
+                </>
+              ) : (
+                <p className={classes.CheckoutLogin}>
+                  {cart.items.length
+                    ? "Please login to checkout."
+                    : "The cart is empty"}
                 </p>
               )}
-            </>
-          ) : null}
-
-          <p className={classes.AsideInfo}>Delivery Free</p>
-          <p className={classes.AsideInfo}>Total ${renderTotalPrice()}</p>
-          {auth.token && cart.items.length ? (
-            <NavLink
-              to="/checkout"
-              className={classnames(classes.Button, classes.ButtonCheckout)}
-              type="button"
-            >
-              Checkout
-            </NavLink>
-          ) : (
-            <p className={classes.CheckoutLogin}>
-              {cart.items.length
-                ? "Please login to checkout."
-                : "The cart is empty"}
-            </p>
-          )}
-        </aside>
+            </aside>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
@@ -214,6 +249,7 @@ Cart.defaultProps = {
   setLoginActiveTabHandler: (f) => f,
   checkDiscountHandler: (f) => f,
   discountResetHandler: (f) => f,
+  saveDeliveryOptionsHandler: (f) => f,
 };
 
 Cart.propTypes = {
@@ -227,6 +263,7 @@ Cart.propTypes = {
   checkCategoriesHandler: PropTypes.func,
   checkDiscountHandler: PropTypes.func,
   discountResetHandler: PropTypes.func,
+  saveDeliveryOptionsHandler: PropTypes.func,
 };
 
 function mapStateToProps(state) {
@@ -247,6 +284,7 @@ function mapDispatchToProps(dispatch) {
     setLoginActiveTabHandler: (tab) => dispatch(setLoginActiveTab(tab)),
     checkDiscountHandler: (key) => dispatch(checkDiscount(key)),
     discountResetHandler: () => dispatch(resetDiscount()),
+    saveDeliveryOptionsHandler: () => dispatch(saveDeliveryOptions()),
   };
 }
 
