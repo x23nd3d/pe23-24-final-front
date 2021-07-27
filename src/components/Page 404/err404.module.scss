@@ -1,0 +1,52 @@
+.container, .content {
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  padding: 50px 0 100px 0;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fff;
+  & img {
+    max-width: 500px;
+    @media (max-width: 666px) {
+      width: 300px;
+    }
+  }
+
+  & h1 {
+    margin-top: 20px;
+    font-size: 24px;
+    text-align: center;
+  }
+
+  & div {
+    max-width: 500px;
+    margin-top: 20px;
+    @media (max-width: 666px) {
+      width: 320px;
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+  }
+
+  & p {
+    font-size: 20px;
+    text-align: center;
+    line-height: 1.2em;
+  }
+
+}
+
+.backBt {
+  width: 240px;
+  margin-top: 40px;
+  height: 60px;
+  background-color: #000;
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  border-radius: 3px;
+}

@@ -15,6 +15,7 @@ import Spinner from "./components/UI/Spinner/Spinner";
 import Account from "./components/Account/Account";
 import Checkout from "./components/Checkout/Checkout";
 import MyAccount from "./components/Account/MyAccount/MyAccount";
+import Error404 from "./components/Page 404/Error404";
 
 function App({ isAuthenticated, product }) {
   let routes = (
@@ -35,7 +36,9 @@ function App({ isAuthenticated, product }) {
 
       <Route path="/cart" component={Cart} />
 
-      <Route path="/" component={MainPage} />
+      <Route exact path="/" component={MainPage} />
+
+      <Route component={Error404} />
     </Switch>
   );
 
