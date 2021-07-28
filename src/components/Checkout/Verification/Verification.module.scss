@@ -1,0 +1,67 @@
+.Verification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  width: 650px;
+  height: 650px;
+  z-index: 999;
+  box-shadow: 0 0 17px 3px #0000006b;
+}
+
+.VerificationInfo {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.VerificationInfo > h2 {
+  font-size: 36px;
+  margin-bottom: 18px;
+}
+
+.VerificationInfo > h4 {
+  font-size: 20px;
+  margin-bottom: 50px;
+}
+
+.VerificationImg {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  max-width: 300px;
+}
+
+.VerificationInput {
+  display: flex;
+  align-items: center;
+  margin-bottom: 80px;
+  position: relative;
+}
+
+.VerificationInput > p {
+  font-size: 22px;
+  color: #000000ad;
+  margin-right: 15px;
+}
+
+.ConfirmationInput {
+  border: 1px solid #0000006b;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.Inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Error {
+  display: block;
+  position: absolute;
+  top: 43px;
+  left: calc(67% - 52.56px);
+  color: red!important;
+}

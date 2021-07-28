@@ -9,10 +9,10 @@ import {
   DECREASE_ITEM_COUNT,
   INCREASE_ITEM_COUNT,
   REMOVE_FROM_CART,
-  SET_DELIVERY_METHOD,
   SET_ITEM_COUNT,
   SHOW_CART_PREVIEW,
   TOGGLE_CART_PREVIEW,
+  TOGGLE_VERIFICATION,
   USER_DISCOUNT_EXIST,
 } from "./actionTypes";
 
@@ -64,6 +64,27 @@ export const addToCart = (item) => (dispatch, getState) => {
     return dispatch(addToCartSuccess(newItems, total));
   } catch (e) {
     dispatch(addToCartError(e));
+  }
+};
+
+export const saveCart = () => async (dispatch, getState) => {
+  const { items } = getState().cart;
+  const { token } = getState().auth;
+
+  try {
+    const request = await axios.post(
+      "/addToCart",
+      { items },
+      {
+        headers: {
+          Authorization: `${token}`,
+        },
+      }
+    );
+    console.log(request.data, "request.data");
+    return request.data;
+  } catch (e) {
+    console.error(e);
   }
 };
 
@@ -211,4 +232,9 @@ export const resetDiscount = () => (dispatch, getState) => {
 
 export const discountReset = () => ({
   type: CART_DISCOUNT_RESET,
+});
+
+export const verificationToggle = (isVerificationActive) => ({
+  type: TOGGLE_VERIFICATION,
+  isVerificationActive,
 });

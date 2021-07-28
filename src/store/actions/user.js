@@ -1,7 +1,9 @@
 import axios from "../../axios/axios-user";
 
 import {
+  SAVE_CREDIT_CARD,
   SAVE_CREDIT_CARD_DETAILS,
+  SAVE_CREDIT_CART_OPTIONS,
   SAVE_DELIVERY_ADDRESS,
   SAVE_DELIVERY_OPTIONS,
   SET_ACCOUNT_ACTIVE_TAB,
@@ -137,3 +139,47 @@ export const saveDelivery = (
   deliveryAddress,
   isDeliverySaved,
 });
+
+export const saveCreditCardHandler = (bool) => (dispatch, getState) => {
+  const { isCardSaved } = getState().user;
+  console.log("BOOL", bool);
+
+  if (isCardSaved === bool) {
+    return;
+  }
+
+  dispatch(saveCreditCard(bool));
+};
+
+export const saveCreditCard = (isCardSaved) => ({
+  type: SAVE_CREDIT_CART_OPTIONS,
+  isCardSaved,
+});
+
+export const saveCardToStateHandler = (config) => (dispatch, getState) => {
+  const { savedCards } = getState().user;
+
+  const weHaveSame = savedCards.find((card) => card === config);
+
+  if (weHaveSame) {
+    return;
+  }
+
+  dispatch(saveCardToState(config));
+};
+
+export const saveCardToState = (card) => ({
+  type: SAVE_CREDIT_CARD,
+  card,
+});
+
+export const sendVerificationRequest = () => async (dispatch, getState) => {
+  try {
+    const { token } = getState().auth;
+    await axios.post("verificationRequest", null, {
+      Authorization: `${token}`,
+    });
+  } catch (e) {
+    console.error(e);
+  }
+};

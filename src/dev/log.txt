@@ -79,4 +79,5 @@ Andrew Kucher, [25.07.21 22:17]
 dropdown account close on click Cart
 
 
-if not save delivery = reset delivery on reload
+- payment confirmation with codes in DB
+- order ID creation with random values

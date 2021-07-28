@@ -14,6 +14,7 @@ import {
   SET_ITEM_COUNT,
   SHOW_CART_PREVIEW,
   TOGGLE_CART_PREVIEW,
+  TOGGLE_VERIFICATION,
   USER_DISCOUNT_EXIST,
 } from "../actions/actionTypes";
 
@@ -30,6 +31,7 @@ const initialState = {
   },
   deliveryPay: 15,
   isPreviewActive: false,
+  isVerificationActive: false,
   loading: false,
   error: false,
 };
@@ -238,6 +240,10 @@ const handlers = {
       calculateTotal(state.items, deliveryPay),
       state.discount.code
     ),
+  }),
+  [TOGGLE_VERIFICATION]: (state, { isVerificationActive }) => ({
+    ...state,
+    isVerificationActive,
   }),
   DEFAULT: (state) => state,
 };

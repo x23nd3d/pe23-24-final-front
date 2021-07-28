@@ -17,7 +17,11 @@ import {
   saveDeliveryOptions,
   setLoginActiveTab,
 } from "../../store/actions/user";
-import { checkDiscount, resetDiscount } from "../../store/actions/cart";
+import {
+  checkDiscount,
+  resetDiscount,
+  saveCart,
+} from "../../store/actions/cart";
 import Delivery from "./Delivery/Delivery";
 
 const Cart = ({
@@ -32,6 +36,7 @@ const Cart = ({
   checkDiscountHandler,
   discountResetHandler,
   saveDeliveryOptionsHandler,
+  saveCartHandler,
 }) => {
   useEffect(() => {
     discountResetHandler();
@@ -114,6 +119,7 @@ const Cart = ({
           <NavLink
             to="/checkout"
             className={classnames(classes.Button, classes.ButtonCheckout)}
+            onClick={saveCartHandler}
             type="button"
           >
             Checkout
@@ -268,6 +274,7 @@ Cart.defaultProps = {
   checkDiscountHandler: (f) => f,
   discountResetHandler: (f) => f,
   saveDeliveryOptionsHandler: (f) => f,
+  saveCartHandler: (f) => f,
 };
 
 Cart.propTypes = {
@@ -282,6 +289,7 @@ Cart.propTypes = {
   checkDiscountHandler: PropTypes.func,
   discountResetHandler: PropTypes.func,
   saveDeliveryOptionsHandler: PropTypes.func,
+  saveCartHandler: PropTypes.func,
 };
 
 function mapStateToProps(state) {
@@ -304,6 +312,7 @@ function mapDispatchToProps(dispatch) {
     discountResetHandler: () => dispatch(resetDiscount()),
     saveDeliveryOptionsHandler: (isDeliverySaved) =>
       dispatch(saveDeliveryOptions(isDeliverySaved)),
+    saveCartHandler: () => dispatch(saveCart()),
   };
 }
 

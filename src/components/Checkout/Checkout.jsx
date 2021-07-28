@@ -5,15 +5,29 @@ import classnames from "classnames";
 import * as yup from "yup";
 import { Form, Formik, Field } from "formik";
 import { Link } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 import classes from "./Checkout.module.scss";
 import mastercard from "../../img/icons/Checkout/mastercard.png";
 import visa from "../../img/icons/Checkout/visa.png";
 import express from "../../img/icons/Checkout/express.jpg";
 import Button from "../UI/Buttons List/Button";
 import pushNotification from "../../utils/toastrConfig";
-import { checkout } from "../../store/actions/user";
+import {
+  checkout,
+  saveCreditCardHandler,
+  sendVerificationRequest,
+} from "../../store/actions/user";
+import Verification from "./Verification/Verification";
+import { verificationToggle } from "../../store/actions/cart";
 
-const Checkout = ({ cart, user, checkoutHandler }) => {
+const Checkout = ({
+  cart,
+  user,
+  checkoutHandler,
+  saveCreditCard,
+  verificationToggleHandler,
+  sendVerificationRequestHandler,
+}) => {
   const validationSchema = yup.object().shape({
     cardNumber: yup
       .string()
@@ -42,20 +56,22 @@ const Checkout = ({ cart, user, checkoutHandler }) => {
     const { cardNumber, cardName, cardExp, cardExp2, cardCvv, saveCard } =
       values;
 
-    console.log("VALUES", values);
-
-    const sendCheckoutRequest = await checkoutHandler(values);
-    console.log("sendCheckoutRequest", sendCheckoutRequest);
+    sendVerificationRequestHandler();
+    verificationToggleHandler(true);
 
     pushNotification(
       "success",
-      "Please expect a receipt to your email",
-      "Thank you for your purchase!",
+      "Please type the verification code",
+      "Payment confirmation!",
       {
         toastClass: "toastr-c-success",
       }
     );
   };
+
+  //
+  // const sendCheckoutRequest = await checkoutHandler(values);
+  // console.log("sendCheckoutRequest", sendCheckoutRequest);
 
   const renderTotalPrice = () => {
     if (cart.discount.code && cart.totalOff > 0) {
@@ -202,6 +218,8 @@ const Checkout = ({ cart, user, checkoutHandler }) => {
                     className={classes.Checkbox}
                     type="checkbox"
                     name="saveCard"
+                    checked={user.isCardSaved || false}
+                    onClick={(e) => saveCreditCard(e.target.checked)}
                   />
 
                   <span className={classes.CheckboxLabel}>
@@ -219,6 +237,7 @@ const Checkout = ({ cart, user, checkoutHandler }) => {
           )}
         </Formik>
       </div>
+      {cart.isVerificationActive ? <Verification /> : null}
     </div>
   );
 };
@@ -227,12 +246,18 @@ Checkout.defaultProps = {
   cart: {},
   user: {},
   checkoutHandler: (f) => f,
+  saveCreditCard: (f) => f,
+  verificationToggleHandler: (f) => f,
+  sendVerificationRequestHandler: (f) => f,
 };
 
 Checkout.propTypes = {
   cart: PropTypes.instanceOf(Object),
   user: PropTypes.instanceOf(Object),
   checkoutHandler: PropTypes.func,
+  saveCreditCard: PropTypes.func,
+  verificationToggleHandler: PropTypes.func,
+  sendVerificationRequestHandler: PropTypes.func,
 };
 
 function mapStateToProps(state) {
@@ -245,6 +270,9 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     checkoutHandler: (bool) => dispatch(checkout(bool)),
+    saveCreditCard: (bool) => dispatch(saveCreditCardHandler(bool)),
+    verificationToggleHandler: (bool) => dispatch(verificationToggle(bool)),
+    sendVerificationRequestHandler: () => dispatch(sendVerificationRequest()),
   };
 }
 
