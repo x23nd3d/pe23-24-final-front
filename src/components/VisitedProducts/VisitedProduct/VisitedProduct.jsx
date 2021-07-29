@@ -1,18 +1,34 @@
 import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { withRouter } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 
-import classes from "./VisitedProducts.module.scss";
+import classes from "./VisitedProduct.module.scss";
 
-const VisitedProduct = (props) => {
-  console.log("VISITED PRODUCT:", props);
+const VisitedProduct = ({ item }) => {
+  console.log("VISITED PRODUCT:", item);
 
-  return <h2>Visited Products</h2>;
+  return (
+    <div className={classes.VisitedProduct}>
+      <NavLink to={`/shop/product/${item.id}`}>
+        <div className={classes.ImageBox}>
+          <img src={item.viewImage} alt={item.name} />
+        </div>
+        <div className={classes.Info}>
+          <span className={classes.Name}>{item.name}</span>
+          <span className={classes.Price}>${item.price}</span>
+        </div>
+      </NavLink>
+    </div>
+  );
 };
 
-VisitedProduct.defaultProps = {};
-VisitedProduct.propTypes = {};
+VisitedProduct.defaultProps = {
+  item: {},
+};
+VisitedProduct.propTypes = {
+  item: PropTypes.instanceOf(Object),
+};
 
 const mapStateToProps = (state) => ({});
 const mapDispatchToProps = (dispatch) => ({});
