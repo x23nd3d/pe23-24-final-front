@@ -7,6 +7,10 @@
 .AccountTitle {
   font-size: 36px;
   margin-bottom: 140px;
+  @media screen and (max-width: 576px) {
+    font-size: 20px;
+    margin-bottom: 50px;
+   }
 }
 
 .AccountContainer {
@@ -19,4 +23,9 @@
   grid-gap: 50px;
   width: 100%;
   line-height: 2;
+  @media screen and (max-width: 576px) {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 25px;
+   }
 }

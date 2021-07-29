@@ -2,6 +2,9 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-top: 100px;
+  @media screen and (max-width: 576px) {
+    margin: 0;
+   }
 
   &Delivery {
     border-right: 1px solid #000000;
@@ -23,6 +26,9 @@
     background-color: #000000;
     width: 350px;
     margin: 50px 0;
+    @media screen and (max-width: 576px) {
+      width: 100%;
+     }
   }
 }
 

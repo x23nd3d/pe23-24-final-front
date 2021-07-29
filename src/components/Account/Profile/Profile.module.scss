@@ -27,6 +27,9 @@
 
 .MyAccountForm {
   margin-top: 100px;
+  @media screen and (max-width: 576px) {
+    margin-top: 20px;
+   }
 }
 
 .Input {
@@ -34,6 +37,10 @@
   border: none;
   border-bottom: 1px solid #000000;
   width: 50%;
+  @media screen and (max-width: 576px) {
+   font-size: 12px;
+   padding: 5px 0;
+   }
  
   &:active {
     outline: none;
@@ -49,16 +56,26 @@
   padding: 1rem 0.5rem;
   color: #ffffff;
   background-color: #000000;
+  @media screen and (max-width: 576px) {
+  
+   }
 }
 
 .InputField {
   margin-bottom: 50px;
   position: relative;
+  @media screen and (max-width: 576px) {
+    margin-bottom: 20px;
+   }
 }
 
 label {
   margin: 5px 0;
   display: block;
+  @media screen and (max-width: 576px) {
+    margin: 0;
+    font-size: 14px;
+   }
 }
 
 @media screen and (max-width: 992px) {
