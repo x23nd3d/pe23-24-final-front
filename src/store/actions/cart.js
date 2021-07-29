@@ -6,6 +6,7 @@ import {
   CART_DISCOUNT_CODE_ERROR,
   CART_DISCOUNT_CODE_SUCCESS,
   CART_DISCOUNT_RESET,
+  CLEAR_CART,
   DECREASE_ITEM_COUNT,
   INCREASE_ITEM_COUNT,
   REMOVE_FROM_CART,
@@ -68,13 +69,23 @@ export const addToCart = (item) => (dispatch, getState) => {
 };
 
 export const saveCart = () => async (dispatch, getState) => {
-  const { items } = getState().cart;
+  const { items, total, totalOff, offSaved, deliveryPay, discount } =
+    getState().cart;
   const { token } = getState().auth;
+
+  const cart = {
+    items,
+    total,
+    totalOff,
+    offSaved,
+    deliveryPay,
+    discount,
+  };
 
   try {
     const request = await axios.post(
       "/addToCart",
-      { items },
+      { cart },
       {
         headers: {
           Authorization: `${token}`,
@@ -237,4 +248,8 @@ export const discountReset = () => ({
 export const verificationToggle = (isVerificationActive) => ({
   type: TOGGLE_VERIFICATION,
   isVerificationActive,
+});
+
+export const clearCartHandler = () => ({
+  type: CLEAR_CART,
 });

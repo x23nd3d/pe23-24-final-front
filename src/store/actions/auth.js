@@ -5,6 +5,7 @@ import {
   AUTH_ERROR,
   AUTH_LOGOUT,
   AUTH_LOGOUT_START,
+  AUTH_REFRESH_CART,
   AUTH_START,
   AUTH_SUCCESS,
   CART_DISCOUNT_CODE_ERROR,
@@ -349,3 +350,12 @@ export function setLogin(isLogin) {
     isLogin,
   };
 }
+
+export const authRefreshCartHandler = () => (dispatch, getState) => {
+  const currentCart = getState().cart.items;
+};
+
+export const authRefreshCart = (items) => ({
+  type: AUTH_REFRESH_CART,
+  items,
+});

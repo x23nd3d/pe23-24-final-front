@@ -88,11 +88,6 @@ const Cart = ({
 
   const percentage = cart.discount.code ? cart.discount.code.percentage : null;
 
-  const saveDeliveryHandler = (e) => {
-    console.log("e.target.checked", e.target.checked);
-    saveDeliveryOptionsHandler(e.target.checked);
-  };
-
   const renderCheckoutInfo = () => {
     if (auth.token && cart.items.length) {
       if (!user.deliveryAddress && user.deliveryMethod === "courier") {
@@ -111,7 +106,7 @@ const Cart = ({
               type="checkbox"
               name="saveCard"
               checked={user.isDeliverySaved || false}
-              onChange={(e) => saveDeliveryHandler(e)}
+              onChange={(e) => saveDeliveryOptionsHandler(e.target.checked)}
             />
 
             <span className={classes.CheckboxLabel}>Save delivery address</span>

@@ -3,9 +3,11 @@ import {
   ADD_TO_CART_ERROR,
   ADD_TO_CART_START,
   ADD_TO_CART_SUCCESS,
+  AUTH_SUCCESS,
   CART_DISCOUNT_CODE_ERROR,
   CART_DISCOUNT_CODE_SUCCESS,
   CART_DISCOUNT_RESET,
+  CLEAR_CART,
   DECREASE_ITEM_COUNT,
   INCREASE_ITEM_COUNT,
   REMOVE_FROM_CART,
@@ -32,6 +34,7 @@ const initialState = {
   deliveryPay: 15,
   isPreviewActive: false,
   isVerificationActive: false,
+  isVerified: null,
   loading: false,
   error: false,
 };
@@ -80,7 +83,28 @@ function manageCountUpdate(array, item, action) {
   return allItems;
 }
 
+function updateCartFromServer(currentItems, receivedItems) {
+  const finalItems = [...currentItems, ...receivedItems];
+  console.log("FINALLL", finalItems);
+}
+
 const handlers = {
+  [AUTH_SUCCESS]: (state, { user }) => {
+    console.log("USERRRR", user);
+    return {
+      ...state,
+      items: [...state.items, ...user.cart.items],
+      total: calculateTotal(state.items, state.deliveryPay),
+      totalOff: calculateTotalOff(
+        calculateTotal(state.items, state.deliveryPay),
+        state.discount.code
+      ),
+      offSaved: calculateOffPrice(
+        calculateTotal(state.items, state.deliveryPay),
+        state.discount.code
+      ),
+    };
+  },
   [ADD_TO_CART_START]: (state) => ({
     ...state,
     loading: true,
@@ -244,6 +268,24 @@ const handlers = {
   [TOGGLE_VERIFICATION]: (state, { isVerificationActive }) => ({
     ...state,
     isVerificationActive,
+  }),
+  [CLEAR_CART]: (state) => ({
+    ...state,
+    items: [],
+    total: 0,
+    totalOff: null,
+    offSaved: null,
+    discount: {
+      error: false,
+      code: null,
+      typed: false,
+      exists: false,
+    },
+    isPreviewActive: false,
+    isVerificationActive: false,
+    isVerified: null,
+    loading: false,
+    error: false,
   }),
   DEFAULT: (state) => state,
 };
