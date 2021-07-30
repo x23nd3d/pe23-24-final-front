@@ -142,7 +142,7 @@ const Cart = ({
 
   const renderDiscountsCondition = () => {
     if (auth.token) {
-      if (!user.userId.discounts.length) {
+      if (!user.userId.orders.length) {
         return <Discount total={cart.total} />;
       }
     } else {

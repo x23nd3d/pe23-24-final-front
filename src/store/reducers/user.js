@@ -43,6 +43,7 @@ const handlers = {
   // TODO add more fields to update
   [GET_REFRESHED_USER_INFO]: (state, { user }) => ({
     ...state,
+    userId: user,
     savedCards: user.creditCards,
     savedDeliveryAddresses: user.savedDeliveryMethods,
   }),
