@@ -140,6 +140,16 @@ const Cart = ({
     );
   };
 
+  const renderDiscountsCondition = () => {
+    if (auth.token) {
+      if (!user.userId.discounts.length) {
+        return <Discount total={cart.total} />;
+      }
+    } else {
+      return <Discount total={cart.total} />;
+    }
+  };
+
   return (
     <>
       <div className={classes.Cart}>
@@ -208,9 +218,7 @@ const Cart = ({
               </ul>
             </div>
             <aside className={classes.Aside}>
-              {!user.userId.discounts.length ? (
-                <Discount total={cart.total} />
-              ) : null}
+              {renderDiscountsCondition()}
               <h3 className={classes.CartTotal}>Shopping Cart Total</h3>
               {cart.items.length ? (
                 <>

@@ -3,6 +3,7 @@ import {
   AUTH_SUCCESS,
   CHECKOUT_START,
   CHECKOUT_SUCCESS,
+  GET_REFRESHED_USER_INFO,
   SAVE_CREDIT_CARD,
   SAVE_CREDIT_CART_OPTIONS,
   SAVE_DELIVERY,
@@ -36,6 +37,12 @@ const handlers = {
   [AUTH_SUCCESS]: (state, { user }) => ({
     ...state,
     userId: user,
+    savedCards: user.creditCards,
+    savedDeliveryAddresses: user.savedDeliveryMethods,
+  }),
+  // TODO add more fields to update
+  [GET_REFRESHED_USER_INFO]: (state, { user }) => ({
+    ...state,
     savedCards: user.creditCards,
     savedDeliveryAddresses: user.savedDeliveryMethods,
   }),

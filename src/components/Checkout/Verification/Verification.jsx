@@ -17,6 +17,7 @@ import {
   checkout,
   checkoutStartHandler,
   checkoutSuccessHandler,
+  getUpdatesFromUser,
   verification,
 } from "../../../store/actions/user";
 import Spinner from "../../UI/Spinner/Spinner";
@@ -32,6 +33,7 @@ const Verification = ({
   clearCart,
   checkoutStart,
   checkoutSuccess,
+  getUpdatesFromUserHandler,
 }) => {
   const validationSchema = yup.object().shape({
     verificationCode: yup
@@ -50,6 +52,7 @@ const Verification = ({
         checkoutHandler();
         checkoutSuccess();
         clearCart();
+        getUpdatesFromUserHandler();
         history.push("/account/history");
       }, 3000);
 
@@ -177,6 +180,7 @@ Verification.propTypes = {
   clearCart: PropTypes.func.isRequired,
   checkoutStart: PropTypes.func.isRequired,
   checkoutSuccess: PropTypes.func.isRequired,
+  getUpdatesFromUserHandler: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
@@ -194,6 +198,7 @@ function mapDispatchToProps(dispatch) {
     checkoutHandler: () => dispatch(checkout()),
     checkoutSuccess: () => dispatch(checkoutSuccessHandler()),
     clearCart: () => dispatch(clearCartHandler()),
+    getUpdatesFromUserHandler: () => dispatch(getUpdatesFromUser()),
   };
 }
 

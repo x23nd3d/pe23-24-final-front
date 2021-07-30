@@ -3,6 +3,7 @@ import axios from "../../axios/axios-user";
 import {
   CHECKOUT_START,
   CHECKOUT_SUCCESS,
+  GET_REFRESHED_USER_INFO,
   SAVE_CREDIT_CARD,
   SAVE_CREDIT_CART_OPTIONS,
   SAVE_DELIVERY,
@@ -47,8 +48,12 @@ export const checkout = () => async (dispatch, getState) => {
           isDeliverySaved,
         })
       );
-      config.savedDeliveryAddresses =
-        savedDeliveryAddresses[savedDeliveryAddresses.length - 1];
+      // TODO:
+      config.savedDeliveryAddresses = {
+        deliveryMethod,
+        deliveryAddress,
+        isDeliverySaved,
+      };
     }
 
     console.log("CONFIG", config);
@@ -299,4 +304,24 @@ export const getAllOrdersHandler = () => async (dispatch, getState) => {
 export const receiveAllOrders = (orders) => ({
   type: SHOW_ALL_ORDERS,
   orders,
+});
+
+export const getUpdatesFromUser = () => async (dispatch, getState) => {
+  const { token } = getState().auth;
+  try {
+    const request = await axios.get("/user", {
+      headers: {
+        Authorization: `${token}`,
+      },
+    });
+    const response = request.data;
+    dispatch(receivedUpdatesFromUser(response.user));
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+export const receivedUpdatesFromUser = (user) => ({
+  type: GET_REFRESHED_USER_INFO,
+  user,
 });
