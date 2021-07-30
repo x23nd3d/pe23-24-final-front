@@ -11,6 +11,7 @@ import {
   SET_ACCOUNT_ACTIVE_TAB,
   SET_DELIVERY_METHOD,
   SET_LOGIN_ACTIVE_TAB,
+  SHOW_ALL_ORDERS,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -19,6 +20,7 @@ const initialState = {
   deliveryAddress: null,
   isCardSaved: false,
   savedCards: [],
+  orders: [],
   savedDeliveryAddresses: [],
   temp: null,
   isDeliverySaved: false,
@@ -94,6 +96,10 @@ const handlers = {
     accountActiveTab: "history",
     loading: false,
     error: false,
+  }),
+  [SHOW_ALL_ORDERS]: (state, { orders }) => ({
+    ...state,
+    orders,
   }),
   DEFAULT: (state) => state,
 };

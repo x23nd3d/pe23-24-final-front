@@ -12,6 +12,7 @@ import {
   SET_DELIVERY_METHOD,
   SET_DELIVERY_PAY,
   SET_LOGIN_ACTIVE_TAB,
+  SHOW_ALL_ORDERS,
 } from "./actionTypes";
 
 export const checkout = () => async (dispatch, getState) => {
@@ -273,4 +274,29 @@ export const checkoutStartHandler = () => ({
 
 export const checkoutSuccessHandler = () => ({
   type: CHECKOUT_SUCCESS,
+});
+
+export const getAllOrdersHandler = () => async (dispatch, getState) => {
+  const { orders } = getState().user;
+  const { token } = getState().auth;
+
+  try {
+    const request = await axios.get("/orders", {
+      headers: {
+        Authorization: `${token}`,
+      },
+    });
+    const receivedOrders = request.data;
+    if (JSON.stringify(receivedOrders) === JSON.stringify(orders)) {
+      return;
+    }
+    return dispatch(receiveAllOrders(receivedOrders));
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+export const receiveAllOrders = (orders) => ({
+  type: SHOW_ALL_ORDERS,
+  orders,
 });

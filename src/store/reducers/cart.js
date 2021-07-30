@@ -3,6 +3,7 @@ import {
   ADD_TO_CART_ERROR,
   ADD_TO_CART_START,
   ADD_TO_CART_SUCCESS,
+  AUTH_REFRESH_CART,
   AUTH_SUCCESS,
   CART_DISCOUNT_CODE_ERROR,
   CART_DISCOUNT_CODE_SUCCESS,
@@ -83,24 +84,19 @@ function manageCountUpdate(array, item, action) {
   return allItems;
 }
 
-function updateCartFromServer(currentItems, receivedItems) {
-  const finalItems = [...currentItems, ...receivedItems];
-  console.log("FINALLL", finalItems);
-}
-
 const handlers = {
-  [AUTH_SUCCESS]: (state, { user }) => {
-    console.log("USERRRR", user);
+  [AUTH_REFRESH_CART]: (state, { items }) => {
+    console.log("itemsitemsitemsitems", items);
     return {
       ...state,
-      items: [...state.items, ...user.cart.items],
-      total: calculateTotal(state.items, state.deliveryPay),
+      items,
+      total: calculateTotal(items, state.deliveryPay),
       totalOff: calculateTotalOff(
-        calculateTotal(state.items, state.deliveryPay),
+        calculateTotal(items, state.deliveryPay),
         state.discount.code
       ),
       offSaved: calculateOffPrice(
-        calculateTotal(state.items, state.deliveryPay),
+        calculateTotal(items, state.deliveryPay),
         state.discount.code
       ),
     };
