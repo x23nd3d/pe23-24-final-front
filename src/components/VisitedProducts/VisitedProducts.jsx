@@ -13,9 +13,11 @@ const VisitedProducts = ({ visitedProducts }) => {
   return (
     <div className={classes.VisitedProducts}>
       <h2 className={classes.Title}>Visited Products</h2>
-      {visitedProducts.map((visitedProduct) => (
-        <VisitedProduct key={visitedProduct.id} item={visitedProduct} />
-      ))}
+      <div className={classes.List}>
+        {visitedProducts.map((visitedProduct) => (
+          <VisitedProduct key={visitedProduct.id} item={visitedProduct} />
+        ))}
+      </div>
     </div>
   );
 };

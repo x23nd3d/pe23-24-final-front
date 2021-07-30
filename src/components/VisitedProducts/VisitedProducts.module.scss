@@ -1,9 +1,12 @@
 .VisitedProducts {
   padding: 1rem;
-  overflow-x: scroll;
-  white-space: nowrap;
   color: #ffffff;
   text-align: center;
+}
+
+.List {
+  overflow-x: scroll;
+  white-space: nowrap;
 }
 
 .Title {
