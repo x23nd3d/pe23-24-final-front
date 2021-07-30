@@ -20,7 +20,6 @@
 }
 
 .Inner {
-  display: flex;
   margin: 0 auto;
   max-width: 1260px;
   padding: 0 30px;
@@ -49,6 +48,9 @@
   padding: 40px;
   box-sizing: border-box;
   height: fit-content;
+  width: 350px;
+  min-width: 350px;
+  max-width: 350px;
 }
 
 .CartTotal {
@@ -66,7 +68,7 @@
   background-color: unset;
   border: none;
   border-bottom: 1px solid #999999;
-  margin-bottom: 130px;
+  margin-bottom: 30px;
   width: 150px;
   padding: 4px 0;
 
@@ -81,7 +83,7 @@
   margin-bottom: 30px;
 
   &:last-of-type {
-    margin-bottom: 130px;
+    margin-bottom: 100px;
   }
 }
 
@@ -108,4 +110,86 @@
 
 .CheckoutLogin {
   color: darkred;
+}
+
+.DiscountCodeCheck {
+  padding-bottom: 20px;
+}
+
+.DiscountNotFound {
+  color: red;
+}
+
+.DiscountFound {
+  color: green;
+}
+
+.DiscountExists {
+  color: maroon;
+}
+
+.CartDiscountSuccess {
+  border-bottom: 2px solid green!important;
+}
+
+.CartDiscountError {
+  border-bottom: 2px solid red!important;
+}
+
+.CartDiscountExists {
+  border-bottom: 2px solid maroon!important;
+}
+
+.TotalPrice {
+  margin-left: 10px;
+  color: darkgreen;
+}
+
+.InnerContainer {
+  display: flex;
+}
+
+.DeliveryAddressField {
+  padding: 20px 0;
+}
+
+
+.Checkbox {
+  position: relative;
+  visibility: hidden;
+  cursor: pointer;
+  margin-bottom: 30px;
+  margin-right: 10px;
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    visibility: visible;
+    border-radius: 50%;
+  }
+
+  &:before {
+    left: 0;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    background-color: #a5a5a5;
+  }
+
+  &:after {
+    left: 3px;
+    top: 3px;
+    width: 10px;
+    height: 10px;
+  }
+
+  &:checked:after {
+    background-color: #000;
+  }
+
+  &Label {
+    color: #847a7a;
+    margin-top: 3px;
+  }
 }

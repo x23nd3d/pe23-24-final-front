@@ -20,6 +20,7 @@ const Layout = ({
   auth,
   cartPreviewActive,
   cart,
+  user,
   disableCartPreview,
 }) => {
   useEffect(() => {
@@ -32,7 +33,7 @@ const Layout = ({
 
   return (
     <div className={classes.Layout}>
-      {auth.loading ? (
+      {auth.loading || user.loading ? (
         <Spinner />
       ) : (
         <AnimatePresence>
@@ -56,12 +57,14 @@ Layout.defaultProps = {
   auth: {},
   cartPreviewActive: false,
   cart: {},
+  user: {},
   disableCartPreview: (f) => f,
 };
 
 Layout.propTypes = {
   children: PropTypes.instanceOf(Object).isRequired,
   auth: PropTypes.instanceOf(Object),
+  user: PropTypes.instanceOf(Object),
   cartPreviewActive: PropTypes.bool,
   cart: PropTypes.instanceOf(Object),
   disableCartPreview: PropTypes.func,
@@ -70,6 +73,7 @@ Layout.propTypes = {
 function mapStateToProps(state) {
   return {
     auth: state.auth,
+    user: state.auth,
     cartPreviewActive: state.cart.isPreviewActive,
     cart: state.cart,
   };

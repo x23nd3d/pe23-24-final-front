@@ -1,16 +1,66 @@
 import axios from "../../axios/axios-auth";
+import check from "../../axios/axios-user";
 import pushNotification from "../../utils/toastrConfig";
 import {
   AUTH_ERROR,
   AUTH_LOGOUT,
   AUTH_LOGOUT_START,
+  AUTH_REFRESH_CART,
   AUTH_START,
   AUTH_SUCCESS,
+  CART_DISCOUNT_CODE_ERROR,
   SET_LOGIN_TOGGLE,
   SIGNUP_ERROR,
   SIGNUP_START,
   SIGNUP_SUCCESS,
+  USER_DISCOUNT_EXIST,
 } from "./actionTypes";
+import { clearCartHandler, saveCart } from "./cart";
+
+export const checkDiscount = () => async (dispatch, getState) => {
+  console.log("CHECKING");
+  const { discount } = getState().cart;
+  const { token } = getState().auth;
+  try {
+    if (discount.code) {
+      const { key } = getState().cart.discount.code;
+      console.log("KEYYYY", key);
+      const request = await check.post(
+        "/checkDiscount",
+        { key },
+        {
+          headers: {
+            Authorization: `${token}`,
+          },
+        }
+      );
+
+      const response = request.data;
+
+      console.log("response", response);
+      if (response.error === "discount_not_found") {
+        console.log("NOT FOUND");
+        return dispatch(checkAuthDiscountError());
+      }
+
+      if (response.error === "already_exists") {
+        console.log("ESIXTS");
+        return dispatch(checkAuthDiscountExists());
+      }
+      return true;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const checkAuthDiscountExists = () => ({
+  type: USER_DISCOUNT_EXIST,
+});
+
+export const checkAuthDiscountError = () => ({
+  type: CART_DISCOUNT_CODE_ERROR,
+});
 
 export function auth(email, password, keepSigned) {
   // eslint-disable-next-line consistent-return
@@ -83,6 +133,8 @@ export function auth(email, password, keepSigned) {
           }
         );
         dispatch(authSuccess(data.token, data.userId, expirationDate));
+        dispatch(authRefreshCartHandler());
+        dispatch(checkDiscount());
         sessionStorage.setItem("token", data.token);
         dispatch(autoLogout(data.expiresIn));
       }, 500);
@@ -274,6 +326,8 @@ export function logout() {
             toastClass: "toastr-c-success",
           }
         );
+        dispatch(saveCart());
+        dispatch(clearCartHandler());
         dispatch(logOff());
       }, 500);
     } catch (e) {
@@ -300,3 +354,65 @@ export function setLogin(isLogin) {
     isLogin,
   };
 }
+
+function arraysAreEqual(ary1, ary2) {
+  let isEqual = null;
+  for (const item of ary1) {
+    for (const item2 of ary2) {
+      if (JSON.stringify(item) === JSON.stringify(item2)) {
+        console.log("same");
+        isEqual = true;
+      } else {
+        console.log("not same");
+        isEqual = false;
+      }
+    }
+  }
+
+  return isEqual;
+}
+
+function itemsAreSame(ary1, ary2) {
+  const arr = [];
+  for (const item of ary1) {
+    for (const item2 of ary2) {
+      if (JSON.stringify(item) === JSON.stringify(item2)) {
+        arr.push(item);
+        console.log("same");
+      } else {
+        console.log("not same");
+      }
+    }
+  }
+
+  return arr;
+}
+
+export const authRefreshCartHandler = () => (dispatch, getState) => {
+  const { items } = getState().cart;
+  const userData = getState().user.userId.cart;
+  if (userData) {
+    const userCart = userData.items;
+
+    console.log("ITEMS", items);
+    console.log("userCart", userCart);
+
+    if (!userCart.length) {
+      console.log("NO CART LENGTH");
+      return;
+    }
+    if (arraysAreEqual(items, userCart)) {
+      console.log("ARE EQUAL");
+      return;
+    }
+
+    const newCart = [...items, ...userCart];
+    console.log("newCart", newCart);
+    return dispatch(authRefreshCart(newCart));
+  }
+};
+
+export const authRefreshCart = (items) => ({
+  type: AUTH_REFRESH_CART,
+  items,
+});

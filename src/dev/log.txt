@@ -76,4 +76,9 @@ Andrew Kucher, [25.07.21 22:16]
 Andrew Kucher, [25.07.21 22:17]
 также будет возможность у пользователя свою карту сохранить
 
-dropdown account close on click Cart
+
+- count + left in DB check on checkout
+
+
+- on user login, update state depends on the DB
+- on user login refresh cart (with all new updates)

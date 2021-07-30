@@ -3,24 +3,39 @@ import {
   ADD_TO_CART_ERROR,
   ADD_TO_CART_START,
   ADD_TO_CART_SUCCESS,
+  CART_DISCOUNT_CODE_ERROR,
+  CART_DISCOUNT_CODE_SUCCESS,
+  CART_DISCOUNT_RESET,
+  CLEAR_CART,
   DECREASE_ITEM_COUNT,
   INCREASE_ITEM_COUNT,
   REMOVE_FROM_CART,
   SET_ITEM_COUNT,
   SHOW_CART_PREVIEW,
   TOGGLE_CART_PREVIEW,
+  TOGGLE_VERIFICATION,
+  USER_DISCOUNT_EXIST,
 } from "./actionTypes";
 
-function calculateTotal(array) {
+import axios from "../../axios/axios-user";
+
+function calculateTotal(array, delivery) {
   return array.reduce((result, item) => {
+    if (delivery > 0) {
+      let final = result;
+      final += item.count * item.price;
+      const withDelivery = final + delivery;
+      return Math.round(withDelivery * 100) / 100;
+    }
     let final = result;
     final += item.count * item.price;
-    return final;
+    return Math.round(final * 100) / 100;
   }, 0);
 }
 
 export const addToCart = (item) => (dispatch, getState) => {
   const initialItems = getState().cart.items;
+  const { deliveryPay } = getState().cart;
 
   const itemFound = initialItems.find((goods) => {
     const itemToCheck = { ...goods };
@@ -40,16 +55,47 @@ export const addToCart = (item) => (dispatch, getState) => {
       // we have item in card, we should add count
       const idx = initialItems.indexOf(itemFound);
       initialItems[idx].count += 1;
-      const total = calculateTotal(initialItems);
+      const total = calculateTotal(initialItems, deliveryPay);
       return dispatch(updateCount(initialItems, total));
     }
 
     // we do not have item, should add it first with count: 1
     const newItems = [...initialItems, itemToAdd];
-    const total = calculateTotal(newItems);
+    const total = calculateTotal(newItems, deliveryPay);
     return dispatch(addToCartSuccess(newItems, total));
   } catch (e) {
     dispatch(addToCartError(e));
+  }
+};
+
+export const saveCart = () => async (dispatch, getState) => {
+  const { items, total, totalOff, offSaved, deliveryPay, discount } =
+    getState().cart;
+  const { token } = getState().auth;
+
+  const cart = {
+    items,
+    total,
+    totalOff,
+    offSaved,
+    deliveryPay,
+    discount,
+  };
+
+  try {
+    const request = await axios.post(
+      "/addToCart",
+      { cart },
+      {
+        headers: {
+          Authorization: `${token}`,
+        },
+      }
+    );
+    console.log(request.data, "request.data");
+    return request.data;
+  } catch (e) {
+    console.error(e);
   }
 };
 
@@ -123,4 +169,87 @@ export const openCart = () => ({
 
 export const toggleCartPreview = () => ({
   type: TOGGLE_CART_PREVIEW,
+});
+
+export const checkDiscount = (e) => async (dispatch, getState) => {
+  const { token } = getState().auth;
+  const { userId } = getState().user;
+  const { total } = getState().cart;
+  const { items } = getState().cart;
+  const key = e.value;
+
+  const typed = key.length >= 1;
+  try {
+    let request = null;
+
+    if (!items.length) {
+      return;
+    }
+
+    if (userId && token) {
+      request = await axios.post(
+        "/checkDiscount",
+        { key },
+        {
+          headers: {
+            Authorization: `${token}`,
+          },
+        }
+      );
+    } else {
+      request = await axios.post("/discountChecker", { key });
+    }
+    const response = request.data;
+    if (response.currentDiscount) {
+      const offPrice = (total * response.currentDiscount.percentage) / 100;
+      const result = total - offPrice;
+      return dispatch(
+        discountCheckSuccess(response.currentDiscount, result, offPrice)
+      );
+    }
+
+    if (response.error === "already_exists") {
+      return dispatch(checkDiscountExists());
+    }
+    return dispatch(discountCheckError(typed));
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const checkDiscountExists = () => ({
+  type: USER_DISCOUNT_EXIST,
+});
+
+export const discountCheckSuccess = (code, totalOff, offSaved) => ({
+  type: CART_DISCOUNT_CODE_SUCCESS,
+  code,
+  totalOff,
+  offSaved,
+});
+
+export const discountCheckError = (typed) => ({
+  type: CART_DISCOUNT_CODE_ERROR,
+  typed,
+});
+
+export const resetDiscount = () => (dispatch, getState) => {
+  const { code } = getState().cart.discount;
+
+  if (code) return;
+
+  dispatch(discountReset());
+};
+
+export const discountReset = () => ({
+  type: CART_DISCOUNT_RESET,
+});
+
+export const verificationToggle = (isVerificationActive) => ({
+  type: TOGGLE_VERIFICATION,
+  isVerificationActive,
+});
+
+export const clearCartHandler = () => ({
+  type: CLEAR_CART,
 });

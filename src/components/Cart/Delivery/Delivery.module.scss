@@ -1,0 +1,81 @@
+.Delivery {
+  display: block;
+  margin-bottom: 30px;
+}
+
+.Delivery > h3 {
+  text-transform: uppercase;
+  font-weight: 700;
+  //font-size: 20px;
+  margin-bottom: 30px;
+}
+
+
+.CheckoutInputField {
+  display: flex;
+}
+
+.CheckoutInputField > p {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  margin-right: 8px;
+}
+
+.CheckoutInput {
+  display: block;
+  background: none;
+  outline: none;
+  margin-bottom: 38px;
+  width: 100%;
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid #00000059;
+}
+
+
+.Checkbox {
+  position: relative;
+  visibility: hidden;
+  cursor: pointer;
+  margin-bottom: 30px;
+  margin-right: 10px;
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    visibility: visible;
+    border-radius: 50%;
+  }
+
+  &:before {
+    left: 0;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    background-color: #a5a5a5;
+  }
+
+  &:after {
+    left: 3px;
+    top: 3px;
+    width: 10px;
+    height: 10px;
+  }
+
+  &:checked:after {
+    background-color: #000;
+  }
+
+  &Label {
+    color: #847a7a;
+    margin-left: 20px;
+    margin-top: 3px;
+  }
+}
+
+.DeliveryForm {
+  padding: 15px;
+  border: 1px solid #00000024;
+  border-style: dashed;
+}

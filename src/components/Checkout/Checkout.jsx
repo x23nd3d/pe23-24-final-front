@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import classnames from "classnames";
@@ -11,9 +11,33 @@ import visa from "../../img/icons/Checkout/visa.png";
 import express from "../../img/icons/Checkout/express.jpg";
 import Button from "../UI/Buttons List/Button";
 import pushNotification from "../../utils/toastrConfig";
-import { checkout } from "../../store/actions/user";
+import {
+  checkout,
+  saveCardToStateHandler,
+  saveCreditCardHandler,
+  sendVerificationRequest,
+} from "../../store/actions/user";
+import Verification from "./Verification/Verification";
+import { verificationToggle } from "../../store/actions/cart";
+import Backdrop from "../UI/Backdrop/Backdrop";
+import {
+  allowBodyScrolling,
+  preventBodyScrolling,
+} from "../../utils/bodyStyling";
 
-const Checkout = ({ cart, user, checkoutHandler }) => {
+const Checkout = ({
+  cart,
+  user,
+  checkoutHandler,
+  saveCreditCard,
+  verificationToggleHandler,
+  sendVerificationRequestHandler,
+  saveCardToState,
+}) => {
+  useEffect(() => {
+    cart.isVerificationActive ? preventBodyScrolling() : allowBodyScrolling();
+  }, [cart.isVerificationActive]);
+
   const validationSchema = yup.object().shape({
     cardNumber: yup
       .string()
@@ -42,19 +66,38 @@ const Checkout = ({ cart, user, checkoutHandler }) => {
     const { cardNumber, cardName, cardExp, cardExp2, cardCvv, saveCard } =
       values;
 
-    console.log("VALUES", values);
+    if (saveCard) {
+      saveCardToState({ cardNumber, cardName, cardExp, cardExp2, cardCvv });
+    }
 
-    const sendCheckoutRequest = await checkoutHandler(values);
-    console.log("sendCheckoutRequest", sendCheckoutRequest);
+    sendVerificationRequestHandler();
+    verificationToggleHandler(true);
 
     pushNotification(
-      "success",
-      "Please expect a receipt to your email",
-      "Thank you for your purchase!",
+      "warning",
+      "Please type the verification code",
+      "Payment confirmation!",
       {
-        toastClass: "toastr-c-success",
+        toastClass: "toastr-c-warning",
       }
     );
+  };
+
+  //
+  // const sendCheckoutRequest = await checkoutHandler(values);
+  // console.log("sendCheckoutRequest", sendCheckoutRequest);
+
+  const renderTotalPrice = () => {
+    if (cart.discount.code && cart.totalOff > 0) {
+      const totalPrice = `$${cart.totalOff}`;
+      return (
+        <>
+          <s>{cart.total}</s>
+          <span className={classes.TotalPrice}>{totalPrice}</span>
+        </>
+      );
+    }
+    return cart.total;
   };
 
   return (
@@ -67,7 +110,7 @@ const Checkout = ({ cart, user, checkoutHandler }) => {
           </Link>
         </div>
 
-        <p>Total payment amount $ {cart.total}</p>
+        <p>Total payment amount ${renderTotalPrice()}</p>
         <div className={classes.CheckoutPayments}>
           <img
             className={classes.CheckoutPaymentImg}
@@ -189,6 +232,8 @@ const Checkout = ({ cart, user, checkoutHandler }) => {
                     className={classes.Checkbox}
                     type="checkbox"
                     name="saveCard"
+                    checked={user.isCardSaved || false}
+                    onClick={(e) => saveCreditCard(e.target.checked)}
                   />
 
                   <span className={classes.CheckboxLabel}>
@@ -206,6 +251,12 @@ const Checkout = ({ cart, user, checkoutHandler }) => {
           )}
         </Formik>
       </div>
+      {cart.isVerificationActive ? (
+        <>
+          <Backdrop isDark="true" />
+          <Verification />
+        </>
+      ) : null}
     </div>
   );
 };
@@ -214,12 +265,20 @@ Checkout.defaultProps = {
   cart: {},
   user: {},
   checkoutHandler: (f) => f,
+  saveCreditCard: (f) => f,
+  verificationToggleHandler: (f) => f,
+  sendVerificationRequestHandler: (f) => f,
+  saveCardToState: (f) => f,
 };
 
 Checkout.propTypes = {
   cart: PropTypes.instanceOf(Object),
   user: PropTypes.instanceOf(Object),
   checkoutHandler: PropTypes.func,
+  saveCreditCard: PropTypes.func,
+  verificationToggleHandler: PropTypes.func,
+  sendVerificationRequestHandler: PropTypes.func,
+  saveCardToState: PropTypes.func,
 };
 
 function mapStateToProps(state) {
@@ -232,6 +291,10 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     checkoutHandler: (bool) => dispatch(checkout(bool)),
+    saveCreditCard: (bool) => dispatch(saveCreditCardHandler(bool)),
+    verificationToggleHandler: (bool) => dispatch(verificationToggle(bool)),
+    sendVerificationRequestHandler: () => dispatch(sendVerificationRequest()),
+    saveCardToState: (card) => dispatch(saveCardToStateHandler(card)),
   };
 }
 
