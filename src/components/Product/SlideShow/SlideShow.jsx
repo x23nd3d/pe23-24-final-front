@@ -26,6 +26,8 @@ const SlideShow = ({ photo, alt }) => {
     },
   };
 
+  console.log("PHOTO@@@", photo);
+
   return (
     <div className="photo-block">
       <Carousel
@@ -35,11 +37,14 @@ const SlideShow = ({ photo, alt }) => {
         transitionDuration={2}
         swipeable={true}
       >
-        {photo.map((path) => (
-          <div className="photo_wrapper" key={path}>
-            <img src={path} alt={alt} className="photo" />
-          </div>
-        ))}
+        {photo.map((path) => {
+          console.log("PHOTOOOOOO", photo);
+          return (
+            <div className="photo_wrapper" key={path}>
+              <img src={path} alt={alt} className="photo" />
+            </div>
+          );
+        })}
       </Carousel>
     </div>
   );

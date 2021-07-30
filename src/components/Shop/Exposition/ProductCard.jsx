@@ -14,6 +14,7 @@ import "../../../styles/productColors.scss";
 import { handleItemPreviewParams } from "../../../store/actions/shop";
 import colorize from "../../../utils/colorize";
 import ProductTag from "../../UI/ProductTag/ProductTag";
+import { visitedProductsFunction } from "../../../store/actions/visitedProducts.actions";
 
 const ProductCard = ({
   product,
@@ -27,6 +28,7 @@ const ProductCard = ({
   cart,
   shop,
   handleItemPreview,
+  visitedProductsHandler,
 }) => {
   const findCurrentItemByIdx = (array, currentItem) =>
     array.findIndex((current) => current.id === currentItem.id);
@@ -41,7 +43,7 @@ const ProductCard = ({
     selectCurrentItemHandler(item);
     dispatchColor(item.color[0]);
     dispatchPhoto(item.photo[item.color[0]]);
-    dispatchVisitedProducts(item)
+    dispatchVisitedProducts(item);
   };
 
   const clsHoverDetails = [
@@ -165,7 +167,10 @@ const ProductCard = ({
     <>
       <NavLink
         to={`/shop/product/${item.id}`}
-        onClick={dispatchProduct}
+        onClick={() => {
+          dispatchProduct();
+          visitedProductsHandler(item);
+        }}
         className={classes.card}
       >
         <img
@@ -206,6 +211,7 @@ ProductCard.defaultProps = {
   selectCurrentItemHandler: (f) => f,
   addToCartHandler: (f) => f,
   handleItemPreview: (f) => f,
+  visitedProductsHandler: (f) => f,
   shop: {},
   cart: {},
 };
@@ -222,6 +228,7 @@ ProductCard.propTypes = {
   dispatchPhoto: PropTypes.func.isRequired,
   dispatchColor: PropTypes.func.isRequired,
   dispatchVisitedProducts: PropTypes.func.isRequired,
+  visitedProductsHandler: PropTypes.func,
 };
 
 function mapStateToProps(state) {
@@ -241,6 +248,8 @@ function mapDispatchToProps(dispatch) {
     addToCartHandler: (item) => dispatch(addToCart(item)),
     handleItemPreview: (item, param, value) =>
       dispatch(handleItemPreviewParams(item, param, value)),
+    visitedProductsHandler: (product) =>
+      dispatch(visitedProductsFunction(product)),
   };
 }
 
