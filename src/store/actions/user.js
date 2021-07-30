@@ -286,7 +286,7 @@ export const getAllOrdersHandler = () => async (dispatch, getState) => {
         Authorization: `${token}`,
       },
     });
-    const receivedOrders = request.data;
+    const receivedOrders = request.data.orders;
     if (JSON.stringify(receivedOrders) === JSON.stringify(orders)) {
       return;
     }
