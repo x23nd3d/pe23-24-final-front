@@ -228,17 +228,23 @@ const Checkout = ({
                 </div>
 
                 <div className={classes.CheckoutInputField}>
-                  <Field
-                    className={classes.Checkbox}
-                    type="checkbox"
-                    name="saveCard"
-                    checked={user.isCardSaved || false}
-                    onClick={(e) => saveCreditCard(e.target.checked)}
-                  />
+                  {user.savedCards.length >= user.savedCardsLimit ? (
+                    <p> Cards limit exceeded, maximum {user.savedCardsLimit}</p>
+                  ) : (
+                    <>
+                      <Field
+                        className={classes.Checkbox}
+                        type="checkbox"
+                        name="saveCard"
+                        checked={user.isCardSaved || false}
+                        onClick={(e) => saveCreditCard(e.target.checked)}
+                      />
 
-                  <span className={classes.CheckboxLabel}>
-                    Save credit card for next purchases
-                  </span>
+                      <span className={classes.CheckboxLabel}>
+                        Save credit card for next purchases
+                      </span>
+                    </>
+                  )}
                 </div>
 
                 <Button

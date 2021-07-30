@@ -23,6 +23,7 @@ import {
   saveCart,
 } from "../../store/actions/cart";
 import Delivery from "./Delivery/Delivery";
+import Discount from "./Discount";
 
 const Cart = ({
   cart,
@@ -101,15 +102,24 @@ const Cart = ({
       return (
         <>
           <div className={classes.DeliveryAddressField}>
-            <input
-              className={classes.Checkbox}
-              type="checkbox"
-              name="saveCard"
-              checked={user.isDeliverySaved || false}
-              onChange={(e) => saveDeliveryOptionsHandler(e.target.checked)}
-            />
-
-            <span className={classes.CheckboxLabel}>Save delivery address</span>
+            {user.savedDeliveryAddresses.length >= user.savedAddressesLimit ? (
+              <span className={classes.CheckboxLabel}>
+                Address limit exceeded, maximum {user.savedAddressesLimit}
+              </span>
+            ) : (
+              <>
+                <input
+                  className={classes.Checkbox}
+                  type="checkbox"
+                  name="saveCard"
+                  checked={user.isDeliverySaved || false}
+                  onChange={(e) => saveDeliveryOptionsHandler(e.target.checked)}
+                />
+                <span className={classes.CheckboxLabel}>
+                  Save delivery address
+                </span>
+              </>
+            )}
           </div>
           <NavLink
             to="/checkout"
@@ -198,6 +208,9 @@ const Cart = ({
               </ul>
             </div>
             <aside className={classes.Aside}>
+              {!user.userId.discounts.length ? (
+                <Discount total={cart.total} />
+              ) : null}
               <h3 className={classes.CartTotal}>Shopping Cart Total</h3>
               {cart.items.length ? (
                 <>
@@ -243,7 +256,10 @@ const Cart = ({
                   <Delivery />{" "}
                   <p className={classes.AsideInfo}>
                     Delivery{" "}
-                    {cart.deliveryPay > 0 ? `$${cart.deliveryPay}` : "Free"}
+                    {cart.deliveryPay > 0 &&
+                    user.userId.deliveryMethod === "courier"
+                      ? `$${cart.deliveryPay}`
+                      : "Free"}
                   </p>
                 </>
               ) : null}

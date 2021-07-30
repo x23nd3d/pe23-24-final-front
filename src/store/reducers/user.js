@@ -22,6 +22,8 @@ const initialState = {
   savedCards: [],
   orders: [],
   savedDeliveryAddresses: [],
+  savedAddressesLimit: 3,
+  savedCardsLimit: 3,
   temp: null,
   isDeliverySaved: false,
   accountActiveTab: "profile",
