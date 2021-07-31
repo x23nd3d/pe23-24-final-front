@@ -10,6 +10,7 @@ import {
   SAVE_DELIVERY_ADDRESS,
   SAVE_DELIVERY_OPTIONS,
   SET_ACCOUNT_ACTIVE_TAB,
+  SET_DELIVERY_MANUALLY,
   SET_DELIVERY_METHOD,
   SET_LOGIN_ACTIVE_TAB,
   SHOW_ALL_ORDERS,
@@ -110,6 +111,11 @@ const handlers = {
   [SHOW_ALL_ORDERS]: (state, { orders }) => ({
     ...state,
     orders,
+  }),
+  [SET_DELIVERY_MANUALLY]: (state, { deliveryMethod, deliveryAddress }) => ({
+    ...state,
+    deliveryMethod,
+    deliveryAddress,
   }),
   DEFAULT: (state) => state,
 };

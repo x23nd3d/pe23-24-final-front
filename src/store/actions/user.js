@@ -10,6 +10,7 @@ import {
   SAVE_DELIVERY_ADDRESS,
   SAVE_DELIVERY_OPTIONS,
   SET_ACCOUNT_ACTIVE_TAB,
+  SET_DELIVERY_MANUALLY,
   SET_DELIVERY_METHOD,
   SET_DELIVERY_PAY,
   SET_LOGIN_ACTIVE_TAB,
@@ -324,4 +325,23 @@ export const getUpdatesFromUser = () => async (dispatch, getState) => {
 export const receivedUpdatesFromUser = (user) => ({
   type: GET_REFRESHED_USER_INFO,
   user,
+});
+
+export const setDeliveryAddressManual =
+  (method, address) => (dispatch, getState) => {
+    const { deliveryMethod, deliveryAddress } = getState().user;
+
+    console.log("method, address", method, address);
+
+    if (method === deliveryMethod && address === deliveryAddress) {
+      return;
+    }
+
+    dispatch(setManualDeliveryAddress(method, address));
+  };
+
+export const setManualDeliveryAddress = (deliveryMethod, deliveryAddress) => ({
+  type: SET_DELIVERY_MANUALLY,
+  deliveryMethod,
+  deliveryAddress,
 });

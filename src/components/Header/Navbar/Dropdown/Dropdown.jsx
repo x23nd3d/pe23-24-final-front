@@ -30,6 +30,8 @@ const Dropdown = ({
     subcategoryChooser(subcategory);
   };
 
+  console.log("dropdownListdropdownListdropdownList", dropdownList);
+
   return (
     <motion.div
       className={classNames(classes.dropdown)}
@@ -40,20 +42,23 @@ const Dropdown = ({
       <div className={classes.container}>
         <h3 className={classes.title}>Categories</h3>
         <ul className={classes.list}>
-          {dropdownList.map((route) => (
-            <ListRoute
-              key={route}
-              content={route}
-              route={`/shop/?category=${mainRoute}&type=${route.toLowerCase()}`}
-              onClick={() =>
-                registerRoutesHandler(
-                  `shop/?category=${mainRoute}&type=${route.toLowerCase()}`,
-                  route
-                )
-              }
-              listClass={classes.listItem}
-            />
-          ))}
+          {dropdownList.map((route) => {
+            console.log("ROUTE", route);
+            return (
+              <ListRoute
+                key={route}
+                content={route}
+                route={`/shop/?category=${mainRoute}&type=${route.toLowerCase()}`}
+                onClick={() =>
+                  registerRoutesHandler(
+                    `shop/?category=${mainRoute}&type=${route.toLowerCase()}`,
+                    route
+                  )
+                }
+                listClass={classes.listItem}
+              />
+            );
+          })}
           <ListRoute
             route={`/shop/?category=${mainRoute}&type=all`}
             content="View all"

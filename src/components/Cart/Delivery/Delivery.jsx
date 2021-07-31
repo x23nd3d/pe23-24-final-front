@@ -9,6 +9,7 @@ import classes from "./Delivery.module.scss";
 import {
   deliveryAddressHandler,
   deliveryHandler,
+  setDeliveryAddressManual,
 } from "../../../store/actions/user";
 // import Button from "../UI/Buttons List/Button";
 // import pushNotification from "../../utils/toastrConfig";
@@ -18,6 +19,7 @@ const Delivery = ({
   user,
   deliveryHandlerMethod,
   deliveryAddressHandlerMethod,
+  setDeliveryAddress,
 }) => {
   const validationSchema = yup.object().shape({
     address: yup
@@ -27,10 +29,42 @@ const Delivery = ({
       .required("Required"),
   });
 
+  const renderDeliveryItems = () =>
+    user.userId.savedDeliveryMethods.map((current) => {
+      console.log("ITEMMM", current);
+      return (
+        <button
+          type="button"
+          className={classes.DeliveryItems}
+          onClick={() =>
+            setDeliveryAddress(current.deliveryMethod, current.deliveryAddress)
+          }
+        >
+          <div className={classes.DeliveryItemsWrapper}>
+            <span>
+              Method:{" "}
+              {current.deliveryMethod[0].toUpperCase() +
+                current.deliveryMethod.slice(1)}
+            </span>{" "}
+            <span>
+              {current.deliveryAddress
+                ? `Address: ${
+                    current.deliveryAddress[0].toUpperCase() +
+                    current.deliveryAddress.slice(1)
+                  }`
+                : "Address: Store"}
+            </span>
+          </div>
+        </button>
+      );
+    });
+
   const onSubmit = async (values) => {
+    console.log(values, "valuesvaluesvaluesvaluesvalues");
+
     const currentMethod = values.target.value;
     if (currentMethod === "myself" || currentMethod === "courier") {
-      return deliveryHandlerMethod(currentMethod);
+      deliveryHandlerMethod(currentMethod);
     }
 
     // const sendCheckoutRequest = await checkoutHandler(values);
@@ -47,13 +81,17 @@ const Delivery = ({
     // };
   };
 
-  const onBlur = (e) => {
-    if (e.target.name === "delivery") {
-      return;
-    }
-
-    deliveryAddressHandlerMethod(e.target.value);
-  };
+  // const onBlur = (e) => {
+  //   console.log(
+  //     "e.target.valuee.target.valuee.target.valuee.target.value",
+  //     e.target.value
+  //   );
+  //   if (e.target.name === "delivery") {
+  //     return;
+  //   }
+  //
+  //   deliveryAddressHandlerMethod(e.target.value);
+  // };
 
   const renderTotalPrice = () => {
     if (cart.discount.code && cart.totalOff > 0) {
@@ -90,11 +128,7 @@ const Delivery = ({
           isValid,
           dirty,
         }) => (
-          <Form
-            className={classes.DeliveryForm}
-            onChange={onSubmit}
-            onBlur={onBlur}
-          >
+          <Form className={classes.DeliveryForm} onChange={onSubmit}>
             <div className={classes.Inner}>
               <div className={classes.CheckoutInputField}>
                 <div className={classes.RadioGroup}>
@@ -129,8 +163,11 @@ const Delivery = ({
                     type="text"
                     name="address"
                     placeholder="Your address"
-                    onChange={handleChange}
+                    onChange={(e) =>
+                      deliveryAddressHandlerMethod(e.target.value)
+                    }
                     onBlur={handleBlur}
+                    value={user.deliveryAddress ? user.deliveryAddress : ""}
                     defaultValue={
                       user.deliveryAddress ? user.deliveryAddress : ""
                     }
@@ -141,6 +178,9 @@ const Delivery = ({
                 </div>
               ) : null}
             </div>
+            {user.userId && user.userId.savedDeliveryMethods.length > 0
+              ? renderDeliveryItems()
+              : null}
           </Form>
         )}
       </Formik>
@@ -153,6 +193,7 @@ Delivery.defaultProps = {
   user: {},
   deliveryHandlerMethod: (f) => f,
   deliveryAddressHandlerMethod: (f) => f,
+  setDeliveryAddress: (f) => f,
 };
 
 Delivery.propTypes = {
@@ -160,6 +201,7 @@ Delivery.propTypes = {
   user: PropTypes.instanceOf(Object),
   deliveryHandlerMethod: PropTypes.func,
   deliveryAddressHandlerMethod: PropTypes.func,
+  setDeliveryAddress: PropTypes.func,
 };
 
 function mapStateToProps(state) {
@@ -174,6 +216,8 @@ function mapDispatchToProps(dispatch) {
     deliveryHandlerMethod: (method) => dispatch(deliveryHandler(method)),
     deliveryAddressHandlerMethod: (address) =>
       dispatch(deliveryAddressHandler(address)),
+    setDeliveryAddress: (method, address) =>
+      dispatch(setDeliveryAddressManual(method, address)),
   };
 }
 

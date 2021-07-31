@@ -14,6 +14,7 @@ import {
   SIGNUP_START,
   SIGNUP_SUCCESS,
   USER_DISCOUNT_EXIST,
+  USER_DISCOUNT_FIRST_TIME,
 } from "./actionTypes";
 import { clearCartHandler, saveCart } from "./cart";
 
@@ -43,10 +44,15 @@ export const checkDiscount = () => async (dispatch, getState) => {
         return dispatch(checkAuthDiscountError());
       }
 
-      if (response.error === "already_exists") {
+      if (response.error === "already_exist") {
         console.log("ESIXTS");
         return dispatch(checkAuthDiscountExists());
       }
+
+      if (response.error === "first_time_only") {
+        return dispatch(checkAuthDiscountFirstTime());
+      }
+
       return true;
     }
   } catch (error) {
@@ -56,6 +62,10 @@ export const checkDiscount = () => async (dispatch, getState) => {
 
 export const checkAuthDiscountExists = () => ({
   type: USER_DISCOUNT_EXIST,
+});
+
+export const checkAuthDiscountFirstTime = () => ({
+  type: USER_DISCOUNT_FIRST_TIME,
 });
 
 export const checkAuthDiscountError = () => ({
@@ -391,7 +401,7 @@ function itemsAreSame(ary1, ary2) {
 export const authRefreshCartHandler = () => (dispatch, getState) => {
   const { items } = getState().cart;
   const userData = getState().user.userId.cart;
-  if (userData) {
+  if (userData.length) {
     const userCart = userData.items;
 
     console.log("ITEMS", items);

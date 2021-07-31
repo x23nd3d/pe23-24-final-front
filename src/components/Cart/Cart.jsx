@@ -50,7 +50,7 @@ const Cart = ({
     subcategoryChooser(subcategory);
   };
 
-  const parseDiscountCondition = (alpha, omega, bravo) => {
+  const parseDiscountCondition = (alpha, omega, bravo, charlie) => {
     if (cart.discount.error && cart.discount.typed) {
       return alpha;
     }
@@ -60,6 +60,10 @@ const Cart = ({
 
     if (cart.discount.error && cart.discount.exists) {
       return bravo;
+    }
+
+    if (cart.discount.error && cart.discount.first_time_error) {
+      return charlie;
     }
 
     return null;
@@ -142,11 +146,13 @@ const Cart = ({
 
   const renderDiscountsCondition = () => {
     if (auth.token) {
-      if (!user.userId.orders.length) {
+      if (!user.userId.orders.length && cart.items.length > 0) {
         return <Discount total={cart.total} />;
       }
-    } else {
+    } else if (!auth.token && cart.items.length > 0) {
       return <Discount total={cart.total} />;
+    } else {
+      return null;
     }
   };
 
@@ -255,6 +261,14 @@ const Cart = ({
                       )}
                     >
                       The code was already used or expired
+                    </p>,
+                    <p
+                      className={classnames(
+                        classes.DiscountCodeCheck,
+                        classes.DiscountNotFound
+                      )}
+                    >
+                      The code is available for the first order only
                     </p>
                   )}
                 </>
@@ -264,8 +278,7 @@ const Cart = ({
                   <Delivery />{" "}
                   <p className={classes.AsideInfo}>
                     Delivery{" "}
-                    {cart.deliveryPay > 0 &&
-                    user.userId.deliveryMethod === "courier"
+                    {cart.deliveryPay > 0 && user.deliveryMethod === "courier"
                       ? `$${cart.deliveryPay}`
                       : "Free"}
                   </p>

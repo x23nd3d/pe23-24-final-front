@@ -62,6 +62,14 @@ const Checkout = ({
       .required("Required"),
   });
 
+  const renderSavedCards = () =>
+    user.userId.creditCards.map((card) => (
+      <div className={classes.SavedCardsWrapper}>
+        <p className={classes.SavedNumber}>Number: {card.cardNumber}</p>
+        <p className={classes.SavedName}>Name: {card.cardName}</p>
+      </div>
+    ));
+
   const onSubmit = async (values) => {
     const { cardNumber, cardName, cardExp, cardExp2, cardCvv, saveCard } =
       values;
@@ -229,7 +237,10 @@ const Checkout = ({
 
                 <div className={classes.CheckoutInputField}>
                   {user.savedCards.length >= user.savedCardsLimit ? (
-                    <p> Cards limit exceeded, maximum {user.savedCardsLimit}</p>
+                    <p className={classes.CheckoutLimitExceed}>
+                      {" "}
+                      Cards limit exceeded, maximum {user.savedCardsLimit}
+                    </p>
                   ) : (
                     <>
                       <Field
@@ -246,7 +257,11 @@ const Checkout = ({
                     </>
                   )}
                 </div>
-
+                {user.userId && user.userId.creditCards.length > 0 ? (
+                  <div className={classes.SavedCardsContainer}>
+                    {renderSavedCards()}
+                  </div>
+                ) : null}
                 <Button
                   label="Pay"
                   submit="true"
@@ -257,6 +272,7 @@ const Checkout = ({
           )}
         </Formik>
       </div>
+
       {cart.isVerificationActive ? (
         <>
           <Backdrop isDark="true" />
