@@ -3,7 +3,7 @@ import classes from "../../Forms/Add to Cart/AddToCartForm.module.scss";
 import BackShoppingIcon from "../SVG Icons Components/BackShoppingIcon";
 
 const BackShopping = () => (
-  <button className={classes.backShopping} type="button">
+  <button data-testid="BackShoppingTestId"  className={classes.backShopping} type="button">
     <BackShoppingIcon />
   </button>
 );

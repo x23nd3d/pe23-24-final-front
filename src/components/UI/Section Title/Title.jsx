@@ -4,12 +4,15 @@ import classNames from "classnames";
 import {title, pos} from "./Title.module.scss";
 
 const Title = ({text, position}) => (
-    <header className={classNames(title, position && pos)}>
+    <header data-testid="TitleTestId" className={classNames(title, position && pos)}>
             <p>{text}</p>
     </header>
 );
 
-Title.defaultProps = { position: false }
+Title.defaultProps = {
+    position: false,
+    text: ""
+}
 
 Title.propTypes = {
     text: PropTypes.string.isRequired,

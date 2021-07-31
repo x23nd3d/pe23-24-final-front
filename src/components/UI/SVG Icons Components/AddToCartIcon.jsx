@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const AddToCartIcon = ({available}) => (
-  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+  <svg data-testid="AddToCartIconTestId" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 512 512" style={{width: "30px", enableBackground: "new 0 0 512 512"}} xmlSpace="preserve">
 		<path fill={available ? "#fee000" : "#585858"} d="M507.519,116.384C503.721,111.712,498.021,109,492,109H129.736l-1.484-13.632l-0.053-0.438C121.099,40.812,74.583,0,20,0
 			C8.954,0,0,8.954,0,20s8.954,20,20,20c34.506,0,63.923,25.749,68.512,59.928l23.773,218.401C91.495,327.765,77,348.722,77,373
@@ -18,8 +18,12 @@ const AddToCartIcon = ({available}) => (
 </svg>
 );
 
+AddToCartIcon.defaultProps = {
+	available: true
+}
+
 AddToCartIcon.propTypes = {
-	 available: PropTypes.bool.isRequired,
+	 available: PropTypes.bool,
 }
 
 export default AddToCartIcon;

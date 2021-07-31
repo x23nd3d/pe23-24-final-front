@@ -8,8 +8,13 @@ const ProductTag = ({ item, tag }) => {
     item[tag] === true || tag === "popular" ? classes[tag] : null,
   ];
 
-  return <div className={cls.join(" ")}>{tag}</div>;
+  return <div data-testid="ProductTagTestId" className={cls.join(" ")}>{tag}</div>;
 };
+
+ProductTag.defaultProps = {
+  item: {},
+  tag: ""
+}
 
 ProductTag.propTypes = {
   item: PropTypes.instanceOf(Object).isRequired,

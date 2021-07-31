@@ -1,14 +1,24 @@
 // import React from "react";
-// import {render, screen} from "@testing-library/react";
-// import AddToCartForm from "./AddToCartForm";
+// import { createStore } from "redux";
 // import { Provider } from "react-redux";
-// import configureStore from "redux-mock-store";
+// import {render} from "@testing-library/react";
 
-// const mockStore = configureStore([]);
+// import reducer, {initialState} from "../../../store/reducers/rootReducer";
+// import AddToCartForm from "./AddToCartForm";
+
+// const renderWithRedux = (
+//   component,
+//   {initialState, store = createStore(reducer, initialState)} = {}
+// ) => {
+//   return {
+//     ...render(<Provider store={store} >{component}</Provider>),
+//     store
+//   }
+// }
 
 // describe("AddToCartForm component", () => {
 //   test("should render AddToCartForm", () => {
-//     render(<AddToCartForm />);
-//     expect(screen.getAllByTestId("AddToCartFormId")).toBeInTheDocument();
+//     const {getByTestId} = render(renderWithRedux(<AddToCartForm/>, initialState));
+//     expect(getByTestId("AddToCartFormId")).toBeInTheDocument();
 //   })
 // })

@@ -6,7 +6,7 @@ const Backdrop = ({ toggle, isDark }) => {
   const cls = [classes.Backdrop, isDark ? classes.Dark : null];
 
   return (
-    <div role="none" onClick={() => toggle(false)} className={cls.join(" ")} />
+    <div data-testid="BackdropTestId" role="none" onClick={() => toggle(false)} className={cls.join(" ")} />
   );
 };
 
