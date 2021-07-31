@@ -5,7 +5,7 @@ import AddToWishlistIcon from "../SVG Icons Components/AddToWishlistIcon";
 import AlreadyInWishlistIcon from "../SVG Icons Components/AlreadyInWishlistIcon";
 
 const AddToWishList = ({isAdded}) => (
-  <button className={classes.toWishlist} type="button" >
+  <button data-testid="AddToWishListTestId" className={classes.toWishlist} type="button" >
     {isAdded ? <AlreadyInWishlistIcon /> : <AddToWishlistIcon /> }
   </button>
 );

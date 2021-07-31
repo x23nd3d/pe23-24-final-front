@@ -44,7 +44,7 @@ const Footer = () => {
     );
 
   return (
-    <div className={classes.Footer}>
+    <div date-testid="FooterTestId" className={classes.Footer}>
       <div className={classes.FooterColumn}>
         <div className={classes.ArrowDownColumnContainer}>
           <h3>Help</h3>
