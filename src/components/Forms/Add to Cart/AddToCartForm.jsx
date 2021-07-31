@@ -16,7 +16,6 @@ import AddToWishList from "../../UI/Buttons List/AddToWishList";
 
 const AddToCartForm = ({ data, store, dispatchCart, product }) => {
   const { productStore, dispatchColor } = store;
-  console.log(data);
 
   const handleColorState = useCallback(
     ({ color }) => {
@@ -50,6 +49,7 @@ const AddToCartForm = ({ data, store, dispatchCart, product }) => {
 
   return (
     <Formik
+      data-testid="AddToCartFormId"
       initialValues={{
         id: data.id,
         color: productStore.color,
