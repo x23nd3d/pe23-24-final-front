@@ -1,0 +1,251 @@
+@import "../../../styles/mixins";
+@import "../../../styles/variables";
+
+.form {
+  @include block-120;
+  max-height: 260px;
+  min-height: 210px;
+  justify-content: space-evenly;
+}
+
+.dataPointer {
+  @include point-info;
+}
+
+.formBlockColor {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  @media (max-width: 370px) { height: 100px; }
+  @media (max-width: 666px) {
+    flex-wrap: wrap;
+    .colorSelection {
+      width: 100%;
+    }
+  }
+
+  .colorSelection {
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+    @media (min-width:901px) and (max-width: 900px) {
+        width: 70%;
+    }
+    @media (max-width: 666px) {
+      width: 100%;
+      font-size: 14px;
+      height: 54px;
+      flex-wrap: wrap;
+      align-items: center;
+      @media (max-width: 370px) { align-content: space-between; }
+    }
+
+    .colorBox {
+      margin-left: 15px;
+    }
+
+    .defaultRadio {
+      display: none;
+
+      &:checked + .customRadio::before {
+        content: "";
+        position: absolute;
+        bottom: -90%;
+        width: 115%;
+        height: 35px;
+        border: 1.4px solid black;
+      }
+    }
+
+    .customRadio {
+      background-color: #fff;
+
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      cursor: pointer;
+      padding: 0;
+      margin: 0;
+
+      &::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 4px;
+        position: absolute;
+        bottom: -50%;
+        border-radius: 10px;
+      }
+    }
+  }
+}
+
+.formBlockSize {
+  display: flex;
+  align-items: center;
+}
+
+.formBlockSubmit {
+  height: 60px;
+  width: 100%;
+  @media (max-width: 980px) {
+    width: 80%;
+  }
+  @media (max-width: 666px) {
+    width: 100%;
+  }
+  align-self: center;
+  display: flex;
+  justify-content: space-around;
+  @media (min-width: 1330px) {
+    width: 80%;
+  }
+}
+
+.Navy::after { @include radioColorStyle; background-color: $navy; }
+.Black::after { @include radioColorStyle; background-color: $black; }
+.Charcoal::after { @include radioColorStyle; background-color: $charcoal; }
+.White::after { @include radioColorStyle; background-color: #fff; }
+.Gray::after { @include radioColorStyle; background-color: rgb(163, 163, 163); }
+.Silver::after { @include radioColorStyle; background-color: rgb(209, 207, 207); }
+.PearlGray::after { @include radioColorStyle; background-color: $pearl-gray; }
+.SmokeGray::after { @include radioColorStyle; background-color: $smoke-gray; }
+.JetBlack::after { @include radioColorStyle; background-color: $jet-black; }
+.AirForce::after { @include radioColorStyle; background-color: $air-force; }
+.SuperLightIndigo::after { @include radioColorStyle; background-color: $super-light-indigo; }
+.CamelotGray::after { @include radioColorStyle; background-color: $camelot-gray; }
+.MidnightNavy::after { @include radioColorStyle; background-color: $midnight-navy; }
+.Nero::after { @include radioColorStyle; background-color: $nero; }
+.WhiteNight::after { @include radioColorStyle; background-color: $white-night; }
+.NightBlue::after { @include radioColorStyle; background-color: $night-blue; }
+.MarroneBrown::after { @include radioColorStyle; background-color: $marrone-brown; }
+.DustyOlive::after { @include radioColorStyle; background-color: $dusty-olive; }
+.Stone::after { @include radioColorStyle; background-color: $stone; }
+.Khaki::after { @include radioColorStyle; background-color: $khaki; }
+.Kalamata::after { @include radioColorStyle; background-color: $kalamata; }
+.GrayHarbor::after { @include radioColorStyle; background-color: $gray-harbor; }
+.BlackDial::after { @include radioColorStyle; background-color: $black; }
+.BlackGold::after { @include radioColorStyle; background-color: $black; }
+.BlackGold::after { @include radioColorStyle; background-color: $black; }
+.TwoTone::after { @include radioColorStyle; background-color: $black; }
+.GoldBrownGradient::after { @include radioColorStyle; background-color: $black; }
+.FlowBoneRed::after { @include radioColorStyle; background-color: $black; }
+.BlueBlazer::after { @include radioColorStyle; background-color: $blue-blazer; }
+.DuffleBag::after { @include radioColorStyle; background-color: $duffle-bag; }
+.DarkBlue::after { @include radioColorStyle; background-color: $dark-blue; }
+.Denim::after { @include radioColorStyle; background-color: $denim; }
+.Mauz::after { @include radioColorStyle; background-color: $mauz; }
+.Coastal::after { @include radioColorStyle; background-color: $coastal; }
+.BlueSilver::after { @include radioColorStyle; background-color: $blue-silver; }
+.ShinyEndura::after { @include radioColorStyle; background-color: $shiny-endura; }
+.Brown::after { @include radioColorStyle; background-color: $brown; }
+
+.select-block{
+  position: relative;
+}
+
+.sizeSelect {
+  width: 100px;
+  height: 36px;
+  border: 1px solid black;
+  cursor: pointer;
+  font-size: 16px;
+  appearance: none;
+  background-color: #fff;
+  background-image: url("../../../img/icons/down-arrow.svg");
+  background-repeat: no-repeat;
+  background-position: right 10px top 50%;
+  background-size: 22px;
+  padding: 3px 10px;
+
+
+  &:focus {
+    outline: none;
+  }
+
+  & option {
+    background-color: black;
+    color: #fff;
+  }
+}
+
+.formOneColorBlock {
+  & p {
+    color: rgb(58, 58, 58);
+    margin-right: 20px;
+  }
+  display: flex;
+  justify-content: space-between;
+  @media (max-width: 666px) {
+    height: 0;
+    height: unset;
+    align-items: center;
+  }
+  & span {
+    color: #000;
+    width: 168px;
+  }
+}
+
+.backShopping {
+  background-color: #000;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #fff;
+  width: 15%;
+  @media (max-width: 420px) {
+    width: 18%;
+  }
+  height: 100%;
+  display: block;
+}
+
+
+.submit {
+  background-color: #000;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #fff;
+  width: 60%;
+}
+
+.toWishlist {
+  width: 15%;
+  @media (max-width: 420px) {
+    width: 18%;
+  }
+  height: 100%;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.AddToCartButtonContainer {
+  width: 150px;
+  display: flex;
+  align-items: center;
+  @media (max-width: 380px) {
+    justify-content: center;
+  }
+  justify-content: space-between;
+  margin: auto;
+}
+
+.AddToCartButtonText {
+  @media (max-width: 380px) {
+      display: none;
+  }
+}

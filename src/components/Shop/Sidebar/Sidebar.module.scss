@@ -1,3 +1,99 @@
 .Sidebar {
+  font-family: "Open Sans", sans-serif;
+  position: sticky;
+  bottom: 0;
+  background-color: #000;
+  width: 250px;
+  min-width: 250px;
+  color: #fff;
+  padding: 50px;
+}
 
+.SidebarContent {
+  padding-left: 20px;
+}
+
+.Routes {
+  display: flex;
+  font-family: "Josefin Sans", sans-serif;
+  color: #c4c4c4;
+  font-weight: 300;
+  margin-bottom: 45px;
+}
+
+.Routes > span {
+  margin: 0 7px;
+}
+
+.ListCategory {
+  font-size: 18px;
+}
+
+.ListItem {
+  margin-bottom: 20px;
+  list-style: none;
+  width: fit-content;
+
+  &Active {
+    position: relative;
+
+    &:before {
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background-color: #fff;
+      bottom: -5px;
+      left: 0;
+      content: "";
+    }
+  }
+}
+
+.CategoryTitle {
+  font-size: 18px;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 23px;
+}
+
+.CategoryAll {
+  display: inline-block;
+  margin-top: 15px;
+  font-size: 16px;
+
+  &Active {
+    position: relative;
+
+    &:before {
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background-color: #fff;
+      bottom: -5px;
+      left: 0;
+      content: "";
+    }
+  }
+}
+
+.Button {
+  color: #fff;
+  background-color: #000;
+  border: 1px solid #fff;
+  padding: 10px 25px;
+  transition: all 0.25s;
+  cursor: pointer;
+  width: 100%;
+
+  &Warning {
+    border-color: #ff0000;
+  }
+
+  &:hover {
+    border-color: gold;
+  }
+  &s {
+    margin-top: 50px;
+  }
 }

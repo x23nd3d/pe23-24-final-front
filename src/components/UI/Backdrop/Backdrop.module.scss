@@ -1,0 +1,18 @@
+.Backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+}
+
+.Dark {
+  background: #00000059;
+  z-index: 100;
+}
+
+.SuperDark {
+  background: #000000fc;
+  z-index: 100;
+}

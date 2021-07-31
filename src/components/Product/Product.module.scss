@@ -1,0 +1,139 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.productPage {
+    display: flex;
+    width: 100%;
+    background-color: #fff;
+    @media (max-width: 980px) {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.dataBlock {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    @media (max-width: 450px) {
+        padding: 0;
+    }
+    width: 50%;
+
+    @media (max-width: 980px) {
+        width: 80%;
+    }
+
+}
+
+.Details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 90%;
+    background-color: #fff;
+    .primaryBlock, .selectionBlock {
+        @include block-120;
+    }
+
+    .NameBox {
+        display: flex;
+        align-items: center;
+        .collectionTags {
+            margin-left: 20px;
+            border-radius: 3px;
+        }
+    }
+
+    .Name {
+        font-size: 22px;
+    }
+
+    .Caption {
+        margin-top: 10px;
+        font-size: 14px;
+        font-style: italic;
+    }
+    .dataPointer {
+        @include point-info;
+    }
+}
+
+.PriceBox {
+    & span {
+        @include point-info;
+        // margin-top: 5px;
+        padding-top: 10px;
+    }
+}
+
+.Price {
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.isStock {
+    display: flex;
+    align-items: flex-end;
+    & span {
+        width: 80px;
+    }
+}
+
+.bottomBlock {
+    .moreDetails {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    & .dataPointer {
+        margin: 10px 0;
+        @include point-info;
+        width: 320px;
+        & p {
+            margin-left: 20px;
+        }
+
+        height: 30px;
+        align-items: center;
+        align-self: flex-start;
+        justify-content: flex-start;
+
+
+        @media (max-width: 400px) {
+            align-items: flex-start;
+            flex-wrap: wrap;
+            width: 260px;
+            align-content: center;
+            & h5 {
+                margin-right: 20px;
+            }
+        }
+        & h5, & p {
+            @media (max-width: 400px) {
+                margin-left: 0;
+                align-self: flex-start;
+            }
+        }
+    }
+
+    .dsc {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        max-height: 220px;
+        min-height: 200px;
+
+        & li {
+            font-size: 16px;
+        }
+
+        @media (max-width: 420px) {
+            height: 220px;
+        }
+    }
+}
+
+.Photo {
+    width: 70%;
+}

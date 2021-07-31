@@ -17,7 +17,7 @@
         align-content: unset;
 
         &:not(:first-child) {
-            margin-top: 20px;    
+            margin-top: 20px;
         }
     }
 
@@ -26,9 +26,10 @@
         align-content: unset;
 
         &:not(:first-child) {
-            margin-top: 20px;    
+            margin-top: 20px;
         }
     }
+    & div {width: 100%;}
 }
 
 .group {
@@ -48,7 +49,7 @@
         height: 300px;
 
         &:not(:first-child) {
-            margin-top: 20px;    
+            margin-top: 20px;
         }
     }
 
@@ -57,18 +58,18 @@
         height: 480px;
 
         &:not(:first-child) {
-            margin-top: 20px;    
+            margin-top: 20px;
         }
     }
 }
 
 .New {
 
-    @media (max-width: 740px) { 
+    @media (max-width: 740px) {
         width: 320px;
         height: 480px;
     }
-    
+
     @media (min-width: 741px) and (max-width: 1080px) {
         width: 622px;
         height: 980px;
@@ -76,13 +77,11 @@
     width: 45%;
     height: 980px;
 
-    background-image: url(./img/new.png);
+    background-image: url("./img/new.jpg");
 }
-
 .Recommended {
-    background-image: url(./img/recommended.png);
+    background-image: url("./img/recommended1.png");
 }
-
 .Popular {
-    background-image: url(./img/popular.png);
+    background-image: url("./img/popular1.jpg");
 }

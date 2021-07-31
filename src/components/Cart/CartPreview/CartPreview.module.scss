@@ -1,0 +1,92 @@
+.CartPreview {
+  position: fixed;
+  z-index: 999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 0 18px 4px #00000080;
+}
+
+.CartPreviewHeader {
+  overflow: hidden;
+}
+
+.CartPreviewContent {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+  width: 100%;
+  max-height: 700px;
+  max-width: 1200px;
+  min-width: 960px;
+  min-height: 500px;
+}
+
+
+
+.CartPreviewDetails {
+  display: flex;
+  justify-content: space-between;
+  margin: 25px;
+}
+
+.CartPreviewDetails > button > i {
+  font-size: 25px;
+}
+
+.CartPreviewHr {
+  border-bottom: 1px solid #80808030;
+  display: block;
+}
+
+.CartPreviewDetails > h4 {
+  font-size: 36px;
+}
+
+.CartContainer {
+  margin: 20px 0;
+}
+
+.CartShopping {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  align-items: center;
+}
+
+.CartContinueShopping > button {
+  border: 1px solid #000;
+  padding: 10px 15px;
+}
+
+.CartTotalSum {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.CartTotal {
+  font-size: 30px;
+  padding-bottom: 15px;
+}
+
+.CartAddItems{
+  border: 1px solid #000;
+  padding: 10px 30px;
+}
+
+.CartEmpty {
+  text-align: center;
+  font-size: 36px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.TotalPrice {
+  margin-left: 10px;
+  color: darkgreen;
+}

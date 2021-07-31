@@ -1,0 +1,78 @@
+.Account {
+  background: #fff;
+  font-family: "Josefin Sans", sans-serif;
+  padding: 5%;
+}
+.AccountContainer {
+  display: block;
+  position: relative;
+}
+.BackBtn{
+  display: none;
+  font-size: 12px;
+  @media screen and (max-width: 576px) {
+    display: block;
+    position: absolute;
+    top: -17px;
+    left: -15px;
+   }
+}
+.MyAccount {
+  font-family: "Josefin Sans", sans-serif;
+
+  &Title {
+    font-size: 36px;
+    margin: 0px 0px 50px 0;
+    @media screen and (max-width: 576px) {
+      display: none;
+     }
+  }
+
+  &Tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  &Tab {
+    line-height: 2;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    border-radius: unset;
+    @media screen and (max-width: 576px) {
+      display: none;
+      text-transform: none;
+     }
+
+    &Active {
+      font-weight: 700;
+      border-bottom: 1px solid #000000;
+      @media screen and (max-width: 576px) {
+        display: block;
+       }
+    }
+   
+  }
+  
+}
+
+@media screen and (max-width: 992px) {
+  .MyAccount {
+    &Tabs {
+      min-width: 100%;
+      overflow-y: scroll;
+      white-space: nowrap;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    &Tab {
+      width: fit-content;
+      padding: 0 2rem;
+      @media screen and (max-width: 576px) {
+        padding: 0;
+       }
+    }
+  }
+}

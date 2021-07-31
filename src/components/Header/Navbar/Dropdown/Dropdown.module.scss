@@ -1,0 +1,54 @@
+@import "../../../../styles/mixins";
+
+.dropdown {
+    position: absolute;
+    top: 90px;
+    //left: 50px;
+    z-index: 100;
+    width: 350px;
+    padding: 50px 0;
+
+    background-color: #000;
+}
+
+.container {
+    @include container;
+}
+
+.title {
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-family: "Open Sans", sans-serif;
+    text-transform: uppercase;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.listItem {
+    margin-top: 40px;
+}
+
+.viewAll {
+    margin-top: 75px;
+}
+
+@media screen and (max-width: 992px) {
+    .dropdown {
+        top: 120px;
+    }
+    .list {
+        width: 100%;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    .list {
+        width: 100%;
+        height: auto;
+    }
+}

@@ -1,0 +1,24 @@
+body {
+  background-color: #000;
+}
+
+.fix-body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+  height: 15px;
+}
+
+::-webkit-scrollbar-track-piece  {
+  background-color: #060608;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  height: 30px;
+  background-color: #676769;
+
+}

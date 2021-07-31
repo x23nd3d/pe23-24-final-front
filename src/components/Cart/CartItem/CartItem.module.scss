@@ -1,0 +1,99 @@
+.CartItem {
+  display: flex;
+  padding: 42px 0;
+  border-bottom: 1px solid #c4c4c4;
+}
+
+.CartItemInfoBlock {
+  display: flex;
+  flex-direction: column;
+  color: #847a7a;
+}
+
+.CartItemTitle {
+  color: #000000;
+  font-size: 18px;
+  text-transform: uppercase;
+  // font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.CartItemInfo {
+  margin-bottom: 18px;
+  font-size: 16px;
+}
+
+.Quantity {
+  margin-top: 18px;
+  display: inline-block;
+}
+
+.CartItemTotal {
+  margin-top: auto;
+  color: #000000;
+  font-weight: 700;
+}
+
+.ImageBox {
+  margin-right: 35px;
+  max-width: 100%;
+  width: 180px;
+  height: 100%;
+}
+
+.Image {
+  width: 100%;
+  height: 100%;
+}
+
+.Remove {
+  margin-left: auto;
+  align-self: flex-end;
+}
+
+@media screen and (max-width: 576px) {
+  .CartItem {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-gap: 20px;
+  }
+
+  .ImageBox {
+    width: fit-content;
+    margin-right: 0;
+  }
+
+  .Remove {
+    margin-left: unset;
+    width: fit-content;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .CartItem {
+    text-align: right;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+  }
+
+  .CartItemInfoBlock {
+    margin: 25px 0;
+  }
+
+  .Remove {
+    padding: 0;
+    margin-left: auto;
+  }
+}
+
+
+.CartCountDecreaseOff {
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.CartCountIncreaseOff {
+  opacity: 0.3;
+}

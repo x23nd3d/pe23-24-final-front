@@ -1,7 +1,15 @@
+@import "./variables";
+
 @mixin container {
 	max-width: 1440px;
 	margin: 0 auto;
 	padding: 0 20px;
+}
+
+@mixin regular-container {
+	display: flex;
+	margin: 0 auto;
+	padding: 0 50px;
 }
 
 @mixin flex-center {
@@ -15,3 +23,35 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+@mixin block-120 {
+	height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+@mixin point-info {
+	display: flex;
+        justify-content: space-between;
+        font-size: 18px;
+        color: $pointInfo;
+        width: 100px;
+
+        & p {
+            color: #000;
+        }
+}
+
+@mixin highlight {
+    border: 2px solid red;
+}
+
+@mixin radioColorStyle {
+          content: "";
+          position: absolute;
+          bottom: -100%;
+          width: 100%;
+          height: 6px;
+          border: 1px solid black;
+      }

@@ -1,0 +1,197 @@
+@import "./variables";
+
+
+.colorItem {
+  width: 25px;
+  height: 25px;
+  margin: 2px 5px;
+  //border: 1px solid #fff;
+  //background-color: #000;
+  border-radius: 50%;
+  z-index: 999;
+  border: 1px solid #00000057;
+}
+
+.colorItemActive {
+  border: 1px solid #ffffff;
+  box-shadow: 0 0 4px 2px burlywood;
+  transform: scale(1.4);
+  transition: 0.2s;
+}
+
+.colorItem:hover {
+  border: 1px solid #dab70c73;
+  box-shadow: 0 0 8px 3px #ffc80063;
+}
+
+.colorItem > span {
+  display: none;
+}
+
+
+.sizeItem {
+  border: 1px solid #00000021;
+  margin: 2px;
+  z-index: 999;
+}
+
+.sizeItemActive {
+  border: 1px solid #000;
+}
+
+.sizeItemActiveCart {
+  cursor: default;
+  padding: 4px;
+}
+
+.sizeItem:hover {
+  border: 1px solid #000;
+}
+
+.AirForce {
+  background-color: $air-force;
+}
+
+.Black {
+  background-color: $black;
+}
+
+.BlackDial {
+  background-color: $black;
+}
+
+.BlackSolid {
+  background-color: $black;
+}
+
+.BlackGold {
+  background-color: gold;
+}
+
+.BlueBlazer {
+  background-color: $blue-blazer;
+}
+
+.BlueSilver {
+  background-color: $blue-silver;
+}
+
+.Brown {
+  background-color: $brown;
+}
+
+.CamelotGray {
+  background-color: grey;
+}
+
+.Charcoal {
+  background-color: $charcoal;
+}
+
+.Coastal {
+  background-color: $coastal;
+}
+
+.DarkBlue {
+  background-color: $dark-blue;
+}
+
+.Denim {
+  background-color: #304560;
+}
+
+.DuffleBag {
+  background-color: $duffle-bag;
+}
+
+.DustyOlive {
+  background-color: $dusty-olive;
+}
+
+.FlowBoneRed {
+  background-color: #a62c2b;
+}
+
+.GoldBrownGradient {
+  background-color: $brown;
+}
+
+.Gray {
+  background-color: grey;
+}
+
+.GrayHarbor {
+  background-color: $gray-harbor;
+}
+
+.JetBlack {
+  background-color: $jet-black;
+}
+
+.Kalamata {
+  background-color: $kalamata;
+}
+
+.Khaki {
+  background-color: $khaki;
+}
+
+.MarroneBrown {
+  background-color: $marrone-brown;
+}
+
+.Mauz {
+  background-color: $mauz;
+}
+
+.MidnightNavy {
+  background-color: $midnight-navy;
+}
+
+.Navy {
+  background-color: $navy;
+}
+
+.Nero {
+  background-color: $nero;
+}
+
+.NightBlue {
+  background-color: $night-blue;
+}
+
+.PearlGray {
+  background-color: $pearl-gray;
+}
+
+.ShinyEndura {
+  background-color: $shiny-endura;
+}
+
+.Silver {
+  background-color: $silver;
+}
+
+.SmokeGray {
+  background-color: $smoke-gray;
+}
+
+.Stone {
+  background-color: $stone;
+}
+
+.SuperLightIndigo {
+  background-color: $super-light-indigo;
+}
+
+.TwoTone {
+  background-color: tomato;
+}
+
+.White {
+  background-color: #fff;
+}
+
+.WhiteNight {
+  background-color: $white-night;
+}

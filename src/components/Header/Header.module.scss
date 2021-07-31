@@ -1,0 +1,20 @@
+@import "../../styles/mixins";
+
+.Header {
+  position: relative;
+  color: #ffffff;
+  background-color: #000000;
+
+  &Inner {
+    margin: 0 auto;
+    padding: 0 50px;
+
+    @media screen and (max-width: 1130px) {
+      padding: 0 30px;
+    }
+
+    @media screen and (max-width: 480px) {
+      padding: 0 30px;
+    }
+  }
+}

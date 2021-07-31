@@ -1,3 +1,6 @@
-.Shop {
+@import "../../styles/mixins";
 
+.Shop {
+    display: flex;
+    margin: 0 auto;
 }

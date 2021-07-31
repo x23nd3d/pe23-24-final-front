@@ -16,7 +16,7 @@
         justify-content: space-between;
         flex-direction: column;
     }
-    
+
     @media (max-width: 1081px) {
         flex-direction: row;
         justify-content: center;
@@ -30,6 +30,9 @@
     width: 320px;
     height: 340px;
     @include bg-image-pos;
+    @media screen and (max-width: 576px) {
+       margin-top: 20px;
+       }
 
     &:hover {
         cursor: pointer;
@@ -42,14 +45,14 @@
     }
 
     @media (min-width: 481px) and (max-width: 1080px) {
-        
+
         &:not(:first-child) {
             margin: 20px;
         }
     }
 
     @media (min-width: 481px) and (max-width: 1080px) {
-        
+
         &:not(:first-child) {
             margin: 20px;
         }
@@ -57,13 +60,13 @@
 }
 
 .clothes {
-    background-image: url("./img/clothes.png");
+    background-image: url("./img/clothes1.jpg");
 }
 
 .shoes {
-    background-image: url("./img/shoes.png");
+    background-image: url("./img/shoes1.jpg");
 }
 
 .accessories {
-    background-image: url("./img/accessories.png");
+    background-image: url("./img/accessories.jpg");
 }

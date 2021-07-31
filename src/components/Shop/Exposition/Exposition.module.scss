@@ -1,0 +1,249 @@
+@import "../../../styles/mixins";
+@import "../../../styles/variables";
+@import "../../../styles/productColors";
+
+.expo {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 50px 25px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #fff;
+  padding: 5%;
+  margin-bottom: 140px;
+
+  @media screen and (max-width: 1368px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  @media screen and (max-width: 998px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.listItem {
+  position: relative;
+  cursor: pointer;
+  // max-height: 495px;
+  height: fit-content;
+  //transition: 0.2s;
+}
+
+.listItem:hover {
+  box-shadow: 0 0 20px 3px #00000061;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  // transition: all 0.5s ease;
+
+  &:hover {
+    .boxBanner {
+      // transition: all 0.25s ease;
+      // color: #fff;
+      // background-color: rgba(0, 0, 0, 0.85);
+
+      span:last-of-type {
+        // color: #fff;
+      }
+    }
+  }
+
+  .info {
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fff;
+    text-transform: uppercase;
+    font-family: "Open Sans", sans-serif;
+    padding: 0 20px;
+    width: 100%;
+
+    span:first-of-type {
+      line-height: 1.5;
+    }
+
+    span:last-of-type {
+      line-height: 1.5;
+      color: #847a7a;
+    }
+
+    span + span {
+      margin-top: 6px;
+    }
+  }
+}
+
+.info span {
+  margin: 0;
+  padding: 0;
+}
+
+.boxBanner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: relative;
+  z-index: 3;
+  width: 100%;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.CartHoverDetails {
+  opacity: 0;
+  justify-content: space-around;
+  cursor: pointer;
+  // z-index: 1000;
+  border-top: 1px solid transparent;
+  padding: 10px 20px 10px;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-top: 1px solid #00000024;
+  justify-content: space-between;
+  //transition: 0.2s;
+}
+
+.CartHoverDetailsFreeze {
+  background-color: #e2e2e2;
+}
+
+.cartItem {
+  font-size: 24px;
+  color: #00000099;
+  position: absolute;
+  right: 20px;
+  //transition: .2s;
+}
+
+.cartItem:hover {
+  text-shadow: 0 0 8px #44bf2e85;
+}
+
+.listItem:hover .CartHoverDetails {
+  // border-top: 1px solid #00000024;
+  display: flex;
+  opacity: 1;
+  box-shadow: 0 0 20px 3px #00000061;
+  z-index: 2;
+  top: auto;
+  // justify-content: space-between;
+  // position: relative;
+}
+
+
+.sizes {
+}
+
+.AddToWishlist {
+  font-size: 24px;
+  margin-right: 10px;
+  position: absolute;
+  right: 50px;
+}
+
+.AddToWishlist > i {
+  color: #ffe000;
+  transition: 0.3s;
+}
+
+.AddToWishlist > i:hover {
+  color: red;
+}
+
+
+.colors {
+  padding-bottom: 10px;
+}
+
+.cartItemActive {
+  text-shadow: 0 0 8px #44bf2e85;
+  pointer-events: none;
+}
+
+.freezeItem {
+  pointer-events: none !important;
+}
+
+.ExpositionInner {
+  width: 100%;
+  position: relative;
+}
+
+.NoItemsWarning {
+  font-family: "Josefin Sans", sans-serif;
+  text-align: center;
+  margin-top: 30%;
+  font-size: 28px;
+}
+
+.showMoreContainer {
+  display: flex;
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.showMoreBtn {
+  display: flex;
+  font-size: 26px;
+}
+
+.showMoreBtn > p {
+  margin-left: 10px;
+  text-decoration: transparent;
+  transition: .2s;
+}
+
+.showMoreBtn > p:hover {
+  text-decoration: underline;
+}
+
+.showMoreAnim {
+  animation: animShowMore ease-in 1;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-duration: .5s;
+}
+
+@keyframes animShowMore {
+  from {
+    transform: rotate(50deg);
+  }
+  to {
+    transform: rotate(-180deg);
+  }
+}
+
+.infoHeader {
+  display: flex;
+}
+
+
+
+.productHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.productTags {
+  display: none;
+}
+
+.listItem:hover .productTags {
+  display: flex;
+}
