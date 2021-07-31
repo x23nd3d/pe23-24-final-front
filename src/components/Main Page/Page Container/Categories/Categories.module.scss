@@ -30,6 +30,9 @@
     width: 320px;
     height: 340px;
     @include bg-image-pos;
+    @media screen and (max-width: 576px) {
+       margin-top: 20px;
+       }
 
     &:hover {
         cursor: pointer;
