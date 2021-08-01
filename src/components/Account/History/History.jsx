@@ -48,11 +48,11 @@ const History = ({ getAllOrders, user }) => {
                   <p className={classes.CartItemInfo}>
                     Color: {cartItem.color}
                   </p>
-                  {cartItem.size && (
+                  {cartItem.size ? (
                     <p className={classes.CartItemInfo}>
                       Size: {cartItem.size}
                     </p>
-                  )}
+                  ) : null}
                   <p className={classes.CartItemInfo}>
                     Price: ${cartItem.price}
                   </p>

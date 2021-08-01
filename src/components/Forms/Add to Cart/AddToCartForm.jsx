@@ -46,7 +46,7 @@ const AddToCartForm = ({
       // eslint-disable-next-line prefer-destructuring
       size = dataItem.size[0];
     } else {
-      size = [];
+      size = undefined;
     }
 
     const item = {
