@@ -1,0 +1,45 @@
+.Modal{
+    justify-content: center;
+    align-items: center;
+    display:flex;
+    position:fixed;
+    top:0;
+    left:0;
+    background-color:rgba(0,0,0, 0.1);
+    width:100%;
+    height: 100%;
+}
+.ModalInner{
+    justify-content: space-between;
+    display:flex;
+    flex-direction: column;
+    width:300px;
+    background-color:#e9e9e9;
+    color: #000;
+  
+}
+.CloseSvg{
+    fill:#fff;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    
+}
+
+.ModalHeader{
+    padding:20px;
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+    background-color:#fff;
+   
+}
+.ModalFooter{
+    display: flex;
+    justify-content:space-around;
+    padding:20px;
+}
+.ModalContent{
+    padding:25px;
+    text-align: center;
+}

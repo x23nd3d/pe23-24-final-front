@@ -1,11 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import classes from "./Address.module.scss";
 import { deleteAddressBookHandler } from "../../../store/actions/user";
+import AddNewAddressItem from "./AddNewAddressItem/AddNewAddressItem";
 
 const Address = ({ user, deleteAddressBook }) => {
+  const [modalContent, setModalContent] = useState(null)
   const renderDeliveryAddresses = () =>
     user.userId.savedDeliveryMethods.map((address) => (
       <div
@@ -83,7 +85,7 @@ const Address = ({ user, deleteAddressBook }) => {
             Address limit exceeded, please delete some of the saved addresses.
           </p>
         ) : (
-          <button className={classes.Button} type="button">
+          <button onClick={() => setModalContent("AddNewAddress")} className={classes.Button} type="button">
             Add New Address
           </button>
         )}
@@ -96,11 +98,12 @@ const Address = ({ user, deleteAddressBook }) => {
             Credit cards limit exceeded, please delete some of the saved cards.
           </p>
         ) : (
-          <button className={classes.Button} type="button">
+          <button onClick={() => setModalContent("AddNewCard")} className={classes.Button} type="button">
             Add New Card
           </button>
         )}
       </div>
+     {modalContent && <AddNewAddressItem setModalContent={setModalContent} modalContent={modalContent}/>}
     </div>
   );
 };
