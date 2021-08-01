@@ -17,7 +17,7 @@
   }
 
   &Body {
-    display: flex;
+    // display: flex;
   }
 }
 
@@ -25,6 +25,12 @@
   display: flex;
   flex-direction: column;
   color: #847a7a;
+}
+
+.CartItemOrderID {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  font-style: italic;
 }
 
 .CartItemTitle {
@@ -84,6 +90,28 @@
 .Remove {
   margin-top: 30px;
   align-self: flex-start;
+}
+
+.PurchasedItems {
+  margin-left: 3rem;
+}
+
+.PurchasedItem {
+  border: 1px solid lightgrey;
+  padding: 2rem;
+  & + & {
+    margin-top: 2rem;
+  }
+}
+
+.CartItemFooter {
+  margin-top: 2rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.Total {
+  margin-top: 2rem;
 }
 
 @media screen and (max-width: 576px) {
