@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import classes from "./Select.module.scss";
 
 const Select = ({arrValues}) => (
-  <select className={classes.Select}>
+  <select data-testid="SelectTestId" className={classes.Select}>
       {arrValues.map(value =>(
           <option>
               {value}
@@ -13,11 +13,11 @@ const Select = ({arrValues}) => (
 );
 
 Select.defaultProps = {
- arrValues: ""
+ arrValues: []
 };
 
 Select.propTypes = {
-  arrValues: PropTypes.string
+  arrValues: PropTypes.arrayOf(PropTypes.string)
 };
 
 export default Select;

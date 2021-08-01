@@ -72,9 +72,10 @@
   padding: 1rem 0.5rem;
   color: #ffffff;
   background-color: #000000;
+  margin-bottom: 10px;
 }
 
-.Remove {
+.Open {
   margin-top: 30px;
   align-self: flex-start;
 }
@@ -107,4 +108,15 @@
     padding: 0;
     margin-left: unset;
   }
+}
+
+.ButtonRemove {
+  width: 250px;
+  font-size: 16px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 1rem 0.5rem;
+  color: #ffffff;
+  background-color: darkred;
 }

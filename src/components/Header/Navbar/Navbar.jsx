@@ -112,8 +112,15 @@ const Nav = ({ isAuthenticated, user, history, showCart, cart }) => {
         {man || accountMenu ? <Backdrop toggle={setBackdrop} /> : null}
         <ul className={classNames(classes.NavItems, classes.NavShop)}>
           {renderNavItems(navItems)}
+          <Link
+            onClick={() => setMan(false)}
+            className={classes.NavItem}
+            to="/shop/?category=all&type=all"
+          >
+            Shop now
+          </Link>
         </ul>
-        <Link className={classes.Logo} to="/shop/?category=all&type=all">
+        <Link className={classes.Logo} to="/">
           Originalité
         </Link>
         <ul className={classNames(classes.NavItems, classes.NavTools)}>

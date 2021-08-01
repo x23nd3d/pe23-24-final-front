@@ -8,7 +8,7 @@ const styles = {
 }
 
 const Available = () => (
-  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+  <svg data-testid="AvailableTestId" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
   	 viewBox="0 0 367.805 367.805" style={styles} xmlSpace="preserve">
   	<path style={{fill: "#3BB54A"}} d="M183.903,0.001c101.566,0,183.902,82.336,183.902,183.902s-82.336,183.902-183.902,183.902
   		S0.001,285.469,0.001,183.903l0,0C-0.288,82.625,81.579,0.29,182.856,0.001C183.205,0,183.554,0,183.903,0.001z"/>

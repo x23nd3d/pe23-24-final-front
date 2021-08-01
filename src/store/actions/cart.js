@@ -15,6 +15,7 @@ import {
   TOGGLE_CART_PREVIEW,
   TOGGLE_VERIFICATION,
   USER_DISCOUNT_EXIST,
+  USER_DISCOUNT_FIRST_TIME,
 } from "./actionTypes";
 
 import axios from "../../axios/axios-user";
@@ -92,7 +93,6 @@ export const saveCart = () => async (dispatch, getState) => {
         },
       }
     );
-    console.log(request.data, "request.data");
     return request.data;
   } catch (e) {
     console.error(e);
@@ -200,7 +200,7 @@ export const checkDiscount = (e) => async (dispatch, getState) => {
       request = await axios.post("/discountChecker", { key });
     }
     const response = request.data;
-    if (response.currentDiscount) {
+    if (!response.error) {
       const offPrice = (total * response.currentDiscount.percentage) / 100;
       const result = total - offPrice;
       return dispatch(
@@ -208,8 +208,12 @@ export const checkDiscount = (e) => async (dispatch, getState) => {
       );
     }
 
-    if (response.error === "already_exists") {
+    if (response.error === "already_exist") {
       return dispatch(checkDiscountExists());
+    }
+
+    if (response.error === "first_time_only") {
+      return dispatch(checkDiscountFirstTime());
     }
     return dispatch(discountCheckError(typed));
   } catch (error) {
@@ -219,6 +223,10 @@ export const checkDiscount = (e) => async (dispatch, getState) => {
 
 export const checkDiscountExists = () => ({
   type: USER_DISCOUNT_EXIST,
+});
+
+export const checkDiscountFirstTime = () => ({
+  type: USER_DISCOUNT_FIRST_TIME,
 });
 
 export const discountCheckSuccess = (code, totalOff, offSaved) => ({

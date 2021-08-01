@@ -8,7 +8,11 @@ const ProductTag = ({ item, tag }) => {
     item[tag] === true || tag === "popular" ? classes[tag] : null,
   ];
 
-  return <div className={cls.join(" ")}>{tag}</div>;
+  return (
+    <div data-testid="ProductTagTestId" className={cls.join(" ")}>
+      {tag}
+    </div>
+  );
 };
 
 ProductTag.propTypes = {

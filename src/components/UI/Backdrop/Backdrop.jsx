@@ -10,7 +10,7 @@ const Backdrop = ({ toggle, isDark, isSuperDark }) => {
   ];
 
   return (
-    <div role="none" onClick={() => toggle(false)} className={cls.join(" ")} />
+    <div data-testid="BackdropTestId" role="none" onClick={() => toggle(false)} className={cls.join(" ")} />
   );
 };
 

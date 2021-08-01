@@ -17,7 +17,10 @@ const NavigationListRoutes = ({
   dropdownOff,
   dropdownItems,
 }) => (
-  <li className={classNames(listClass)}>
+  <li
+    data-testid="NavigationListRoutesTestId"
+    className={classNames(listClass)}
+  >
     <AnimatePresence>
       {active && (
         <Dropdown
@@ -38,6 +41,8 @@ const NavigationListRoutes = ({
   </li>
 );
 NavigationListRoutes.defaultProps = {
+  content: "",
+  route: "",
   activeClass: "",
   listClass: "",
   linkClass: "",
@@ -49,8 +54,8 @@ NavigationListRoutes.defaultProps = {
 };
 
 NavigationListRoutes.propTypes = {
-  content: PropTypes.string.isRequired,
-  route: PropTypes.string.isRequired,
+  content: PropTypes.string,
+  route: PropTypes.string,
   activeClass: PropTypes.string,
   listClass: PropTypes.string,
   linkClass: PropTypes.string,

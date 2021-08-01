@@ -13,9 +13,11 @@ import Button from "../UI/Buttons List/Button";
 import pushNotification from "../../utils/toastrConfig";
 import {
   checkout,
+  clearCurrentCart,
   saveCardToStateHandler,
   saveCreditCardHandler,
   sendVerificationRequest,
+  setCurrentCreditCardHandler,
 } from "../../store/actions/user";
 import Verification from "./Verification/Verification";
 import { verificationToggle } from "../../store/actions/cart";
@@ -33,10 +35,16 @@ const Checkout = ({
   verificationToggleHandler,
   sendVerificationRequestHandler,
   saveCardToState,
+  setCurrentCreditCard,
+  clearCurrentCartHandler,
 }) => {
   useEffect(() => {
     cart.isVerificationActive ? preventBodyScrolling() : allowBodyScrolling();
   }, [cart.isVerificationActive]);
+
+  useEffect(() => {
+    clearCurrentCartHandler();
+  }, [clearCurrentCartHandler]);
 
   const validationSchema = yup.object().shape({
     cardNumber: yup
@@ -62,12 +70,28 @@ const Checkout = ({
       .required("Required"),
   });
 
-  const onSubmit = async (values) => {
-    const { cardNumber, cardName, cardExp, cardExp2, cardCvv, saveCard } =
-      values;
+  const renderSavedCards = () =>
+    user.userId.creditCards.map((card) => (
+      <button
+        type="button"
+        className={classes.SavedCardsWrapper}
+        onClick={() => setCurrentCreditCard(card)}
+      >
+        <p className={classes.SavedNumber}>Number: {card.cardNumber}</p>
+        <p className={classes.SavedName}>Name: {card.cardName}</p>
+      </button>
+    ));
 
-    if (saveCard) {
-      saveCardToState({ cardNumber, cardName, cardExp, cardExp2, cardCvv });
+  const onSubmit = async (values) => {
+    if (values.saveCard) {
+      if (user.currentCard.cardNumber) {
+        const { cardNumber, cardName, cardExp, cardExp2, cardCvv } =
+          user.currentCard;
+        saveCardToState({ cardNumber, cardName, cardExp, cardExp2, cardCvv });
+      } else {
+        const config = { ...values };
+        saveCardToState(config);
+      }
     }
 
     sendVerificationRequestHandler();
@@ -82,10 +106,6 @@ const Checkout = ({
       }
     );
   };
-
-  //
-  // const sendCheckoutRequest = await checkoutHandler(values);
-  // console.log("sendCheckoutRequest", sendCheckoutRequest);
 
   const renderTotalPrice = () => {
     if (cart.discount.code && cart.totalOff > 0) {
@@ -138,7 +158,9 @@ const Checkout = ({
             cardCvv: "",
           }}
           onSubmit={onSubmit}
-          validationSchema={validationSchema}
+          validationSchema={
+            user.currentCard.cardNumber ? null : validationSchema
+          }
         >
           {({
             values,
@@ -160,7 +182,11 @@ const Checkout = ({
                     name="cardNumber"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.cardNumber}
+                    value={
+                      user.currentCard.cardNumber
+                        ? user.currentCard.cardNumber
+                        : values.cardNumber
+                    }
                   />
                   {touched.cardNumber && errors.cardNumber && (
                     <p className={classes.Error}>{errors.cardNumber}</p>
@@ -174,7 +200,11 @@ const Checkout = ({
                     name="cardName"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.cardName}
+                    value={
+                      user.currentCard.cardName
+                        ? user.currentCard.cardName
+                        : values.cardName
+                    }
                   />
                   {touched.cardName && errors.cardName && (
                     <p className={classes.Error}>{errors.cardName}</p>
@@ -190,7 +220,11 @@ const Checkout = ({
                       placeholder="mm"
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      value={values.cardExp}
+                      value={
+                        user.currentCard.cardExp
+                          ? user.currentCard.cardExp
+                          : values.cardExp
+                      }
                     />
                     {touched.cardExp && errors.cardExp && (
                       <p className={classes.Error}>{errors.cardExp}</p>
@@ -202,7 +236,11 @@ const Checkout = ({
                       placeholder="yy"
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      value={values.cardExp2}
+                      value={
+                        user.currentCard.cardExp2
+                          ? user.currentCard.cardExp2
+                          : values.cardExp2
+                      }
                     />
                     {touched.cardExp2 && errors.cardExp2 && (
                       <p className={classes.Error}>{errors.cardExp2}</p>
@@ -220,7 +258,11 @@ const Checkout = ({
                     name="cardCvv"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.cardCvv}
+                    value={
+                      user.currentCard.cardCvv
+                        ? user.currentCard.cardCvv
+                        : values.cardCvv
+                    }
                   />
                   {touched.cardCvv && errors.cardCvv && (
                     <p className={classes.Error}>{errors.cardCvv}</p>
@@ -228,15 +270,17 @@ const Checkout = ({
                 </div>
 
                 <div className={classes.CheckoutInputField}>
-                  {user.savedCards.length >= user.savedCardsLimit ? (
-                    <p> Cards limit exceeded, maximum {user.savedCardsLimit}</p>
+                  {user.userId.creditCards.length >= user.savedCardsLimit ? (
+                    <p className={classes.CheckoutLimitExceed}>
+                      {" "}
+                      Cards limit exceeded, maximum {user.savedCardsLimit}
+                    </p>
                   ) : (
                     <>
                       <Field
                         className={classes.Checkbox}
                         type="checkbox"
                         name="saveCard"
-                        checked={user.isCardSaved || false}
                         onClick={(e) => saveCreditCard(e.target.checked)}
                       />
 
@@ -246,7 +290,11 @@ const Checkout = ({
                     </>
                   )}
                 </div>
-
+                {user.userId && user.userId.creditCards.length > 0 ? (
+                  <div className={classes.SavedCardsContainer}>
+                    {renderSavedCards()}
+                  </div>
+                ) : null}
                 <Button
                   label="Pay"
                   submit="true"
@@ -257,6 +305,7 @@ const Checkout = ({
           )}
         </Formik>
       </div>
+
       {cart.isVerificationActive ? (
         <>
           <Backdrop isDark="true" />
@@ -275,6 +324,8 @@ Checkout.defaultProps = {
   verificationToggleHandler: (f) => f,
   sendVerificationRequestHandler: (f) => f,
   saveCardToState: (f) => f,
+  setCurrentCreditCard: (f) => f,
+  clearCurrentCartHandler: (f) => f,
 };
 
 Checkout.propTypes = {
@@ -285,6 +336,8 @@ Checkout.propTypes = {
   verificationToggleHandler: PropTypes.func,
   sendVerificationRequestHandler: PropTypes.func,
   saveCardToState: PropTypes.func,
+  setCurrentCreditCard: PropTypes.func,
+  clearCurrentCartHandler: PropTypes.func,
 };
 
 function mapStateToProps(state) {
@@ -301,6 +354,8 @@ function mapDispatchToProps(dispatch) {
     verificationToggleHandler: (bool) => dispatch(verificationToggle(bool)),
     sendVerificationRequestHandler: () => dispatch(sendVerificationRequest()),
     saveCardToState: (card) => dispatch(saveCardToStateHandler(card)),
+    setCurrentCreditCard: (card) => dispatch(setCurrentCreditCardHandler(card)),
+    clearCurrentCartHandler: (card) => dispatch(clearCurrentCart(card)),
   };
 }
 

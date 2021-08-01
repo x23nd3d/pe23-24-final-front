@@ -7,7 +7,7 @@ const styles = {
 }
 
 const Unavailable = () => (
-  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+  <svg data-testid="UnavailableTestId" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
   	 viewBox="0 0 368.022 368.022" style={styles} xmlSpace="preserve">
   	<path style={{fill: "#D7443E"}} d="M314.101,54.133c71.79,71.847,71.744,188.287-0.103,260.077s-188.287,71.744-260.077-0.103
   		c-71.75-71.806-71.75-188.167,0-259.974c71.381-71.847,187.49-72.224,259.337-0.843C313.54,53.57,313.821,53.851,314.101,54.133z"
