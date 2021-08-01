@@ -1,0 +1,9 @@
+{
+  "apps": [
+    {
+      "name": "store_front",
+      "script": "npm",
+      "args" : "start"
+    }
+  ]
+}
