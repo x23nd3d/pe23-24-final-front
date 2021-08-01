@@ -68,21 +68,19 @@ const AddToCartForm = ({
       if (user.userId.wishlist.length > 0) {
         const wishIdx = user.userId.wishlist.find(
           (current) =>
-            JSON.stringify(current) === JSON.stringify(product.currentItem)
+            JSON.stringify(current) === JSON.stringify(transformedObjectTemp2)
         );
+
+        console.log("wishIdxwishIdx", wishIdx);
 
         if (wishIdx) {
           // TODO: Instead of this test object we should pass the exact params of color or size like as shop.currentPreviewItems
-          const transformedObjectTemp = {
-            ...wishIdx,
-            color: wishIdx.color[0],
-            size: wishIdx.size[0],
-          };
+
           return (
             <AddToWishList
-              item={transformedObjectTemp}
-              isAdded="true"
-              isAuth="true"
+              item={transformedObjectTemp2}
+              isAdded
+              isAuth
               history={history}
               toggle={toggleWishList}
             />
@@ -91,8 +89,8 @@ const AddToCartForm = ({
         return (
           <AddToWishList
             item={transformedObjectTemp2}
-            isAdded="true"
-            isAuth="true"
+            isAdded={false}
+            isAuth
             history={history}
             toggle={toggleWishList}
           />
@@ -101,8 +99,8 @@ const AddToCartForm = ({
       return (
         <AddToWishList
           item={transformedObjectTemp2}
-          isAdded="true"
-          isAuth="true"
+          isAdded={false}
+          isAuth
           history={history}
           toggle={toggleWishList}
         />
