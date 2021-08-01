@@ -4,7 +4,6 @@ import {
   ADD_TO_CART_START,
   ADD_TO_CART_SUCCESS,
   AUTH_REFRESH_CART,
-  AUTH_SUCCESS,
   CART_DISCOUNT_CODE_ERROR,
   CART_DISCOUNT_CODE_SUCCESS,
   CART_DISCOUNT_RESET,
@@ -13,12 +12,15 @@ import {
   INCREASE_ITEM_COUNT,
   REMOVE_FROM_CART,
   SELECT_CURRENT_ITEM,
+  SET_DELIVERY_MANUALLY,
+  SET_DELIVERY_METHOD,
   SET_DELIVERY_PAY,
   SET_ITEM_COUNT,
   SHOW_CART_PREVIEW,
   TOGGLE_CART_PREVIEW,
   TOGGLE_VERIFICATION,
   USER_DISCOUNT_EXIST,
+  USER_DISCOUNT_FIRST_TIME,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -31,8 +33,9 @@ const initialState = {
     code: null,
     typed: false,
     exists: false,
+    first_time_error: false,
   },
-  deliveryPay: 15,
+  deliveryPay: 0,
   isPreviewActive: false,
   isVerificationActive: false,
   isVerified: null,
@@ -85,22 +88,19 @@ function manageCountUpdate(array, item, action) {
 }
 
 const handlers = {
-  [AUTH_REFRESH_CART]: (state, { items }) => {
-    console.log("itemsitemsitemsitems", items);
-    return {
-      ...state,
-      items,
-      total: calculateTotal(items, state.deliveryPay),
-      totalOff: calculateTotalOff(
-        calculateTotal(items, state.deliveryPay),
-        state.discount.code
-      ),
-      offSaved: calculateOffPrice(
-        calculateTotal(items, state.deliveryPay),
-        state.discount.code
-      ),
-    };
-  },
+  [AUTH_REFRESH_CART]: (state, { items }) => ({
+    ...state,
+    items,
+    total: calculateTotal(items, state.deliveryPay),
+    totalOff: calculateTotalOff(
+      calculateTotal(items, state.deliveryPay),
+      state.discount.code
+    ),
+    offSaved: calculateOffPrice(
+      calculateTotal(items, state.deliveryPay),
+      state.discount.code
+    ),
+  }),
   [ADD_TO_CART_START]: (state) => ({
     ...state,
     loading: true,
@@ -120,6 +120,66 @@ const handlers = {
     ),
     isPreviewActive: true,
   }),
+  [SET_DELIVERY_METHOD]: (state, { deliveryMethod }) => {
+    if (deliveryMethod.trim() === "courier") {
+      return {
+        ...state,
+        deliveryPay: 15,
+        total: calculateTotal(state.items, state.deliveryPay),
+        totalOff: calculateTotalOff(
+          calculateTotal(state.items, state.deliveryPay),
+          state.discount.code
+        ),
+        offSaved: calculateOffPrice(
+          calculateTotal(state.items, state.deliveryPay),
+          state.discount.code
+        ),
+      };
+    }
+    return {
+      ...state,
+      deliveryPay: 15,
+      total: calculateTotal(state.items, state.deliveryPay),
+      totalOff: calculateTotalOff(
+        calculateTotal(state.items, state.deliveryPay),
+        state.discount.code
+      ),
+      offSaved: calculateOffPrice(
+        calculateTotal(state.items, state.deliveryPay),
+        state.discount.code
+      ),
+    };
+  },
+  [SET_DELIVERY_MANUALLY]: (state, { deliveryMethod }) => {
+    if (deliveryMethod.trim() === "courier") {
+      return {
+        ...state,
+        deliveryPay: 15,
+        total: calculateTotal(state.items, 15),
+        totalOff: calculateTotalOff(
+          calculateTotal(state.items, 15),
+          state.discount.code
+        ),
+        offSaved: calculateOffPrice(
+          calculateTotal(state.items, 15),
+          state.discount.code
+        ),
+      };
+    }
+    return {
+      ...state,
+      deliveryPay: 0,
+      total: calculateTotal(state.items, 0),
+      totalOff: calculateTotalOff(
+        calculateTotal(state.items, 0),
+        state.discount.code
+      ),
+      offSaved: calculateOffPrice(
+        calculateTotal(state.items, 0),
+        state.discount.code
+      ),
+    };
+  },
   [SELECT_CURRENT_ITEM]: (state) => ({
     ...state,
     isPreviewActive: false,
@@ -219,6 +279,7 @@ const handlers = {
       error: false,
       code,
       exists: false,
+      first_time_error: false,
     },
     totalOff,
     offSaved,
@@ -229,6 +290,7 @@ const handlers = {
       error: true,
       typed,
       exists: false,
+      first_time_error: false,
     },
     totalOff: 0,
   }),
@@ -238,6 +300,7 @@ const handlers = {
       error: false,
       code: null,
       exists: false,
+      first_time_error: false,
     },
   }),
   [USER_DISCOUNT_EXIST]: (state) => ({
@@ -246,6 +309,17 @@ const handlers = {
       error: true,
       code: null,
       exists: true,
+      first_time_error: false,
+    },
+  }),
+  [USER_DISCOUNT_FIRST_TIME]: (state) => ({
+    ...state,
+    discount: {
+      error: true,
+      code: null,
+      exists: false,
+      typed: true,
+      first_time_error: true,
     },
   }),
   [SET_DELIVERY_PAY]: (state, { deliveryPay }) => ({
@@ -276,6 +350,7 @@ const handlers = {
       code: null,
       typed: false,
       exists: false,
+      first_time_error: false,
     },
     isPreviewActive: false,
     isVerificationActive: false,

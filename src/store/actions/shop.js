@@ -47,7 +47,6 @@ export function sendProductsRequest(route) {
 export const handleItemPreviewParams =
   (item, param, value) => (dispatch, getState) => {
     const { currentPreviewItems } = getState().shop;
-    const { filteredItems } = getState().shop;
     const currentPreviewItemsList = [...currentPreviewItems];
     const idx = currentPreviewItemsList.findIndex(
       (current) => current.id === item.id
@@ -63,7 +62,6 @@ export const handleItemPreviewParams =
       ...currentPreviewItemsList.slice(idx + 1),
     ];
 
-    console.log("NEWITEMS", newItems);
     dispatch(setItemPreview(newItems));
   };
 

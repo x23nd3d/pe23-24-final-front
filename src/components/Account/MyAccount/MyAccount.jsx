@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import classNames from "classnames";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -20,7 +20,13 @@ const MyAccount = ({ user, setActiveTab, history }) => {
     <div className={classes.Account}>
       <div className={classes.AccountContainer}>
         <h3 className={classes.MyAccountTitle}>My Account</h3>
-        <button type="button" onClick={() => history.push("/account")} className={classes.BackBtn}>Back</button>
+        <button
+          type="button"
+          onClick={() => history.push("/account")}
+          className={classes.BackBtn}
+        >
+          Back
+        </button>
         <div className={classes.MyAccountTabs}>
           <button
             className={classNames(

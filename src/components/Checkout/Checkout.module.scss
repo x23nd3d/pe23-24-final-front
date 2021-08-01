@@ -168,3 +168,32 @@ input::-webkit-inner-spin-button {
   margin-left: 10px;
   color: darkgreen;
 }
+.CheckoutLimitExceed {
+  margin-bottom: 20px;
+  font-size: 12px;
+  color: #0000007a;
+}
+
+.SavedCardsWrapper {
+  border: 1px solid #00000047;
+  padding: 15px 10px;
+  border-radius: 10px;
+  margin: 10px 3px;
+  font-size: 15px;
+  white-space: nowrap;
+  letter-spacing: 1px;
+}
+
+.SavedCardsContainer {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.SavedNumber {
+  font-size: 10px;
+  margin-bottom: 2px;
+}
+
+.SavedName {
+  font-size: 10px;
+}

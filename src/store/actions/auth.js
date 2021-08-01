@@ -14,17 +14,16 @@ import {
   SIGNUP_START,
   SIGNUP_SUCCESS,
   USER_DISCOUNT_EXIST,
+  USER_DISCOUNT_FIRST_TIME,
 } from "./actionTypes";
 import { clearCartHandler, saveCart } from "./cart";
 
 export const checkDiscount = () => async (dispatch, getState) => {
-  console.log("CHECKING");
   const { discount } = getState().cart;
   const { token } = getState().auth;
   try {
     if (discount.code) {
       const { key } = getState().cart.discount.code;
-      console.log("KEYYYY", key);
       const request = await check.post(
         "/checkDiscount",
         { key },
@@ -37,16 +36,18 @@ export const checkDiscount = () => async (dispatch, getState) => {
 
       const response = request.data;
 
-      console.log("response", response);
       if (response.error === "discount_not_found") {
-        console.log("NOT FOUND");
         return dispatch(checkAuthDiscountError());
       }
 
-      if (response.error === "already_exists") {
-        console.log("ESIXTS");
+      if (response.error === "already_exist") {
         return dispatch(checkAuthDiscountExists());
       }
+
+      if (response.error === "first_time_only") {
+        return dispatch(checkAuthDiscountFirstTime());
+      }
+
       return true;
     }
   } catch (error) {
@@ -56,6 +57,10 @@ export const checkDiscount = () => async (dispatch, getState) => {
 
 export const checkAuthDiscountExists = () => ({
   type: USER_DISCOUNT_EXIST,
+});
+
+export const checkAuthDiscountFirstTime = () => ({
+  type: USER_DISCOUNT_FIRST_TIME,
 });
 
 export const checkAuthDiscountError = () => ({
@@ -360,10 +365,8 @@ function arraysAreEqual(ary1, ary2) {
   for (const item of ary1) {
     for (const item2 of ary2) {
       if (JSON.stringify(item) === JSON.stringify(item2)) {
-        console.log("same");
         isEqual = true;
       } else {
-        console.log("not same");
         isEqual = false;
       }
     }
@@ -372,42 +375,36 @@ function arraysAreEqual(ary1, ary2) {
   return isEqual;
 }
 
-function itemsAreSame(ary1, ary2) {
-  const arr = [];
-  for (const item of ary1) {
-    for (const item2 of ary2) {
-      if (JSON.stringify(item) === JSON.stringify(item2)) {
-        arr.push(item);
-        console.log("same");
-      } else {
-        console.log("not same");
-      }
-    }
-  }
-
-  return arr;
-}
+// TODO!!!!
+// function itemsAreSame(ary1, ary2) {
+//   const arr = [];
+//   for (const item of ary1) {
+//     for (const item2 of ary2) {
+//       if (JSON.stringify(item) === JSON.stringify(item2)) {
+//         arr.push(item);
+//       } else {
+//         return true;
+//       }
+//     }
+//   }
+//
+//   return arr;
+// }
 
 export const authRefreshCartHandler = () => (dispatch, getState) => {
   const { items } = getState().cart;
   const userData = getState().user.userId.cart;
-  if (userData) {
+  if (userData.items) {
     const userCart = userData.items;
 
-    console.log("ITEMS", items);
-    console.log("userCart", userCart);
-
     if (!userCart.length) {
-      console.log("NO CART LENGTH");
       return;
     }
     if (arraysAreEqual(items, userCart)) {
-      console.log("ARE EQUAL");
       return;
     }
 
     const newCart = [...items, ...userCart];
-    console.log("newCart", newCart);
     return dispatch(authRefreshCart(newCart));
   }
 };

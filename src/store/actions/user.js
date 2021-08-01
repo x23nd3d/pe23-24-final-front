@@ -3,6 +3,9 @@ import axios from "../../axios/axios-user";
 import {
   CHECKOUT_START,
   CHECKOUT_SUCCESS,
+  CLEAR_CURRENT_CART,
+  DELETE_SAVED_ADDRESS,
+  DELETE_SAVED_CARD,
   GET_REFRESHED_USER_INFO,
   SAVE_CREDIT_CARD,
   SAVE_CREDIT_CART_OPTIONS,
@@ -10,10 +13,13 @@ import {
   SAVE_DELIVERY_ADDRESS,
   SAVE_DELIVERY_OPTIONS,
   SET_ACCOUNT_ACTIVE_TAB,
+  SET_CURRENT_CREDIT_CARD,
+  SET_DELIVERY_MANUALLY,
   SET_DELIVERY_METHOD,
   SET_DELIVERY_PAY,
   SET_LOGIN_ACTIVE_TAB,
   SHOW_ALL_ORDERS,
+  TOGGLE_WISHLIST,
 } from "./actionTypes";
 
 export const checkout = () => async (dispatch, getState) => {
@@ -25,21 +31,17 @@ export const checkout = () => async (dispatch, getState) => {
       deliveryMethod,
       deliveryAddress,
       savedCards,
-      savedDeliveryAddresses,
     } = getState().user;
     const { token } = getState().auth;
 
     if (isCardSaved) {
-      console.log(
-        "THE CART WAS STATE AS SAVED, SO WE SHOULD SAVE IT TO STATE AND SERVER"
-      );
       config.savedCards = savedCards[savedCards.length - 1];
     }
 
     if (isDeliverySaved) {
-      console.log(
-        "THE DELIVERY WAS STATE AS SAVED, SO WE SHOULD SAVE IT TO STATE AND SERVER"
-      );
+      if (deliveryMethod === "myself") {
+        return;
+      }
 
       dispatch(
         saveDeliveryHandler({
@@ -56,15 +58,12 @@ export const checkout = () => async (dispatch, getState) => {
       };
     }
 
-    console.log("CONFIG", config);
-
     const request = await axios.post("checkout", config, {
       headers: {
         Authorization: `${token}`,
       },
     });
     const response = request.data;
-    console.log("RESPONSE", response);
     return response;
   } catch (e) {
     console.error(e);
@@ -108,7 +107,6 @@ export const deliveryHandler = (method) => (dispatch, getState) => {
     return;
   }
   if (method === "courier") {
-    console.log("COURIERRR");
     deliveryPay = 15;
     dispatch(setDeliveryPay(deliveryPay));
   }
@@ -170,7 +168,6 @@ export const saveDelivery = (
 
 export const saveCreditCardHandler = (bool) => (dispatch, getState) => {
   const { isCardSaved } = getState().user;
-  console.log("BOOL", bool);
 
   if (isCardSaved === bool) {
     return;
@@ -192,6 +189,7 @@ export const saveCardToStateHandler = (config) => (dispatch, getState) => {
   if (weHaveSame) {
     return;
   }
+
   const newCards = [...savedCards, config];
 
   dispatch(saveCardToState(newCards));
@@ -221,7 +219,6 @@ export const sendVerificationRequest = () => async (dispatch, getState) => {
 
 export const verification = (code) => async (dispatch, getState) => {
   try {
-    console.log(code, "codecode");
     const { token } = getState().auth;
     const request = await axios.post(
       "/verification",
@@ -253,14 +250,11 @@ export const verification = (code) => async (dispatch, getState) => {
 export const saveDeliveryHandler = (deliveryData) => (dispatch, getState) => {
   const { savedDeliveryAddresses } = getState().user;
 
-  console.log(deliveryData, "deliveryData");
-
   const addressExist = savedDeliveryAddresses.find(
     (address) => JSON.stringify(address) === JSON.stringify(deliveryData)
   );
 
   if (addressExist) {
-    console.log(addressExist, "addressExist");
     return;
   }
   const newAddresses = [...savedDeliveryAddresses, deliveryData];
@@ -325,3 +319,128 @@ export const receivedUpdatesFromUser = (user) => ({
   type: GET_REFRESHED_USER_INFO,
   user,
 });
+
+export const setDeliveryAddressManual =
+  (method, address) => (dispatch, getState) => {
+    const { deliveryMethod, deliveryAddress } = getState().user;
+
+    if (method === deliveryMethod && address === deliveryAddress) {
+      return;
+    }
+
+    dispatch(setManualDeliveryAddress(method, address));
+  };
+
+export const setManualDeliveryAddress = (deliveryMethod, deliveryAddress) => ({
+  type: SET_DELIVERY_MANUALLY,
+  deliveryMethod,
+  deliveryAddress,
+});
+
+export const setCurrentCreditCardHandler = (card) => (dispatch, getState) => {
+  const { currentCard } = getState().user;
+
+  if (JSON.stringify(card) === JSON.stringify(currentCard)) {
+    return;
+  }
+
+  return dispatch(setCurrentCreditCard(card));
+};
+
+export const setCurrentCreditCard = (currentCard) => ({
+  type: SET_CURRENT_CREDIT_CARD,
+  currentCard,
+});
+
+export const clearCurrentCart = () => ({
+  type: CLEAR_CURRENT_CART,
+});
+
+export const deleteAddressBookHandler =
+  (value) => async (dispatch, getState) => {
+    try {
+      const { token } = getState().auth;
+      let request = null;
+      if (typeof value === "object") {
+        const dataCard = {
+          card: { ...value },
+        };
+        request = await axios.post("/deleteCard", dataCard, {
+          headers: {
+            Authorization: `${token}`,
+          },
+        });
+      } else {
+        const dataAddress = { address: value };
+        request = await axios.post("/deleteAddress", dataAddress, {
+          headers: {
+            Authorization: `${token}`,
+          },
+        });
+      }
+
+      const response = request.data;
+
+      if (response.error) {
+        return { error: response.error };
+      }
+
+      if (response.creditCards) {
+        return dispatch(refreshCardsList(response.creditCards));
+      }
+      return dispatch(refreshAddressesList(response.savedDeliveryMethods));
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+export const refreshAddressesList = (savedDeliveryMethods) => ({
+  type: DELETE_SAVED_ADDRESS,
+  savedDeliveryMethods,
+});
+
+export const refreshCardsList = (creditCards) => ({
+  type: DELETE_SAVED_CARD,
+  creditCards,
+});
+
+export const toggleWishListHandler = (item) => async (dispatch, getState) => {
+  try {
+    const { token } = getState().auth;
+    const data = {
+      item,
+    };
+    const request = await axios.post("/toggleWishList", data, {
+      headers: {
+        Authorization: `${token}`,
+      },
+    });
+
+    const response = request.data;
+
+    if (response.error) {
+      return;
+    }
+
+    return dispatch(toggleWishList(response.wishlist));
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+export const toggleWishList = (wishlist) => ({
+  type: TOGGLE_WISHLIST,
+  wishlist,
+});
+
+export const searchForWishlistToRemove = () => async (dispatch, getState) => {
+  try {
+    // const request = await axios.post("/toggleWishList", data, {
+    //   headers: {
+    //     Authorization: `${token}`,
+    //   },
+    // });
+  } catch (e) {
+    console.error(e);
+  }
+};
