@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classes from "../../Forms/Add to Cart/AddToCartForm.module.scss";
-import BackShoppingIcon from "../SVG Icons Components/BackShoppingIcon";
+import BackShoppingIcon from "../SVGIconsComponents/BackShoppingIcon";
 
 const BackShopping = ({ history }) => (
   <button

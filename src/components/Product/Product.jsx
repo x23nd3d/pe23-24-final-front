@@ -6,8 +6,8 @@ import AddToCartForm from "../Forms/Add to Cart/AddToCartForm";
 import SlideShow from "./SlideShow/SlideShow";
 import { colorAction, photoAction } from "../../store/actions/product";
 import VisitedProducts from "../VisitedProducts/VisitedProducts";
-import Available from "../UI/SVG Icons Components/Available";
-import Unavailable from "../UI/SVG Icons Components/Unavilable";
+import Available from "../UI/SVGIconsComponents/Available";
+import Unavailable from "../UI/SVGIconsComponents/Unavailable";
 import ProductTag from "../UI/ProductTag/ProductTag";
 
 import {

@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classes from "../../Forms/Add to Cart/AddToCartForm.module.scss";
-import AddToWishlistIcon from "../SVG Icons Components/AddToWishlistIcon";
-import AlreadyInWishlistIcon from "../SVG Icons Components/AlreadyInWishlistIcon";
+import AddToWishlistIcon from "../SVGIconsComponents/AddToWishlistIcon";
+import AlreadyInWishlistIcon from "../SVGIconsComponents/AlreadyInWishlistIcon";
 
 const AddToWishList = ({ isAdded, item, toggle, isAuth, history }) => {
   if (isAuth) {
