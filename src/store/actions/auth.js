@@ -394,7 +394,7 @@ function arraysAreEqual(ary1, ary2) {
 export const authRefreshCartHandler = () => (dispatch, getState) => {
   const { items } = getState().cart;
   const userData = getState().user.userId.cart;
-  if (userData.items) {
+  if (userData) {
     const userCart = userData.items;
 
     if (!userCart.length) {
