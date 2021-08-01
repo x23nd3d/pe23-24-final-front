@@ -15,6 +15,7 @@ import { handleItemPreviewParams } from "../../../store/actions/shop";
 import colorize from "../../../utils/colorize";
 import ProductTag from "../../UI/ProductTag/ProductTag";
 import { visitedProductsFunction } from "../../../store/actions/visitedProducts.actions";
+import { toggleWishListHandler } from "../../../store/actions/user";
 
 const ProductCard = ({
   product,
@@ -26,9 +27,12 @@ const ProductCard = ({
   addToCartHandler,
   history,
   cart,
+  user,
+  auth,
   shop,
   handleItemPreview,
   visitedProductsHandler,
+  toggleWishList,
 }) => {
   const findCurrentItemByIdx = (array, currentItem) =>
     array.findIndex((current) => current.id === currentItem.id);
@@ -167,6 +171,24 @@ const ProductCard = ({
     });
   };
 
+  const renderWishlistIcon = () => {
+    if (auth.token) {
+      if (user.userId.wishlist.length > 0) {
+        const wishIdx = user.userId.wishlist.find(
+          (current) =>
+            JSON.stringify(current) ===
+            JSON.stringify(shop.currentPreviewItems[idx])
+        );
+
+        if (wishIdx) {
+          return <i className="fas fa-heart" />;
+        }
+        return <i className="far fa-heart" />;
+      }
+    }
+    return <i className="far fa-heart" />;
+  };
+
   return (
     <>
       <NavLink
@@ -201,9 +223,23 @@ const ProductCard = ({
             <div className={classes.sizes}>{renderItemSizes(item)}</div>
           ) : null}
         </div>
-        <div className={classes.AddToWishlist}>
-          <i className="far fa-heart" />
-        </div>
+        {auth.token ? (
+          <button
+            type="button"
+            className={classes.AddToWishlist}
+            onClick={() => toggleWishList(shop.currentPreviewItems[idx])}
+          >
+            {renderWishlistIcon()}
+          </button>
+        ) : (
+          <button
+            type="button"
+            className={classes.AddToWishlist}
+            onClick={() => history.push("/login")}
+          >
+            {renderWishlistIcon()}
+          </button>
+        )}
 
         {renderCartIcon()}
       </div>
@@ -218,6 +254,8 @@ ProductCard.defaultProps = {
   visitedProductsHandler: (f) => f,
   shop: {},
   cart: {},
+  user: {},
+  auth: {},
 };
 
 ProductCard.propTypes = {
@@ -228,10 +266,13 @@ ProductCard.propTypes = {
   handleItemPreview: PropTypes.func,
   shop: PropTypes.instanceOf(Object),
   cart: PropTypes.instanceOf(Object),
+  user: PropTypes.instanceOf(Object),
+  auth: PropTypes.instanceOf(Object),
   product: PropTypes.instanceOf(Object).isRequired,
   dispatchPhoto: PropTypes.func.isRequired,
   dispatchColor: PropTypes.func.isRequired,
   dispatchVisitedProducts: PropTypes.func.isRequired,
+  toggleWishList: PropTypes.func.isRequired,
   visitedProductsHandler: PropTypes.func,
 };
 
@@ -240,6 +281,8 @@ function mapStateToProps(state) {
     product: state.product,
     shop: state.shop,
     cart: state.cart,
+    user: state.user,
+    auth: state.auth,
   };
 }
 
@@ -254,6 +297,7 @@ function mapDispatchToProps(dispatch) {
       dispatch(handleItemPreviewParams(item, param, value)),
     visitedProductsHandler: (product) =>
       dispatch(visitedProductsFunction(product)),
+    toggleWishList: (item) => dispatch(toggleWishListHandler(item)),
   };
 }
 

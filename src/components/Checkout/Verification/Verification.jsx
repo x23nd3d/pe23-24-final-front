@@ -46,7 +46,6 @@ const Verification = ({
     const { verificationCode } = values;
     const verificationCheck = await verificationHandler(verificationCode);
     if (verificationCheck.success) {
-      console.log("SUCCESS");
       checkoutStart();
       setTimeout(() => {
         checkoutHandler();
@@ -64,9 +63,9 @@ const Verification = ({
           toastClass: "toastr-c-success",
         }
       );
+
       // we need to save all the data to the server and update state + create order
     }
-    console.log("FALSE", verificationCheck);
     if (verificationCheck.attempts === 0) {
       verificationToggleHandler(false);
       history.push("/checkout");

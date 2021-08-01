@@ -3,6 +3,9 @@ import {
   AUTH_SUCCESS,
   CHECKOUT_START,
   CHECKOUT_SUCCESS,
+  CLEAR_CURRENT_CART,
+  DELETE_SAVED_ADDRESS,
+  DELETE_SAVED_CARD,
   GET_REFRESHED_USER_INFO,
   SAVE_CREDIT_CARD,
   SAVE_CREDIT_CART_OPTIONS,
@@ -10,16 +13,25 @@ import {
   SAVE_DELIVERY_ADDRESS,
   SAVE_DELIVERY_OPTIONS,
   SET_ACCOUNT_ACTIVE_TAB,
+  SET_CURRENT_CREDIT_CARD,
   SET_DELIVERY_MANUALLY,
   SET_DELIVERY_METHOD,
   SET_LOGIN_ACTIVE_TAB,
   SHOW_ALL_ORDERS,
+  TOGGLE_WISHLIST,
 } from "../actions/actionTypes";
 
 const initialState = {
   userId: {},
   deliveryMethod: "myself",
   deliveryAddress: null,
+  currentCard: {
+    cardNumber: null,
+    cardName: null,
+    cardExp: null,
+    cardExp2: null,
+    cardCvv: null,
+  },
   isCardSaved: false,
   savedCards: [],
   orders: [],
@@ -83,16 +95,10 @@ const handlers = {
     ...state,
     savedCards,
   }),
-  [SAVE_DELIVERY]: (state, { savedDeliveryAddresses }) => {
-    console.log(
-      "savedDeliveryAddressessavedDeliveryAddresses",
-      savedDeliveryAddresses
-    );
-    return {
-      ...state,
-      savedDeliveryAddresses,
-    };
-  },
+  [SAVE_DELIVERY]: (state, { savedDeliveryAddresses }) => ({
+    ...state,
+    savedDeliveryAddresses,
+  }),
   [CHECKOUT_START]: (state) => ({
     ...state,
     loading: true,
@@ -107,6 +113,27 @@ const handlers = {
     accountActiveTab: "history",
     loading: false,
     error: false,
+    currentCard: {
+      cardNumber: null,
+      cardName: null,
+      cardExp: null,
+      cardExp2: null,
+      cardCvv: null,
+    },
+  }),
+  [CLEAR_CURRENT_CART]: (state) => ({
+    ...state,
+    currentCard: {
+      cardNumber: null,
+      cardName: null,
+      cardExp: null,
+      cardExp2: null,
+      cardCvv: null,
+    },
+  }),
+  [SET_CURRENT_CREDIT_CARD]: (state, { currentCard }) => ({
+    ...state,
+    currentCard,
   }),
   [SHOW_ALL_ORDERS]: (state, { orders }) => ({
     ...state,
@@ -116,6 +143,29 @@ const handlers = {
     ...state,
     deliveryMethod,
     deliveryAddress,
+  }),
+  [DELETE_SAVED_ADDRESS]: (state, { savedDeliveryMethods }) => ({
+    ...state,
+    savedDeliveryAddresses: savedDeliveryMethods,
+    userId: {
+      ...state.userId,
+      savedDeliveryMethods,
+    },
+  }),
+  [DELETE_SAVED_CARD]: (state, { creditCards }) => ({
+    ...state,
+    savedCards: creditCards,
+    userId: {
+      ...state.userId,
+      creditCards,
+    },
+  }),
+  [TOGGLE_WISHLIST]: (state, { wishlist }) => ({
+    ...state,
+    userId: {
+      ...state.userId,
+      wishlist,
+    },
   }),
   DEFAULT: (state) => state,
 };

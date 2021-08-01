@@ -43,3 +43,74 @@
     }
   }
 }
+
+.AddressBookTitle {
+  margin-bottom: 20px;
+}
+
+.AddressContainer {
+  display: block;
+}
+
+
+.ItemsWrapper {
+  display: flex;
+  border: 1px solid #00000052;
+  padding: 16px;
+  margin-bottom: 20px;
+  border-style: dashed;
+  border-radius: 5px;
+  box-shadow: -2px 2px 3px 1px #00000040;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.DeleteAddressItem {
+    color: #fff;
+    border: none;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    font-weight: 400;
+    font-family: "Open Sans", sans-serif;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 10px 30px;
+    background-color: #980000;
+    letter-spacing: 1px;
+}
+
+.Inner > span {
+  margin: 5px 0!important;
+  font-size: 18px;
+  font-family: 'Josefin Sans', sans-serif;
+  letter-spacing: 1px;
+}
+
+.InnerCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.InnerCard > span {
+  margin: 10px 0;
+}
+
+.AddressBold {
+  font-weight: 800;
+  margin-right: 5px;
+  font-style: italic;
+}
+
+.LimitAddresses {
+  font-size: 15px;
+  color: darkred;
+  font-weight: 600;
+}
+
+.SecurityCard {
+  font-size: 12px;
+  margin-top: 10px;
+  color: red;
+  font-weight: 800;
+}

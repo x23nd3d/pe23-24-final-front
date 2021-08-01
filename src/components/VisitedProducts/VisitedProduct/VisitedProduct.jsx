@@ -18,8 +18,6 @@ const VisitedProduct = ({
   dispatchPhoto,
   dispatchVisitedProducts,
 }) => {
-  console.log("VISITED PRODUCT:", item);
-
   const dispatchProduct = () => {
     selectCurrentItemHandler(item);
     dispatchColor(item.color[0]);

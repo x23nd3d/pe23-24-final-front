@@ -93,7 +93,6 @@ export const saveCart = () => async (dispatch, getState) => {
         },
       }
     );
-    console.log(request.data, "request.data");
     return request.data;
   } catch (e) {
     console.error(e);
@@ -201,10 +200,6 @@ export const checkDiscount = (e) => async (dispatch, getState) => {
       request = await axios.post("/discountChecker", { key });
     }
     const response = request.data;
-    console.log(
-      "responseresponseresponseresponseresponseresponseresponseresponseresponse",
-      response
-    );
     if (!response.error) {
       const offPrice = (total * response.currentDiscount.percentage) / 100;
       const result = total - offPrice;

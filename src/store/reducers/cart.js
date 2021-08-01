@@ -4,7 +4,6 @@ import {
   ADD_TO_CART_START,
   ADD_TO_CART_SUCCESS,
   AUTH_REFRESH_CART,
-  AUTH_SUCCESS,
   CART_DISCOUNT_CODE_ERROR,
   CART_DISCOUNT_CODE_SUCCESS,
   CART_DISCOUNT_RESET,
@@ -89,22 +88,19 @@ function manageCountUpdate(array, item, action) {
 }
 
 const handlers = {
-  [AUTH_REFRESH_CART]: (state, { items }) => {
-    console.log("itemsitemsitemsitems", items);
-    return {
-      ...state,
-      items,
-      total: calculateTotal(items, state.deliveryPay),
-      totalOff: calculateTotalOff(
-        calculateTotal(items, state.deliveryPay),
-        state.discount.code
-      ),
-      offSaved: calculateOffPrice(
-        calculateTotal(items, state.deliveryPay),
-        state.discount.code
-      ),
-    };
-  },
+  [AUTH_REFRESH_CART]: (state, { items }) => ({
+    ...state,
+    items,
+    total: calculateTotal(items, state.deliveryPay),
+    totalOff: calculateTotalOff(
+      calculateTotal(items, state.deliveryPay),
+      state.discount.code
+    ),
+    offSaved: calculateOffPrice(
+      calculateTotal(items, state.deliveryPay),
+      state.discount.code
+    ),
+  }),
   [ADD_TO_CART_START]: (state) => ({
     ...state,
     loading: true,
@@ -125,7 +121,6 @@ const handlers = {
     isPreviewActive: true,
   }),
   [SET_DELIVERY_METHOD]: (state, { deliveryMethod }) => {
-    console.log("deliveryMethoddeliveryMethoddeliveryMethod", deliveryMethod);
     if (deliveryMethod.trim() === "courier") {
       return {
         ...state,
@@ -323,6 +318,7 @@ const handlers = {
       error: true,
       code: null,
       exists: false,
+      typed: true,
       first_time_error: true,
     },
   }),

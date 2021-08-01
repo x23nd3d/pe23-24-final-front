@@ -1,18 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import classnames from "classnames";
 import * as yup from "yup";
 import { Form, Formik, Field } from "formik";
-import { Link } from "react-router-dom";
 import classes from "./Delivery.module.scss";
 import {
   deliveryAddressHandler,
   deliveryHandler,
   setDeliveryAddressManual,
 } from "../../../store/actions/user";
-// import Button from "../UI/Buttons List/Button";
-// import pushNotification from "../../utils/toastrConfig";
 
 const Delivery = ({
   cart,
@@ -30,80 +26,37 @@ const Delivery = ({
   });
 
   const renderDeliveryItems = () =>
-    user.userId.savedDeliveryMethods.map((current) => {
-      console.log("ITEMMM", current);
-      return (
-        <button
-          type="button"
-          className={classes.DeliveryItems}
-          onClick={() =>
-            setDeliveryAddress(current.deliveryMethod, current.deliveryAddress)
-          }
-        >
-          <div className={classes.DeliveryItemsWrapper}>
-            <span>
-              Method:{" "}
-              {current.deliveryMethod[0].toUpperCase() +
-                current.deliveryMethod.slice(1)}
-            </span>{" "}
-            <span>
-              {current.deliveryAddress
-                ? `Address: ${
-                    current.deliveryAddress[0].toUpperCase() +
-                    current.deliveryAddress.slice(1)
-                  }`
-                : "Address: Store"}
-            </span>
-          </div>
-        </button>
-      );
-    });
+    user.userId.savedDeliveryMethods.map((current) => (
+      <button
+        type="button"
+        className={classes.DeliveryItems}
+        onClick={() =>
+          setDeliveryAddress(current.deliveryMethod, current.deliveryAddress)
+        }
+      >
+        <div className={classes.DeliveryItemsWrapper}>
+          <span>
+            Method:{" "}
+            {current.deliveryMethod[0].toUpperCase() +
+              current.deliveryMethod.slice(1)}
+          </span>{" "}
+          <span>
+            {current.deliveryAddress
+              ? `Address: ${
+                  current.deliveryAddress[0].toUpperCase() +
+                  current.deliveryAddress.slice(1)
+                }`
+              : "Address: Store"}
+          </span>
+        </div>
+      </button>
+    ));
 
   const onSubmit = async (values) => {
-    console.log(values, "valuesvaluesvaluesvaluesvalues");
-
     const currentMethod = values.target.value;
     if (currentMethod === "myself" || currentMethod === "courier") {
       deliveryHandlerMethod(currentMethod);
     }
-
-    // const sendCheckoutRequest = await checkoutHandler(values);
-    // console.log("sendCheckoutRequest", sendCheckoutRequest);
-
-    //   pushNotification(
-    //     "success",
-    //     "Please expect a receipt to your email",
-    //     "Thank you for your purchase!",
-    //     {
-    //       toastClass: "toastr-c-success",
-    //     }
-    //   );
-    // };
-  };
-
-  // const onBlur = (e) => {
-  //   console.log(
-  //     "e.target.valuee.target.valuee.target.valuee.target.value",
-  //     e.target.value
-  //   );
-  //   if (e.target.name === "delivery") {
-  //     return;
-  //   }
-  //
-  //   deliveryAddressHandlerMethod(e.target.value);
-  // };
-
-  const renderTotalPrice = () => {
-    if (cart.discount.code && cart.totalOff > 0) {
-      const totalPrice = `$${cart.totalOff}`;
-      return (
-        <>
-          <s>{cart.total}</s>
-          <span className={classes.TotalPrice}>{totalPrice}</span>
-        </>
-      );
-    }
-    return cart.total;
   };
 
   return (

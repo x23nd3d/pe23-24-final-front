@@ -51,7 +51,11 @@ const Cart = ({
   };
 
   const parseDiscountCondition = (alpha, omega, bravo, charlie) => {
-    if (cart.discount.error && cart.discount.typed) {
+    if (
+      cart.discount.error &&
+      cart.discount.typed &&
+      !cart.discount.first_time_error
+    ) {
       return alpha;
     }
     if (!cart.discount.error && cart.discount.code) {
@@ -62,7 +66,11 @@ const Cart = ({
       return bravo;
     }
 
-    if (cart.discount.error && cart.discount.first_time_error) {
+    if (
+      cart.discount.error &&
+      cart.discount.first_time_error &&
+      cart.discount.typed
+    ) {
       return charlie;
     }
 
@@ -101,6 +109,10 @@ const Cart = ({
             Please type your address to checkout
           </p>
         );
+      }
+
+      if (cart.discount.error && cart.discount.typed) {
+        return null;
       }
 
       return (

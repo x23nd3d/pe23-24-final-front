@@ -4,7 +4,6 @@ import New from "./New";
 import Recommended from "./Recommended";
 import Popular from "./Popular";
 import { collections } from "./Collections.module.scss";
-import CollectionsRoutes from "../../../../context/CollectionsRoutes/CollectionsRoutes";
 
 const Collections = () => (
   <section className={collections}>

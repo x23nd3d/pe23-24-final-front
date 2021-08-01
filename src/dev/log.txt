@@ -80,9 +80,4 @@ Andrew Kucher, [25.07.21 22:17]
 - count + left in DB check on checkout
 
 
-- on user login refresh cart (with all new updates)
-- delivery does not save on checkout and on refresh = again 2
-- cart limit === 3, delivery limit === 3, we should also have an opportunity to remove it
 - suggestions on email for more orders = more discounts
-- on checkout on login we see price with delivery even if no delivery
-- check on auth success and auth refresh if everything is подтягивается
