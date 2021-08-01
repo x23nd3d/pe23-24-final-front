@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import classes from "./History.module.scss";
 import { getAllOrdersHandler } from "../../../store/actions/user";
 import getHumanLookDate from "../../../utils/history";
+import { handleItemPreviewParams } from "../../../store/actions/shop";
 
 const History = ({ getAllOrders, user }) => {
   const [length] = useState(false);
@@ -23,7 +24,7 @@ const History = ({ getAllOrders, user }) => {
 
   const renderAllOrders = (array) =>
     array.map((item) => (
-      <li className={classes.CartItem}>
+      <li className={classes.CartItem} key={item.orderID}>
         <div className={classes.CartItemHeader}>
           <p className={classes.CartItemOrderDate}>
             {getHumanLookDate(item.date)}
@@ -33,7 +34,7 @@ const History = ({ getAllOrders, user }) => {
         <div className={classes.CartItemBody}>
           <ul className={classes.PurchasedItems}>
             {item.cart.items.map((cartItem) => (
-              <li className={classes.PurchasedItem}>
+              <li className={classes.PurchasedItem} key={cartItem.id}>
                 <div className={classes.ImageBox}>
                   <img
                     className={classes.Image}
@@ -47,7 +48,11 @@ const History = ({ getAllOrders, user }) => {
                   <p className={classes.CartItemInfo}>
                     Color: {cartItem.color}
                   </p>
-                  <p className={classes.CartItemInfo}>Size: {cartItem.size}</p>
+                  {cartItem.size.length !== 0 && (
+                    <p className={classes.CartItemInfo}>
+                      Size: {cartItem.size}
+                    </p>
+                  )}
                   <p className={classes.CartItemInfo}>
                     Price: ${cartItem.price}
                   </p>
@@ -56,7 +61,30 @@ const History = ({ getAllOrders, user }) => {
             ))}
           </ul>
         </div>
-        <div className={classes.CartItemFooter}>Total: ${item.cart.total}</div>
+        <div className={classes.CartItemFooter}>
+          <div className={classes.Delivery}>
+            {item.cart.deliveryPay && (
+              <span className={classes.Delivery}>
+                DELIVERY: ${item.cart.deliveryPay}
+              </span>
+            )}
+          </div>
+          Total:{" "}
+          {item.cart.totalOff ? (
+            <span>
+              <span className={classes.TotalCross}>${item.cart.total}</span> $
+              {item.cart.totalOff}
+            </span>
+          ) : (
+            item.cart.total
+          )}
+          {item.cart.totalOff && (
+            <p className={classes.Saved}>
+              You save: ${item.cart.offSaved} /{" "}
+              {item.cart.discount.code.percentage}%
+            </p>
+          )}
+        </div>
       </li>
     ));
 
