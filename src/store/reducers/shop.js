@@ -30,12 +30,14 @@ const initialState = {
 const transformPreviewItems = (array) => {
   if (!Array.isArray(array)) return;
   const newItems = array.map((item) => {
+    console.log("itemitemitem", item);
     if (Array.isArray(item.color) || Array.isArray(item.size)) {
       const newObjects = {
         ...item,
         color: item.color[0],
         size: item.size[0],
       };
+      console.log("newObjectsnewObjectsnewObjects", newObjects);
       return newObjects;
     }
 

@@ -19,7 +19,7 @@ const VisitedProduct = ({
   dispatchVisitedProducts,
 }) => {
   const dispatchProduct = () => {
-    selectCurrentItemHandler(item);
+    selectCurrentItemHandler({ ...item });
     dispatchColor(item.color[0]);
     dispatchPhoto(item.photo[item.color[0]]);
     dispatchVisitedProducts(item);

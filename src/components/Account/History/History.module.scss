@@ -17,7 +17,11 @@
   }
 
   &Body {
-    display: flex;
+    // display: flex;
+  }
+
+  &Footer {
+    padding-top: 1rem;
   }
 }
 
@@ -25,6 +29,12 @@
   display: flex;
   flex-direction: column;
   color: #847a7a;
+}
+
+.CartItemOrderID {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  font-style: italic;
 }
 
 .CartItemTitle {
@@ -84,6 +94,45 @@
 .Remove {
   margin-top: 30px;
   align-self: flex-start;
+}
+
+.PurchasedItems {
+  margin-left: 3rem;
+}
+
+.PurchasedItem {
+  border: 1px solid lightgrey;
+  padding: 2rem;
+  & + & {
+    margin-top: 2rem;
+  }
+}
+
+.CartItemFooter {
+  margin-top: 2rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.Total {
+  margin-top: 2rem;
+
+  &Cross {
+    text-decoration: line-through;
+  }
+}
+
+.Delivery {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.Saved {
+  margin-top: 10px;
+  color: green;
+  font-size: 1rem;
+  font-weight: 400;
 }
 
 @media screen and (max-width: 576px) {

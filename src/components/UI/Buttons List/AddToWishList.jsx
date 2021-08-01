@@ -6,6 +6,7 @@ import AlreadyInWishlistIcon from "../SVGIconsComponents/AlreadyInWishlistIcon";
 
 const AddToWishList = ({ isAdded, item, toggle, isAuth, history }) => {
   if (isAuth) {
+    console.log("ISADDED", isAdded);
     return (
       <button
         data-testid="AddToWishListTestId"
