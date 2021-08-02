@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import * as yup from "yup";
 import { Form, Formik } from "formik";
@@ -8,9 +8,14 @@ import { Link } from "react-router-dom";
 import classes from "./AddNewAddressItem.module.scss";
 import Modal from "../../../UI/Modal/Modal";
 import Button from "../../../UI/Buttons List/Button";
+import pushNotification from "../../../../utils/toastrConfig";
 
-
-const AddNewAddressItem = ({modalContent, setModalContent}) => {
+const AddNewAddressItem = ({
+  modalContent,
+  setModalContent,
+  sendCardRequest,
+  sendAddressRequest,
+}) => {
   const validationSchema = yup.object().shape({
     cardNumber: yup
       .string()
@@ -35,225 +40,278 @@ const AddNewAddressItem = ({modalContent, setModalContent}) => {
       .required("Required"),
   });
   const validationSchemaAdd = yup.object().shape({
-    verificationCode: yup
-      .number()
-      .min(1, "Please type the address")
+    address: yup
+      .string()
+      .min(6, "Please type the address")
       .required("Required"),
   });
 
+  const onSubmitAddress = async (value) => {
+    const address = {
+      deliveryMethod: "courier",
+      deliveryAddress: value.address,
+      isDeliverySaved: true,
+    };
+    const response = await sendAddressRequest(address);
+
+    console.log("responseresponse", response);
+
+    if (!response.error) {
+      setModalContent(null);
+      return pushNotification(
+        "success",
+        "The address was successfully saved",
+        "Thank you",
+        {
+          toastClass: "toastr-c-success",
+        }
+      );
+    }
+
+    return pushNotification("error", response.error, "Wrong request", {
+      toastClass: "toastr-c-error",
+    });
+  };
+
+  const onSubmitCard = async (card) => {
+    const response = await sendCardRequest(card);
+
+    if (!response.error) {
+      setModalContent(null);
+      return pushNotification(
+        "success",
+        "The card was successfully saved",
+        "Thank you",
+        {
+          toastClass: "toastr-c-success",
+        }
+      );
+    }
+
+    return pushNotification("error", response.error, "Wrong request", {
+      toastClass: "toastr-c-error",
+    });
+  };
+
   return (
-<>
-  {modalContent === "AddNewAddress" &&
-    <Modal functionClose={() => setModalContent(null)}>
-  
-  <div className={classes.Checkout}>
-      <div className={classes.CheckoutContainer}>
-        <div className={classes.CheckoutHeader}>
-          <Link to="/cart" className={classes.CheckoutPayCancel}>
-            Cancel
-          </Link>
-        </div>
-        <Formik
-          initialValues={{
-            cardNumber: "",
-            cardName: "",
-            cardExp: "",
-            cardExp2: "",
-            cardCvv: "",
-          }}
-        
-          validationSchema={
-            validationSchema
-          }
-        >
-          {({
-            values,
-            errors,
-            touched,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            isValid,
-            dirty,
-          }) => (
-            <Form onSubmit={handleSubmit}>
-              <div className={classes.Inner}>
-                <div className={classes.CheckoutInputField}>
-                  <p>Card Number: </p>
-                  <input
-                    className={classes.CheckoutInput}
-                    type="number"
-                    name="cardNumber"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={
-                     values.cardNumber
-                    }
-                  />
-                  {touched.cardNumber && errors.cardNumber && (
-                    <p className={classes.ErrorError}>{errors.cardNumber}</p>
-                  )}
-                </div>
-                <div className={classes.CheckoutInputField}>
-                  <p>Card Holder Name: </p>
-                  <input
-                    className={classes.CheckoutInput}
-                    type="text"
-                    name="cardName"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={
-                      values.cardName
-                    }
-                  />
-                  {touched.cardName && errors.cardName && (
-                    <p className={classes.ErrorError}>{errors.cardName}</p>
-                  )}
-                </div>
-                <div className={classes.CheckoutInputField}>
-                  <p>Card Expiry Date: </p>
-                  <div className={classes.PaymentCardExpiry}>
-                    <input
-                      className={classes.CheckoutInput}
-                      type="number"
-                      name="cardExp"
-                      placeholder="mm"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={
-                         values.cardExp
-                      }
-                    />
-                    {touched.cardExp && errors.cardExp && (
-                      <p className={classes.ErrorError}>{errors.cardExp}</p>
-                    )}
-                    <input
-                      className={classes.CheckoutInput}
-                      type="number"
-                      name="cardExp2"
-                      placeholder="yy"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={
-                       values.cardExp2
-                      }
-                    />
-                    {touched.cardExp2 && errors.cardExp2 && (
-                      <p className={classes.ErrorError}>{errors.cardExp2}</p>
-                    )}
-                  </div>
-                </div>
-                <div className={classes.CheckoutInputField}>
-                  <p>CVC/CVV/CID: </p>
-                  <input
-                    className={classnames(
-                      classes.CheckoutInput,
-                      classes.CheckoutInputCVV
-                    )}
-                    type="number"
-                    name="cardCvv"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={
-                    values.cardCvv
-                    }
-                  />
-                  {touched.cardCvv && errors.cardCvv && (
-                    <p className={classes.ErrorError}>{errors.cardCvv}</p>
-                  )}
-                </div>
-                <Button
-                  label="ADD"
-                />
+    <>
+      {modalContent === "AddNewCard" && (
+        <Modal functionClose={() => setModalContent(null)}>
+          <div className={classes.Checkout}>
+            <div className={classes.CheckoutContainer}>
+              <div className={classes.CheckoutHeader}>
+                <button
+                  type="button"
+                  onClick={() => setModalContent(null)}
+                  className={classes.CheckoutPayCancel}
+                >
+                  Cancel
+                </button>
               </div>
-            </Form>
-          )}
-        </Formik>
-      </div>
-    </div>
+              <Formik
+                initialValues={{
+                  cardNumber: "",
+                  cardName: "",
+                  cardExp: "",
+                  cardExp2: "",
+                  cardCvv: "",
+                }}
+                onSubmit={onSubmitCard}
+                validationSchema={validationSchema}
+              >
+                {({
+                  values,
+                  errors,
+                  touched,
+                  handleChange,
+                  handleBlur,
+                  handleSubmit,
+                  isValid,
+                  dirty,
+                }) => (
+                  <Form onSubmit={handleSubmit}>
+                    <div className={classes.Inner}>
+                      <div className={classes.CheckoutInputField}>
+                        <p>Card Number: </p>
+                        <input
+                          className={classes.CheckoutInput}
+                          type="number"
+                          name="cardNumber"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.cardNumber}
+                        />
+                        {touched.cardNumber && errors.cardNumber && (
+                          <p className={classes.ErrorError}>
+                            {errors.cardNumber}
+                          </p>
+                        )}
+                      </div>
+                      <div className={classes.CheckoutInputField}>
+                        <p>Card Holder Name: </p>
+                        <input
+                          className={classes.CheckoutInput}
+                          type="text"
+                          name="cardName"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.cardName}
+                        />
+                        {touched.cardName && errors.cardName && (
+                          <p className={classes.ErrorError}>
+                            {errors.cardName}
+                          </p>
+                        )}
+                      </div>
+                      <div className={classes.CheckoutInputField}>
+                        <p>Card Expiry Date: </p>
+                        <div className={classes.PaymentCardExpiry}>
+                          <input
+                            className={classes.CheckoutInput}
+                            type="number"
+                            name="cardExp"
+                            placeholder="mm"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.cardExp}
+                          />
+                          {touched.cardExp && errors.cardExp && (
+                            <p className={classes.ErrorError}>
+                              {errors.cardExp}
+                            </p>
+                          )}
+                          <input
+                            className={classes.CheckoutInput}
+                            type="number"
+                            name="cardExp2"
+                            placeholder="yy"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.cardExp2}
+                          />
+                          {touched.cardExp2 && errors.cardExp2 && (
+                            <p className={classes.ErrorError}>
+                              {errors.cardExp2}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                      <div className={classes.CheckoutInputField}>
+                        <p>CVC/CVV/CID: </p>
+                        <input
+                          className={classnames(
+                            classes.CheckoutInput,
+                            classes.CheckoutInputCVV
+                          )}
+                          type="number"
+                          name="cardCvv"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.cardCvv}
+                        />
+                        {touched.cardCvv && errors.cardCvv && (
+                          <p className={classes.ErrorError}>{errors.cardCvv}</p>
+                        )}
+                      </div>
+                      <Button submit="true" label="ADD" />
+                    </div>
+                  </Form>
+                )}
+              </Formik>
+            </div>
+          </div>
+        </Modal>
+      )}
 
-    </Modal>}
-
-    {modalContent === "AddNewCard" &&
-    <Modal functionClose={() => setModalContent(null)}>
-     <AnimatePresence>
-      <motion.div
-        className={classes.Verification}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-      >
-        <Formik
-          initialValues={{
-            verificationCode: "",
-          }}
-          validationSchema={validationSchemaAdd}
-        >
-          {({
-            values,
-            errors,
-            touched,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            isValid,
-            dirty,
-          }) => (
-            <Form className={classes.VerificationForm} onSubmit={handleSubmit}>
-                <p className={classes.VerText}>Please enter your address:</p>
-              <div className={classes.Inner}>
-            
-                <div className={classes.VerificationInput}>
-                 
-                  {/* <p>ADDRESS: </p> */}
-                  <input
-                    className={classes.ConfirmationInput}
-                    type="number"
-                    name="verificationCode"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.cardNumber}
-                    placeholder="Your address"
-                  />
-                  {touched.verificationCode && errors.verificationCode && (
-                    <p className={classes.Error}>{errors.verificationCode}</p>
-                  )}
-                </div>
-                <div className={classes.VerificationBtnManage}>
-                  <Link
-                    to="/checkout"
-                    className={classes.VerificationPayCancel}
+      {modalContent === "AddNewAddress" && (
+        <Modal functionClose={() => setModalContent(null)}>
+          <AnimatePresence>
+            <motion.div
+              className={classes.Verification}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <Formik
+                initialValues={{
+                  address: "",
+                }}
+                onSubmit={onSubmitAddress}
+                validationSchema={validationSchemaAdd}
+              >
+                {({
+                  values,
+                  errors,
+                  touched,
+                  handleChange,
+                  handleBlur,
+                  handleSubmit,
+                  isValid,
+                  dirty,
+                }) => (
+                  <Form
+                    className={classes.VerificationForm}
+                    onSubmit={handleSubmit}
                   >
-                    Cancel
-                  </Link>
+                    <p className={classes.VerText}>
+                      Please enter your address:
+                    </p>
+                    <div className={classes.Inner}>
+                      <div className={classes.VerificationInput}>
+                        {/* <p>ADDRESS: </p> */}
+                        <input
+                          className={classes.ConfirmationInput}
+                          type="text"
+                          name="address"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.cardNumber}
+                          placeholder="Your address"
+                        />
+                        {touched.address && errors.address && (
+                          <p className={classes.Error}>{errors.address}</p>
+                        )}
+                      </div>
+                      <div className={classes.VerificationBtnManage}>
+                        <button
+                          type="button"
+                          onClick={() => setModalContent(null)}
+                          className={classes.VerificationPayCancel}
+                        >
+                          Cancel
+                        </button>
 
-                  <Button
-                    label="Confirm"
-                    submit="true"
-                    type="submit"
-                    customStyle={classes.CheckoutPay}
-                  />
-                </div>
-              </div>
-            </Form>
-          )}
-        </Formik>
-      </motion.div>
-    </AnimatePresence>
-    </Modal>}
-  </>
-  )
-  
+                        <Button
+                          label="Confirm"
+                          submit="true"
+                          type="submit"
+                          customStyle={classes.CheckoutPay}
+                        />
+                      </div>
+                    </div>
+                  </Form>
+                )}
+              </Formik>
+            </motion.div>
+          </AnimatePresence>
+        </Modal>
+      )}
+    </>
+  );
 };
 
 AddNewAddressItem.defaultProps = {
   modalContent: "",
   setModalContent: () => {},
+  sendCardRequest: (f) => f,
+  sendAddressRequest: (f) => f,
 };
 
 AddNewAddressItem.propTypes = {
   modalContent: PropTypes.string,
-  setModalContent: PropTypes.func
+  setModalContent: PropTypes.func,
+  sendCardRequest: PropTypes.func,
+  sendAddressRequest: PropTypes.func,
 };
 
-export default AddNewAddressItem ;
+export default AddNewAddressItem;

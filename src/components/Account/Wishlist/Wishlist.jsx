@@ -34,7 +34,7 @@ const Wishlist = ({
 
   const renderWishListItems = () =>
     wishlist.map((item) => (
-      <ul className={classes.MyWishlistItems}>
+      <ul key={item + Math.random() * 20} className={classes.MyWishlistItems}>
         <li className={classes.CartItem}>
           <div className={classes.ImageBox}>
             <img

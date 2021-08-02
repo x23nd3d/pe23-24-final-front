@@ -62,16 +62,18 @@
 
 .Discount {
   text-transform: uppercase;
+  text-align: center;
   margin-bottom: 15px;
 }
 
 .DiscountCode {
   background-color: unset;
-  border: none;
-  border-bottom: 1px solid #999999;
+  border: 1px solid #999999;
   margin-bottom: 30px;
-  width: 150px;
-  padding: 4px 0;
+  width: 100%;
+  padding: 6px 0;
+  border-radius: 5px;
+  border-style: dashed;
 
   &:active,
   &:focus {
@@ -84,7 +86,7 @@
   margin-bottom: 30px;
 
   &:last-of-type {
-    margin-bottom: 100px;
+    margin-bottom: 50px;
   }
 }
 
@@ -134,11 +136,11 @@
 }
 
 .CartDiscountError {
-  border-bottom: 2px solid red !important;
+  border: 2px solid red !important;
 }
 
 .CartDiscountExists {
-  border-bottom: 2px solid maroon !important;
+  border: 2px solid maroon !important;
 }
 
 .TotalPrice {
@@ -217,4 +219,10 @@
   color: greenyellow;
   font-weight: 800;
   font-family: cursive;
+}
+
+.Hr {
+  display: block;
+  border-bottom: 1px solid #0000003d;
+  margin-bottom: 20px;
 }

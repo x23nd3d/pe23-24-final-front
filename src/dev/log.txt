@@ -81,8 +81,5 @@ Andrew Kucher, [25.07.21 22:17]
 
 
 - suggestions on email for more orders = more discounts
-- visited_products on click item issue
 - wishlist inform customer about added item
-- on logout check if saved card + itemsAdd function implement
 - inform user about email confirmation better
-- for some reason when 1st cart added, it does not appear in checkout

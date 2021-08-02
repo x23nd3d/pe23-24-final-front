@@ -7,6 +7,8 @@ import {
   DELETE_SAVED_ADDRESS,
   DELETE_SAVED_CARD,
   GET_REFRESHED_USER_INFO,
+  REFRESH_ADDRESS_FROM_SERVER,
+  REFRESH_CARDS_FROM_SERVER,
   SAVE_CREDIT_CARD,
   SAVE_CREDIT_CART_OPTIONS,
   SAVE_DELIVERY,
@@ -18,6 +20,7 @@ import {
   SET_DELIVERY_METHOD,
   SET_LOGIN_ACTIVE_TAB,
   SHOW_ALL_ORDERS,
+  TOGGLE_ADDRESS_MODAL,
   TOGGLE_WISHLIST,
 } from "../actions/actionTypes";
 
@@ -42,6 +45,7 @@ const initialState = {
   isDeliverySaved: false,
   accountActiveTab: "profile",
   loginActiveTab: true,
+  isModalActive: false,
   loading: false,
   error: false,
 };
@@ -166,6 +170,26 @@ const handlers = {
       ...state.userId,
       wishlist,
     },
+  }),
+  [TOGGLE_ADDRESS_MODAL]: (state, { isModalActive }) => ({
+    ...state,
+    isModalActive,
+  }),
+  [REFRESH_ADDRESS_FROM_SERVER]: (state, { savedDeliveryMethods }) => ({
+    ...state,
+    userId: {
+      ...state.userId,
+      savedDeliveryMethods,
+    },
+    savedDeliveryAddresses: savedDeliveryMethods,
+  }),
+  [REFRESH_CARDS_FROM_SERVER]: (state, { creditCards }) => ({
+    ...state,
+    userId: {
+      ...state.userId,
+      creditCards,
+    },
+    savedCards: creditCards,
   }),
   DEFAULT: (state) => state,
 };
