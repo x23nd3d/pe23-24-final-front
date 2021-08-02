@@ -10,6 +10,7 @@ import {
 const initialState = {
   color: "",
   currentItem: {},
+  currentItemPreview: {},
   photo: null,
   visited: new Set(),
   loading: false,

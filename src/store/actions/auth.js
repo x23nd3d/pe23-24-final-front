@@ -375,36 +375,74 @@ function arraysAreEqual(ary1, ary2) {
   return isEqual;
 }
 
-// TODO!!!!
-// function itemsAreSame(ary1, ary2) {
-//   const arr = [];
-//   for (const item of ary1) {
-//     for (const item2 of ary2) {
-//       if (JSON.stringify(item) === JSON.stringify(item2)) {
-//         arr.push(item);
-//       } else {
-//         return true;
-//       }
-//     }
-//   }
-//
-//   return arr;
-// }
+function itemsAreSame(ary1, ary2) {
+  const arr = [];
+
+  if (!ary1.length) {
+    return ary2;
+  }
+
+  if (!ary2.length) {
+    return ary1;
+  }
+
+  for (const item of ary1) {
+    for (const item2 of ary2) {
+      if (
+        JSON.stringify(item.id) === JSON.stringify(item2.id) &&
+        JSON.stringify(item.size) === JSON.stringify(item2.size) &&
+        JSON.stringify(item.color) === JSON.stringify(item2.color)
+      ) {
+        const checkk = arr.find(
+          (current) => JSON.stringify(current.id) === JSON.stringify(item.id)
+        );
+
+        const newItem = item;
+
+        if (!checkk) {
+          newItem.count = item.count + item2.count;
+          arr.push(newItem);
+        } else {
+          checkk.count += item.count;
+        }
+      } else {
+        const checkkk = arr.find(
+          (check1) =>
+            JSON.stringify(check1.id) === JSON.stringify(item.id) &&
+            JSON.stringify(check1.size) === JSON.stringify(item.size) &&
+            JSON.stringify(check1.color) === JSON.stringify(item.color)
+        );
+        const check2 = arr.find(
+          (check11) =>
+            JSON.stringify(check11.id) === JSON.stringify(item2.id) &&
+            JSON.stringify(check11.size) === JSON.stringify(item2.size) &&
+            JSON.stringify(check11.color) === JSON.stringify(item2.color)
+        );
+
+        if (!checkkk) {
+          arr.push(item);
+        }
+
+        if (!check2) {
+          arr.push(item2);
+        }
+      }
+    }
+  }
+  return arr;
+}
 
 export const authRefreshCartHandler = () => (dispatch, getState) => {
   const { items } = getState().cart;
   const userData = getState().user.userId.cart;
-  if (userData) {
+  if (userData.items) {
     const userCart = userData.items;
 
-    if (!userCart.length) {
-      return;
-    }
-    if (arraysAreEqual(items, userCart)) {
+    if (!userCart) {
       return;
     }
 
-    const newCart = [...items, ...userCart];
+    const newCart = itemsAreSame(items, getState().user.userId.cart.items);
     return dispatch(authRefreshCart(newCart));
   }
 };
