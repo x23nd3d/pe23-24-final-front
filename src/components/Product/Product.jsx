@@ -4,7 +4,11 @@ import { connect } from "react-redux";
 import classNames from "classnames";
 import AddToCartForm from "../Forms/Add to Cart/AddToCartForm";
 import SlideShow from "./SlideShow/SlideShow";
-import { colorAction, photoAction } from "../../store/actions/product";
+import {
+  colorAction,
+  photoAction,
+  toggleCurrentPreviewItemHandler,
+} from "../../store/actions/product";
 import VisitedProducts from "../VisitedProducts/VisitedProducts";
 import Available from "../UI/SVGIconsComponents/Available";
 import Unavailable from "../UI/SVGIconsComponents/Unavailable";

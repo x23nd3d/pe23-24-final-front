@@ -81,18 +81,19 @@ export const sendProductRequestError = (e) => ({
   e,
 });
 
-const toggleCurrentPreviewItemHandler = (item) => (dispatch, getState) => {
-  const { currentItemPreview } = getState().product;
+export const toggleCurrentPreviewItemHandler =
+  (item) => (dispatch, getState) => {
+    const { currentItemPreview } = getState().product;
 
-  if (JSON.stringify(item) === JSON.stringify(currentItemPreview)) {
-    // we have the same object, return
-    return;
-  }
+    if (JSON.stringify(item) === JSON.stringify(currentItemPreview)) {
+      // we have the same object, return
+      return;
+    }
 
-  dispatch(toggleCurrentItem(item));
-};
+    dispatch(toggleCurrentItem(item));
+  };
 
-const toggleCurrentItem = (currentItemPreview) => ({
+export const toggleCurrentItem = (currentItemPreview) => ({
   type: TOGGLE_ITEM_PREVIEW,
   payload: currentItemPreview,
 });
