@@ -204,6 +204,14 @@ AddToCartForm.defaultProps = {
   dispatchColor: (f) => f,
   dispatchCart: (f) => f,
   toggleWishList: (f) => f,
+  data: {},
+  store: {},
+  dispatchCart: (f) => f,
+  user: {},
+  auth: {},
+  history: {},
+  toggleWishList: (f) => f
+
 };
 
 AddToCartForm.propTypes = {

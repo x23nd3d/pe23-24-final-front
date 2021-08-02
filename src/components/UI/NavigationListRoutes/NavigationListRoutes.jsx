@@ -46,7 +46,6 @@ NavigationListRoutes.defaultProps = {
   activeClass: "",
   listClass: "",
   linkClass: "",
-  id: instanceOf(Number),
   active: false,
   dropdownItems: {},
   dropdownToggle: (f) => f,

@@ -19,6 +19,7 @@ const AddToWishList = ({ isAdded, item, toggle, isAuth, history }) => {
   }
   return (
     <button
+      data-testid="AddToWishListTestId"
       className={classes.toWishlist}
       type="button"
       onClick={() => history.push("/login")}
@@ -31,6 +32,9 @@ const AddToWishList = ({ isAdded, item, toggle, isAuth, history }) => {
 AddToWishList.defaultProps = {
   isAdded: false,
   isAuth: false,
+  item: {},
+  history: {},
+  toggle: (f) => f
 };
 
 AddToWishList.propTypes = {

@@ -15,6 +15,11 @@ const ProductTag = ({ item, tag }) => {
   );
 };
 
+ProductTag.defaultProps = {
+  item: {},
+  tag: ""
+}
+
 ProductTag.propTypes = {
   item: PropTypes.instanceOf(Object).isRequired,
   tag: PropTypes.string.isRequired,

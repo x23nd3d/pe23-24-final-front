@@ -4,7 +4,7 @@ import hereIsJohnny from "./heres404.png";
 import {backBt, container, content} from "./err404.module.scss";
 
 const Error404 = () => (
-  <section className={container}>
+  <section data-testid="Error404TestId" className={container}>
     <article className={content}>
       <header>
         <img src={hereIsJohnny} alt="Here's Johnny!" />
