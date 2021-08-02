@@ -37,6 +37,8 @@
       }
     }
     .TextEngoy {
+      display: flex;
+      flex-direction: column;
       position: absolute;
       z-index: 1;
       font-size: 50px;
@@ -46,8 +48,8 @@
       left: 3%;
       max-width: 35rem;
       @media (max-width: 576px) {
-        font-size: 50px;
-        bottom: 35%;
+        font-size: 25px;
+        bottom: 49%;
       }
       .Off {
         @media (max-width: 576px) {
@@ -65,10 +67,10 @@
         border: none;
         border-bottom: 1px solid #fff;
         cursor: pointer;
-        width: 44%;
+        width: 50%;
         @media (max-width: 576px) {
           font-size: 14px;
-          width: 28%;
+          width: 30%;
         }
       }
       .ShopNowBtn {
@@ -78,7 +80,7 @@
         border: none;
         border-bottom: 1px solid #000;
         cursor: pointer;
-        width: 38%;
+        width: 45%;
         @media (max-width: 576px) {
           font-size: 14px;
           width: 25%;
@@ -92,7 +94,7 @@
       border: none;
       border-bottom: 1px solid #000;
       cursor: pointer;
-      width: 37%;
+      width: 40%;
       @media (max-width: 576px) {
         display: none;
       }
