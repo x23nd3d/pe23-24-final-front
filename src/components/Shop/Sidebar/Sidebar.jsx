@@ -20,6 +20,7 @@ import PriceFilter from "./PriceFilter/PriceFilter";
 const Sidebar = ({
   sidebar,
   shop,
+  navbar,
   categoryChooser,
   receiveRoute,
   subcategoryChooser,
@@ -64,7 +65,12 @@ const Sidebar = ({
     );
 
   return (
-    <div className={classes.Sidebar}>
+    <div
+      className={classNames(
+        classes.Sidebar,
+        navbar.burgerActive && classes.SidebarActive
+      )}
+    >
       <div className={classes.SidebarContent}>
         <ul className={classes.Routes}>
           <ListRoute listClass={classes.RoutesItem} route="/" content="Home" />
@@ -137,6 +143,7 @@ const Sidebar = ({
 
 Sidebar.defaultProps = {
   sidebar: {},
+  navbar: {},
   shop: {},
   receiveRoute: (f) => f,
   categoryChooser: (f) => f,
@@ -148,6 +155,7 @@ Sidebar.defaultProps = {
 
 Sidebar.propTypes = {
   sidebar: PropTypes.instanceOf(Object),
+  navbar: PropTypes.instanceOf(Object),
   shop: PropTypes.instanceOf(Object),
   receiveRoute: PropTypes.func,
   categoryChooser: PropTypes.func,
@@ -161,6 +169,7 @@ function mapStateToProps(state) {
   return {
     sidebar: state.sidebar,
     shop: state.shop,
+    navbar: state.navbar,
   };
 }
 

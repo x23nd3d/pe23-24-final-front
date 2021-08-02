@@ -13,6 +13,7 @@ const Shop = ({
   shop,
   sidebar,
   history,
+  navbar,
   filterItemsHandler,
   paginationSetConfigHandler,
 }) => {
@@ -53,6 +54,7 @@ Shop.defaultProps = {
   shop: {},
   sidebar: {},
   history: {},
+  navbar: {},
   filterItemsHandler: (f) => f,
   paginationSetConfigHandler: (f) => f,
 };
@@ -60,6 +62,7 @@ Shop.defaultProps = {
 Shop.propTypes = {
   shop: PropTypes.instanceOf(Object),
   sidebar: PropTypes.instanceOf(Object),
+  navbar: PropTypes.instanceOf(Object),
   history: PropTypes.instanceOf(Object),
   filterItemsHandler: PropTypes.func,
   paginationSetConfigHandler: PropTypes.func,
@@ -69,6 +72,7 @@ function mapStateToProps(state) {
   return {
     shop: state.shop,
     sidebar: state.sidebar,
+    navbar: state.navbar,
   };
 }
 
