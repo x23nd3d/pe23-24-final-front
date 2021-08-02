@@ -40,10 +40,7 @@ const AddNewAddressItem = ({
       .required("Required"),
   });
   const validationSchemaAdd = yup.object().shape({
-    address: yup
-      .string()
-      .min(6, "Please type the address")
-      .required("Required"),
+    address: yup.string().required("Required"),
   });
 
   const onSubmitAddress = async (value) => {
