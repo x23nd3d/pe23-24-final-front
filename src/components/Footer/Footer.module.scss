@@ -19,6 +19,9 @@
         margin-bottom: 0;
       }
     }
+    @media screen and (max-width: 768px) {
+      margin-bottom: 5rem;
+    }
   }
   .ArrowDownColumnContainer {
     @media screen and (max-width: 576px) {
@@ -46,6 +49,13 @@
 
   &LinkActive {
     color: antiquewhite;
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 0;
   }
 
   @media screen and (max-width: 576px) {

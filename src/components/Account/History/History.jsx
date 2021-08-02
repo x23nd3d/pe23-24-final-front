@@ -63,7 +63,7 @@ const History = ({ getAllOrders, user }) => {
         </div>
         <div className={classes.CartItemFooter}>
           <div className={classes.Delivery}>
-            {item.cart.deliveryPay && (
+            {item.cart.deliveryPay !== 0 && (
               <span className={classes.Delivery}>
                 DELIVERY: ${item.cart.deliveryPay}
               </span>

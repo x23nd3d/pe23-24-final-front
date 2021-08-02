@@ -1,12 +1,19 @@
 .Sidebar {
   font-family: "Open Sans", sans-serif;
   position: sticky;
+  top: 0;
   bottom: 0;
   background-color: #000;
   width: 250px;
   min-width: 250px;
   color: #fff;
   padding: 50px;
+  z-index: 4;
+
+  @media screen and (max-width: 1150px) {
+    padding-left: 10px;
+    width: auto;
+  }
 }
 
 .SidebarContent {
@@ -95,5 +102,16 @@
   }
   &s {
     margin-top: 50px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .Sidebar {
+    position: absolute;
+    transform: translateX(-100%);
+
+    &Active {
+      transform: translateX(0);
+    }
   }
 }

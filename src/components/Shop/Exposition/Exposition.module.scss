@@ -144,7 +144,6 @@
   // position: relative;
 }
 
-
 .sizes {
 }
 
@@ -163,7 +162,6 @@
 .AddToWishlist > i:hover {
   color: red;
 }
-
 
 .colors {
   padding-bottom: 10px;
@@ -196,6 +194,8 @@
   bottom: 15px;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: fit-content;
+  margin: 0 auto;
 }
 
 .showMoreBtn {
@@ -206,7 +206,7 @@
 .showMoreBtn > p {
   margin-left: 10px;
   text-decoration: transparent;
-  transition: .2s;
+  transition: 0.2s;
 }
 
 .showMoreBtn > p:hover {
@@ -217,7 +217,7 @@
   animation: animShowMore ease-in 1;
   animation-iteration-count: infinite;
   animation-direction: alternate;
-  animation-duration: .5s;
+  animation-duration: 0.5s;
 }
 
 @keyframes animShowMore {
@@ -232,8 +232,6 @@
 .infoHeader {
   display: flex;
 }
-
-
 
 .productHeader {
   display: flex;

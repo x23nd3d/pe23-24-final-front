@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
@@ -10,11 +10,27 @@ import classes from "./Navbar.module.scss";
 import Search from "./Search/Search";
 import AccountRoutes from "../../Account/AccountRoutes/AccountRoutes";
 import { openCart } from "../../../store/actions/cart";
+import burgerOn from "../../../img/Navbar/circle.svg";
+import burgerOff from "../../../img/Navbar/remove.svg";
+import sidebarSwitcher from "../../../store/actions/navbar";
 
-const Nav = ({ isAuthenticated, user, history, showCart, cart }) => {
+const Nav = ({
+  isAuthenticated,
+  user,
+  history,
+  showCart,
+  cart,
+  navbar,
+  sidebarSwitchHandler,
+}) => {
   const [man, setMan] = useState(false);
   const [accountMenu, setAccountMenu] = useState(false);
   const [activeNav, setActiveNav] = useState({});
+  const [windowWidth, setWindowWidth] = useState(null);
+
+  useEffect(() => {
+    window.addEventListener("resize", () => setWindowWidth(window.innerWidth));
+  }, []);
 
   const toggleDropdown = (e, id) => {
     if (accountMenu) {
@@ -153,6 +169,17 @@ const Nav = ({ isAuthenticated, user, history, showCart, cart }) => {
               <p>{cart.items.length}</p>
             </div>
           ) : null}
+          {windowWidth < 992 && history.location.pathname === "/shop/" && (
+            <li className={classes.BurgerMenu}>
+              <button type="button" onClick={() => sidebarSwitchHandler()}>
+                <img
+                  className={classes.BurgerIcon}
+                  src={navbar.burgerActive ? burgerOff : burgerOn}
+                  alt="burger icon"
+                />
+              </button>
+            </li>
+          )}
         </ul>
       </nav>
     </>
@@ -162,15 +189,19 @@ const Nav = ({ isAuthenticated, user, history, showCart, cart }) => {
 Nav.defaultProps = {
   isAuthenticated: null,
   showCart: (f) => f,
+  sidebarSwitchHandler: (f) => f,
   user: {},
   cart: {},
   history: {},
+  navbar: {},
 };
 
 Nav.propTypes = {
   isAuthenticated: PropTypes.bool,
   showCart: PropTypes.func,
+  sidebarSwitchHandler: PropTypes.func,
   user: PropTypes.instanceOf(Object),
+  navbar: PropTypes.instanceOf(Object),
   cart: PropTypes.instanceOf(Object),
   history: PropTypes.instanceOf(Object),
 };
@@ -180,12 +211,15 @@ function mapStateToProps(state) {
     isAuthenticated: !!state.auth.token,
     user: state.user.userId,
     cart: state.cart,
+    navbar: state.navbar,
+    history: state.history,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     showCart: () => dispatch(openCart()),
+    sidebarSwitchHandler: () => dispatch(sidebarSwitcher()),
   };
 }
 

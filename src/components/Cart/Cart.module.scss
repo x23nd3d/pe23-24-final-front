@@ -2,6 +2,7 @@
   display: block;
   background-color: #fff;
   min-height: 90vh;
+  // width: 100%;
   font-family: "Josefin Sans", sans-serif;
   padding-top: 40px;
 
@@ -38,8 +39,8 @@
 }
 
 .ButtonCheckout {
-  padding: 15px 90px!important;
-  display: inline-block!important;
+  padding: 15px 90px !important;
+  display: inline-block !important;
 }
 
 .Aside {
@@ -105,7 +106,7 @@
 
 .CartNoItems {
   margin-top: 40px;
-  font-size: 30px
+  font-size: 30px;
 }
 
 .CheckoutLogin {
@@ -129,15 +130,15 @@
 }
 
 .CartDiscountSuccess {
-  border-bottom: 2px solid green!important;
+  border-bottom: 2px solid green !important;
 }
 
 .CartDiscountError {
-  border-bottom: 2px solid red!important;
+  border-bottom: 2px solid red !important;
 }
 
 .CartDiscountExists {
-  border-bottom: 2px solid maroon!important;
+  border-bottom: 2px solid maroon !important;
 }
 
 .TotalPrice {
@@ -152,7 +153,6 @@
 .DeliveryAddressField {
   padding: 20px 0;
 }
-
 
 .Checkbox {
   position: relative;

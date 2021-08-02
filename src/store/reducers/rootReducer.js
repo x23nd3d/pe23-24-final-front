@@ -9,6 +9,7 @@ import sidebarReducer from "./sidebar";
 import productReducer from "./product";
 import cartReducer from "./cart";
 import visitedProductsReducer from "./visitedProducts.reducer";
+import navbarReducer from "./navbar";
 
 const persistConfig = {
   key: "store_v2",
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   product: productReducer,
   cart: cartReducer,
   visited: visitedProductsReducer,
+  navbar: navbarReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);
