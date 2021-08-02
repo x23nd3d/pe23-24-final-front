@@ -11,6 +11,7 @@ import AddToCartButton from "./AddToCartButton";
 import BackShopping from "../../UI/Buttons List/BackShopping";
 import AddToWishList from "../../UI/Buttons List/AddToWishList";
 import { toggleWishListHandler } from "../../../store/actions/user";
+import {toggleCurrentItem} from "../../../store/actions/product";
 
 /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -25,12 +26,22 @@ const AddToCartForm = ({
   auth,
   history,
   toggleWishList,
+  dispatchCurrentWish
 }) => {
   const { productStore, dispatchColor } = store;
 
+  const handleCurrentWish = (values) => {
+      dispatchCurrentWish({
+        ...product.currentItem,
+        color: values.color,
+        size: values.size
+      });
+      console.log("IMMA HERE", product.currentItemPreview)
+    }
+
   const handleColorState = useCallback(
-    ({ color }) => {
-      dispatchColor(color);
+    (values) => {
+      dispatchColor(values.color);
     },
     [dispatchColor]
   );
@@ -128,7 +139,10 @@ const AddToCartForm = ({
       onSubmit={(values) => addToCartHandler(product.currentItem, values)}
     >
       {({ values, handleSubmit }) => (
-        <Form className={classes.form} onSubmit={handleSubmit}>
+        <Form
+          className={classes.form}
+          onSubmit={handleSubmit}
+          onChange={(v) => handleCurrentWish(v)} >
           <div className={classes.formBlockColor}>
             <span className={classes.dataPointer}>
               {data.color.length > 1 ? (
@@ -174,7 +188,11 @@ const AddToCartForm = ({
           {Array.isArray(data.size) && data.size.length ? (
             <div className={classes.formBlockSize}>
               <span className={classes.dataPointer}>Select a size</span>
-              <Field className={classes.sizeSelect} name="size" as="select">
+              <Field
+                className={classes.sizeSelect}
+                name="size"
+                as="select"
+              >
                 {data.size.map((size) => (
                   <option
                     key={size}
@@ -216,6 +234,7 @@ AddToCartForm.propTypes = {
   history: PropTypes.instanceOf(Object).isRequired,
   user: PropTypes.instanceOf(Object).isRequired,
   auth: PropTypes.instanceOf(Object).isRequired,
+  dispatchCurrentWish: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -230,6 +249,7 @@ function mapDispatchToProps(dispatch) {
   return {
     dispatchCart: (item) => dispatch(addToCart(item)),
     toggleWishList: (item) => dispatch(toggleWishListHandler(item)),
+    dispatchCurrentWish: (item) => dispatch(toggleCurrentItem(item))
   };
 }
 
