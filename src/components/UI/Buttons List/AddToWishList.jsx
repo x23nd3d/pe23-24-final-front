@@ -20,6 +20,7 @@ const AddToWishList = ({ isAdded, item, toggle, isAuth, history }) => {
   }
   return (
     <button
+      data-testid="AddToWishListTestId"
       className={classes.toWishlist}
       type="button"
       onClick={() => history.push("/login")}

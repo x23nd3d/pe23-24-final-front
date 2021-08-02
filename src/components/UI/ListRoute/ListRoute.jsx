@@ -11,7 +11,7 @@ const ListRoute = ({
   linkClass,
   onClick = null,
 }) => (
-  <li className={classNames(listClass)}>
+  <li data-testid="ListRouteTestId" className={classNames(listClass)}>
     <NavLink
       to={route}
       activeClassName={activeClass}

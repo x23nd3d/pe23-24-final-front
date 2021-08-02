@@ -1,19 +1,19 @@
 import React from "react";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 import { render } from "@testing-library/react";
-import NavigationListRoutes from "./NavigationListRoutes";
+import ListRoute from "./ListRoute";
 
-describe("NavigationListRoutes", () => {
-  test("should render NavigationListRoutes", () => {
+describe("ListRoute", () => {
+  test("should render ListRoute", () => {
     const {getByTestId} = render(
       <BrowserRouter>
         <Switch >
           <Route>
-            <NavigationListRoutes id={1} />
+            <ListRoute content="" route="" />
           </Route>
         </Switch>
       </BrowserRouter>
     );
-    expect(getByTestId("NavigationListRoutesTestId")).toBeInTheDocument();
+    expect(getByTestId("ListRouteTestId")).toBeInTheDocument();
   })
 })
