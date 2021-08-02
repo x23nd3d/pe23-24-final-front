@@ -7,6 +7,7 @@ import {
   colorAction,
   photoAction,
   visitedProductsAction,
+  toggleCurrentItem
 } from "../../../store/actions/product";
 import { addToCart } from "../../../store/actions/cart";
 import classes from "./Exposition.module.scss";
@@ -22,6 +23,7 @@ const ProductCard = ({
   dispatchColor,
   dispatchPhoto,
   dispatchVisitedProducts,
+  dispatchCurrentWish,
   item,
   selectCurrentItemHandler,
   addToCartHandler,
@@ -48,6 +50,7 @@ const ProductCard = ({
     dispatchColor(item.color[0]);
     dispatchPhoto(item.photo[item.color[0]]);
     dispatchVisitedProducts(item);
+    dispatchCurrentWish({...item, color: item.color[0], size: item.size ? item.size[0] : []})
   };
 
   const clsHoverDetails = [
@@ -272,6 +275,7 @@ ProductCard.propTypes = {
   dispatchPhoto: PropTypes.func.isRequired,
   dispatchColor: PropTypes.func.isRequired,
   dispatchVisitedProducts: PropTypes.func.isRequired,
+  dispatchCurrentWish: PropTypes.func.isRequired,
   toggleWishList: PropTypes.func.isRequired,
   visitedProductsHandler: PropTypes.func,
 };
@@ -290,6 +294,7 @@ function mapDispatchToProps(dispatch) {
   return {
     dispatchColor: (value) => dispatch(colorAction(value)),
     dispatchPhoto: (value) => dispatch(photoAction(value)),
+    dispatchCurrentWish: (value) => dispatch(toggleCurrentItem(value)),
     dispatchVisitedProducts: (value) => dispatch(visitedProductsAction(value)),
     selectCurrentItemHandler: (item) => dispatch(selectCurrentItem(item)),
     addToCartHandler: (item) => dispatch(addToCart(item)),
