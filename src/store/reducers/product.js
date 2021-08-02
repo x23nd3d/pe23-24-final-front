@@ -4,6 +4,7 @@ import {
   SELECT_CURRENT_ITEM,
   SELECT_CURRENT_ITEM_START,
   SEND_PRODUCT_REQUEST_ERROR,
+  TOGGLE_ITEM_PREVIEW,
   VISITED_PRODUCTS,
 } from "../actions/actionTypes";
 
@@ -41,6 +42,8 @@ const productReducer = (state = initialState, action) => {
       return { ...state, photo: action.payload };
     case VISITED_PRODUCTS:
       return { ...state, visited: action.payload };
+    case TOGGLE_ITEM_PREVIEW:
+      return { ...state, currentItemPreview: action.payload };
     default:
       return state;
   }

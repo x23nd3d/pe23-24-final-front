@@ -30,7 +30,13 @@ import {
   isStock,
 } from "./Product.module.scss";
 
-const Product = ({ data, productStore, dispatchColor, dispatchPhoto }) => {
+const Product = ({
+  data,
+  productStore,
+  dispatchColor,
+  dispatchPhoto,
+  toggleCurrentPreviewItem,
+}) => {
   const store = { productStore, dispatchColor };
 
   const {
@@ -147,6 +153,7 @@ Product.propTypes = {
   productStore: PropTypes.instanceOf(Object).isRequired,
   dispatchPhoto: PropTypes.func.isRequired,
   dispatchColor: PropTypes.func.isRequired,
+  toggleCurrentPreviewItem: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
@@ -157,6 +164,8 @@ function mapDispatchToProps(dispatch) {
   return {
     dispatchColor: (value) => dispatch(colorAction(value)),
     dispatchPhoto: (value) => dispatch(photoAction(value)),
+    toggleCurrentPreviewItem: (item) =>
+      dispatch(toggleCurrentPreviewItemHandler(item)),
   };
 }
 
