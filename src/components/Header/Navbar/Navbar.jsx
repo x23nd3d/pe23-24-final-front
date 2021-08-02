@@ -108,7 +108,7 @@ const Nav = ({ isAuthenticated, user, history, showCart, cart }) => {
 
   return (
     <>
-      <nav className={classes.Nav}>
+      <nav data-testid="NavbarTestId" className={classes.Nav}>
         {man || accountMenu ? <Backdrop toggle={setBackdrop} /> : null}
         <ul className={classNames(classes.NavItems, classes.NavShop)}>
           {renderNavItems(navItems)}

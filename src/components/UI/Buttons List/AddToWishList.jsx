@@ -32,9 +32,6 @@ const AddToWishList = ({ isAdded, item, toggle, isAuth, history }) => {
 AddToWishList.defaultProps = {
   isAdded: false,
   isAuth: false,
-  item: {},
-  history: {},
-  toggle: (f) => f
 };
 
 AddToWishList.propTypes = {

@@ -14,10 +14,6 @@ const BackShopping = ({ history }) => (
   </button>
 );
 
-BackShopping.defaultProps = {
-  history: {}
-}
-
 BackShopping.propTypes = {
   history: PropTypes.instanceOf(Object).isRequired,
 };

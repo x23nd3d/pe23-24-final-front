@@ -25,8 +25,6 @@ const ListRoute = ({
 
 ListRoute.defaultProps = {
   activeClass: "",
-  content: "",
-  route: "",
   listClass: "",
   linkClass: "",
   onClick: (f) => f,

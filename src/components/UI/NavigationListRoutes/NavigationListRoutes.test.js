@@ -8,7 +8,9 @@ describe("NavigationListRoutes", () => {
     const {getByTestId} = render(
       <BrowserRouter>
         <Switch >
-          <Route component={NavigationListRoutes} />
+          <Route>
+            <NavigationListRoutes id={1} />
+          </Route>
         </Switch>
       </BrowserRouter>
     );

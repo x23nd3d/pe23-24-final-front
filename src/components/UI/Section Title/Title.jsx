@@ -13,8 +13,7 @@ const Title = ({ text, position }) => (
 );
 
 Title.defaultProps = {
-  position: false,
-  text: ""
+  position: false
 };
 
 Title.propTypes = {

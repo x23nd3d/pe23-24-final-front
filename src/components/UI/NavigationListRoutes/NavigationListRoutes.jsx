@@ -59,7 +59,7 @@ NavigationListRoutes.propTypes = {
   listClass: PropTypes.string,
   linkClass: PropTypes.string,
   active: PropTypes.bool,
-  id: PropTypes.number,
+  id: PropTypes.number.isRequired,
   dropdownToggle: PropTypes.func,
   dropdownOff: PropTypes.func,
   dropdownItems: PropTypes.instanceOf(Object),

@@ -4,7 +4,7 @@ import Title from "./Title";
 
 describe("Title", () => {
   test("should render Title", () => {
-    const {getByTestId} = render(<Title/>);
+    const {getByTestId} = render(<Title text="" />);
     expect(getByTestId("TitleTestId")).toBeInTheDocument();
   })
 })

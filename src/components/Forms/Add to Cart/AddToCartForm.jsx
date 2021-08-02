@@ -121,7 +121,7 @@ const AddToCartForm = ({
 
   return (
     <Formik
-      data-testid="AddToCartFormId"
+      data-testid="AddToCartFormTestId"
       initialValues={{
         id: data.id,
         color: productStore.color,
@@ -204,14 +204,8 @@ AddToCartForm.defaultProps = {
   dispatchColor: (f) => f,
   dispatchCart: (f) => f,
   toggleWishList: (f) => f,
-  data: {},
-  store: {},
   dispatchCart: (f) => f,
-  user: {},
-  auth: {},
-  history: {},
-  toggleWishList: (f) => f
-
+  toggleWishList: (f) => f,
 };
 
 AddToCartForm.propTypes = {

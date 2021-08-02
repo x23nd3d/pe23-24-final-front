@@ -8,7 +8,9 @@ describe("ListRoute", () => {
     const {getByTestId} = render(
       <BrowserRouter>
         <Switch >
-          <Route component={ListRoute} />
+          <Route>
+            <ListRoute content="" route="" />
+          </Route>
         </Switch>
       </BrowserRouter>
     );
