@@ -13,7 +13,7 @@ const History = ({ getAllOrders, user }) => {
     getAllOrders();
   }, [getAllOrders]);
 
-  const { orders } = user;
+  const { orders } = user.userId;
   const totalSum = () => {
     let total = 0;
 

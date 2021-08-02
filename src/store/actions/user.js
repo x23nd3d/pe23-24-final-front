@@ -7,6 +7,8 @@ import {
   DELETE_SAVED_ADDRESS,
   DELETE_SAVED_CARD,
   GET_REFRESHED_USER_INFO,
+  REFRESH_ADDRESS_FROM_SERVER,
+  REFRESH_CARDS_FROM_SERVER,
   SAVE_CREDIT_CARD,
   SAVE_CREDIT_CART_OPTIONS,
   SAVE_DELIVERY,
@@ -19,6 +21,7 @@ import {
   SET_DELIVERY_PAY,
   SET_LOGIN_ACTIVE_TAB,
   SHOW_ALL_ORDERS,
+  TOGGLE_ADDRESS_MODAL,
   TOGGLE_WISHLIST,
 } from "./actionTypes";
 
@@ -444,3 +447,87 @@ export const searchForWishlistToRemove = () => async (dispatch, getState) => {
     console.error(e);
   }
 };
+
+export const toggleAddressModalPreview = (isModalActive) => ({
+  type: TOGGLE_ADDRESS_MODAL,
+  isModalActive,
+});
+
+export const sendAddressRequestChange =
+  (addressObject) => async (dispatch, getState) => {
+    const { token } = getState().auth;
+
+    if (addressObject) {
+      const { deliveryMethod, deliveryAddress, isDeliverySaved } =
+        addressObject;
+
+      dispatch(
+        saveDeliveryHandler({
+          deliveryMethod,
+          deliveryAddress,
+          isDeliverySaved,
+        })
+      );
+
+      const request = await axios.post(
+        "/saveAddress",
+        { deliveryAddress: addressObject },
+        {
+          headers: {
+            Authorization: `${token}`,
+          },
+        }
+      );
+      const response = request.data;
+
+      if (!response.error) {
+        dispatch(getUpdatedAddressesFromServer(response));
+        return {
+          success: "the_card_was_saved",
+        };
+      }
+      return {
+        error: "The address is already exists or something went wrong",
+      };
+    }
+  };
+
+export const sendCardRequestChange =
+  (cardObject) => async (dispatch, getState) => {
+    const { token } = getState().auth;
+
+    if (cardObject) {
+      dispatch(saveCardToStateHandler(cardObject));
+
+      const request = await axios.post(
+        "/saveCard",
+        { creditCard: cardObject },
+        {
+          headers: {
+            Authorization: `${token}`,
+          },
+        }
+      );
+      const response = request.data;
+
+      if (!response.error) {
+        dispatch(getUpdatedCardsFromServer(response));
+        return {
+          success: "the_card_was_saved",
+        };
+      }
+      return {
+        error: "The card is already exists or something went wrong",
+      };
+    }
+  };
+
+export const getUpdatedAddressesFromServer = (savedDeliveryMethods) => ({
+  type: REFRESH_ADDRESS_FROM_SERVER,
+  savedDeliveryMethods,
+});
+
+export const getUpdatedCardsFromServer = (creditCards) => ({
+  type: REFRESH_CARDS_FROM_SERVER,
+  creditCards,
+});

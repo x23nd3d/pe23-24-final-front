@@ -52,6 +52,11 @@ const Nav = ({
     setAccountMenu((prev) => !prev);
   };
 
+  const closeAll = () => {
+    setMan(false);
+    setAccountMenu(false);
+  };
+
   const setBackdrop = () => {
     setAccountMenu(false);
     setMan(false);
@@ -128,19 +133,18 @@ const Nav = ({
         {man || accountMenu ? <Backdrop toggle={setBackdrop} /> : null}
         <ul className={classNames(classes.NavItems, classes.NavShop)}>
           {renderNavItems(navItems)}
-          <Link
-            onClick={() => setMan(false)}
-            className={classes.NavItem}
-            to="/shop/?category=all&type=all"
-          >
-            Shop now
-          </Link>
         </ul>
         <Link className={classes.Logo} to="/">
           Originalité
         </Link>
         <ul className={classNames(classes.NavItems, classes.NavTools)}>
-          <Search />
+          <Link
+            onClick={closeAll}
+            className={classes.NavItem}
+            to="/shop/?category=all&type=all"
+          >
+            Shop now
+          </Link>
           {isAuthenticated ? (
             <AccountRoutes
               to={history.location.search || history.location.pathname}
