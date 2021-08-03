@@ -9,6 +9,7 @@
   height: 650px;
   z-index: 999;
   box-shadow: 0 0 17px 3px #0000006b;
+  font-family: "Josefin Sans", sans-serif;
 }
 
 .VerificationInfo {
@@ -63,7 +64,7 @@
   position: absolute;
   top: 43px;
   left: calc(67% - 52.56px);
-  color: red!important;
+  color: red !important;
 }
 
 .VerificationBtnManage {
@@ -74,8 +75,8 @@
   color: #fff;
   border: none;
   display: flex;
-  justify-content:center;
-  align-items:center;
+  justify-content: center;
+  align-items: center;
   font-weight: 400;
   font-family: "Open Sans", sans-serif;
   text-transform: uppercase;
@@ -84,4 +85,40 @@
   background-color: #980000;
   letter-spacing: 1px;
   margin-right: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .Verification {
+    width: 85%;
+    padding: 3rem;
+    box-sizing: border-box;
+    height: fit-content;
+  }
+
+  .VerificationBtnManage {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    & * {
+      box-sizing: border-box;
+    }
+  }
+
+  .VerificationPayCancel {
+    order: 2;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 1rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .Verification {
+    padding: 3rem 1.5rem;
+  }
+
+  .VerificationImg {
+    display: none;
+  }
 }

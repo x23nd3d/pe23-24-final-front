@@ -9,6 +9,7 @@
   &LoginMessage {
     display: inline-block;
     font-size: 20px;
+    line-height: 1.5;
     font-family: "Josefin Sans", san-serif;
   }
 
@@ -16,6 +17,7 @@
     display: inline-block;
     border: 1px solid black;
     margin-left: 0.5rem;
+    margin-top: 1rem;
     padding: 0.25rem 0.5rem;
   }
 }
@@ -36,11 +38,6 @@
   text-transform: uppercase;
   padding: 15px 20px;
   display: inline-block;
-}
-
-.ButtonCheckout {
-  padding: 15px 90px !important;
-  display: inline-block !important;
 }
 
 .Aside {
@@ -91,11 +88,14 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .Inner {
+  .InnerContainer {
     flex-direction: column;
   }
 
   .Aside {
+    min-width: unset;
+    max-width: unset;
+    width: 100%;
     margin: 50px 0;
   }
 }
@@ -103,6 +103,8 @@
 @media screen and (max-width: 576px) {
   .Button {
     width: 100%;
+    box-sizing: border-box;
+    text-align: center;
   }
 }
 

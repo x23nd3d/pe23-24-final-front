@@ -29,6 +29,11 @@ const Nav = ({
   const [windowWidth, setWindowWidth] = useState(null);
 
   useEffect(() => {
+    setWindowWidth(window.innerWidth);
+    window.innerWidth < 992 && sidebarSwitchHandler();
+  }, []);
+
+  useEffect(() => {
     window.addEventListener("resize", () => setWindowWidth(window.innerWidth));
   }, []);
 
@@ -150,7 +155,7 @@ const Nav = ({
               to={history.location.search || history.location.pathname}
               active={accountMenu}
               content={user.name}
-              listClass={classNames(classes.NavItem, classes.NavItemMyAccount)}
+              linkClass={classNames(classes.NavItem, classes.NavItemMyAccount)}
               fastAccessList={accountItems}
               fastAccessOff={setAccountMenu}
               toggleAccountItems={toggleFastAccess}
@@ -159,21 +164,28 @@ const Nav = ({
             <ListRoute
               route="/login"
               content="Sign In"
-              listClass={classNames(classes.NavItem, classes.NavItemMyAccount)}
+              linkClass={classNames(classes.NavItem, classes.NavItemMyAccount)}
             />
           )}
-          <ListRoute
-            route={history.location.search || history.location.pathname}
-            content="Cart"
-            onClick={showCartHandler}
-            listClass={classNames(classes.NavItem, classes.NavItemShoppingBag)}
-          />
-          {cart.items.length > 0 ? (
-            <div className={classes.NavCartActive}>
-              <p>{cart.items.length}</p>
-            </div>
-          ) : null}
-          {windowWidth < 992 && history.location.pathname === "/shop/" && (
+          <div className={classes.CartBox}>
+            {" "}
+            <ListRoute
+              route={history.location.search || history.location.pathname}
+              content="Cart"
+              onClick={showCartHandler}
+              linkClass={classNames(
+                classes.NavItem,
+                classes.NavItemShoppingBag
+              )}
+            />
+            {cart.items.length > 0 ? (
+              <div className={classes.NavCartActive}>
+                <p>{cart.items.length}</p>
+              </div>
+            ) : null}
+          </div>
+
+          {windowWidth < 992 && history.location.pathname.includes("shop") && (
             <li className={classes.BurgerMenu}>
               <button type="button" onClick={() => sidebarSwitchHandler()}>
                 <img

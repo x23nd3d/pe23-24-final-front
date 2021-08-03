@@ -17,6 +17,8 @@ import colorize from "../../../utils/colorize";
 import ProductTag from "../../UI/ProductTag/ProductTag";
 import { visitedProductsFunction } from "../../../store/actions/visitedProducts.actions";
 import { toggleWishListHandler } from "../../../store/actions/user";
+import popular from "../../../img/ProductCard/popular.svg";
+import recommend from "../../../img/ProductCard/recommend.svg";
 
 const ProductCard = ({
   product,
