@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import * as yup from "yup";
 import { Form, Formik } from "formik";
 import { AnimatePresence, motion } from "framer-motion";
 import classnames from "classnames";
-import { Link } from "react-router-dom";
 import classes from "./AddNewAddressItem.module.scss";
 import Modal from "../../../UI/Modal/Modal";
 import Button from "../../../UI/Buttons List/Button";
@@ -50,8 +49,6 @@ const AddNewAddressItem = ({
       isDeliverySaved: true,
     };
     const response = await sendAddressRequest(address);
-
-    console.log("responseresponse", response);
 
     if (!response.error) {
       setModalContent(null);

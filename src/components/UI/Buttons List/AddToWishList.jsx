@@ -10,7 +10,6 @@ const AddToWishList = ({ onWish, isAdded, item, toggle, isAuth, history }) => {
       onWish(item);
       toggle(item);
     };
-    console.log("ISADDED", isAdded);
     return (
       <button
         data-testid="AddToWishListTestId"

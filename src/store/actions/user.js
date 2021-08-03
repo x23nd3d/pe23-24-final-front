@@ -552,8 +552,6 @@ export const updateUserSettingsHandler =
       }
     }
 
-    console.log("updatedSettings", updatedSettings);
-
     if (!Object.keys(updatedSettings).length) {
       return;
     }

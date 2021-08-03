@@ -360,21 +360,6 @@ export function setLogin(isLogin) {
   };
 }
 
-function arraysAreEqual(ary1, ary2) {
-  let isEqual = null;
-  for (const item of ary1) {
-    for (const item2 of ary2) {
-      if (JSON.stringify(item) === JSON.stringify(item2)) {
-        isEqual = true;
-      } else {
-        isEqual = false;
-      }
-    }
-  }
-
-  return isEqual;
-}
-
 function itemsAreSame(ary1, ary2) {
   const arr = [];
 

@@ -5,7 +5,6 @@ import isAvailableCart from "../../../utils/isAvailable";
 import classes from "./AddToCartForm.module.scss";
 
 const AddToCartButton = ({ isAvailable }) => {
-  console.log("isAvailable", isAvailable);
   const cartCls = [
     classes.submit,
     isAvailable ? null : classes.AddToCartFreeze,
