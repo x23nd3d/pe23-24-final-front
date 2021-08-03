@@ -7,11 +7,8 @@ import ListRoute from "../../UI/ListRoute/ListRoute";
 import NavigationListRoutes from "../../UI/NavigationListRoutes/NavigationListRoutes";
 import Backdrop from "../../UI/Backdrop/Backdrop";
 import classes from "./Navbar.module.scss";
-import Search from "./Search/Search";
 import AccountRoutes from "../../Account/AccountRoutes/AccountRoutes";
 import { openCart } from "../../../store/actions/cart";
-// import burgerOn from "../../../img/Navbar/circle.svg";
-// import burgerOff from "../../../img/Navbar/remove.svg";
 import burgerOn from "../../../img/Navbar/menu.svg";
 import burgerOff from "../../../img/Navbar/close.svg";
 import sidebarSwitcher from "../../../store/actions/navbar";
@@ -33,7 +30,7 @@ const Nav = ({
   useEffect(() => {
     setWindowWidth(window.innerWidth);
     window.innerWidth < 992 && sidebarSwitchHandler();
-  }, []);
+  }, [sidebarSwitchHandler]);
 
   useEffect(() => {
     window.addEventListener("resize", () => setWindowWidth(window.innerWidth));
