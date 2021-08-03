@@ -2,6 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import classes from "./ProductTag.module.scss";
 
+import newArrival from "../../../img/ProductCard/new.svg";
+import recommend from "../../../img/ProductCard/recommend.svg";
+import notavailable from "../../../img/ProductCard/notavailable.svg";
+import popular from "../../../img/ProductCard/popular.svg";
+
 const ProductTag = ({ item, tag }) => {
   const cls = [
     classes.productTag,
@@ -9,9 +14,20 @@ const ProductTag = ({ item, tag }) => {
     tag === "Not available" ? classes.notavailable : null,
   ];
 
+  const renderTag = (tagName) => {
+    let link = null;
+
+    if (tagName === "new") link = newArrival;
+    if (tagName === "recommended") link = recommend;
+    if (tagName === "Not available") link = notavailable;
+    if (tagName === "popular") link = popular;
+
+    return <img className={classes.Tag} src={link} alt={tagName} />;
+  };
+
   return (
     <div data-testid="ProductTagTestId" className={cls.join(" ")}>
-      {tag}
+      {renderTag(tag)}
     </div>
   );
 };
