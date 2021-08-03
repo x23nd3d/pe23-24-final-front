@@ -15,23 +15,27 @@
       font-family: "Josefin Sans", sans-serif;
       text-transform: uppercase;
       @media screen and (max-width: 576px) {
-        font-size: 11px;
+        font-size: 14px;
         margin-bottom: 0;
       }
     }
     @media screen and (max-width: 768px) {
       margin-bottom: 5rem;
+      text-align: center;
     }
   }
   .ArrowDownColumnContainer {
     @media screen and (max-width: 576px) {
       display: flex;
+      margin: 0 auto;
+      width: fit-content;
+      margin-bottom: 2rem;
     }
   }
   .ArrowDown {
     display: none;
     @media screen and (max-width: 576px) {
-      display: block;
+      display: none;
       padding-left: 5px;
     }
   }
@@ -39,7 +43,8 @@
   &ListItem {
     padding-bottom: 19px;
     @media screen and (max-width: 576px) {
-      display: none;
+      // display: none;
+      font-size: 12px;
     }
   }
 

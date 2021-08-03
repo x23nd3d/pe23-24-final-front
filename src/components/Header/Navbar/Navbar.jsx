@@ -145,13 +145,15 @@ const Nav = ({
           Originalité
         </Link>
         <ul className={classNames(classes.NavItems, classes.NavTools)}>
-          <Link
-            onClick={closeAll}
-            className={classes.NavItem}
-            to="/shop/?category=all&type=all"
-          >
-            Shop now
-          </Link>
+          <li>
+            <Link
+              onClick={closeAll}
+              className={classNames(classes.NavItem, classes.NavItemShopNow)}
+              to="/shop/?category=all&type=all"
+            >
+              Shop now
+            </Link>
+          </li>
           {isAuthenticated ? (
             <AccountRoutes
               to={history.location.search || history.location.pathname}
@@ -187,7 +189,7 @@ const Nav = ({
             ) : null}
           </div>
 
-          {windowWidth < 992 && history.location.pathname.includes("shop") && (
+          {windowWidth < 992 && history.location.pathname === "/shop/" && (
             <li className={classes.BurgerMenu}>
               <button type="button" onClick={() => sidebarSwitchHandler()}>
                 <img
