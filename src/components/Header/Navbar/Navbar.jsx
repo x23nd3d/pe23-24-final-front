@@ -10,8 +10,10 @@ import classes from "./Navbar.module.scss";
 import Search from "./Search/Search";
 import AccountRoutes from "../../Account/AccountRoutes/AccountRoutes";
 import { openCart } from "../../../store/actions/cart";
-import burgerOn from "../../../img/Navbar/circle.svg";
-import burgerOff from "../../../img/Navbar/remove.svg";
+// import burgerOn from "../../../img/Navbar/circle.svg";
+// import burgerOff from "../../../img/Navbar/remove.svg";
+import burgerOn from "../../../img/Navbar/menu.svg";
+import burgerOff from "../../../img/Navbar/close.svg";
 import sidebarSwitcher from "../../../store/actions/navbar";
 
 const Nav = ({

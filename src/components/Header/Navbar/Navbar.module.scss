@@ -14,6 +14,7 @@
   }
 
   &Item {
+    line-height: 1.5;
     padding: 20px;
     z-index: 99;
 
@@ -86,7 +87,7 @@
 .BurgerMenu {
   width: 2rem;
   cursor: pointer;
-  padding-bottom: 5px;
+  // padding-bottom: 5px;
   margin-left: 1rem;
   margin-right: 0;
 
