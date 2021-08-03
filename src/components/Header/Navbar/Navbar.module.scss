@@ -18,8 +18,12 @@
     padding: 20px;
     z-index: 99;
 
+    &ShopNow:before {
+      background-position: -56px -1px;
+    }
+
     &MyAccount:before {
-      background-position: -16px 0;
+      background-position: -17px 0;
     }
 
     &ShoppingBag:before {
@@ -87,9 +91,10 @@
 .BurgerMenu {
   width: 2rem;
   cursor: pointer;
-  // padding-bottom: 5px;
   margin-left: 1rem;
   margin-right: 0;
+  height: fit-content;
+  transform: translateY(70%);
 
   &:before {
     display: none;
@@ -147,7 +152,7 @@
 
     .BurgerMenu {
       button {
-        padding: 0 3px;
+        // padding: 0 3px;
       }
     }
   }

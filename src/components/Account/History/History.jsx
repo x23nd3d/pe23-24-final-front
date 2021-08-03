@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import classes from "./History.module.scss";
 import { getAllOrdersHandler } from "../../../store/actions/user";
 import getHumanLookDate from "../../../utils/history";
-import { handleItemPreviewParams } from "../../../store/actions/shop";
 
 const History = ({ getAllOrders, user }) => {
   const [length] = useState(false);

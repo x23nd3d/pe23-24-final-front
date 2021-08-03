@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { title, pos } from "./Title.module.scss";
+import { title } from "./Title.module.scss";
 
 const Title = ({ text, position }) => (
   <header data-testid="TitleTestId" className={classNames(title)}>
@@ -10,7 +10,7 @@ const Title = ({ text, position }) => (
 );
 
 Title.defaultProps = {
-  position: false
+  position: false,
 };
 
 Title.propTypes = {
