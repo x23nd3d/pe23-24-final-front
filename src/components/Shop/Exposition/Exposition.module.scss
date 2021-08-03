@@ -240,20 +240,20 @@
 
 .productHeader {
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
   justify-content: space-between;
 }
 
 .productTags {
   display: none;
-  height: fit-content;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
+  // height: fit-content;
+  // margin-top: 1rem;
+  // margin-bottom: 2rem;
 }
 
 .listItem:hover .productTags {
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
 
   & > div {
     // margin-bottom: 1rem;
