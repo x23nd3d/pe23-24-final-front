@@ -4,11 +4,11 @@
 }
 
 .Delivery > h3 {
-  text-transform: uppercase;
-  font-weight: 700;
   //font-size: 20px;
   margin-bottom: 30px;
+  font-weight: 700;
   text-align: center;
+  text-transform: uppercase;
 }
 
 .CheckoutInputField {
@@ -16,48 +16,48 @@
 }
 
 .CheckoutInputField > p {
-  font-family: "Open Sans", sans-serif;
-  font-size: 14px;
   margin-right: 8px;
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
 }
 
 .CheckoutInput {
   display: block;
-  background: none;
-  outline: none;
-  margin-bottom: 38px;
   width: 100%;
-  border-radius: 5px;
+  margin-bottom: 38px;
   padding: 5px;
+  background: none;
   border: 1px solid #00000059;
+  border-radius: 5px;
+  outline: none;
 }
 
 .Checkbox {
   position: relative;
+  margin-right: 10px;
+  margin-bottom: 30px;
   visibility: hidden;
   cursor: pointer;
-  margin-bottom: 30px;
-  margin-right: 10px;
 
   &:before,
   &:after {
-    content: "";
     position: absolute;
-    visibility: visible;
     border-radius: 50%;
+    visibility: visible;
+    content: "";
   }
 
   &:before {
-    left: 0;
     top: 0;
+    left: 0;
     width: 16px;
     height: 16px;
     background-color: #a5a5a5;
   }
 
   &:after {
-    left: 3px;
     top: 3px;
+    left: 3px;
     width: 10px;
     height: 10px;
   }
@@ -67,9 +67,9 @@
   }
 
   &Label {
-    color: #847a7a;
-    margin-left: 20px;
     margin-top: 3px;
+    margin-left: 20px;
+    color: #847a7a;
   }
 }
 
@@ -80,12 +80,12 @@
 }
 
 .DeliveryItems {
+  width: 100%;
+  padding: 7px;
+  font-size: 10px;
   border: 1px solid #00000038;
   border-radius: 8px;
-  padding: 7px;
-  width: 100%;
   box-shadow: -3px -1px 5px 2px #0000000f;
-  font-size: 10px;
 
   & + & {
     margin-top: 5px;

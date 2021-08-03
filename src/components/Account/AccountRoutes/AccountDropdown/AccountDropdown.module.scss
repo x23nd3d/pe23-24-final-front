@@ -6,11 +6,11 @@
   // left: 0;
   right: 0;
   z-index: 100;
-  border-radius: 10px;
   width: 70%;
   // width: 215px;
   padding: 10px 0;
   background-color: #000;
+  border-radius: 10px;
 }
 
 .container {
@@ -66,8 +66,8 @@
   }
 
   .AccountDropdown {
-    width: 50vw;
-    left: unset;
     right: -30px;
+    left: unset;
+    width: 50vw;
   }
 }

@@ -7,8 +7,8 @@
    }
 
   &Delivery {
-    border-right: 1px solid #000000;
     padding: 50px;
+    border-right: 1px solid #000000;
   }
 
   &Billing {
@@ -17,15 +17,15 @@
 
   .Button {
     width: 25%;
-    font-size: 16px;
-    letter-spacing: 1px;
-    font-weight: 700;
-    text-transform: uppercase;
-    padding: 1rem 0.5rem;
-    color: #ffffff;
-    background-color: #000000;
     width: 350px;
     margin: 50px 0;
+    padding: 1rem 0.5rem;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background-color: #000000;
     @media screen and (max-width: 576px) {
       width: 100%;
      }
@@ -34,8 +34,8 @@
 
 @media screen and (max-width: 992px) {
   .AddressBook {
-    grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
 
     &Delivery {
       border-right: none;
@@ -55,33 +55,33 @@
 
 .ItemsWrapper {
   display: flex;
-  border: 1px solid #00000052;
-  padding: 16px;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 20px;
+  padding: 16px;
+  border: 1px solid #00000052;
   border-style: dashed;
   border-radius: 5px;
   box-shadow: -2px 2px 3px 1px #00000040;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .DeleteAddressItem {
-    color: #fff;
-    border: none;
     display: flex;
-    justify-content:center;
     align-items:center;
-    font-weight: 400;
-    font-family: "Open Sans", sans-serif;
-    text-transform: uppercase;
-    font-size: 14px;
+    justify-content:center;
     padding: 10px 30px;
-    background-color: #980000;
+    color: #fff;
+    font-weight: 400;
+    font-size: 14px;
+    font-family: "Open Sans", sans-serif;
     letter-spacing: 1px;
+    text-transform: uppercase;
+    background-color: #980000;
+    border: none;
 }
 
 .Inner > span {
-  margin: 5px 0!important;
+  margin: 5px 0 !important;
   font-size: 18px;
   font-family: 'Josefin Sans', sans-serif;
   letter-spacing: 1px;
@@ -97,20 +97,20 @@
 }
 
 .AddressBold {
-  font-weight: 800;
   margin-right: 5px;
+  font-weight: 800;
   font-style: italic;
 }
 
 .LimitAddresses {
-  font-size: 15px;
   color: darkred;
   font-weight: 600;
+  font-size: 15px;
 }
 
 .SecurityCard {
-  font-size: 12px;
   margin-top: 10px;
   color: red;
   font-weight: 800;
+  font-size: 12px;
 }

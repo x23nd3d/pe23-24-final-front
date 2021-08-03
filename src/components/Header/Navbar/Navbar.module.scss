@@ -14,9 +14,9 @@
   }
 
   &Item {
-    line-height: 1.5;
-    padding: 20px;
     z-index: 99;
+    padding: 20px;
+    line-height: 1.5;
 
     &ShopNow:before {
       background-position: -56px -1px;
@@ -36,8 +36,8 @@
   }
 
   &Tools {
-    font-size: 16px;
     position: relative;
+    font-size: 16px;
 
     li {
       display: flex;
@@ -46,12 +46,12 @@
         display: block;
         &:before {
           display: inline-block;
-          margin-right: 5px;
-          transform: translateY(2px);
           width: 14px;
           height: 15px;
+          margin-right: 5px;
           background-image: url($img-header-sprite);
           background-size: cover;
+          transform: translateY(2px);
           content: "";
         }
       }
@@ -90,11 +90,11 @@
 
 .BurgerMenu {
   width: 2rem;
-  cursor: pointer;
-  margin-left: 1rem;
-  margin-right: 0;
   height: fit-content;
+  margin-right: 0;
+  margin-left: 1rem;
   transform: translateY(70%);
+  cursor: pointer;
 
   &:before {
     display: none;
@@ -177,8 +177,8 @@
     }
 
     &Item {
-      padding-left: 0;
       padding-right: 0;
+      padding-left: 0;
       & + & {
         margin-left: 10px;
       }
@@ -222,15 +222,15 @@
 }
 
 .NavCartActive {
-  background: #00a046;
   position: absolute;
-  right: 0;
   top: 9px;
-  border-radius: 30px;
-  text-align: center;
-  font-size: 11px;
+  right: 0;
+  width: 10px;
   padding: 5px;
   color: white;
+  font-size: 11px;
+  text-align: center;
+  background: #00a046;
+  border-radius: 30px;
   box-shadow: 0 0 4px 4px #00ffad73;
-  width: 10px;
 }

@@ -1,52 +1,52 @@
 @import "../../../../styles/variables";
 
 .ColorFilter {
+  margin-top: 60px;
   color: #fff;
   font-family: "Open Sans", sans-serif;
-  margin-top: 60px;
 }
 
 .Title {
-  text-transform: uppercase;
-  font-family: "Josefin Sans", sans-serif;
-  font-size: 18px;
-  font-weight: 700;
   margin-bottom: 40px;
+  font-weight: 700;
+  font-size: 18px;
+  font-family: "Josefin Sans", sans-serif;
+  text-transform: uppercase;
 }
 
 .Color {
-  display: block;
   position: relative;
-  padding: 7px 7px 7px 50px;
+  display: block;
   margin-top: 10px;
+  padding: 7px 7px 7px 50px;
   cursor: pointer;
 
   &Active {
-    border-right: 1px solid #ffd700;
     background: linear-gradient(90deg, #000000, #141414);
+    border-right: 1px solid #ffd700;
   }
 
   &:before {
     position: absolute;
+    top: 50%;
+    left: 0;
     width: 20px;
     height: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 0;
-    border-radius: 50%;
     background-color: #fff;
+    border-radius: 50%;
+    transform: translateY(-50%);
     content: "";
   }
 }
 
 .Button {
+  width: 100%;
+  padding: 10px 25px;
   color: #fff;
   background-color: #000;
   border: 1px solid #fff;
-  padding: 10px 25px;
-  transition: all 0.25s;
   cursor: pointer;
-  width: 100%;
+  transition: all 0.25s;
 
   &:hover {
     border-color: gold;
