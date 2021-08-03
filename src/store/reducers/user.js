@@ -22,6 +22,7 @@ import {
   SHOW_ALL_ORDERS,
   TOGGLE_ADDRESS_MODAL,
   TOGGLE_WISHLIST,
+  UPDATE_SETTINGS,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -190,6 +191,10 @@ const handlers = {
       creditCards,
     },
     savedCards: creditCards,
+  }),
+  [UPDATE_SETTINGS]: (state, { userId }) => ({
+    ...state,
+    userId,
   }),
   DEFAULT: (state) => state,
 };

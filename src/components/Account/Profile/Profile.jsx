@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import classes from "./Profile.module.scss";
 import { updateUserSettingsHandler } from "../../../store/actions/user";
+import pushNotification from "../../../utils/toastrConfig";
 
 const Profile = ({ user, updateUserSettings }) => {
   const validationSchema = yup.object().shape({
@@ -25,13 +26,31 @@ const Profile = ({ user, updateUserSettings }) => {
     shoesSize: yup.number().typeError("Should be a number"),
   });
 
-  const onSubmit = (values) => {
+  const onSubmit = async (values) => {
     const transformedObject = { ...values };
     Object.keys(transformedObject).forEach((key) =>
       !transformedObject[key] ? delete transformedObject[key] : ""
     );
-    console.log("transformedObject", transformedObject);
-    updateUserSettings({ ...transformedObject });
+    const response = await updateUserSettings({ ...transformedObject });
+
+    if (response === "same_password") {
+      return pushNotification(
+        "warning",
+        "Please type different password",
+        "Same password",
+        {
+          toastClass: "toastr-c-warning",
+        }
+      );
+    }
+    return pushNotification(
+      "success",
+      "All information was updated",
+      "Success!",
+      {
+        toastClass: "toastr-c-success",
+      }
+    );
   };
 
   return (
@@ -115,9 +134,10 @@ const Profile = ({ user, updateUserSettings }) => {
               <input
                 className={classes.Input}
                 id={classes.InputMobilePhone}
-                type="phone"
+                type="password"
                 name="password"
                 value={values.password}
+                autoComplete="new-password"
                 placeholder="Password"
                 onChange={handleChange}
                 onBlur={handleBlur}

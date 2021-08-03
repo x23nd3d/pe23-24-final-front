@@ -533,17 +533,50 @@ export const getUpdatedCardsFromServer = (creditCards) => ({
   creditCards,
 });
 
-export const updateUserSettingsHandler = (obj) => (dispatch, getState) => {
-  const { userId } = getState.user;
+export const updateUserSettingsHandler =
+  (obj) => async (dispatch, getState) => {
+    const { userId } = getState().user;
+    const { token } = getState().auth;
+    let updatedSettings = {};
 
-  for (const [key, value] of Object.entries(userId)) {
-    if (value === obj[key]) {
-      console.log("TRUE");
-    } else {
-      console.log("FALSE");
+    for (const [key, value] of Object.entries(userId)) {
+      for (const [objKey, objValue] of Object.entries(obj)) {
+        if (key === objKey) {
+          if (value !== obj[key]) {
+            updatedSettings = {
+              ...updatedSettings,
+              [key]: objValue,
+            };
+          }
+        }
+      }
     }
-  }
-};
+
+    console.log("updatedSettings", updatedSettings);
+
+    if (!Object.keys(updatedSettings).length) {
+      return;
+    }
+
+    try {
+      const request = await axios.post(
+        "/updateSettings",
+        { settings: updatedSettings },
+        {
+          headers: {
+            Authorization: `${token}`,
+          },
+        }
+      );
+      const response = request.data;
+      if (response.error) {
+        return response.error;
+      }
+      dispatch(updateUserSettings(response));
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
 export const updateUserSettings = (userId) => ({
   type: UPDATE_SETTINGS,
