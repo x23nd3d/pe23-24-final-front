@@ -88,7 +88,6 @@
   }
 }
 
-
 .CartCountDecreaseOff {
   pointer-events: none;
   opacity: 0.3;
@@ -96,4 +95,12 @@
 
 .CartCountIncreaseOff {
   opacity: 0.3;
+}
+
+@media screen and (max-width: 992px) {
+  .Cart {
+    &Item {
+      width: 90%;
+    }
+  }
 }

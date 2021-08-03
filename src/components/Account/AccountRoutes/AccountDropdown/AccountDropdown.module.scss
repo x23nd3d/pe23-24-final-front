@@ -2,10 +2,12 @@
 
 .AccountDropdown {
   position: absolute;
-  top: 75%;
+  top: 100%;
+  left: 0;
+  right: 0;
   z-index: 100;
   border-radius: 10px;
-  width: 215px;
+  // width: 215px;
   padding: 10px 0;
   background-color: #000;
 }
@@ -28,23 +30,43 @@
 }
 
 .AccountListItem {
-  padding: 20px;
-}
+  // padding: 20px;
 
+  & a {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    font-size: 1rem;
+
+    &:hover {
+      color: #ffff00;
+      background: linear-gradient(90deg, #000000 70%, #ffff0050 100%);
+    }
+
+    &:before {
+      display: none !important;
+    }
+  }
+}
 
 @media screen and (max-width: 992px) {
   .AccountDropdown {
-    top: 120px;
+    top: 100%;
   }
   .AccountList {
     width: 100%;
   }
 }
-
 
 @media screen and (max-width: 480px) {
   .AccountList {
     width: 100%;
     height: auto;
+  }
+
+  .AccountDropdown {
+    width: 50vw;
+    left: unset;
+    right: -30px;
   }
 }

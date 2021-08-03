@@ -6,6 +6,7 @@ input::-webkit-inner-spin-button {
 .Checkout {
   padding: 5%;
   background-color: #fff;
+  line-height: 1.5;
 }
 
 .CheckoutContainer {
@@ -14,11 +15,9 @@ input::-webkit-inner-spin-button {
   box-sizing: border-box;
   box-shadow: 0 4px 18px 0 rgb(0 0 0 / 27%);
   width: 600px;
-  border-radius: 5px 5px;
-  position: fixed;
   max-width: 600px;
-  top: 17%;
-  left: 34%;
+  border-radius: 5px 5px;
+  margin: 0 auto;
 }
 
 .CheckoutContainer > p {
@@ -26,8 +25,6 @@ input::-webkit-inner-spin-button {
   font-family: "Open Sans", sans-serif;
   margin-bottom: 40px;
 }
-
-
 
 .CheckoutPayments {
   display: block;
@@ -58,10 +55,10 @@ input::-webkit-inner-spin-button {
   margin-bottom: 38px;
 }
 
-
 .CheckoutPay {
   margin-left: auto;
   margin-right: auto;
+  width: 100%;
 }
 
 .CheckoutForm {
@@ -78,7 +75,7 @@ input::-webkit-inner-spin-button {
 }
 
 .PaymentCardExpiry::after {
-  content: '/';
+  content: "/";
   position: absolute;
   left: 50%;
   margin-left: -4px;
@@ -143,7 +140,7 @@ input::-webkit-inner-spin-button {
   justify-content: space-between;
 }
 
-.CheckoutHeader > p{
+.CheckoutHeader > p {
   font-weight: 600;
   margin-bottom: 25px;
   font-size: 18px;
@@ -154,8 +151,8 @@ input::-webkit-inner-spin-button {
   color: #fff;
   border: none;
   display: flex;
-  justify-content:center;
-  align-items:center;
+  justify-content: center;
+  align-items: center;
   font-weight: 400;
   font-family: "Open Sans", sans-serif;
   text-transform: uppercase;
@@ -187,6 +184,8 @@ input::-webkit-inner-spin-button {
 
 .SavedCardsContainer {
   display: flex;
+  flex-direction: column;
+  width: 100%;
   margin-bottom: 15px;
 }
 
@@ -197,4 +196,48 @@ input::-webkit-inner-spin-button {
 
 .SavedName {
   font-size: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .CheckoutContainer {
+    width: 100%;
+    max-width: 100%;
+    padding: 3rem 1.5rem;
+  }
+
+  .CheckoutHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    p {
+      line-height: 1.5;
+      margin-right: 1rem;
+      margin-bottom: 0;
+    }
+  }
+
+  .CheckoutPayments {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .CheckoutPaymentImg {
+    margin-right: 0;
+  }
+
+  .CheckoutInputField {
+    margin-bottom: 1rem;
+  }
+
+  .SavedCardsContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .CheckoutPay {
+    width: 100%;
+  }
 }
