@@ -17,10 +17,10 @@ const ProductTag = ({ item, tag }) => {
   const renderTag = (tagName) => {
     let link = null;
 
-    if (tagName === "new") link = newArrival;
-    if (tagName === "recommended") link = recommend;
-    if (tagName === "Not available") link = notavailable;
-    if (tagName === "popular") link = popular;
+    if (tagName.toLowerCase() === "new") link = newArrival;
+    if (tagName.toLowerCase() === "recommended") link = recommend;
+    if (tagName.toLowerCase() === "not available") link = notavailable;
+    if (tagName.toLowerCase() === "popular") link = popular;
 
     return <img className={classes.Tag} src={link} alt={tagName} />;
   };
