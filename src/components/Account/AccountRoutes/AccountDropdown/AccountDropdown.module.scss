@@ -59,6 +59,12 @@
   }
 }
 
+@media screen and (max-width: 578px) and (min-width: 478px) {
+  .AccountDropdown {
+    width: auto;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .AccountList {
     width: 100%;
