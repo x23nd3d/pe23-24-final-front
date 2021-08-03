@@ -23,6 +23,7 @@ import {
   SHOW_ALL_ORDERS,
   TOGGLE_ADDRESS_MODAL,
   TOGGLE_WISHLIST,
+  UPDATE_SETTINGS,
 } from "./actionTypes";
 
 export const checkout = () => async (dispatch, getState) => {
@@ -530,4 +531,21 @@ export const getUpdatedAddressesFromServer = (savedDeliveryMethods) => ({
 export const getUpdatedCardsFromServer = (creditCards) => ({
   type: REFRESH_CARDS_FROM_SERVER,
   creditCards,
+});
+
+export const updateUserSettingsHandler = (obj) => (dispatch, getState) => {
+  const { userId } = getState.user;
+
+  for (const [key, value] of Object.entries(userId)) {
+    if (value === obj[key]) {
+      console.log("TRUE");
+    } else {
+      console.log("FALSE");
+    }
+  }
+};
+
+export const updateUserSettings = (userId) => ({
+  type: UPDATE_SETTINGS,
+  userId,
 });
