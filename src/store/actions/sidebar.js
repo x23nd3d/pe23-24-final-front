@@ -11,6 +11,7 @@ import {
 } from "./actionTypes";
 
 import { getMinMaxPrice } from "../../utils/sidebar.utils";
+import { sortByName, sortByPrice } from "../../utils/sort";
 
 export const checkCategories = (title) => (dispatch, getState) => {
   const { categories } = getState().sidebar;
@@ -65,6 +66,20 @@ export const addRemoveColorFunction = (color) => (dispatch, getState) => {
 
   return dispatch(addRemoveColorAction(colors));
 };
+export const sortByNameFunction =
+  (filteredItems, condition) => (dispatch, getState) => {
+    const currentFilteredItems = getState().shop.filteredItems;
+    return dispatch(
+      filterItemsAction(sortByName(currentFilteredItems, condition))
+    );
+  };
+export const sortByPriceFunction =
+  (filteredItems, condition) => (dispatch, getState) => {
+    const currentFilteredItems = getState().shop.filteredItems;
+    return dispatch(
+      filterItemsAction(sortByPrice(currentFilteredItems, condition))
+    );
+  };
 export const filterItemsAction = (filteredItems) => ({
   type: SET_FILTER_ITEMS,
   payload: filteredItems,

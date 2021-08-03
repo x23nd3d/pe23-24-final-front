@@ -16,6 +16,7 @@ import classes from "./Sidebar.module.scss";
 import ListRoute from "../../UI/ListRoute/ListRoute";
 import ColorFilter from "./ColorFilter/ColorFilter";
 import PriceFilter from "./PriceFilter/PriceFilter";
+import Sort from "./Sort/Sort";
 
 const Sidebar = ({
   sidebar,
@@ -125,6 +126,7 @@ const Sidebar = ({
             View All
           </NavLink>
         )}
+        <Sort />
         <ColorFilter />
         <PriceFilter />
         <div className={classes.Buttons}>
