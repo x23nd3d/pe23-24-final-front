@@ -1,12 +1,10 @@
 .Verification {
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #fff;
   padding: 20px;
-  width: 650px;
-  height: 650px;
   z-index: 999;
   box-shadow: 0 0 17px 3px #0000006b;
   font-family: "Josefin Sans", sans-serif;
@@ -115,10 +113,30 @@
 
 @media screen and (max-width: 576px) {
   .Verification {
+    bottom: 0;
     padding: 3rem 1.5rem;
+  }
+
+  .VerificationInfo > h2 {
+    font-size: 28px;
+    line-height: 1.5;
+  }
+
+  VerificationInfo > h4 {
+    font-size: 16px;
   }
 
   .VerificationImg {
     display: none;
+  }
+
+  .VerificationInput {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+
+    p {
+      margin-bottom: 0.25rem;
+    }
   }
 }
