@@ -11,6 +11,7 @@
   background-color: #fff;
   padding: 5%;
   margin-bottom: 140px;
+  line-height: 1.5;
 
   @media screen and (max-width: 1368px) {
     grid-template-columns: 1fr 1fr 1fr;
@@ -26,9 +27,6 @@
 .listItem {
   position: relative;
   cursor: pointer;
-  // max-height: 495px;
-  // height: fit-content;
-  //transition: 0.2s;
 }
 
 .listItem:hover {
@@ -39,43 +37,31 @@
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  // transition: all 0.5s ease;
+}
 
-  &:hover {
-    .boxBanner {
-      // transition: all 0.25s ease;
-      // color: #fff;
-      // background-color: rgba(0, 0, 0, 0.85);
+.info {
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #fff;
+  text-transform: uppercase;
+  font-family: "Open Sans", sans-serif;
+  padding: 0 20px;
+  width: 100%;
 
-      span:last-of-type {
-        // color: #fff;
-      }
-    }
+  span:first-of-type {
+    line-height: 1.5;
+    margin-bottom: 10px;
   }
 
-  .info {
-    height: 90px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: #fff;
-    text-transform: uppercase;
-    font-family: "Open Sans", sans-serif;
-    padding: 0 20px;
-    width: 100%;
+  span:last-of-type {
+    line-height: 1.5;
+    color: #847a7a;
+  }
 
-    span:first-of-type {
-      line-height: 1.5;
-    }
-
-    span:last-of-type {
-      line-height: 1.5;
-      color: #847a7a;
-    }
-
-    span + span {
-      margin-top: 6px;
-    }
+  span + span {
+    margin-top: 6px;
   }
 }
 
@@ -108,7 +94,6 @@
   opacity: 0;
   justify-content: space-around;
   cursor: pointer;
-  // z-index: 1000;
   border-top: 1px solid transparent;
   padding: 10px 20px 10px;
   position: absolute;
@@ -118,7 +103,6 @@
   background-color: #fff;
   border-top: 1px solid #00000024;
   justify-content: space-between;
-  //transition: 0.2s;
 }
 
 .CartHoverDetailsFreeze {
@@ -131,7 +115,6 @@
   color: #00000099;
   position: absolute;
   right: 20px;
-  //transition: .2s;
 }
 
 .cartItem:hover {
@@ -139,17 +122,11 @@
 }
 
 .listItem:hover .CartHoverDetails {
-  // border-top: 1px solid #00000024;
   display: flex;
   opacity: 1;
   box-shadow: 0 0 20px 3px #00000061;
   z-index: 2;
   top: auto;
-  // justify-content: space-between;
-  // position: relative;
-}
-
-.sizes {
 }
 
 .AddToWishlist {
@@ -240,22 +217,15 @@
 
 .productHeader {
   display: flex;
-  // flex-direction: column;
+  align-items: center;
   justify-content: space-between;
+  height: 32px;
 }
 
 .productTags {
   display: none;
-  // height: fit-content;
-  // margin-top: 1rem;
-  // margin-bottom: 2rem;
 }
 
 .listItem:hover .productTags {
   display: flex;
-  // flex-direction: column;
-
-  & > div {
-    // margin-bottom: 1rem;
-  }
 }
