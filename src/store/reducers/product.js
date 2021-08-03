@@ -18,6 +18,17 @@ const initialState = {
   loading: false,
 };
 
+const transformPreviewItem = (item) => {
+  const newItems = {
+    ...item,
+  };
+  if (!newItems.size || newItems.size === "undefined") {
+    delete newItems.size;
+    return newItems;
+  }
+  return newItems;
+};
+
 const productReducer = (state = initialState, action) => {
   switch (action.type) {
     case COLOR:
@@ -44,7 +55,10 @@ const productReducer = (state = initialState, action) => {
     case VISITED_PRODUCTS:
       return { ...state, visited: action.payload };
     case TOGGLE_ITEM_PREVIEW:
-      return { ...state, currentItemPreview: action.payload };
+      return {
+        ...state,
+        currentItemPreview: transformPreviewItem(action.payload),
+      };
     case CHECKOUT_SUCCESS:
       return {
         ...state,
