@@ -6,14 +6,17 @@ import AlreadyInWishlistIcon from "../SVGIconsComponents/AlreadyInWishlistIcon";
 
 const AddToWishList = ({ onWish, isAdded, item, toggle, isAuth, history }) => {
   if (isAuth) {
+    const onClickHandler = () => {
+      onWish(item);
+      toggle(item);
+    };
     console.log("ISADDED", isAdded);
     return (
       <button
         data-testid="AddToWishListTestId"
         className={classes.toWishlist}
         type="button"
-        onClick={() => toggle(item)}
-        onClick={onWish}
+        onClick={onClickHandler}
       >
         {isAdded ? <AlreadyInWishlistIcon /> : <AddToWishlistIcon />}
       </button>
@@ -42,7 +45,7 @@ AddToWishList.propTypes = {
   item: PropTypes.instanceOf(Object).isRequired,
   history: PropTypes.instanceOf(Object).isRequired,
   toggle: PropTypes.func.isRequired,
-  onWish: PropTypes.func.isRequired
+  onWish: PropTypes.func.isRequired,
 };
 
 export default AddToWishList;
