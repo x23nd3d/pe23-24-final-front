@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import classnames from "classnames";
 import * as yup from "yup";
 import { Form, Formik, Field } from "formik";
+import valid from "card-validator";
 import { Link } from "react-router-dom";
 import classes from "./Checkout.module.scss";
 import mastercard from "../../img/icons/Checkout/mastercard.png";
@@ -53,11 +54,12 @@ const Checkout = ({
       .max(16, "Maximum 16 digits")
       .required("Required"),
     cardName: yup.string().required("Required"),
-    cardExp: yup
-      .string()
-      .min(2, "Minimum 2 digits")
-      .max(2, "Maximum 2 digits")
-      .required("Required"),
+    cardExp:  yup
+    .string()
+    .test("test-month",
+    "Month is invalid",
+     value => valid.expirationMonth(value).isValid)
+    .required("Required"),
     cardExp2: yup
       .string()
       .min(2, "Minimum 2 digits")
