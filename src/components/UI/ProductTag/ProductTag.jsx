@@ -6,6 +6,7 @@ const ProductTag = ({ item, tag }) => {
   const cls = [
     classes.productTag,
     item[tag] === true || tag === "popular" ? classes[tag] : null,
+    tag === "Not available" ? classes.notavailable : null,
   ];
 
   return (

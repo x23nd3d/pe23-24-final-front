@@ -108,7 +108,11 @@ const Product = ({
                 </span>
                 <div className={isStock}>
                   <span>Available</span>
-                  {1 > 0 ? <Available /> : <Unavailable />}
+                  {productStore.currentItem.stock ? (
+                    <Available />
+                  ) : (
+                    <Unavailable />
+                  )}
                 </div>
               </div>
             </li>

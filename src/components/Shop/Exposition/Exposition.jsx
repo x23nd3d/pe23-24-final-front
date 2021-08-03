@@ -37,6 +37,9 @@ const Exposition = ({
     ));
   };
 
+  const filteredByStock = (arr) =>
+    arr.sort((a, b) => (a.stock > b.stock ? -1 : 1));
+
   const iconCls = ["fas fa-sync", shop.paginationLoading ? showMoreAnim : null];
 
   return (
@@ -47,7 +50,9 @@ const Exposition = ({
         ) : (
           <ul className={expo}>
             {showMoreItemsHandler(
-              shop.filteredItems.length ? shop.filteredItems : productList
+              shop.filteredItems.length
+                ? filteredByStock(shop.filteredItems)
+                : filteredByStock(productList)
             )}
           </ul>
         )}

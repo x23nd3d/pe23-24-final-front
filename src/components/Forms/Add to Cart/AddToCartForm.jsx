@@ -11,7 +11,7 @@ import AddToCartButton from "./AddToCartButton";
 import BackShopping from "../../UI/Buttons List/BackShopping";
 import AddToWishList from "../../UI/Buttons List/AddToWishList";
 import { toggleWishListHandler } from "../../../store/actions/user";
-import {toggleCurrentItem} from "../../../store/actions/product";
+import { toggleCurrentItem } from "../../../store/actions/product";
 import CurrentWishlist from "../../Containers/CurrentWishlist";
 
 /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
@@ -27,13 +27,15 @@ const AddToCartForm = ({
   auth,
   history,
   toggleWishList,
-  dispatchCurrentWish
+  dispatchCurrentWish,
 }) => {
   const { productStore, dispatchColor } = store;
 
-  const handleColorState = useCallback((values) => {
+  const handleColorState = useCallback(
+    (values) => {
       dispatchColor(values.color);
-    }, [dispatchColor]
+    },
+    [dispatchColor]
   );
 
   const addToCartHandler = (dataItem, changedDetails) => {
@@ -71,8 +73,6 @@ const AddToCartForm = ({
           (current) =>
             JSON.stringify(current) === JSON.stringify(transformedObjectTemp2)
         );
-
-        console.log("wishIdxwishIdx", wishIdx);
 
         if (wishIdx) {
           // TODO: Instead of this test object we should pass the exact params of color or size like as shop.currentPreviewItems
@@ -138,17 +138,20 @@ const AddToCartForm = ({
           onBlur={() => console.log(product.currentItemPreview)}
         >
           <div className={classes.formBlockColor}>
-            <span className={classes.dataPointer}>
-              {data.color.length > 1 ? (
-                "Select a color"
-              ) : (
-                <div className={classes.formOneColorBlock}>
-                  <p>Color</p>
-                  <span>{productStore.color}</span>
-                </div>
-              )}
-            </span>
-            {data.color.length > 1 && (
+            {data.stock ? (
+              <span className={classes.dataPointer}>
+                {data.color.length > 1 && data.stock ? (
+                  "Select a color"
+                ) : (
+                  <div className={classes.formOneColorBlock}>
+                    <p>Color</p>
+                    <span>{productStore.color}</span>
+                  </div>
+                )}
+              </span>
+            ) : null}
+
+            {data.color.length > 1 && data.stock ? (
               <div className={classes.colorSelection}>
                 {data.color.length > 1 &&
                   data.color.map((color, index) => (
@@ -177,17 +180,19 @@ const AddToCartForm = ({
                     </div>
                   ))}
               </div>
-            )}
+            ) : null}
           </div>
-          {Array.isArray(data.size) && data.size.length ? (
+          {Array.isArray(data.size) && data.size.length && data.stock ? (
             <div className={classes.formBlockSize}>
               <span className={classes.dataPointer}>Select a size</span>
               <Field
-                onClick={() => dispatchCurrentWish({
-                  ...product.currentItem,
-                  color: product.color,
-                  size: values.size
-                })}
+                onClick={() =>
+                  dispatchCurrentWish({
+                    ...product.currentItem,
+                    color: product.color,
+                    size: values.size,
+                  })
+                }
                 className={classes.sizeSelect}
                 name="size"
                 as="select"
@@ -206,10 +211,14 @@ const AddToCartForm = ({
           ) : null}
           <div className={classes.formBlockSubmit}>
             <BackShopping history={history} />
-            <AddToCartButton />
+            <AddToCartButton isAvailable={data.stock} />
             <CurrentWishlist
               runCondition={renderWishListCondition}
-              currentWishItem={{...product.currentItem, color: product.color, size: values.size}}
+              currentWishItem={{
+                ...product.currentItem,
+                color: product.color,
+                size: values.size,
+              }}
               onCurrentWish={dispatchCurrentWish}
             />
           </div>
@@ -237,7 +246,7 @@ AddToCartForm.propTypes = {
   history: PropTypes.instanceOf(Object).isRequired,
   user: PropTypes.instanceOf(Object).isRequired,
   auth: PropTypes.instanceOf(Object).isRequired,
-  dispatchCurrentWish: PropTypes.func.isRequired
+  dispatchCurrentWish: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
@@ -252,7 +261,7 @@ function mapDispatchToProps(dispatch) {
   return {
     dispatchCart: (item) => dispatch(addToCart(item)),
     toggleWishList: (item) => dispatch(toggleWishListHandler(item)),
-    dispatchCurrentWish: (item) => dispatch(toggleCurrentItem(item))
+    dispatchCurrentWish: (item) => dispatch(toggleCurrentItem(item)),
   };
 }
 

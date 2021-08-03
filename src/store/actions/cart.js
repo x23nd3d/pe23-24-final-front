@@ -108,7 +108,10 @@ export const setItemCountHandler = (item, count) => (dispatch, getState) => {
     return dispatch(setItemCount(initialItems));
   }
 
-  if (count === item.count) return;
+  if (count > item.left) {
+    console.log("TRUEEEEEEEEEEEEE");
+    return dispatch(setItemCount(initialItems));
+  }
 
   initialItems[idx].count = count;
   return dispatch(setItemCount(initialItems));

@@ -1,4 +1,5 @@
 import {
+  CHECKOUT_SUCCESS,
   COLOR,
   PHOTO,
   SELECT_CURRENT_ITEM,
@@ -44,6 +45,14 @@ const productReducer = (state = initialState, action) => {
       return { ...state, visited: action.payload };
     case TOGGLE_ITEM_PREVIEW:
       return { ...state, currentItemPreview: action.payload };
+    case CHECKOUT_SUCCESS:
+      return {
+        ...state,
+        currentItem: {},
+        photo: null,
+        visited: new Set(),
+        color: "",
+      };
     default:
       return state;
   }
