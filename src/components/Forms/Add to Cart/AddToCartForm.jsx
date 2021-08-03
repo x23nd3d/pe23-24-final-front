@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo } from "react";
+import React, { useCallback } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Formik, Form, Field } from "formik";
@@ -230,8 +230,6 @@ const AddToCartForm = ({
 
 AddToCartForm.defaultProps = {
   dispatchColor: (f) => f,
-  dispatchCart: (f) => f,
-  toggleWishList: (f) => f,
   dispatchCart: (f) => f,
   toggleWishList: (f) => f,
 };
