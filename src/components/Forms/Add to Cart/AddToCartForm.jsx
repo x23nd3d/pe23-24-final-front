@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useMemo } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Formik, Form, Field } from "formik";
@@ -30,20 +30,9 @@ const AddToCartForm = ({
 }) => {
   const { productStore, dispatchColor } = store;
 
-  const handleCurrentWish = (values) => {
-      dispatchCurrentWish({
-        ...product.currentItem,
-        color: values.color,
-        size: values.size
-      });
-      console.log("IMMA HERE", product.currentItemPreview)
-    }
-
-  const handleColorState = useCallback(
-    (values) => {
+  const handleColorState = useCallback((values) => {
       dispatchColor(values.color);
-    },
-    [dispatchColor]
+    }, [dispatchColor]
   );
 
   const addToCartHandler = (dataItem, changedDetails) => {
@@ -89,7 +78,7 @@ const AddToCartForm = ({
 
           return (
             <AddToWishList
-              item={transformedObjectTemp2}
+              item={product.currentItemPreview}
               isAdded
               isAuth
               history={history}
@@ -99,7 +88,7 @@ const AddToCartForm = ({
         }
         return (
           <AddToWishList
-            item={transformedObjectTemp2}
+            item={product.currentItemPreview}
             isAdded={false}
             isAuth
             history={history}
@@ -109,7 +98,7 @@ const AddToCartForm = ({
       }
       return (
         <AddToWishList
-          item={transformedObjectTemp2}
+          item={product.currentItemPreview}
           isAdded={false}
           isAuth
           history={history}
@@ -142,7 +131,8 @@ const AddToCartForm = ({
         <Form
           className={classes.form}
           onSubmit={handleSubmit}
-          onChange={(v) => handleCurrentWish(v)} >
+          onBlur={() => console.log(product.currentItemPreview)}
+        >
           <div className={classes.formBlockColor}>
             <span className={classes.dataPointer}>
               {data.color.length > 1 ? (
@@ -189,6 +179,11 @@ const AddToCartForm = ({
             <div className={classes.formBlockSize}>
               <span className={classes.dataPointer}>Select a size</span>
               <Field
+                onClick={() => dispatchCurrentWish({
+                  ...product.currentItem,
+                  color: product.color,
+                  size: values.size
+                })}
                 className={classes.sizeSelect}
                 name="size"
                 as="select"
@@ -208,6 +203,11 @@ const AddToCartForm = ({
           <div className={classes.formBlockSubmit}>
             <BackShopping history={history} />
             <AddToCartButton />
+            {/* dispatchCurrentWish({
+                  ...product.currentItem,
+                  color: product.color,
+                  size: values.size
+                }) */}
             {renderWishListCondition()}
           </div>
         </Form>
