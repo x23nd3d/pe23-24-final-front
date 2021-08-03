@@ -70,18 +70,12 @@ const Product = ({
                 <div className={NameBox}>
                   <h2 className={classNames(Name)}>{name}</h2>
                   {productStore.currentItem.new && (
-                    <div
-                      style={{ background: "#b30808", color: "#fff" }}
-                      className={collectionTags}
-                    >
+                    <div className={collectionTags}>
                       <ProductTag item={productStore.currentItem} tag="New" />
                     </div>
                   )}
                   {productStore.currentItem.recommended && (
-                    <div
-                      style={{ background: "#9d00ff", color: "#fff" }}
-                      className={collectionTags}
-                    >
+                    <div className={collectionTags}>
                       <ProductTag
                         item={productStore.currentItem}
                         tag="Recommended"
@@ -89,13 +83,18 @@ const Product = ({
                     </div>
                   )}
                   {productStore.currentItem.ordered >= 120 && (
-                    <div
-                      style={{ background: "#00ff43", color: "#000" }}
-                      className={collectionTags}
-                    >
+                    <div className={collectionTags}>
                       <ProductTag
                         item={productStore.currentItem}
                         tag="Popular"
+                      />
+                    </div>
+                  )}
+                  {!productStore.currentItem.stock && (
+                    <div className={collectionTags}>
+                      <ProductTag
+                        item={productStore.currentItem}
+                        tag="not available"
                       />
                     </div>
                   )}
