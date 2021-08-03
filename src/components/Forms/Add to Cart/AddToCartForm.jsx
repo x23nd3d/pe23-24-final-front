@@ -12,6 +12,7 @@ import BackShopping from "../../UI/Buttons List/BackShopping";
 import AddToWishList from "../../UI/Buttons List/AddToWishList";
 import { toggleWishListHandler } from "../../../store/actions/user";
 import {toggleCurrentItem} from "../../../store/actions/product";
+import CurrentWishlist from "../../Containers/CurrentWishlist";
 
 /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -58,7 +59,7 @@ const AddToCartForm = ({
     dispatchCart(item);
   };
 
-  const renderWishListCondition = () => {
+  const renderWishListCondition = (currentWishItem, onCurrentWish) => {
     if (auth.token) {
       const transformedObjectTemp2 = {
         ...product.currentItem,
@@ -83,6 +84,7 @@ const AddToCartForm = ({
               isAuth
               history={history}
               toggle={toggleWishList}
+              onWish={() => onCurrentWish(currentWishItem)}
             />
           );
         }
@@ -93,6 +95,7 @@ const AddToCartForm = ({
             isAuth
             history={history}
             toggle={toggleWishList}
+            onWish={() => onCurrentWish(currentWishItem)}
           />
         );
       }
@@ -103,6 +106,7 @@ const AddToCartForm = ({
           isAuth
           history={history}
           toggle={toggleWishList}
+          onWish={() => onCurrentWish(currentWishItem)}
         />
       );
     }
@@ -203,12 +207,11 @@ const AddToCartForm = ({
           <div className={classes.formBlockSubmit}>
             <BackShopping history={history} />
             <AddToCartButton />
-            {/* dispatchCurrentWish({
-                  ...product.currentItem,
-                  color: product.color,
-                  size: values.size
-                }) */}
-            {renderWishListCondition()}
+            <CurrentWishlist
+              runCondition={renderWishListCondition}
+              currentWishItem={{...product.currentItem, color: product.color, size: values.size}}
+              onCurrentWish={dispatchCurrentWish}
+            />
           </div>
         </Form>
       )}
