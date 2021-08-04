@@ -9,7 +9,7 @@ describe("ButtonsList", () => {
     expect(getByTestId("BackShoppingTestId")).toBeInTheDocument();
   });
   test("should render AddToWishList", () => {
-    const {getByTestId} = render(<AddToWishList item={{}} history={{}} toggle={(f) => f} />);
+    const {getByTestId} = render(<AddToWishList onWish={(f) => f} item={{}} history={{}} toggle={(f) => f} />);
     expect(getByTestId("AddToWishListTestId")).toBeInTheDocument();
   });
 })
