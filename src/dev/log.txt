@@ -1,4 +1,2 @@
 
 - suggestions on email for more orders = more discounts
-- wishlist inform customer about added item
-- inform user about email confirmation better

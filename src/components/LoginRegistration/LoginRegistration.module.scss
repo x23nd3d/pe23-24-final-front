@@ -1,32 +1,32 @@
 .LoginRegistration {
-  width: 100%;
-  background-color: #000;
-  color: #fff;
-  border-bottom: 1px solid #fff;
-  font-family: "Josefin Sans", sans-serif;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  color: #fff;
+  font-family: "Josefin Sans", sans-serif;
+  background-color: #000;
+  border-bottom: 1px solid #fff;
 }
 
 .Inner {
-  margin: 5% auto 0;
   width: 470px;
+  margin: 5% auto 0;
   margin-bottom: 5rem;
 }
 
 .Tabs {
   display: grid;
-  grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
+  grid-template-columns: 1fr 1fr;
 }
 
 .Tab {
-  background-color: #000;
-  color: #fff;
   padding: 5px;
-  border: none;
-  font-family: "Josefin Sans", sans-serif;
+  color: #fff;
   font-size: 18px;
+  font-family: "Josefin Sans", sans-serif;
+  background-color: #000;
+  border: none;
   border-bottom: 1px solid transparent;
   cursor: pointer;
 }
@@ -36,19 +36,19 @@
 }
 
 .Title {
-  color: #fff;
   margin: 70px 0;
+  color: #fff;
   line-height: 1.5;
 }
 
 .Input {
+  box-sizing: border-box;
   width: 100%;
   padding: 5px;
   color: #fff;
   background-color: #000;
   border: none;
   border-bottom: 1px solid #e5e5e5;
-  box-sizing: border-box;
 
   &:active {
     outline: 1px solid white;
@@ -59,8 +59,8 @@
   }
 
   &Field {
-    margin-bottom: 40px;
     position: relative;
+    margin-bottom: 40px;
   }
 }
 
@@ -71,23 +71,23 @@
 
   &:before,
   &:after {
-    content: "";
     position: absolute;
-    visibility: visible;
     border-radius: 50%;
+    visibility: visible;
+    content: "";
   }
 
   &:before {
-    left: 0;
     top: 0;
+    left: 0;
     width: 16px;
     height: 16px;
     background-color: #fff;
   }
 
   &:after {
-    left: 3px;
     top: 3px;
+    left: 3px;
     width: 10px;
     height: 10px;
   }
@@ -97,27 +97,27 @@
   }
 
   &Label {
-    color: #847a7a;
     margin-left: 20px;
+    color: #847a7a;
   }
 }
 
 .Button {
-  padding: 1rem;
   width: 100%;
+  margin-top: 50px;
+  padding: 1rem;
   text-transform: uppercase;
   columns: #000;
   background-color: #e5e5e5;
   border: none;
-  margin-top: 50px;
   cursor: pointer;
 }
 
 .Error {
-  color: red;
-  font-size: 12px;
   position: absolute;
   bottom: -20px;
+  color: red;
+  font-size: 12px;
 }
 
 .Cart {
@@ -132,13 +132,13 @@
   }
 
   &Input {
-    width: 100%;
-    border: 1px solid #000;
-    background-color: #fff;
-    padding: 1rem 0.5rem;
     box-sizing: border-box;
-    letter-spacing: 0.5px;
+    width: 100%;
+    padding: 1rem 0.5rem;
     color: #000;
+    letter-spacing: 0.5px;
+    background-color: #fff;
+    border: 1px solid #000;
   }
 
   &Checkbox {

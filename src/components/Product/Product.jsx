@@ -57,7 +57,7 @@ const Product = ({
 
   useEffect(() => {
     dispatchPhoto(photo[productStore.color]);
-  }, [productStore.color]);
+  }, [productStore.color, dispatchPhoto, photo]);
 
   return (
     <>

@@ -6,11 +6,11 @@
   // left: 0;
   right: 0;
   z-index: 100;
-  border-radius: 10px;
   width: 70%;
   // width: 215px;
   padding: 10px 0;
   background-color: #000;
+  border-radius: 10px;
 }
 
 .container {
@@ -59,6 +59,12 @@
   }
 }
 
+@media screen and (max-width: 578px) and (min-width: 478px) {
+  .AccountDropdown {
+    width: auto;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .AccountList {
     width: 100%;
@@ -66,8 +72,8 @@
   }
 
   .AccountDropdown {
-    width: 50vw;
-    left: unset;
     right: -30px;
+    left: unset;
+    width: 50vw;
   }
 }

@@ -1,14 +1,14 @@
 @import "../../../../styles/productColors";
 
 .CartItem {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding: 20px;
-  box-shadow: 0 0 12px 3px #00000014;
-  border: 1px solid #00000024;
-  margin: 25px;
   position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 25px;
+  padding: 20px;
+  border: 1px solid #00000024;
+  box-shadow: 0 0 12px 3px #00000014;
   transition: 0.3s;
 }
 
@@ -23,11 +23,11 @@
 
 .CartItemImage {
   width: 125px;
-  height: 125px;
-  max-width: 125px;
-  max-height: 125px;
   min-width: 125px;
+  max-width: 125px;
+  height: 125px;
   min-height: 125px;
+  max-height: 125px;
   margin-right: 15px;
 }
 
@@ -37,34 +37,34 @@
 }
 
 .CartManage {
-  display: flex;
-  margin: 15px 0;
-  justify-content: space-between;
-  align-items: center;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 15px 0;
 }
 
 button {
   background: none;
-  outline: none;
   border: none;
   border-radius: 3px;
+  outline: none;
   cursor: pointer;
 }
 
 .CartCountContainer > button > i {
-  font-size: 18px;
   color: #00000061;
+  font-size: 18px;
 }
 
 .CartCountDetails {
-  font-size: 18px;
-  margin: 0 10px;
-  border: 1px solid #00000052;
-  padding: 9px;
-  text-align: center;
   width: 20px;
   height: 20px;
+  margin: 0 10px;
+  padding: 9px;
+  font-size: 18px;
+  text-align: center;
+  border: 1px solid #00000052;
 }
 
 .CartItemGeneral {
@@ -72,8 +72,8 @@ button {
 }
 
 .CartItemGeneral p {
-  font-size: 18px;
   padding: 2px 5px;
+  font-size: 18px;
   line-height: 1.5;
 }
 
@@ -90,8 +90,8 @@ button {
 }
 
 .CartCountDecreaseOff {
-  pointer-events: none;
   opacity: 0.3;
+  pointer-events: none;
 }
 
 .CartCountIncreaseOff {
@@ -126,8 +126,8 @@ button {
     width: 65%;
   }
   .Manage {
-    text-align: right;
     width: 10%;
+    text-align: right;
   }
 }
 

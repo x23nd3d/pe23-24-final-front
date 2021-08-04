@@ -3,8 +3,8 @@
   &Title {
     margin-top: 200px;
     margin-bottom: 200px;
-    text-align: center;
     font-size: 24px;
+    text-align: center;
   }
 }
 
@@ -38,11 +38,11 @@
 }
 
 .CartItemTitle {
+  margin-bottom: 18px;
   color: #000000;
+  font-weight: 700;
   font-size: 18px;
   text-transform: uppercase;
-  font-weight: 700;
-  margin-bottom: 18px;
 }
 
 .CartItemInfo {
@@ -51,8 +51,8 @@
 }
 
 .Quantity {
-  margin-top: 18px;
   display: inline-block;
+  margin-top: 18px;
 }
 
 .CartItemTotal {
@@ -62,10 +62,10 @@
 }
 
 .ImageBox {
-  margin-right: 35px;
-  max-width: 100%;
   width: 180px;
+  max-width: 100%;
   height: 100%;
+  margin-right: 35px;
 }
 
 .Image {
@@ -76,24 +76,24 @@
 .Buttons {
   display: flex;
   flex-direction: column;
-  margin-left: auto;
   width: fit-content;
+  margin-left: auto;
 }
 
 .Button {
   width: 250px;
-  font-size: 16px;
-  letter-spacing: 1px;
-  font-weight: 700;
-  text-transform: uppercase;
   padding: 1rem 0.5rem;
   color: #ffffff;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   background-color: #000000;
 }
 
 .Remove {
-  margin-top: 30px;
   align-self: flex-start;
+  margin-top: 30px;
 }
 
 .PurchasedItems {
@@ -101,8 +101,8 @@
 }
 
 .PurchasedItem {
-  border: 1px solid lightgrey;
   padding: 2rem;
+  border: 1px solid lightgrey;
   & + & {
     margin-top: 2rem;
   }
@@ -110,8 +110,8 @@
 
 .CartItemFooter {
   margin-top: 2rem;
-  font-size: 1.25rem;
   font-weight: 700;
+  font-size: 1.25rem;
 }
 
 .Total {
@@ -123,16 +123,16 @@
 }
 
 .Delivery {
-  font-size: 1rem;
-  font-weight: 400;
   margin-bottom: 1rem;
+  font-weight: 400;
+  font-size: 1rem;
 }
 
 .Saved {
   margin-top: 10px;
   color: green;
-  font-size: 1rem;
   font-weight: 400;
+  font-size: 1rem;
 }
 
 @media screen and (max-width: 576px) {
@@ -150,7 +150,7 @@
   }
 
   .Buttons {
-    padding: 0;
     margin-left: unset;
+    padding: 0;
   }
 }

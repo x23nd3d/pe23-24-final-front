@@ -3,8 +3,8 @@
   &Title {
     margin-top: 200px;
     margin-bottom: 200px;
-    text-align: center;
     font-size: 24px;
+    text-align: center;
   }
 }
 
@@ -21,11 +21,11 @@
 }
 
 .CartItemTitle {
+  margin-bottom: 18px;
   color: #000000;
+  font-weight: 700;
   font-size: 18px;
   text-transform: uppercase;
-  font-weight: 700;
-  margin-bottom: 18px;
 }
 
 .CartItemInfo {
@@ -34,8 +34,8 @@
 }
 
 .Quantity {
-  margin-top: 18px;
   display: inline-block;
+  margin-top: 18px;
 }
 
 .CartItemTotal {
@@ -45,10 +45,10 @@
 }
 
 .ImageBox {
-  margin-right: 35px;
-  max-width: 100%;
   width: 180px;
+  max-width: 100%;
   height: 100%;
+  margin-right: 35px;
 }
 
 .Image {
@@ -59,45 +59,45 @@
 .Buttons {
   display: flex;
   flex-direction: column;
-  margin-left: auto;
   width: fit-content;
+  margin-left: auto;
 }
 
 .Button {
   width: 250px;
-  font-size: 16px;
-  letter-spacing: 1px;
-  font-weight: 700;
-  text-transform: uppercase;
+  margin-bottom: 10px;
   padding: 1rem 0.5rem;
   color: #ffffff;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   background-color: #000000;
-  margin-bottom: 10px;
 }
 
 .Open {
-  margin-top: 30px;
   align-self: flex-start;
+  margin-top: 30px;
 }
 
 @media screen and (max-width: 768px) {
   .CartItem {
     display: grid;
-    grid-template-columns: auto auto;
     grid-template-rows: auto auto;
+    grid-template-columns: auto auto;
   }
 
   .Buttons {
-    padding: 50px 0 0 0;
     margin-left: unset;
+    padding: 50px 0 0 0;
   }
 }
 
 @media screen and (max-width: 576px) {
   .CartItem {
     display: grid;
-    grid-template-columns: auto;
     grid-template-rows: auto auto auto;
+    grid-template-columns: auto;
 
     &InfoBlock {
       margin: 50px 0;
@@ -105,18 +105,18 @@
   }
 
   .Buttons {
-    padding: 0;
     margin-left: unset;
+    padding: 0;
   }
 }
 
 .ButtonRemove {
   width: 250px;
-  font-size: 16px;
-  letter-spacing: 1px;
-  font-weight: 700;
-  text-transform: uppercase;
   padding: 1rem 0.5rem;
   color: #ffffff;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   background-color: darkred;
 }

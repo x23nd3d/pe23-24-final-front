@@ -127,11 +127,7 @@ const AddToCartForm = ({
       onSubmit={(values) => addToCartHandler(product.currentItem, values)}
     >
       {({ values, handleSubmit }) => (
-        <Form
-          className={classes.form}
-          onSubmit={handleSubmit}
-          onBlur={() => console.log(product.currentItemPreview)}
-        >
+        <Form className={classes.form} onSubmit={handleSubmit}>
           <div className={classes.formBlockColor}>
             {data.stock ? (
               <span className={classes.dataPointer}>
