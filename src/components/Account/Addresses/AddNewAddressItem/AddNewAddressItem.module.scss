@@ -27,8 +27,6 @@ input::-webkit-inner-spin-button {
   font-family: "Open Sans", sans-serif;
 }
 
-
-
 .CheckoutPayments {
   display: block;
   margin-bottom: 75px;
@@ -58,7 +56,6 @@ input::-webkit-inner-spin-button {
   outline: none;
 }
 
-
 .CheckoutPay {
   margin-right: auto;
   margin-left: auto;
@@ -82,7 +79,7 @@ input::-webkit-inner-spin-button {
   left: 50%;
   margin-left: -4px;
   color: #aaa;
-  content: '/';
+  content: "/";
 }
 
 .CheckoutInputCVV {
@@ -142,7 +139,7 @@ input::-webkit-inner-spin-button {
   justify-content: flex-end;
 }
 
-.CheckoutHeader > p{
+.CheckoutHeader > p {
   margin-bottom: 25px;
   font-weight: 600;
   font-size: 18px;
@@ -151,8 +148,8 @@ input::-webkit-inner-spin-button {
 
 .CheckoutPayCancel {
   display: flex;
-  align-items:center;
-  justify-content:center;
+  align-items: center;
+  justify-content: center;
   padding: 10px 30px;
   color: #fff;
   font-weight: 400;
@@ -199,96 +196,108 @@ input::-webkit-inner-spin-button {
 }
 
 .Verification {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    z-index: 999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 650px;
-    height: 500px;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 17px 3px #0000006b;
-    transform: translate(-50%, -50%);
-  }
-  
-  .VerificationInfo {
-    margin-bottom: 50px;
-    text-align: center;
-  }
-  
-  .VerificationInfo > h2 {
-    margin-bottom: 18px;
-    font-size: 36px;
-  }
-  
-  .VerificationInfo > h4 {
-    margin-bottom: 50px;
-    font-size: 20px;
-  }
-  
-  .VerificationImg {
-    display: inline-block;
-    width: 100%;
-    max-width: 300px;
-    height: 100%;
-  }
-  
-  .VerificationInput {
-    position: relative;
-    align-items: center;
-    margin-bottom: 40px;
-  }
-  
-  .VerificationInput > p {
-    margin-right: 15px;
-    color: #000000ad;
-    font-size: 22px;
-  }
-  
-  .ConfirmationInput {
-    padding: 10px;
-    border: 1px solid #0000006b;
-    border-radius: 5px;
-  }
-  
-  .Inner {
-    // display: flex;
-    // flex-direction: column;
-  
-  }
-  
-  .Error {
-    position: absolute;
-    top: 43px;
-    left: calc(52% - 52.56px);
-    display: block;
-    color: red !important;
-  }
-  
-  .VerificationBtnManage {
-    display: flex;
-  }
-  
-  .VerificationPayCancel {
-    display: flex;
-    align-items:center;
-    justify-content:center;
-    margin-right: 20px;
-    padding: 10px 30px;
-    color: #fff;
-    font-weight: 400;
-    font-size: 14px;
-    font-family: "Open Sans", sans-serif;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    background-color: #980000;
-    border: none;
-  }
-  .VerText{
-      margin-bottom: 20px;
-      font-size: 35px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 650px;
+  height: 500px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 17px 3px #0000006b;
+  transform: translate(-50%, -50%);
 
+  @media screen and (max-width: 768px) {
+    width: 80%;
   }
+  @media screen and (max-width: 576px) {
+    &BtnManage {
+      flex-direction: column-reverse;
+
+      & > * {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+.VerificationInfo {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.VerificationInfo > h2 {
+  margin-bottom: 18px;
+  font-size: 36px;
+}
+
+.VerificationInfo > h4 {
+  margin-bottom: 50px;
+  font-size: 20px;
+}
+
+.VerificationImg {
+  display: inline-block;
+  width: 100%;
+  max-width: 300px;
+  height: 100%;
+}
+
+.VerificationInput {
+  position: relative;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.VerificationInput > p {
+  margin-right: 15px;
+  color: #000000ad;
+  font-size: 22px;
+}
+
+.ConfirmationInput {
+  padding: 10px;
+  border: 1px solid #0000006b;
+  border-radius: 5px;
+}
+
+.Inner {
+  // display: flex;
+  // flex-direction: column;
+}
+
+.Error {
+  position: absolute;
+  top: 43px;
+  left: calc(52% - 52.56px);
+  display: block;
+  color: red !important;
+}
+
+.VerificationBtnManage {
+  display: flex;
+}
+
+.VerificationPayCancel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  padding: 10px 30px;
+  color: #fff;
+  font-weight: 400;
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background-color: #980000;
+  border: none;
+}
+.VerText {
+  margin-bottom: 20px;
+  font-size: 35px;
+}

@@ -2,17 +2,25 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-top: 100px;
+  line-height: 1.5;
   @media screen and (max-width: 576px) {
     margin: 0;
-   }
+  }
 
   &Delivery {
     padding: 50px;
     border-right: 1px solid #000000;
+
+    @media screen and (max-width: 576px) {
+      padding: 2rem 0;
+    }
   }
 
   &Billing {
     padding: 50px;
+    @media screen and (max-width: 576px) {
+      padding: 2rem 0;
+    }
   }
 
   .Button {
@@ -28,7 +36,7 @@
     background-color: #000000;
     @media screen and (max-width: 576px) {
       width: 100%;
-     }
+    }
   }
 }
 
@@ -52,7 +60,6 @@
   display: block;
 }
 
-
 .ItemsWrapper {
   display: flex;
   align-items: center;
@@ -63,33 +70,43 @@
   border-style: dashed;
   border-radius: 5px;
   box-shadow: -2px 2px 3px 1px #00000040;
+
+  @media screen and (max-width: 576px) {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .DeleteAddressItem {
-    display: flex;
-    align-items:center;
-    justify-content:center;
-    padding: 10px 30px;
-    color: #fff;
-    font-weight: 400;
-    font-size: 14px;
-    font-family: "Open Sans", sans-serif;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    background-color: #980000;
-    border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 30px;
+  color: #fff;
+  font-weight: 400;
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background-color: #980000;
+  border: none;
+
+  @media screen and (max-width: 576px) {
+    margin-top: 1.5rem;
+  }
 }
 
 .Inner > span {
   margin: 5px 0 !important;
   font-size: 18px;
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   letter-spacing: 1px;
 }
 
 .InnerCard {
   display: flex;
   flex-direction: column;
+  margin-right: 2rem;
 }
 
 .InnerCard > span {
