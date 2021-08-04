@@ -1,12 +1,23 @@
 .Sidebar {
-  font-family: "Open Sans", sans-serif;
-  position: sticky;
+  overflow-y: scroll;
+  top: 0;
   bottom: 0;
-  background-color: #000;
+  z-index: 4;
   width: 250px;
   min-width: 250px;
-  color: #fff;
   padding: 50px;
+  color: #fff;
+  font-family: "Open Sans", sans-serif;
+  background-color: #000;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media screen and (max-width: 1150px) {
+    width: auto;
+    padding-left: 10px;
+  }
 }
 
 .SidebarContent {
@@ -15,10 +26,10 @@
 
 .Routes {
   display: flex;
-  font-family: "Josefin Sans", sans-serif;
+  margin-bottom: 45px;
   color: #c4c4c4;
   font-weight: 300;
-  margin-bottom: 45px;
+  font-family: "Josefin Sans", sans-serif;
 }
 
 .Routes > span {
@@ -30,31 +41,31 @@
 }
 
 .ListItem {
+  width: fit-content;
   margin-bottom: 20px;
   list-style: none;
-  width: fit-content;
 
   &Active {
     position: relative;
 
     &:before {
       position: absolute;
+      bottom: -5px;
+      left: 0;
       width: 100%;
       height: 1px;
       background-color: #fff;
-      bottom: -5px;
-      left: 0;
       content: "";
     }
   }
 }
 
 .CategoryTitle {
+  margin-bottom: 23px;
+  font-weight: 600;
   font-size: 18px;
   font-family: "Josefin Sans", sans-serif;
-  font-weight: 600;
   text-transform: uppercase;
-  margin-bottom: 23px;
 }
 
 .CategoryAll {
@@ -67,24 +78,24 @@
 
     &:before {
       position: absolute;
+      bottom: -5px;
+      left: 0;
       width: 100%;
       height: 1px;
       background-color: #fff;
-      bottom: -5px;
-      left: 0;
       content: "";
     }
   }
 }
 
 .Button {
+  width: 100%;
+  padding: 10px 25px;
   color: #fff;
   background-color: #000;
   border: 1px solid #fff;
-  padding: 10px 25px;
-  transition: all 0.25s;
   cursor: pointer;
-  width: 100%;
+  transition: all 0.25s;
 
   &Warning {
     border-color: #ff0000;
@@ -95,5 +106,16 @@
   }
   &s {
     margin-top: 50px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .Sidebar {
+    position: absolute;
+    transform: translateX(-100%);
+
+    &Active {
+      transform: translateX(0);
+    }
   }
 }

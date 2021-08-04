@@ -104,7 +104,10 @@ const Verification = ({
       >
         <div className={classes.VerificationInfo}>
           <h2>Please confirm your payment</h2>
-          <h4>Check your email for further clarifications.</h4>
+          <h4>
+            The code was sent to your email. Please check it and type the code
+            into the field.
+          </h4>
           <img
             src={verificationImg}
             className={classes.VerificationImg}

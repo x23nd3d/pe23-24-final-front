@@ -285,6 +285,7 @@ const Cart = ({
                   )}
                 </>
               ) : null}
+              <span className={classes.Hr} />
               {auth.token && cart.items.length ? (
                 <>
                   <Delivery />{" "}

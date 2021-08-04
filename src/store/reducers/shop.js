@@ -12,6 +12,7 @@ import {
   PAGINATION_SET_CONFIG,
   PAGINATION_ADD_MORE_ITEMS,
   PAGINATION_ADD_MORE_ITEMS_START,
+  CHECKOUT_SUCCESS,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -30,14 +31,12 @@ const initialState = {
 const transformPreviewItems = (array) => {
   if (!Array.isArray(array)) return;
   const newItems = array.map((item) => {
-    console.log("itemitemitem", item);
     if (Array.isArray(item.color) || Array.isArray(item.size)) {
       const newObjects = {
         ...item,
         color: item.color[0],
         size: item.size[0],
       };
-      console.log("newObjectsnewObjectsnewObjects", newObjects);
       return newObjects;
     }
 
@@ -110,6 +109,13 @@ const handlers = {
     step,
     leftCount,
     paginationLoading: false,
+  }),
+  [CHECKOUT_SUCCESS]: (state) => ({
+    ...state,
+    currentItems: [],
+    currentPreviewItems: [],
+    currentRoute: "/shop/?category=all&type=all",
+    filteredItems: [],
   }),
   DEFAULT: (state) => state,
 };

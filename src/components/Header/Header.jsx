@@ -5,7 +5,7 @@ import classes from "./Header.module.scss";
 
 const Header = (props) => (
   <>
-    <header className={classes.Header}>
+    <header data-testid="HeaderTestId" className={classes.Header}>
       <div className={classNames(classes.HeaderInner, classes.Container)}>
         <Navbar />
       </div>

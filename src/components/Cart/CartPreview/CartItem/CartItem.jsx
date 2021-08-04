@@ -77,6 +77,22 @@ const CartItem = ({
     return itemInCart.photo[itemInCart.color][0];
   };
 
+  const setItemCountBlur = (current, value) => {
+    if (value > current.left) {
+      pushNotification(
+        "warning",
+        "Seems we do not have more items in stock",
+        "We are sorry",
+        {
+          toastClass: "toastr-c-warning",
+        }
+      );
+      return setItemCount(current, value);
+    }
+
+    return setItemCount(current, value);
+  };
+
   return (
     <div className={classes.CartItem} key={item.title}>
       <div className={classes.CartItemImage}>
@@ -99,7 +115,7 @@ const CartItem = ({
             <input
               className={classes.CartCountDetails}
               defaultValue={item.count === 0 ? 1 : item.count}
-              onBlur={(e) => setItemCount(item, Number(e.target.value))}
+              onBlur={(e) => setItemCountBlur(item, Number(e.target.value))}
             />
             <button
               type="button"

@@ -34,7 +34,7 @@ const Wishlist = ({
 
   const renderWishListItems = () =>
     wishlist.map((item) => (
-      <ul className={classes.MyWishlistItems}>
+      <ul key={item + Math.random() * 20} className={classes.MyWishlistItems}>
         <li className={classes.CartItem}>
           <div className={classes.ImageBox}>
             <img
@@ -54,13 +54,15 @@ const Wishlist = ({
             <p className={classes.CartItemInfo}>Price: {item.price}</p>
           </div>
           <div className={classes.Buttons}>
-            <button
-              className={classes.Button}
-              type="button"
-              onClick={() => addToCartHandler(item)}
-            >
-              Add to cart
-            </button>
+            {item.stock ? (
+              <button
+                className={classes.Button}
+                type="button"
+                onClick={() => addToCartHandler(item)}
+              >
+                Add to cart
+              </button>
+            ) : null}
             <button
               className={classnames(classes.Button, classes.ButtonRemove)}
               type="button"

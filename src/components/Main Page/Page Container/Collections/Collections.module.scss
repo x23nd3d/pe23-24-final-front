@@ -1,87 +1,55 @@
 @import "../../../../styles/mixins";
 
-.collections {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    align-content: space-between;
+.Collections {
+  width: 100%;
+
+  & div {
     width: 100%;
-    height: 980px;
-    padding-top: 68px;
+  }
+}
 
-    @media (max-width: 740px) {
-        height: unset;
-        align-content: unset;
+.CollectionItems {
+  display: grid;
+  grid-gap: 50px;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
 
-        &:not(:first-child) {
-            margin-top: 20px;
-        }
-    }
-
-    @media (min-width: 741px) and (max-width: 1080px) {
-        height: unset;
-        align-content: unset;
-
-        &:not(:first-child) {
-            margin-top: 20px;
-        }
-    }
-    & div {width: 100%;}
+  @media screen and (max-width: 768px) {
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
+  }
 }
 
 .group {
-    display: flex;
-    align-items: flex-end;
-    @include bg-image-pos;
-    width: 50%;
-    height: 480px;
+  display: flex;
+  align-items: flex-end;
+  @include bg-image-pos;
 
-    &:hover {
-        cursor: pointer;
-    }
-
-
-    @media (max-width: 740px) {
-        width: 320px;
-        height: 300px;
-
-        &:not(:first-child) {
-            margin-top: 20px;
-        }
-    }
-
-    @media (min-width: 741px) and (max-width: 1080px) {
-        width: 678px;
-        height: 480px;
-
-        &:not(:first-child) {
-            margin-top: 20px;
-        }
-    }
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .New {
+  grid-area: 1 / 1 / 3 / 2;
+  min-height: 980px;
+  background-image: url("./img/new.jpg");
 
-    @media (max-width: 740px) {
-        width: 320px;
-        height: 480px;
-    }
-
-    @media (min-width: 741px) and (max-width: 1080px) {
-        width: 622px;
-        height: 980px;
-    }
-    width: 45%;
-    height: 980px;
-
-    background-image: url("./img/new.jpg");
+  @media screen and (max-width: 768px) {
+    grid-area: 1 / 1 / 2 / 2;
+    min-height: 360px;
+    background-position: center 30%;
+  }
 }
 .Recommended {
-    background-image: url("./img/recommended1.png");
+  background-image: url("./img/recommended1.png");
+  @media screen and (max-width: 768px) {
+    grid-area: 2 / 1 / 3 / 2;
+  }
 }
 .Popular {
-    background-image: url("./img/popular1.jpg");
+  background-image: url("./img/popular1.jpg");
+  @media screen and (max-width: 768px) {
+    grid-area: 3 / 1 / 4 / 2;
+  }
 }

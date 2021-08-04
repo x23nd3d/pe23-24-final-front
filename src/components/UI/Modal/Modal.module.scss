@@ -1,36 +1,36 @@
 .Modal{
-    justify-content: center;
-    align-items: center;
-    display:flex;
     position:fixed;
     top:0;
     left:0;
-    background-color:rgba(0,0,0, 0.1);
+    display:flex;
+    align-items: center;
+    justify-content: center;
     width:100%;
     height: 100%;
+    background-color:rgba(0,0,0, 0.1);
 }
 .ModalInner{
-    justify-content: space-between;
     display:flex;
     flex-direction: column;
+    justify-content: space-between;
     width:300px;
-    background-color:#e9e9e9;
     color: #000;
+    background-color:#e9e9e9;
   
 }
 .CloseSvg{
-    fill:#fff;
     width: 20px;
     height: 20px;
     cursor: pointer;
+    fill:#fff;
     
 }
 
 .ModalHeader{
-    padding:20px;
     display: flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
+    padding:20px;
     background-color:#fff;
    
 }

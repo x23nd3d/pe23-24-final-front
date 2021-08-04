@@ -1,12 +1,12 @@
 .Footer {
   display: flex;
   justify-content: space-around;
+  padding: 5rem 0;
   // margin-bottom: 122px;
   color: #fff;
   font-weight: 400;
   font-size: 18px;
   font-family: "Open Sans", sans-serif;
-  padding: 5rem 0;
 
   &Column {
     & h3 {
@@ -15,20 +15,27 @@
       font-family: "Josefin Sans", sans-serif;
       text-transform: uppercase;
       @media screen and (max-width: 576px) {
-        font-size: 11px;
         margin-bottom: 0;
+        font-size: 14px;
       }
+    }
+    @media screen and (max-width: 768px) {
+      margin-bottom: 5rem;
+      text-align: center;
     }
   }
   .ArrowDownColumnContainer {
     @media screen and (max-width: 576px) {
       display: flex;
+      width: fit-content;
+      margin: 0 auto;
+      margin-bottom: 2rem;
     }
   }
   .ArrowDown {
     display: none;
     @media screen and (max-width: 576px) {
-      display: block;
+      display: none;
       padding-left: 5px;
     }
   }
@@ -36,7 +43,8 @@
   &ListItem {
     padding-bottom: 19px;
     @media screen and (max-width: 576px) {
-      display: none;
+      // display: none;
+      font-size: 12px;
     }
   }
 
@@ -46,6 +54,13 @@
 
   &LinkActive {
     color: antiquewhite;
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 0;
+    text-align: center;
   }
 
   @media screen and (max-width: 576px) {

@@ -4,15 +4,18 @@ import classes from "../../Forms/Add to Cart/AddToCartForm.module.scss";
 import AddToWishlistIcon from "../SVGIconsComponents/AddToWishlistIcon";
 import AlreadyInWishlistIcon from "../SVGIconsComponents/AlreadyInWishlistIcon";
 
-const AddToWishList = ({ isAdded, item, toggle, isAuth, history }) => {
+const AddToWishList = ({ onWish, isAdded, item, toggle, isAuth, history }) => {
   if (isAuth) {
-    console.log("ISADDED", isAdded);
+    const onClickHandler = () => {
+      onWish(item);
+      toggle(item);
+    };
     return (
       <button
         data-testid="AddToWishListTestId"
         className={classes.toWishlist}
         type="button"
-        onClick={() => toggle(item)}
+        onClick={onClickHandler}
       >
         {isAdded ? <AlreadyInWishlistIcon /> : <AddToWishlistIcon />}
       </button>
@@ -20,6 +23,7 @@ const AddToWishList = ({ isAdded, item, toggle, isAuth, history }) => {
   }
   return (
     <button
+      data-testid="AddToWishListTestId"
       className={classes.toWishlist}
       type="button"
       onClick={() => history.push("/login")}
@@ -40,6 +44,7 @@ AddToWishList.propTypes = {
   item: PropTypes.instanceOf(Object).isRequired,
   history: PropTypes.instanceOf(Object).isRequired,
   toggle: PropTypes.func.isRequired,
+  onWish: PropTypes.func.isRequired,
 };
 
 export default AddToWishList;

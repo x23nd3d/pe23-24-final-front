@@ -4,10 +4,10 @@
 }
 
 .content {
-  padding: 50px 0 100px 0;
-  width: 100%;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 50px 0 100px 0;
   background-color: #fff;
   & img {
     max-width: 500px;
@@ -34,22 +34,22 @@
 
   & p {
     font-size: 20px;
-    text-align: center;
     line-height: 1.2em;
+    text-align: center;
   }
 
 }
 
 .backBt {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   width: 240px;
-  margin-top: 40px;
   height: 60px;
-  background-color: #000;
+  margin-top: 40px;
   color: #fff;
   font-size: 22px;
-  cursor: pointer;
+  background-color: #000;
   border-radius: 3px;
+  cursor: pointer;
 }

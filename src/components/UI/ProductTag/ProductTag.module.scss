@@ -1,23 +1,9 @@
 .productTag {
   display: block;
-  font-size: 12px;
-  padding: 6px;
   margin: 0 3px;
-  box-shadow: 0 0 5px 0 #00000059;
-  border-radius: 3px;
 }
 
-.new {
-  background: #b30808;
-  color: #fff;
-}
-
-.recommended {
-  background: #9d00ff;
-  color: #fff;
-}
-
-.popular {
-  background: #00ff43;
-  color: #000;
+.Tag {
+  width: 30px;
+  height: 30px;
 }

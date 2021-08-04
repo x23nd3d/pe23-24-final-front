@@ -7,6 +7,7 @@ import {
   RESET_FILTERS,
   SET_PRICE_RANGE,
   RECEIVE_CURRENT_ROUTE_START,
+  SORT_BY_NAME,
 } from "../actions/actionTypes";
 
 const INITIAL_STATE = {
@@ -37,9 +38,20 @@ const INITIAL_STATE = {
     max: 0,
   },
   reset: false,
+  sortyByName: {
+    sort: false,
+    condition: false,
+  },
+  sortByPrice: {
+    sort: false,
+    condition: false,
+  },
 };
 
 const handlers = {
+  [SORT_BY_NAME]: (state, action) => ({
+    ...state,
+  }),
   [CHOSEN_CATEGORY]: (state, action) => ({
     ...state,
     chosenCategory: action.payload,

@@ -9,9 +9,10 @@ import sidebarReducer from "./sidebar";
 import productReducer from "./product";
 import cartReducer from "./cart";
 import visitedProductsReducer from "./visitedProducts.reducer";
+import navbarReducer from "./navbar";
 
 const persistConfig = {
-  key: "store_v2",
+  key: "store_v4",
   storage,
   stateReconciler: autoMergeLevel2,
   whitelist: ["auth", "user", "shop", "sidebar", "product", "cart", "visited"],
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   product: productReducer,
   cart: cartReducer,
   visited: visitedProductsReducer,
+  navbar: navbarReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);

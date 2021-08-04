@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import classes from "./History.module.scss";
 import { getAllOrdersHandler } from "../../../store/actions/user";
 import getHumanLookDate from "../../../utils/history";
-import { handleItemPreviewParams } from "../../../store/actions/shop";
 
 const History = ({ getAllOrders, user }) => {
   const [length] = useState(false);
@@ -13,7 +12,7 @@ const History = ({ getAllOrders, user }) => {
     getAllOrders();
   }, [getAllOrders]);
 
-  const { orders } = user;
+  const { orders } = user.userId;
   const totalSum = () => {
     let total = 0;
 
@@ -63,7 +62,7 @@ const History = ({ getAllOrders, user }) => {
         </div>
         <div className={classes.CartItemFooter}>
           <div className={classes.Delivery}>
-            {item.cart.deliveryPay && (
+            {item.cart.deliveryPay !== 0 && (
               <span className={classes.Delivery}>
                 DELIVERY: ${item.cart.deliveryPay}
               </span>

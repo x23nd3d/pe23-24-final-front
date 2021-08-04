@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes, { instanceOf } from "prop-types";
+import PropTypes from "prop-types";
 import classNames from "classnames";
 import { NavLink, withRouter } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
@@ -46,7 +46,6 @@ NavigationListRoutes.defaultProps = {
   activeClass: "",
   listClass: "",
   linkClass: "",
-  id: instanceOf(Number),
   active: false,
   dropdownItems: {},
   dropdownToggle: (f) => f,
@@ -60,7 +59,7 @@ NavigationListRoutes.propTypes = {
   listClass: PropTypes.string,
   linkClass: PropTypes.string,
   active: PropTypes.bool,
-  id: PropTypes.number,
+  id: PropTypes.number.isRequired,
   dropdownToggle: PropTypes.func,
   dropdownOff: PropTypes.func,
   dropdownItems: PropTypes.instanceOf(Object),

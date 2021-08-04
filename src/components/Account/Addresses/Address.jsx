@@ -1,13 +1,23 @@
-import React, {useState} from "react";
+import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import classes from "./Address.module.scss";
-import { deleteAddressBookHandler } from "../../../store/actions/user";
+import {
+  deleteAddressBookHandler,
+  sendAddressRequestChange,
+  sendCardRequestChange,
+  toggleAddressModalPreview,
+} from "../../../store/actions/user";
 import AddNewAddressItem from "./AddNewAddressItem/AddNewAddressItem";
 
-const Address = ({ user, deleteAddressBook }) => {
-  const [modalContent, setModalContent] = useState(null)
+const Address = ({
+  user,
+  deleteAddressBook,
+  toggleAddressModal,
+  sendCardRequest,
+  sendAddressRequest,
+}) => {
   const renderDeliveryAddresses = () =>
     user.userId.savedDeliveryMethods.map((address) => (
       <div
@@ -24,8 +34,7 @@ const Address = ({ user, deleteAddressBook }) => {
             {address.deliveryAddress ? (
               <>
                 <span className={classes.AddressBold}>Address:</span>
-                {address.deliveryAddress[0].toUpperCase() +
-                  address.deliveryAddress.slice(1)}
+                {address.deliveryAddress}
               </>
             ) : (
               <>
@@ -85,7 +94,11 @@ const Address = ({ user, deleteAddressBook }) => {
             Address limit exceeded, please delete some of the saved addresses.
           </p>
         ) : (
-          <button onClick={() => setModalContent("AddNewAddress")} className={classes.Button} type="button">
+          <button
+            onClick={() => toggleAddressModal("AddNewAddress")}
+            className={classes.Button}
+            type="button"
+          >
             Add New Address
           </button>
         )}
@@ -98,12 +111,23 @@ const Address = ({ user, deleteAddressBook }) => {
             Credit cards limit exceeded, please delete some of the saved cards.
           </p>
         ) : (
-          <button onClick={() => setModalContent("AddNewCard")} className={classes.Button} type="button">
+          <button
+            onClick={() => toggleAddressModal("AddNewCard")}
+            className={classes.Button}
+            type="button"
+          >
             Add New Card
           </button>
         )}
       </div>
-     {modalContent && <AddNewAddressItem setModalContent={setModalContent} modalContent={modalContent}/>}
+      {user.isModalActive && (
+        <AddNewAddressItem
+          setModalContent={toggleAddressModal}
+          modalContent={user.isModalActive}
+          sendAddressRequest={sendAddressRequest}
+          sendCardRequest={sendCardRequest}
+        />
+      )}
     </div>
   );
 };
@@ -111,6 +135,9 @@ const Address = ({ user, deleteAddressBook }) => {
 Address.propTypes = {
   user: PropTypes.instanceOf(Object).isRequired,
   deleteAddressBook: PropTypes.func.isRequired,
+  toggleAddressModal: PropTypes.func.isRequired,
+  sendCardRequest: PropTypes.func.isRequired,
+  sendAddressRequest: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
@@ -122,6 +149,9 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     deleteAddressBook: (value) => dispatch(deleteAddressBookHandler(value)),
+    toggleAddressModal: (bool) => dispatch(toggleAddressModalPreview(bool)),
+    sendCardRequest: (obj) => dispatch(sendCardRequestChange(obj)),
+    sendAddressRequest: (obj) => dispatch(sendAddressRequestChange(obj)),
   };
 }
 

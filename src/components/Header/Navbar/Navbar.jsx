@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
@@ -7,14 +7,34 @@ import ListRoute from "../../UI/ListRoute/ListRoute";
 import NavigationListRoutes from "../../UI/NavigationListRoutes/NavigationListRoutes";
 import Backdrop from "../../UI/Backdrop/Backdrop";
 import classes from "./Navbar.module.scss";
-import Search from "./Search/Search";
 import AccountRoutes from "../../Account/AccountRoutes/AccountRoutes";
 import { openCart } from "../../../store/actions/cart";
+import burgerOn from "../../../img/Navbar/menu.svg";
+import burgerOff from "../../../img/Navbar/close.svg";
+import sidebarSwitcher from "../../../store/actions/navbar";
 
-const Nav = ({ isAuthenticated, user, history, showCart, cart }) => {
+const Nav = ({
+  isAuthenticated,
+  user,
+  history,
+  showCart,
+  cart,
+  navbar,
+  sidebarSwitchHandler,
+}) => {
   const [man, setMan] = useState(false);
   const [accountMenu, setAccountMenu] = useState(false);
   const [activeNav, setActiveNav] = useState({});
+  const [windowWidth, setWindowWidth] = useState(null);
+
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+    window.innerWidth < 992 && sidebarSwitchHandler();
+  }, [sidebarSwitchHandler]);
+
+  useEffect(() => {
+    window.addEventListener("resize", () => setWindowWidth(window.innerWidth));
+  }, []);
 
   const toggleDropdown = (e, id) => {
     if (accountMenu) {
@@ -34,6 +54,11 @@ const Nav = ({ isAuthenticated, user, history, showCart, cart }) => {
       setMan(false);
     }
     setAccountMenu((prev) => !prev);
+  };
+
+  const closeAll = () => {
+    setMan(false);
+    setAccountMenu(false);
   };
 
   const setBackdrop = () => {
@@ -108,29 +133,30 @@ const Nav = ({ isAuthenticated, user, history, showCart, cart }) => {
 
   return (
     <>
-      <nav className={classes.Nav}>
+      <nav data-testid="NavbarTestId" className={classes.Nav}>
         {man || accountMenu ? <Backdrop toggle={setBackdrop} /> : null}
         <ul className={classNames(classes.NavItems, classes.NavShop)}>
           {renderNavItems(navItems)}
-          <Link
-            onClick={() => setMan(false)}
-            className={classes.NavItem}
-            to="/shop/?category=all&type=all"
-          >
-            Shop now
-          </Link>
         </ul>
         <Link className={classes.Logo} to="/">
           Originalité
         </Link>
         <ul className={classNames(classes.NavItems, classes.NavTools)}>
-          <Search />
+          <li>
+            <Link
+              onClick={closeAll}
+              className={classNames(classes.NavItem, classes.NavItemShopNow)}
+              to="/shop/?category=all&type=all"
+            >
+              Shop now
+            </Link>
+          </li>
           {isAuthenticated ? (
             <AccountRoutes
               to={history.location.search || history.location.pathname}
               active={accountMenu}
               content={user.name}
-              listClass={classNames(classes.NavItem, classes.NavItemMyAccount)}
+              linkClass={classNames(classes.NavItem, classes.NavItemMyAccount)}
               fastAccessList={accountItems}
               fastAccessOff={setAccountMenu}
               toggleAccountItems={toggleFastAccess}
@@ -139,20 +165,38 @@ const Nav = ({ isAuthenticated, user, history, showCart, cart }) => {
             <ListRoute
               route="/login"
               content="Sign In"
-              listClass={classNames(classes.NavItem, classes.NavItemMyAccount)}
+              linkClass={classNames(classes.NavItem, classes.NavItemMyAccount)}
             />
           )}
-          <ListRoute
-            route={history.location.search || history.location.pathname}
-            content="Cart"
-            onClick={showCartHandler}
-            listClass={classNames(classes.NavItem, classes.NavItemShoppingBag)}
-          />
-          {cart.items.length > 0 ? (
-            <div className={classes.NavCartActive}>
-              <p>{cart.items.length}</p>
-            </div>
-          ) : null}
+          <div className={classes.CartBox}>
+            {" "}
+            <ListRoute
+              route={history.location.search || history.location.pathname}
+              content="Cart"
+              onClick={showCartHandler}
+              linkClass={classNames(
+                classes.NavItem,
+                classes.NavItemShoppingBag
+              )}
+            />
+            {cart.items.length > 0 ? (
+              <div className={classes.NavCartActive}>
+                <p>{cart.items.length}</p>
+              </div>
+            ) : null}
+          </div>
+
+          {windowWidth < 992 && history.location.pathname === "/shop/" && (
+            <li className={classes.BurgerMenu}>
+              <button type="button" onClick={() => sidebarSwitchHandler()}>
+                <img
+                  className={classes.BurgerIcon}
+                  src={navbar.burgerActive ? burgerOff : burgerOn}
+                  alt="burger icon"
+                />
+              </button>
+            </li>
+          )}
         </ul>
       </nav>
     </>
@@ -162,15 +206,19 @@ const Nav = ({ isAuthenticated, user, history, showCart, cart }) => {
 Nav.defaultProps = {
   isAuthenticated: null,
   showCart: (f) => f,
+  sidebarSwitchHandler: (f) => f,
   user: {},
   cart: {},
   history: {},
+  navbar: {},
 };
 
 Nav.propTypes = {
   isAuthenticated: PropTypes.bool,
   showCart: PropTypes.func,
+  sidebarSwitchHandler: PropTypes.func,
   user: PropTypes.instanceOf(Object),
+  navbar: PropTypes.instanceOf(Object),
   cart: PropTypes.instanceOf(Object),
   history: PropTypes.instanceOf(Object),
 };
@@ -180,12 +228,15 @@ function mapStateToProps(state) {
     isAuthenticated: !!state.auth.token,
     user: state.user.userId,
     cart: state.cart,
+    navbar: state.navbar,
+    history: state.history,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     showCart: () => dispatch(openCart()),
+    sidebarSwitchHandler: () => dispatch(sidebarSwitcher()),
   };
 }
 

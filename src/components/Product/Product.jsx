@@ -4,7 +4,11 @@ import { connect } from "react-redux";
 import classNames from "classnames";
 import AddToCartForm from "../Forms/Add to Cart/AddToCartForm";
 import SlideShow from "./SlideShow/SlideShow";
-import { colorAction, photoAction } from "../../store/actions/product";
+import {
+  colorAction,
+  photoAction,
+  toggleCurrentPreviewItemHandler,
+} from "../../store/actions/product";
 import VisitedProducts from "../VisitedProducts/VisitedProducts";
 import Available from "../UI/SVGIconsComponents/Available";
 import Unavailable from "../UI/SVGIconsComponents/Unavailable";
@@ -30,7 +34,13 @@ import {
   isStock,
 } from "./Product.module.scss";
 
-const Product = ({ data, productStore, dispatchColor, dispatchPhoto }) => {
+const Product = ({
+  data,
+  productStore,
+  dispatchColor,
+  dispatchPhoto,
+  toggleCurrentPreviewItem,
+}) => {
   const store = { productStore, dispatchColor };
 
   const {
@@ -47,7 +57,7 @@ const Product = ({ data, productStore, dispatchColor, dispatchPhoto }) => {
 
   useEffect(() => {
     dispatchPhoto(photo[productStore.color]);
-  }, [productStore.color]);
+  }, [productStore.color, dispatchPhoto, photo]);
 
   return (
     <>
@@ -60,18 +70,12 @@ const Product = ({ data, productStore, dispatchColor, dispatchPhoto }) => {
                 <div className={NameBox}>
                   <h2 className={classNames(Name)}>{name}</h2>
                   {productStore.currentItem.new && (
-                    <div
-                      style={{ background: "#b30808", color: "#fff" }}
-                      className={collectionTags}
-                    >
+                    <div className={collectionTags}>
                       <ProductTag item={productStore.currentItem} tag="New" />
                     </div>
                   )}
                   {productStore.currentItem.recommended && (
-                    <div
-                      style={{ background: "#9d00ff", color: "#fff" }}
-                      className={collectionTags}
-                    >
+                    <div className={collectionTags}>
                       <ProductTag
                         item={productStore.currentItem}
                         tag="Recommended"
@@ -79,13 +83,18 @@ const Product = ({ data, productStore, dispatchColor, dispatchPhoto }) => {
                     </div>
                   )}
                   {productStore.currentItem.ordered >= 120 && (
-                    <div
-                      style={{ background: "#00ff43", color: "#000" }}
-                      className={collectionTags}
-                    >
+                    <div className={collectionTags}>
                       <ProductTag
                         item={productStore.currentItem}
                         tag="Popular"
+                      />
+                    </div>
+                  )}
+                  {!productStore.currentItem.stock && (
+                    <div className={collectionTags}>
+                      <ProductTag
+                        item={productStore.currentItem}
+                        tag="not available"
                       />
                     </div>
                   )}
@@ -98,7 +107,11 @@ const Product = ({ data, productStore, dispatchColor, dispatchPhoto }) => {
                 </span>
                 <div className={isStock}>
                   <span>Available</span>
-                  {1 > 0 ? <Available /> : <Unavailable />}
+                  {productStore.currentItem.stock ? (
+                    <Available />
+                  ) : (
+                    <Unavailable />
+                  )}
                 </div>
               </div>
             </li>
@@ -147,6 +160,7 @@ Product.propTypes = {
   productStore: PropTypes.instanceOf(Object).isRequired,
   dispatchPhoto: PropTypes.func.isRequired,
   dispatchColor: PropTypes.func.isRequired,
+  toggleCurrentPreviewItem: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
@@ -157,6 +171,8 @@ function mapDispatchToProps(dispatch) {
   return {
     dispatchColor: (value) => dispatch(colorAction(value)),
     dispatchPhoto: (value) => dispatch(photoAction(value)),
+    toggleCurrentPreviewItem: (item) =>
+      dispatch(toggleCurrentPreviewItemHandler(item)),
   };
 }
 

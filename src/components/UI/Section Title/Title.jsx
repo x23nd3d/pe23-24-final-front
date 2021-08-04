@@ -1,13 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { title, pos } from "./Title.module.scss";
+import { title } from "./Title.module.scss";
 
 const Title = ({ text, position }) => (
-  <header
-    data-testid="TitleTestId"
-    className={classNames(title, position && pos)}
-  >
+  <header data-testid="TitleTestId" className={classNames(title)}>
     <p>{text}</p>
   </header>
 );

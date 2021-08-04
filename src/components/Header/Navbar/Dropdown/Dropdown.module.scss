@@ -1,54 +1,68 @@
 @import "../../../../styles/mixins";
 
 .dropdown {
-    position: absolute;
-    top: 90px;
-    //left: 50px;
-    z-index: 100;
-    width: 350px;
-    padding: 50px 0;
-
-    background-color: #000;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  z-index: 200;
+  width: 100vw;
+  padding: 50px 0;
+  background-color: #000;
 }
 
 .container {
-    @include container;
+  padding: 0 70px;
+  @media screen and (max-width: 1150px) {
+    padding: 0 40px;
+  }
+  @media screen and (max-width: 578px) {
+    padding: 0 30px;
+  }
 }
 
 .title {
-    margin-bottom: 20px;
-    font-size: 20px;
-    font-family: "Open Sans", sans-serif;
-    text-transform: uppercase;
+  margin-bottom: 50px;
+  font-size: 20px;
+  font-family: "Open Sans", sans-serif;
+  text-transform: uppercase;
 }
 
 .list {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .listItem {
-    margin-top: 40px;
+  // margin-top: 40px;
+  a {
+    display: block;
+    padding: 20px 0;
+
+    &:hover {
+      color: #ffff00;
+      background: linear-gradient(90deg, #000000 70%, #ffff0050 100%);
+    }
+  }
 }
 
 .viewAll {
-    margin-top: 75px;
+  margin-top: 75px;
 }
 
 @media screen and (max-width: 992px) {
-    .dropdown {
-        top: 120px;
-    }
-    .list {
-        width: 100%;
-    }
+  .dropdown {
+    // top: 5vh;
+  }
+  .list {
+    width: 100%;
+  }
 }
 
-
 @media screen and (max-width: 480px) {
-    .list {
-        width: 100%;
-        height: auto;
-    }
+  .list {
+    width: 100%;
+    height: auto;
+  }
 }

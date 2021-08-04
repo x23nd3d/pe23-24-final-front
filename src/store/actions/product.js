@@ -5,6 +5,7 @@ import {
   SELECT_CURRENT_ITEM,
   SELECT_CURRENT_ITEM_START,
   SEND_PRODUCT_REQUEST_ERROR,
+  TOGGLE_ITEM_PREVIEW,
 } from "./actionTypes";
 import axios from "../../axios/axios-product";
 
@@ -46,18 +47,18 @@ export const setItemStart = () => ({
 });
 
 export const visitedProductsAction = (data) => (dispatch, getState) => {
-  const {visited} = getState().product;
+  const { visited } = getState().product;
   visited.length === 4 && visited.shift();
 
   const set = new Set();
-  visited[0] && visited.forEach(o => set.add(o));
+  visited[0] && visited.forEach((o) => set.add(o));
   set.add(data);
 
   const [...unique] = set;
 
   dispatch({
     type: VISITED_PRODUCTS,
-    payload: unique
+    payload: unique,
   });
 };
 
@@ -78,4 +79,21 @@ export const sendProductRequest = (id) => async (dispatch) => {
 export const sendProductRequestError = (e) => ({
   type: SEND_PRODUCT_REQUEST_ERROR,
   e,
+});
+
+export const toggleCurrentPreviewItemHandler =
+  (item) => (dispatch, getState) => {
+    const { currentItemPreview } = getState().product;
+
+    if (JSON.stringify(item) === JSON.stringify(currentItemPreview)) {
+      // we have the same object, return
+      return;
+    }
+
+    dispatch(toggleCurrentItem(item));
+  };
+
+export const toggleCurrentItem = (currentItemPreview) => ({
+  type: TOGGLE_ITEM_PREVIEW,
+  payload: currentItemPreview,
 });

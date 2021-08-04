@@ -5,11 +5,11 @@ import AddToWishList from "./AddToWishList";
 
 describe("ButtonsList", () => {
   test("should render BackShopping", () => {
-    const {getByTestId} = render(<BackShopping/>);
+    const {getByTestId} = render(<BackShopping history={{}} />);
     expect(getByTestId("BackShoppingTestId")).toBeInTheDocument();
   });
   test("should render AddToWishList", () => {
-    const {getByTestId} = render(<AddToWishList/>);
+    const {getByTestId} = render(<AddToWishList item={{}} history={{}} toggle={(f) => f} />);
     expect(getByTestId("AddToWishListTestId")).toBeInTheDocument();
   });
 })

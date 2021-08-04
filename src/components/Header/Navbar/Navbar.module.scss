@@ -14,11 +14,16 @@
   }
 
   &Item {
-    padding: 20px;
     z-index: 99;
+    padding: 20px;
+    line-height: 1.5;
+
+    &ShopNow:before {
+      background-position: -56px -1px;
+    }
 
     &MyAccount:before {
-      background-position: -16px 0;
+      background-position: -17px 0;
     }
 
     &ShoppingBag:before {
@@ -31,19 +36,24 @@
   }
 
   &Tools {
-    font-size: 16px;
     position: relative;
+    font-size: 16px;
 
     li {
       display: flex;
 
-      &:before {
-        margin-right: 5px;
-        width: 14px;
-        height: 15px;
-        background-image: url($img-header-sprite);
-        background-size: cover;
-        content: "";
+      a {
+        display: block;
+        &:before {
+          display: inline-block;
+          width: 14px;
+          height: 15px;
+          margin-right: 5px;
+          background-image: url($img-header-sprite);
+          background-size: cover;
+          transform: translateY(2px);
+          content: "";
+        }
       }
     }
   }
@@ -78,7 +88,29 @@
   display: block;
 }
 
-@media screen and (max-width: 1130px) {
+.BurgerMenu {
+  width: 2rem;
+  height: fit-content;
+  margin-right: 0;
+  margin-left: 1rem;
+  transform: translateY(70%);
+  cursor: pointer;
+
+  &:before {
+    display: none;
+  }
+}
+
+.BurgerIcon {
+  width: 100%;
+  height: 100%;
+}
+
+.CartBox {
+  position: relative;
+}
+
+@media screen and (max-width: 1150px) {
   .NavItem {
     padding: 20px 10px;
   }
@@ -91,7 +123,7 @@
     grid-template-columns: auto auto;
 
     &Shop {
-      position: relative;
+      // position: relative;
       grid-area: 2 / 1 / 3 / 3;
       justify-content: space-between;
       font-size: 16px;
@@ -117,6 +149,12 @@
       grid-area: 1 / 2 / 2 / 3;
       font-size: 14px;
     }
+
+    .BurgerMenu {
+      button {
+        // padding: 0 3px;
+      }
+    }
   }
 
   .Logo {
@@ -128,12 +166,19 @@
   .Nav {
     &Shop {
       font-size: 12px;
+    }
 
+    li {
+      margin: 0 0 0 1rem;
+    }
+
+    .BurgerMenu {
+      margin-right: 0;
     }
 
     &Item {
-      padding-left: 0;
       padding-right: 0;
+      padding-left: 0;
       & + & {
         margin-left: 10px;
       }
@@ -177,15 +222,15 @@
 }
 
 .NavCartActive {
-  background: #00a046;
   position: absolute;
-  right: 0;
   top: 9px;
-  border-radius: 30px;
-  text-align: center;
-  font-size: 11px;
+  right: 0;
+  width: 10px;
   padding: 5px;
   color: white;
+  font-size: 11px;
+  text-align: center;
+  background: #00a046;
+  border-radius: 30px;
   box-shadow: 0 0 4px 4px #00ffad73;
-  width: 10px;
 }

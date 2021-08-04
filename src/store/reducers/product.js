@@ -1,18 +1,32 @@
 import {
+  CHECKOUT_SUCCESS,
   COLOR,
   PHOTO,
   SELECT_CURRENT_ITEM,
   SELECT_CURRENT_ITEM_START,
   SEND_PRODUCT_REQUEST_ERROR,
+  TOGGLE_ITEM_PREVIEW,
   VISITED_PRODUCTS,
 } from "../actions/actionTypes";
 
 const initialState = {
   color: "",
   currentItem: {},
+  currentItemPreview: {},
   photo: null,
   visited: new Set(),
   loading: false,
+};
+
+const transformPreviewItem = (item) => {
+  const newItems = {
+    ...item,
+  };
+  if (!newItems.size || newItems.size === "undefined") {
+    delete newItems.size;
+    return newItems;
+  }
+  return newItems;
 };
 
 const productReducer = (state = initialState, action) => {
@@ -40,6 +54,19 @@ const productReducer = (state = initialState, action) => {
       return { ...state, photo: action.payload };
     case VISITED_PRODUCTS:
       return { ...state, visited: action.payload };
+    case TOGGLE_ITEM_PREVIEW:
+      return {
+        ...state,
+        currentItemPreview: transformPreviewItem(action.payload),
+      };
+    case CHECKOUT_SUCCESS:
+      return {
+        ...state,
+        currentItem: {},
+        photo: null,
+        visited: new Set(),
+        color: "",
+      };
     default:
       return state;
   }

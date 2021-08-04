@@ -1,72 +1,39 @@
 @import "../../../../styles/mixins";
 
-.categories {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    margin-top: 20px;
+.Categories {
+  width: 100%;
 
-    @media (max-width: 480px) {
-        flex-direction: column;
-    }
+  &Items {
+    display: grid;
+    grid-gap: 50px;
+    grid-template-columns: 1fr 1fr 1fr;
 
-    @media (min-width: 481px) and (max-width: 741px) {
-        justify-content: space-between;
-        flex-direction: column;
+    @media screen and (max-width: 768px) {
+      grid-template-rows: 1fr 1fr 1fr;
+      grid-template-columns: 1fr;
     }
-
-    @media (max-width: 1081px) {
-        flex-direction: row;
-        justify-content: center;
-        align-content: center;
-    }
+  }
 }
 
 .category {
-    display: flex;
-    align-items: flex-end;
-    width: 320px;
-    height: 340px;
-    @include bg-image-pos;
-    @media screen and (max-width: 576px) {
-       margin-top: 20px;
-       }
+  display: flex;
+  align-items: flex-end;
+  height: 340px;
+  @include bg-image-pos;
 
-    &:hover {
-        cursor: pointer;
-    }
-
-    @media (max-width: 480px) {
-        &:not(:first-child) {
-        margin: 20px;
-        }
-    }
-
-    @media (min-width: 481px) and (max-width: 1080px) {
-
-        &:not(:first-child) {
-            margin: 20px;
-        }
-    }
-
-    @media (min-width: 481px) and (max-width: 1080px) {
-
-        &:not(:first-child) {
-            margin: 20px;
-        }
-    }
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .clothes {
-    background-image: url("./img/clothes1.jpg");
+  background-image: url("./img/clothes1.jpg");
 }
 
 .shoes {
-    background-image: url("./img/shoes1.jpg");
+  background-image: url("./img/shoes1.jpg");
 }
 
 .accessories {
-    background-image: url("./img/accessories.jpg");
+  background-image: url("./img/accessories.jpg");
 }

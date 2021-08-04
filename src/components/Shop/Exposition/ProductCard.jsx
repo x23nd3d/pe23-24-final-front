@@ -2,11 +2,13 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { NavLink, withRouter } from "react-router-dom";
+import classNames from "classnames";
 import {
   selectCurrentItem,
   colorAction,
   photoAction,
   visitedProductsAction,
+  toggleCurrentItem,
 } from "../../../store/actions/product";
 import { addToCart } from "../../../store/actions/cart";
 import classes from "./Exposition.module.scss";
@@ -16,12 +18,14 @@ import colorize from "../../../utils/colorize";
 import ProductTag from "../../UI/ProductTag/ProductTag";
 import { visitedProductsFunction } from "../../../store/actions/visitedProducts.actions";
 import { toggleWishListHandler } from "../../../store/actions/user";
+import Unavailable from "../../UI/SVGIconsComponents/Unavailable";
 
 const ProductCard = ({
   product,
   dispatchColor,
   dispatchPhoto,
   dispatchVisitedProducts,
+  dispatchCurrentWish,
   item,
   selectCurrentItemHandler,
   addToCartHandler,
@@ -48,11 +52,17 @@ const ProductCard = ({
     dispatchColor(item.color[0]);
     dispatchPhoto(item.photo[item.color[0]]);
     dispatchVisitedProducts(item);
+    dispatchCurrentWish({
+      ...item,
+      color: item.color[0],
+      size: item.size ? item.size[0] : [],
+    });
   };
 
   const clsHoverDetails = [
     classes.CartHoverDetails,
     cartIdx >= 0 ? classes.CartHoverDetailsFreeze : null,
+    item.stock ? null : classes.CartHoverDetailsFreeze,
   ];
 
   const renderItemSizes = (currentItem) => {
@@ -66,6 +76,7 @@ const ProductCard = ({
           ? classes.sizeItemActive
           : null,
         cartIdx >= 0 ? classes.freezeItem : null,
+        item.stock ? null : classes.freezeItem,
         cartIdx >= 0 && size === cart.items[cartIdx].size
           ? classes.sizeItemActive
           : null,
@@ -97,6 +108,7 @@ const ProductCard = ({
           : null,
         color ? classes[colorClass] : null,
         cartIdx >= 0 ? classes.freezeItem : null,
+        item.stock ? null : classes.freezeItem,
         cartIdx >= 0 && color === cart.items[cartIdx].color
           ? classes.colorItemActive
           : null,
@@ -153,8 +165,19 @@ const ProductCard = ({
     const tags = [
       "new",
       "recommended",
+      "out_of_stock",
       currentItem.ordered >= 120 ? "popular" : null,
     ];
+
+    if (!currentItem.stock) {
+      return (
+        <ProductTag
+          item={currentItem}
+          tag="Not available"
+          key={currentItem.name}
+        />
+      );
+    }
 
     return tags.map((tag) => {
       if (currentItem[tag] === true || tag === "popular") {
@@ -200,7 +223,10 @@ const ProductCard = ({
         className={classes.card}
       >
         <img
-          className={classes.image}
+          className={classNames(
+            classes.image,
+            item.stock ? null : classes.imageStockOff
+          )}
           src={renderViewImage()}
           alt="Product Item"
         />
@@ -241,7 +267,7 @@ const ProductCard = ({
           </button>
         )}
 
-        {renderCartIcon()}
+        {item.stock ? renderCartIcon() : <Unavailable />}
       </div>
     </>
   );
@@ -272,6 +298,7 @@ ProductCard.propTypes = {
   dispatchPhoto: PropTypes.func.isRequired,
   dispatchColor: PropTypes.func.isRequired,
   dispatchVisitedProducts: PropTypes.func.isRequired,
+  dispatchCurrentWish: PropTypes.func.isRequired,
   toggleWishList: PropTypes.func.isRequired,
   visitedProductsHandler: PropTypes.func,
 };
@@ -290,6 +317,7 @@ function mapDispatchToProps(dispatch) {
   return {
     dispatchColor: (value) => dispatch(colorAction(value)),
     dispatchPhoto: (value) => dispatch(photoAction(value)),
+    dispatchCurrentWish: (value) => dispatch(toggleCurrentItem(value)),
     dispatchVisitedProducts: (value) => dispatch(visitedProductsAction(value)),
     selectCurrentItemHandler: (item) => dispatch(selectCurrentItem(item)),
     addToCartHandler: (item) => dispatch(addToCart(item)),

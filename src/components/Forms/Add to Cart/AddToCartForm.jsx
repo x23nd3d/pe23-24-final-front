@@ -11,6 +11,8 @@ import AddToCartButton from "./AddToCartButton";
 import BackShopping from "../../UI/Buttons List/BackShopping";
 import AddToWishList from "../../UI/Buttons List/AddToWishList";
 import { toggleWishListHandler } from "../../../store/actions/user";
+import { toggleCurrentItem } from "../../../store/actions/product";
+import CurrentWishlist from "../../Containers/CurrentWishlist";
 
 /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -25,12 +27,13 @@ const AddToCartForm = ({
   auth,
   history,
   toggleWishList,
+  dispatchCurrentWish,
 }) => {
   const { productStore, dispatchColor } = store;
 
   const handleColorState = useCallback(
-    ({ color }) => {
-      dispatchColor(color);
+    (values) => {
+      dispatchColor(values.color);
     },
     [dispatchColor]
   );
@@ -58,51 +61,46 @@ const AddToCartForm = ({
     dispatchCart(item);
   };
 
-  const renderWishListCondition = () => {
+  const renderWishListCondition = (currentWishItem, onCurrentWish) => {
     if (auth.token) {
-      const transformedObjectTemp2 = {
-        ...product.currentItem,
-        color: product.currentItem.color[0],
-        size: product.currentItem.size[0],
-      };
       if (user.userId.wishlist.length > 0) {
         const wishIdx = user.userId.wishlist.find(
           (current) =>
-            JSON.stringify(current) === JSON.stringify(transformedObjectTemp2)
+            JSON.stringify(current) ===
+            JSON.stringify(product.currentItemPreview)
         );
 
-        console.log("wishIdxwishIdx", wishIdx);
-
         if (wishIdx) {
-          // TODO: Instead of this test object we should pass the exact params of color or size like as shop.currentPreviewItems
-
           return (
             <AddToWishList
-              item={transformedObjectTemp2}
+              item={product.currentItemPreview}
               isAdded
               isAuth
               history={history}
               toggle={toggleWishList}
+              onWish={() => onCurrentWish(currentWishItem)}
             />
           );
         }
         return (
           <AddToWishList
-            item={transformedObjectTemp2}
+            item={product.currentItemPreview}
             isAdded={false}
             isAuth
             history={history}
             toggle={toggleWishList}
+            onWish={() => onCurrentWish(currentWishItem)}
           />
         );
       }
       return (
         <AddToWishList
-          item={transformedObjectTemp2}
+          item={product.currentItemPreview}
           isAdded={false}
           isAuth
           history={history}
           toggle={toggleWishList}
+          onWish={() => onCurrentWish(currentWishItem)}
         />
       );
     }
@@ -113,13 +111,14 @@ const AddToCartForm = ({
         isAuth={false}
         toggle={(f) => f}
         history={history}
+        onWish={null}
       />
     );
   };
 
   return (
     <Formik
-      data-testid="AddToCartFormId"
+      data-testid="AddToCartFormTestId"
       initialValues={{
         id: data.id,
         color: productStore.color,
@@ -130,17 +129,20 @@ const AddToCartForm = ({
       {({ values, handleSubmit }) => (
         <Form className={classes.form} onSubmit={handleSubmit}>
           <div className={classes.formBlockColor}>
-            <span className={classes.dataPointer}>
-              {data.color.length > 1 ? (
-                "Select a color"
-              ) : (
-                <div className={classes.formOneColorBlock}>
-                  <p>Color</p>
-                  <span>{productStore.color}</span>
-                </div>
-              )}
-            </span>
-            {data.color.length > 1 && (
+            {data.stock ? (
+              <span className={classes.dataPointer}>
+                {data.color.length > 1 && data.stock ? (
+                  "Select a color"
+                ) : (
+                  <div className={classes.formOneColorBlock}>
+                    <p>Color</p>
+                    <span>{productStore.color}</span>
+                  </div>
+                )}
+              </span>
+            ) : null}
+
+            {data.color.length > 1 && data.stock ? (
               <div className={classes.colorSelection}>
                 {data.color.length > 1 &&
                   data.color.map((color, index) => (
@@ -169,12 +171,23 @@ const AddToCartForm = ({
                     </div>
                   ))}
               </div>
-            )}
+            ) : null}
           </div>
-          {Array.isArray(data.size) && data.size.length ? (
+          {Array.isArray(data.size) && data.size.length && data.stock ? (
             <div className={classes.formBlockSize}>
               <span className={classes.dataPointer}>Select a size</span>
-              <Field className={classes.sizeSelect} name="size" as="select">
+              <Field
+                onClick={() =>
+                  dispatchCurrentWish({
+                    ...product.currentItem,
+                    color: product.color,
+                    size: values.size,
+                  })
+                }
+                className={classes.sizeSelect}
+                name="size"
+                as="select"
+              >
                 {data.size.map((size) => (
                   <option
                     key={size}
@@ -189,8 +202,16 @@ const AddToCartForm = ({
           ) : null}
           <div className={classes.formBlockSubmit}>
             <BackShopping history={history} />
-            <AddToCartButton />
-            {renderWishListCondition()}
+            <AddToCartButton isAvailable={data.stock} />
+            <CurrentWishlist
+              runCondition={renderWishListCondition}
+              currentWishItem={{
+                ...product.currentItem,
+                color: product.color,
+                size: values.size,
+              }}
+              onCurrentWish={dispatchCurrentWish}
+            />
           </div>
         </Form>
       )}
@@ -214,6 +235,7 @@ AddToCartForm.propTypes = {
   history: PropTypes.instanceOf(Object).isRequired,
   user: PropTypes.instanceOf(Object).isRequired,
   auth: PropTypes.instanceOf(Object).isRequired,
+  dispatchCurrentWish: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
@@ -228,6 +250,7 @@ function mapDispatchToProps(dispatch) {
   return {
     dispatchCart: (item) => dispatch(addToCart(item)),
     toggleWishList: (item) => dispatch(toggleWishListHandler(item)),
+    dispatchCurrentWish: (item) => dispatch(toggleCurrentItem(item)),
   };
 }
 
