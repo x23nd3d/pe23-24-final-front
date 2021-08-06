@@ -191,10 +191,10 @@ const Checkout = ({
                         : values.cardNumber
                     }
                   />
+                  </MaskedTextBoxComponent>
                   {touched.cardNumber && errors.cardNumber && (
                     <p className={classes.Error}>{errors.cardNumber}</p>
                   )}
-                  </MaskedTextBoxComponent>
                 </div>
                 <div className={classes.CheckoutInputField}>
                   <p>Card Holder Name: </p>
