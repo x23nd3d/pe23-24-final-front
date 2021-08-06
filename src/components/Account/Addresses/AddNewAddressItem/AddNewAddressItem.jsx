@@ -137,12 +137,12 @@ const AddNewAddressItem = ({
                           onBlur={handleBlur}
                           value={values.cardNumber}
                         />
+                        </MaskedTextBoxComponent>
                         {touched.cardNumber && errors.cardNumber && (
                           <p className={classes.ErrorError}>
                             {errors.cardNumber}
                           </p>
                         )}
-                        </MaskedTextBoxComponent>
                       </div>
                       <div className={classes.CheckoutInputField}>
                         <p>Card Holder Name: </p>
