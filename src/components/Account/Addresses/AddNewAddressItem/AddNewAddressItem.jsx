@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import * as yup from "yup";
 import { Form, Formik } from "formik";
 import { AnimatePresence, motion } from "framer-motion";
+import {MaskedTextBoxComponent} from "@syncfusion/ej2-react-inputs";
 import classnames from "classnames";
 import classes from "./AddNewAddressItem.module.scss";
 import Modal from "../../../UI/Modal/Modal";
@@ -127,6 +128,7 @@ const AddNewAddressItem = ({
                     <div className={classes.Inner}>
                       <div className={classes.CheckoutInputField}>
                         <p>Card Number: </p>
+                        <MaskedTextBoxComponent className={classes.CheckoutInputMaskAdd} mask="0000-0000-0000-0000">
                         <input
                           className={classes.CheckoutInput}
                           type="number"
@@ -135,6 +137,7 @@ const AddNewAddressItem = ({
                           onBlur={handleBlur}
                           value={values.cardNumber}
                         />
+                        </MaskedTextBoxComponent>
                         {touched.cardNumber && errors.cardNumber && (
                           <p className={classes.ErrorError}>
                             {errors.cardNumber}
@@ -143,6 +146,7 @@ const AddNewAddressItem = ({
                       </div>
                       <div className={classes.CheckoutInputField}>
                         <p>Card Holder Name: </p>
+                        
                         <input
                           className={classes.CheckoutInput}
                           type="text"
@@ -156,6 +160,7 @@ const AddNewAddressItem = ({
                             {errors.cardName}
                           </p>
                         )}
+                         
                       </div>
                       <div className={classes.CheckoutInputField}>
                         <p>Card Expiry Date: </p>

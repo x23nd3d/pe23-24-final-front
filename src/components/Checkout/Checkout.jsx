@@ -5,6 +5,7 @@ import classnames from "classnames";
 import * as yup from "yup";
 import { Form, Formik, Field } from "formik";
 import valid from "card-validator";
+import {MaskedTextBoxComponent} from "@syncfusion/ej2-react-inputs";
 import { Link } from "react-router-dom";
 import classes from "./Checkout.module.scss";
 import mastercard from "../../img/icons/Checkout/mastercard.png";
@@ -178,8 +179,8 @@ const Checkout = ({
               <div className={classes.Inner}>
                 <div className={classes.CheckoutInputField}>
                   <p>Card Number: </p>
+                  <MaskedTextBoxComponent className={classes.CheckoutInputMask} mask="0000-0000-0000-0000">
                   <input
-                    className={classes.CheckoutInput}
                     type="number"
                     name="cardNumber"
                     onChange={handleChange}
@@ -190,6 +191,7 @@ const Checkout = ({
                         : values.cardNumber
                     }
                   />
+                  </MaskedTextBoxComponent>
                   {touched.cardNumber && errors.cardNumber && (
                     <p className={classes.Error}>{errors.cardNumber}</p>
                   )}
