@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { motion, AnimatePresence } from "framer-motion";
 import { withRouter } from "react-router-dom";
+import { ErrorBoundary } from "react-error-boundary";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Spinner from "../../components/UI/Spinner/Spinner";
@@ -14,6 +15,7 @@ import {
   allowBodyScrolling,
   preventBodyScrolling,
 } from "../../utils/bodyStyling";
+import ErrorFallback from "../../components/Errors/ErrorFallback/ErrorFallback";
 
 const Layout = ({
   children,
@@ -43,9 +45,11 @@ const Layout = ({
             exit={{ opacity: 0 }}
           >
             {cartPreviewActive ? <CartPreview items={cart.items} /> : null}
-            <Header />
-            {children}
-            <Footer />
+            <ErrorBoundary FallbackComponent={ErrorFallback} >
+              <Header />
+              {children}
+              <Footer />
+            </ErrorBoundary>
           </motion.div>
         </AnimatePresence>
       )}
