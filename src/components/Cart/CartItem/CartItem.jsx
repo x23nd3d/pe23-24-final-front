@@ -62,7 +62,7 @@ const CartItem = ({
         <p className={classes.CartItemInfo}>Color: {color}</p>
         <p className={classes.CartItemInfo}>Size: {size}</p>
         <div className={classes.CartItemInfo}>
-          Quantity:
+          <span>Quantity:</span>
           <div className={classes.Quantity}>
             <button
               className={decreaseCountCls.join(" ")}
