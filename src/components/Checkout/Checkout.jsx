@@ -5,7 +5,7 @@ import classnames from "classnames";
 import * as yup from "yup";
 import { Form, Formik, Field } from "formik";
 import valid from "card-validator";
-import {MaskedTextBoxComponent} from "@syncfusion/ej2-react-inputs";
+import { MaskedTextBoxComponent } from "@syncfusion/ej2-react-inputs";
 import { Link } from "react-router-dom";
 import classes from "./Checkout.module.scss";
 import mastercard from "../../img/icons/Checkout/mastercard.png";
@@ -15,6 +15,7 @@ import Button from "../UI/Buttons List/Button";
 import pushNotification from "../../utils/toastrConfig";
 import {
   checkout,
+  checkProductsState,
   clearCurrentCart,
   saveCardToStateHandler,
   saveCreditCardHandler,
@@ -39,6 +40,7 @@ const Checkout = ({
   saveCardToState,
   setCurrentCreditCard,
   clearCurrentCartHandler,
+  checkProductsStateHandler,
 }) => {
   useEffect(() => {
     cart.isVerificationActive ? preventBodyScrolling() : allowBodyScrolling();
@@ -55,12 +57,14 @@ const Checkout = ({
       .max(16, "Maximum 16 digits")
       .required("Required"),
     cardName: yup.string().required("Required"),
-    cardExp:  yup
-    .string()
-    .test("test-month",
-    "Month is invalid",
-     value => valid.expirationMonth(value).isValid)
-    .required("Required"),
+    cardExp: yup
+      .string()
+      .test(
+        "test-month",
+        "Month is invalid",
+        (value) => valid.expirationMonth(value).isValid
+      )
+      .required("Required"),
     cardExp2: yup
       .string()
       .min(2, "Minimum 2 digits")
@@ -97,17 +101,30 @@ const Checkout = ({
       }
     }
 
-    sendVerificationRequestHandler();
-    verificationToggleHandler(true);
+    const checkProductsExist = await checkProductsStateHandler();
+    if (checkProductsExist) {
+      sendVerificationRequestHandler();
+      verificationToggleHandler(true);
 
-    pushNotification(
-      "warning",
-      "Please type the verification code",
-      "Payment confirmation!",
-      {
-        toastClass: "toastr-c-warning",
-      }
-    );
+      pushNotification(
+        "warning",
+        "Please type the verification code",
+        "Payment confirmation!",
+        {
+          toastClass: "toastr-c-warning",
+        }
+      );
+    } else {
+      console.log("The product is out of stock");
+      pushNotification(
+        "warning",
+        "The product is out of stock, please update your cart, ",
+        "We are sorry",
+        {
+          toastClass: "toastr-c-warning",
+        }
+      );
+    }
   };
 
   const renderTotalPrice = () => {
@@ -179,18 +196,21 @@ const Checkout = ({
               <div className={classes.Inner}>
                 <div className={classes.CheckoutInputField}>
                   <p>Card Number: </p>
-                  <MaskedTextBoxComponent className={classes.CheckoutInputMask} mask="0000-0000-0000-0000">
-                  <input
-                    type="number"
-                    name="cardNumber"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={
-                      user.currentCard.cardNumber
-                        ? user.currentCard.cardNumber
-                        : values.cardNumber
-                    }
-                  />
+                  <MaskedTextBoxComponent
+                    className={classes.CheckoutInputMask}
+                    mask="0000-0000-0000-0000"
+                  >
+                    <input
+                      type="number"
+                      name="cardNumber"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={
+                        user.currentCard.cardNumber
+                          ? user.currentCard.cardNumber
+                          : values.cardNumber
+                      }
+                    />
                   </MaskedTextBoxComponent>
                   {touched.cardNumber && errors.cardNumber && (
                     <p className={classes.Error}>{errors.cardNumber}</p>
@@ -330,6 +350,7 @@ Checkout.defaultProps = {
   saveCardToState: (f) => f,
   setCurrentCreditCard: (f) => f,
   clearCurrentCartHandler: (f) => f,
+  checkProductsStateHandler: (f) => f,
 };
 
 Checkout.propTypes = {
@@ -342,6 +363,7 @@ Checkout.propTypes = {
   saveCardToState: PropTypes.func,
   setCurrentCreditCard: PropTypes.func,
   clearCurrentCartHandler: PropTypes.func,
+  checkProductsStateHandler: PropTypes.func,
 };
 
 function mapStateToProps(state) {
@@ -360,6 +382,7 @@ function mapDispatchToProps(dispatch) {
     saveCardToState: (card) => dispatch(saveCardToStateHandler(card)),
     setCurrentCreditCard: (card) => dispatch(setCurrentCreditCardHandler(card)),
     clearCurrentCartHandler: (card) => dispatch(clearCurrentCart(card)),
+    checkProductsStateHandler: () => dispatch(checkProductsState()),
   };
 }
 
