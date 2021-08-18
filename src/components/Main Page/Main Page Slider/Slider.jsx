@@ -2,9 +2,9 @@ import React, { useState, useCallback, useContext } from "react";
 import { Link } from "react-router-dom";
 import AliceCarousel from "react-alice-carousel";
 import "./_alice-carousel-customized.sass";
-import slideOne from "../../../img/Slider/slider-image-1.jpg";
-import slideTow from "../../../img/Slider/slider-image-2.jpg";
-import slideThree from "../../../img/Slider/slider-image-3.jpg";
+import slideOne from "../../../img/Slider/banner1.jpg";
+import slideTow from "../../../img/Slider/banner2.jpg";
+import slideThree from "../../../img/Slider/banner3.jpg";
 import classes from "./Slider.module.scss";
 import CollectionsRoutesContext from "../../../context/CollectionsRoutes/CollectionsRoutesContext";
 
@@ -47,7 +47,7 @@ const Slider = () => {
         </div>
         <div className={classes.Slid}>
           <div className={classes.TextSale}>
-            SEE OUR JACKETS
+            EXCLUSIVE OFFERS
             <div className={classes.ShopBtn}>
               <Link
                 to="/shop/?category=clothes&type=outerwear"

@@ -98,14 +98,15 @@
 
 .PurchasedItems {
   margin-left: 3rem;
+  display: flex;
+  align-items: center;
+  grid-gap: 10px;
+  flex-wrap: wrap;
 }
 
 .PurchasedItem {
   padding: 2rem;
   border: 1px solid lightgrey;
-  & + & {
-    margin-top: 2rem;
-  }
 }
 
 .CartItemFooter {

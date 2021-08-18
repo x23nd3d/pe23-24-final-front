@@ -74,6 +74,19 @@ export const checkout = () => async (dispatch, getState) => {
   }
 };
 
+export const checkProductsState = () => async (dispatch, getState) => {
+  const { token } = getState().auth;
+  const request = await axios.get("checkProductState", {
+    headers: {
+      Authorization: `${token}`,
+    },
+  });
+
+  const response = request.data;
+
+  return !response.error;
+};
+
 export const setActiveTab = (accountActiveTab) => ({
   type: SET_ACCOUNT_ACTIVE_TAB,
   accountActiveTab,
