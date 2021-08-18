@@ -39,7 +39,7 @@ export const selectCurrentItem = (item) => (dispatch, getState) => {
 
 export const setItem = (item) => ({
   type: SELECT_CURRENT_ITEM,
-  payload: item,
+  payload: { ...item },
 });
 
 export const setItemStart = () => ({

@@ -22,11 +22,25 @@
 .CartItemInfo {
   margin-bottom: 18px;
   font-size: 16px;
+  display: flex;
+  align-items: center;
 }
 
 .Quantity {
   display: inline-block;
-  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+
+  span {
+    margin: 0 15px;
+  }
+
+  button {
+    border: 1px solid #000;
+    width: 35px;
+    height: 35px;
+  }
 }
 
 .CartItemTotal {
